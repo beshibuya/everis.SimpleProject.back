@@ -24,6 +24,6 @@ namespace everis.SimpleProject.Domain.Model
             public eTipoAnexo Tipo { get; set; }
             [Required]
             public int IdProjeto { get; set; }   // FK 
-            public Projeto Projeto { get; set; }  // FK     
+            public ProjetoModel Projeto { get; set; }  // FK     
     }
 }
