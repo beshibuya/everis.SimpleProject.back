@@ -27,15 +27,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "everis.SimpleProject.Domain
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "everis.SimpleProject.Application", "src\everis.SimpleProject.Application\everis.SimpleProject.Application.csproj", "{E0C2F95B-FEB0-414F-8F79-B9D5AC953D54}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "everis.SimpleProject.Data", "src\everis.SimpleProject.Data\everis.SimpleProject.Data.csproj", "{C34BE538-3677-449B-A81E-4B254F19721D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "everis.SimpleProject.Data.EF", "src\everis.SimpleProject.Data\everis.SimpleProject.Data.EF.csproj", "{C34BE538-3677-449B-A81E-4B254F19721D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "everis.SimpleProject.CrossCutting", "src\everis.SimpleProject.CrossCutting\everis.SimpleProject.CrossCutting.csproj", "{757D0EBA-AD50-45A7-A914-8FDEAE52A758}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "everis.SimpleProject.Application.Tests", "src\everis.SimpleProject.Application.Tests\everis.SimpleProject.Application.Tests.csproj", "{9DDD7EC2-D219-4552-A7B4-BD05FA713656}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "everis.SimpleProject.Application.Tests", "src\everis.SimpleProject.Application.Tests\everis.SimpleProject.Application.Tests.csproj", "{9DDD7EC2-D219-4552-A7B4-BD05FA713656}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "everis.SimpleProject.Infra.Data.Tests", "src\everis.SimpleProject.Infra.Data.Tests\everis.SimpleProject.Infra.Data.Tests.csproj", "{1D3B07D7-AF09-4FFC-8051-3C38646295C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "everis.SimpleProject.API", "src\everis.SimpleProject.API\everis.SimpleProject.API.csproj", "{F71C483A-6185-48AE-BF45-B125E1B42E7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "everis.SimpleProject.API", "src\everis.SimpleProject.API\everis.SimpleProject.API.csproj", "{F71C483A-6185-48AE-BF45-B125E1B42E7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace everis.SimpleProject.Domain.Model
+namespace everis.SimpleProject.Domain.Models
 {
-    public class Usuario
+    public class Usuario:Entity
     {
-        public Guid UsuarioId { get; set; }
         public string NomeUsuario { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
