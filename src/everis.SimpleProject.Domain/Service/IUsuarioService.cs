@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace everis.SimpleProject.Domain.Service
 {
-    interface IUsuariosService : IDisposable
+    interface IUsuarioService : IDisposable
     {
         Usuario Adicionar(Usuario obj);
         Usuario ObterPorId(int id);

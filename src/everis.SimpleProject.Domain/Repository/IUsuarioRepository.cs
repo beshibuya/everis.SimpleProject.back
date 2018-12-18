@@ -2,7 +2,7 @@
 
 namespace everis.SimpleProject.Domain.Repository
 {
-    interface IUsuariosRepository : IRepository<Usuario>
+    interface IUsuarioRepository : IRepository<Usuario>
     {
     }
 }
