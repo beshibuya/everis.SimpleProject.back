@@ -9,6 +9,7 @@ namespace everis.SimpleProject.Domain.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdProjetoPessoa { get; set; }
 
+        [Required]
         public int Atribuicao { get; set; }  
     }
 }

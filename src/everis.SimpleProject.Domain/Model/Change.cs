@@ -10,10 +10,13 @@ namespace everis.SimpleProject.Domain.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdChange { get; set; }
 
+        [Required]
         public string Descricao { get; set; }
 
+        [Required]
         public short HorasImpacto { get; set; }
 
+        [Required]
         public DateTime DataHoraCadastro { get; set; }
     }
 }

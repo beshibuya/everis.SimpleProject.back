@@ -25,7 +25,7 @@ namespace everis.SimpleProject.Domain.Model
         public DateTime DataEntrega { get; set; }
 
         [Required]
-        public String EscopoProjeto { get; set; }
+        public string EscopoProjeto { get; set; }
 
         public string ForaEscopoProjeto { get; set; }
 

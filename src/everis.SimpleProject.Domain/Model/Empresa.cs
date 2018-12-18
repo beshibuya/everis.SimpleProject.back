@@ -9,8 +9,10 @@ namespace everis.SimpleProject.Domain.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdEmpresa { get; set; }
 
+        [Required]
         public string Nome { get; set; }
 
+        [Required]
         public short Segmento { get; set; }
     }
 }

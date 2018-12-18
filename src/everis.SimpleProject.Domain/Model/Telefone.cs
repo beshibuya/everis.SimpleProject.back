@@ -9,12 +9,17 @@ namespace everis.SimpleProject.Domain.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdTelefone { get; set; }
 
+        [Required]
         public string NumeroTelefone { get; set; }
 
+        [Required]
         public short Tipo { get; set; }
 
         [ForeignKey("IdPessoa")]
+        [Required]
         public int IdPessoa { get; set; }
+
+        [Required]
         public Pessoa Pessoa { get; set; }
     }
 }

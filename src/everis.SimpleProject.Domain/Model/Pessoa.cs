@@ -30,6 +30,7 @@ namespace everis.SimpleProject.Domain.Model
         [Required]
         public int IdEmpresa { get; set; }  // FK 
 
+        [Required]
         public Empresa Empresa { get; set; } // FK 
 
     }

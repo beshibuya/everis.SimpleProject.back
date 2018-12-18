@@ -11,8 +11,10 @@ namespace everis.SimpleProject.Domain.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdColaborador { get; set; }
 
+        [Required]
         public int IdPessoa { get; set; }
 
+        [Required]
         public Pessoa Pessoa { get; set; }
 
         public string Racf { get; set; }

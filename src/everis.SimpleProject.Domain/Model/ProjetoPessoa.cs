@@ -10,10 +10,12 @@ namespace everis.SimpleProject.Domain.Model
         public int IdProjetoPessoa { get; set; }
 
         [ForeignKey("IdProjeto")]
+        [Required]
         public int IdProjeto { get; set; }
         public Projeto Projeto { get; set; }
 
         [ForeignKey("IdPessoa")]
+        [Required]
         public int IdPessoa { get; set; }
         public Pessoa Pessoa { get; set; }
     }
