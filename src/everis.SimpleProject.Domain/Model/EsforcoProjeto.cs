@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleProcess.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,7 +14,7 @@ namespace everis.SimpleProject.Domain.Model
         public int IdEsforcoProjeto { get; set; }
         [Required]
         public int IdProjetoPessoa { get; set; }
-        //public ProjetoPessoa ProjetoPessoa { get; set; }
+        public ProjetoPessoa ProjetoPessoa { get; set; }
         [Required]
         public short QtdHorasDia { get; set; }
         [Required]
