@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using everis.SimpleProject.Domain.Model.Enums;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
@@ -12,7 +13,7 @@ namespace everis.SimpleProject.Domain.Model
 
         public int IdPessoa { get; set; }
 
-        public Pessoa pessoa { get; set; }
+        public Pessoa Pessoa { get; set; }
 
         public string Racf { get; set; }
 
@@ -35,25 +36,6 @@ namespace everis.SimpleProject.Domain.Model
 
         [Required]
         public bool Ativo { get; set; }
-    }
-
-    public enum eFuncao
-    {
-        SA = 1,
-        SN = 2,
-        STL = 3,
-        SPL = 4,
-        SK = 5,
-        SKL = 6,
-        Manager = 7
-    }
-
-    public enum ePerfil
-    {
-        Master = 1,
-        Lider = 2,
-        Colaborador = 3
-
     }
 
 }

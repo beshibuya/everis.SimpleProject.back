@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace everis.SimpleProject.Domain.Model
 {
-    class Empresa
+    public class Empresa
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdEmpresa { get; set; }
+
         public string Nome { get; set; }
+
         public short Segmento { get; set; }
     }
 }
