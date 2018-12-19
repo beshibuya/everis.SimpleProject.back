@@ -40,34 +40,55 @@ namespace everis.SimpleProject.Data.EF.Repositories
             return obj;
         }
 
-        public IEnumerable<T> Buscar(Expression<Func<T, bool>> predicate)
+        public IQueryable<T> BuscarPor(Expression<Func<T, bool>> predicate,
+            params Expression<Func<T, object>>[] includes)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
+            var currentSet = _dbContext.Set<T>();
+            IQueryable<T> query = currentSet;
+            foreach (var inc in includes)
+                query = query.Include(inc);
+            return query.Where(predicate);
         }
 
         public T ObterPorId(int id)
         {
-            throw new NotImplementedException();
+            return _dbContext.Set<T>().Find(id);
         }
 
         public IEnumerable<T> ObterTodos()
         {
-            throw new NotImplementedException();
+            return _dbContext.Set<T>().ToList();
         }
 
         public void Remover(int id)
         {
-            throw new NotImplementedException();
+            _dbContext.Set<T>().Remove(ObterPorId(id));
+            _dbContext.SaveChanges();
         }
 
         public int SaveChanges()
         {
             return _dbContext.SaveChanges();
+        }
+
+        private bool disposed = false;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    _dbContext.Dispose();
+                }
+            }
+            this.disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using everis.SimpleProject.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace everis.SimpleProject.Domain.Repositories
@@ -12,7 +13,7 @@ namespace everis.SimpleProject.Domain.Repositories
         IEnumerable<TEntity> ObterTodos();
         TEntity Atualizar(TEntity obj);
         void Remover(int id);
-        IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate);
+        IQueryable<TEntity> BuscarPor(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includes);
         int SaveChanges();
     }
 }

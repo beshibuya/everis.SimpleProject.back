@@ -1,15 +1,13 @@
-﻿using System;
+﻿using everis.SimpleProject.Domain.Models;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace everis.SimpleProject.Domain.Model
 {
-    public class EsforcoProjeto
+    public class EsforcoProjeto : Entity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int IdEsforcoProjeto { get; set; }
-
+   
         [Required]
         public int IdProjetoPessoa { get; set; }
 
