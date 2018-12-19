@@ -37,6 +37,8 @@ namespace everis.SimpleProject.Application.Services
             {
                 var currentEntity = rep.ObterPorId(obj.Id);
                 currentEntity.Email = obj.Email;
+                currentEntity.NomeUsuario = obj.NomeUsuario;
+                currentEntity.Senha = obj.Senha;
                 rep.Atualizar(currentEntity);
                 SaveChanges();
 
