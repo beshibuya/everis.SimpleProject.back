@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
-    public partial class Createinicial : Migration
+    public partial class Configuraçãoinicialbancodedados : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -4,73 +4,192 @@ using System.Linq;
 using System.Threading.Tasks;
 using everis.SimpleProject.Application.Services;
 using everis.SimpleProject.Domain.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace everis.SimpleProject.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
-    public class UsuarioController : ControllerBase
+    public class UsuarioController : Controller
     {
+        [HttpGet]
+        [ActionName("obtertodos")]
+        public ActionResult ObterTodos()
+        {
+            try
+            {
+                UsuarioAppSvcGeneric svc = new UsuarioAppSvcGeneric();
+                var retorno = new Retorno()
+                {
+                    Codigo = 200,
+                    Data = JsonConvert.SerializeObject(svc.ObterTodos())
+                };
+                return Ok(retorno);
 
+            }
+            catch (Exception ex)
+            {
 
+                return Ok(new Retorno()
+                {
+                    Codigo = 500,
+                    Mensagem = ex.Message
+                });
+            }
+        }
 
-        //[HttpGet]
-        //public ActionResult ObterTodos()
-        //{
-        //    UsuarioAppSvcGeneric svc = new UsuarioAppSvcGeneric();
-        //    var retorno = svc.ObterTodos();
-        //    return Json(retorno);
-        //}
+        [HttpGet]
+        public ActionResult ObterPorId(int id)
+        {
+            try
+            {
+                UsuarioAppSvcGeneric svc = new UsuarioAppSvcGeneric();
 
-        //[HttpGet]
-        //public ActionResult ObterPorId(int id)
-        //{
-        //    UsuarioAppSvcGeneric svc = new UsuarioAppSvcGeneric();
-        //    var retorno = svc.ObterPorId(id);
-        //    return Json(retorno);
-        //}
+                var retorno = new Retorno()
+                {
+                    Codigo = 200,
+                    Data = JsonConvert.SerializeObject(svc.ObterPorId(id))
+                };
+                return Ok(retorno);
 
-        //[HttpPost]
-        //public ActionResult Ativar(int id)
-        //{
-        //    UsuarioAppSvcGeneric svc = new UsuarioAppSvcGeneric();
-        //    var retorno = svc.Ativar(id);
-        //    return Json(retorno);
-        //}
+            }
+            catch (Exception ex)
+            {
 
-        //[HttpPost]
-        //public ActionResult Desativar(int id)
-        //{
-        //    UsuarioAppSvcGeneric svc = new UsuarioAppSvcGeneric();
-        //    var retorno = svc.Desativar(id);
-        //    return Json(retorno);
-        //}
+                return Ok(new Retorno()
+                {
+                    Codigo = 500,
+                    Mensagem = ex.Message
+                });
+            }
+        }
 
-        //[HttpPost]
-        //public ActionResult Remover(int id)
-        //{
-        //    UsuarioAppSvcGeneric svc = new UsuarioAppSvcGeneric();
-        //    var retorno = svc.Remover(id);
-        //    return Json(retorno);
-        //}
+        [HttpGet]
+        public ActionResult Ativar(int id)
+        {
+            try
+            {
+                UsuarioAppSvcGeneric svc = new UsuarioAppSvcGeneric();
 
-        //[HttpPost]
-        //public void Atualizar([FromBody] Usuario obj)
-        //{
-        //    UsuarioAppSvcGeneric svc = new UsuarioAppSvcGeneric();
-        //    var retorno = svc.Atualizar(obj);
-        //    return Json(retorno);
-        //}
+                var retorno = new Retorno()
+                {
+                    Codigo = 200,
+                    Data = JsonConvert.SerializeObject(svc.Ativar(id))
+                };
+                return Ok(retorno);
 
-        //[HttpPost]
-        //public void Adicionar([FromBody] Usuario obj)
-        //{
-        //    UsuarioAppSvcGeneric svc = new UsuarioAppSvcGeneric();
-        //    var retorno = svc.Adicionar(obj);
-        //    return Json(retorno);
-        //}
+            }
+            catch (Exception ex)
+            {
+
+                return Ok(new Retorno()
+                {
+                    Codigo = 500,
+                    Mensagem = ex.Message
+                });
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Desativar(int id)
+        {
+            try
+            {
+                UsuarioAppSvcGeneric svc = new UsuarioAppSvcGeneric();
+                var retorno = new Retorno()
+                {
+                    Codigo = 200,
+                    Data = JsonConvert.SerializeObject(svc.Desativar(id))
+                };
+                return Ok(retorno);
+
+            }
+            catch (Exception ex)
+            {
+
+                return Ok(new Retorno()
+                {
+                    Codigo = 500,
+                    Mensagem = ex.Message
+                });
+            }
+        }
+
+        [HttpDelete]
+        public ActionResult Remover(int id)
+        {
+            try
+            {
+                UsuarioAppSvcGeneric svc = new UsuarioAppSvcGeneric();
+                var retorno = new Retorno()
+                {
+                    Codigo = 200,
+                    Data = JsonConvert.SerializeObject(svc.Remover(id))
+                };
+                return Ok(retorno);
+
+            }
+            catch (Exception ex)
+            {
+
+                return Ok(new Retorno()
+                {
+                    Codigo = 500,
+                    Mensagem = ex.Message
+                });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Atualizar([FromBody] Usuario obj)
+        {
+            try
+            {
+                UsuarioAppSvcGeneric svc = new UsuarioAppSvcGeneric();
+                var retorno = new Retorno()
+                {
+                    Codigo = 200,
+                    Data = JsonConvert.SerializeObject(svc.Atualizar(obj))
+                };
+                return Ok(retorno);
+
+            }
+            catch (Exception ex)
+            {
+
+                return Ok(new Retorno()
+                {
+                    Codigo = 500,
+                    Mensagem = ex.Message
+                });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Adicionar([FromBody] Usuario obj)
+        {
+            try
+            {
+                UsuarioAppSvcGeneric svc = new UsuarioAppSvcGeneric();
+                var retorno = new Retorno()
+                {
+                    Codigo = 200,
+                    Data = JsonConvert.SerializeObject(svc.Adicionar(obj))
+                };
+                return Ok(retorno);
+            }
+            catch (Exception ex)
+            {
+
+                return Ok(new Retorno()
+                {
+                    Codigo = 500,
+                    Mensagem = ex.Message
+                });
+            }
+
+        }
 
     }
 }

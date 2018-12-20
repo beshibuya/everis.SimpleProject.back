@@ -330,8 +330,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<DateTime>("DataCadastro");
 
-                    b.Property<DateTime?>("DataDesativacao");
-
                     b.Property<DateTime?>("DataInativacao");
 
                     b.Property<string>("Email")

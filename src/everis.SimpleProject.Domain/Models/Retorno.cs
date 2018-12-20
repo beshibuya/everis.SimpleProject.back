@@ -4,7 +4,7 @@ using System.Text;
 
 namespace everis.SimpleProject.Domain.Models
 {
-    class Retorno
+    public class Retorno
     {
         public Retorno()
         {

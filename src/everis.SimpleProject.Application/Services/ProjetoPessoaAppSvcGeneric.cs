@@ -43,7 +43,7 @@ namespace everis.SimpleProject.Application.Services
         {
             try
             {
-                var obj = rep.Desativar(id);
+                var obj = rep.Ativar(id);
                 return obj;
             }
             catch (Exception ex)

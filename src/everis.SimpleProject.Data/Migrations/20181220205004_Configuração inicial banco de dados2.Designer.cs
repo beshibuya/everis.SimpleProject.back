@@ -10,8 +10,8 @@ using everis.SimpleProject.Data.EF;
 namespace everis.SimpleProject.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20181220181139_Create inicial")]
-    partial class Createinicial
+    [Migration("20181220205004_Configuração inicial banco de dados2")]
+    partial class Configuraçãoinicialbancodedados2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -331,8 +331,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("DataCadastro");
-
-                    b.Property<DateTime?>("DataDesativacao");
 
                     b.Property<DateTime?>("DataInativacao");
 

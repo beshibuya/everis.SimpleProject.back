@@ -46,7 +46,31 @@ namespace everis.SimpleProject.Application.Services
                 return null;
             }
         }
+        public Telefone Desativar(int id)
+        {
+            try
+            {
+                var obj = rep.Desativar(id);
+                return obj;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
+        public Telefone Ativar(int id)
+        {
+            try
+            {
+                var obj = rep.Ativar(id);
+                return obj;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public void Dispose()
         {
             rep.Dispose();
@@ -78,16 +102,16 @@ namespace everis.SimpleProject.Application.Services
             }
         }
 
-        public void Remover(int id)
+        public bool Remover(int id)
         {
             try
             {
-                rep.Remover(id);
-                SaveChanges();
+                var obj = rep.Remover(id);
+                return obj;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 

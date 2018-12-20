@@ -19,6 +19,5 @@ namespace everis.SimpleProject.Domain.Models
 
         public DateTime DataCadastro { get; set; }
 
-        public DateTime? DataDesativacao { get; set; }
     }
 }
