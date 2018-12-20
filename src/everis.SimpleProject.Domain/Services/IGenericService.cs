@@ -16,7 +16,5 @@ namespace everis.SimpleProject.Domain.Service
         T Ativar(int id);
         T Desativar(int id);
         int SaveChanges();
-        void Inativar(T obj);
-        void Ativar(T obj);
     }
 }

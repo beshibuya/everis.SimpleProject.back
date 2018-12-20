@@ -15,6 +15,8 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.Id).HasColumnName("IdEmpresa");
             builder.Property(c => c.Nome).IsRequired();
             builder.Property(c => c.Segmento).IsRequired();
+            builder.Property(c => c.DataInativacao);
+
 
 
         }

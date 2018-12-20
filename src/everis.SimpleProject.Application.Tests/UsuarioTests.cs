@@ -82,14 +82,9 @@ namespace everis.SimpleProject.Application.Tests
         [Fact]
         public void InativarTest()
         {
-            var usuario = new Usuario
-            {
-                Id = 1,
-            };
-
-
+      
             UsuarioAppSvcGeneric svc = new UsuarioAppSvcGeneric();
-            svc.Inativar(usuario);
+            svc.Desativar(1);
            
         }
     }

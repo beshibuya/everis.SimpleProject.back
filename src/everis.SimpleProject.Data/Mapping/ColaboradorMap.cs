@@ -20,6 +20,8 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.Funcao).IsRequired();
             builder.Property(c => c.Perfil).IsRequired();
             builder.Property(c => c.Disponivel).IsRequired();
+            builder.Property(c => c.DataInativacao);
+
 
 
         }

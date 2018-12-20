@@ -30,6 +30,8 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.ProblemasExecucao);
             builder.Property(c => c.Riscos);
             builder.Property(c => c.LicoesAprendidas);
+            builder.Property(c => c.DataInativacao);
+
 
         }
     }
