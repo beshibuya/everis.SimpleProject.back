@@ -31,6 +31,9 @@ namespace everis.SimpleProject.Domain.Models
         [Required]
         public bool Disponivel { get; set; }
 
+        public string Senha { get; set; }
+
+
     }
 
 }

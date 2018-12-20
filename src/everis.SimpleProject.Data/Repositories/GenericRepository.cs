@@ -28,6 +28,40 @@ namespace everis.SimpleProject.Data.EF.Repositories
             return obj;
         }
 
+        public T Desativar(int Id)
+        {
+            var entity = _dbContext.Set<T>().Find(Id);
+
+            entity.DataInativacao = DateTime.Now;
+
+            _dbContext.Entry(entity).State = EntityState.Detached;
+            _dbContext.Entry(entity).State = EntityState.Detached;
+
+            _dbContext.Set<T>().Update(entity);
+
+            _dbContext.SaveChanges();
+
+            return entity;
+
+        }
+
+        public T Ativar(int Id)
+        {
+            var entity = _dbContext.Set<T>().Find(Id);
+
+            entity.DataInativacao = null;
+
+            _dbContext.Entry(entity).State = EntityState.Detached;
+            _dbContext.Entry(entity).State = EntityState.Detached;
+
+            _dbContext.Set<T>().Update(entity);
+
+            _dbContext.SaveChanges();
+
+            return entity;
+
+        }
+
         public T Atualizar(T obj)
         {
             var entity = _dbContext.Set<T>().Single(x => x.Id == obj.Id);
@@ -60,10 +94,12 @@ namespace everis.SimpleProject.Data.EF.Repositories
             return _dbContext.Set<T>().ToList();
         }
 
-        public void Remover(int id)
+        public bool Remover(int id)
         {
             _dbContext.Set<T>().Remove(ObterPorId(id));
-            _dbContext.SaveChanges();
+            var returno = _dbContext.SaveChanges();
+
+            return returno == 1;
         }
 
         public int SaveChanges()
