@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using everis.SimpleProject.Data.EF;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181220161937_atualizacaoDavid")]
+    partial class atualizacaoDavid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,7 +28,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .HasColumnName("IdAnexo")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime?>("DataInativacao");
+                    b.Property<DateTime>("DataInativacao");
 
                     b.Property<string>("Descricao")
                         .IsRequired();
@@ -56,7 +58,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<DateTime>("DataHoraCadastro");
 
-                    b.Property<DateTime?>("DataInativacao");
+                    b.Property<DateTime>("DataInativacao");
 
                     b.Property<string>("Descricao")
                         .IsRequired();
@@ -81,7 +83,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .HasColumnName("IdColaborador")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime?>("DataInativacao");
+                    b.Property<DateTime>("DataInativacao");
 
                     b.Property<bool>("Disponivel");
 
@@ -102,8 +104,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<string>("Racf");
 
-                    b.Property<string>("Senha");
-
                     b.HasKey("Id");
 
                     b.HasIndex("PessoaId");
@@ -118,7 +118,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .HasColumnName("IdEmpresa")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime?>("DataInativacao");
+                    b.Property<DateTime>("DataInativacao");
 
                     b.Property<string>("Nome")
                         .IsRequired();
@@ -139,7 +139,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<DateTime>("DataFim");
 
-                    b.Property<DateTime?>("DataInativacao");
+                    b.Property<DateTime>("DataInativacao");
 
                     b.Property<DateTime>("DataInicio");
 
@@ -167,7 +167,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<long>("CPF");
 
-                    b.Property<DateTime?>("DataInativacao");
+                    b.Property<DateTime>("DataInativacao");
 
                     b.Property<string>("Documento");
 
@@ -207,7 +207,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<DateTime>("DataEntrega");
 
-                    b.Property<DateTime?>("DataInativacao");
+                    b.Property<DateTime>("DataInativacao");
 
                     b.Property<DateTime>("DataInicio");
 
@@ -255,7 +255,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .HasColumnName("IdProjetoPessoa")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime?>("DataInativacao");
+                    b.Property<DateTime>("DataInativacao");
 
                     b.Property<int>("IdPessoa");
 
@@ -283,7 +283,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<int>("Atribuicao");
 
-                    b.Property<DateTime?>("DataInativacao");
+                    b.Property<DateTime>("DataInativacao");
 
                     b.Property<int>("IdProjetoPessoa");
 
@@ -303,7 +303,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .HasColumnName("IdTelefone")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime?>("DataInativacao");
+                    b.Property<DateTime>("DataInativacao");
 
                     b.Property<int>("IdPessoa");
 
@@ -332,7 +332,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<DateTime?>("DataDesativacao");
 
-                    b.Property<DateTime?>("DataInativacao");
+                    b.Property<DateTime>("DataInativacao");
 
                     b.Property<string>("Email")
                         .IsRequired();

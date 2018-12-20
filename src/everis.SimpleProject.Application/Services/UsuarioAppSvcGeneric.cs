@@ -16,7 +16,6 @@ namespace everis.SimpleProject.Application.Services
 
         UsuarioRepository rep = new UsuarioRepository(new AppDbContext());
 
-
         public Usuario Adicionar(Usuario obj)
         {
             try
@@ -25,11 +24,13 @@ namespace everis.SimpleProject.Application.Services
                 SaveChanges();
                 return obj;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return null;
+                throw ex;
             }
         }
+
+     
 
         public Usuario Atualizar(Usuario obj)
         {
@@ -44,10 +45,35 @@ namespace everis.SimpleProject.Application.Services
 
                 return currentEntity;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
+                throw ex;
+            }
+        }
 
-                return null;
+        public Usuario Desativar(int id)
+        {
+            try
+            {
+                var obj  = rep.Desativar(id);
+                return obj;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public Usuario Ativar(int id)
+        {
+            try
+            {
+                var obj = rep.Desativar(id);
+                return obj;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
@@ -61,16 +87,17 @@ namespace everis.SimpleProject.Application.Services
             rep.Dispose();
         }
 
+     
+
         public Usuario ObterPorId(int id)
         {
             try
             {
                 return rep.ObterPorId(id);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-
-                return null;
+                throw ex;
             }
         }
 
@@ -80,23 +107,22 @@ namespace everis.SimpleProject.Application.Services
             {
                 return rep.ObterTodos();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-
-                return null;
+                throw ex;
             }
         }
 
-        public void Remover(int id)
+        public bool Remover(int id)
         {
             try
             {
-                rep.Remover(id);
-                SaveChanges();
+                var obj = rep.Remover(id);
+                return obj;
             }
-            catch(Exception e)
+            catch(Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 
@@ -106,10 +132,9 @@ namespace everis.SimpleProject.Application.Services
             {
                 return rep.SaveChanges();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             };
         }
     }

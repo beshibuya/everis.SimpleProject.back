@@ -19,6 +19,7 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.Email).IsRequired();
             builder.Property(c => c.DataCadastro).IsRequired();
             builder.Property(c => c.DataDesativacao);
+            builder.Property(c => c.DataInativacao);
 
 
         }

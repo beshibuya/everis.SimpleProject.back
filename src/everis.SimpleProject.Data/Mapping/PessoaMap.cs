@@ -20,6 +20,8 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.CPF);
             builder.Property(c => c.FotoPath);
             builder.Property(c => c.IdEmpresa).IsRequired();
+            builder.Property(c => c.DataInativacao);
+
         }
     }
 }
