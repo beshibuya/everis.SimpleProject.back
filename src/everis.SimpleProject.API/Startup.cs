@@ -27,6 +27,10 @@ namespace everis.SimpleProject.API
             services.AddDbContext<AppDbContext>
                 (options => options.UseSqlServer(connection));
 
+            //var connection = @"Data Source=sao-h0pjc72;Database=SimpleProcessDB;User ID=admin;Password=#everis01;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            //services.AddDbContext<AppDbContext>
+            //    (options => options.UseSqlServer(connection));
+
 
 
             ConfigDbContext(services);
