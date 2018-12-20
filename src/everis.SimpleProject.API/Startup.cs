@@ -1,4 +1,6 @@
-﻿using everis.SimpleProject.Data.EF;
+﻿using everis.SimpleProject.API.Config;
+using everis.SimpleProject.Data.EF;
+using everis.SimpleProject.Data.EF.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -17,24 +19,23 @@ namespace everis.SimpleProject.API
         }
 
         public IConfiguration Configuration { get; }
+        private IServiceCollection _services;
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
-            services.AddDbContext<AppDbContext>
-                (options => options.UseSqlServer(connection));
-
-            //var connection = @"Data Source=sao-h0pjc72;Database=SimpleProcessDB;User ID=admin;Password=#everis01;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            //services.AddDbContext<AppDbContext>
-            //    (options => options.UseSqlServer(connection));
-
-
-
-            ConfigDbContext(services);
-            ConfigDIRepositories(services);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddJsonOptions(
+                    op =>
+                    {
+                        op.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+                        op.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                        op.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+                    }
+                );
+            services.AddCors();
+            _services = services;
+            RepositoryConfig.Configure(_services, Configuration);
+            ServicesConfig.Configure(_services);
 
             services.AddSwaggerGen(c =>
             {
@@ -42,33 +43,25 @@ namespace everis.SimpleProject.API
             });
         }
 
-        private void ConfigDIRepositories(IServiceCollection services)
-        {
-            //services.AddScoped(typeof(IUsuarioRepository), typeof(UsuarioRepository));
-        }
-
-        private void ConfigDbContext(IServiceCollection services)
-        {
-            //string connectionString = Configuration.GetConnectionString("DB:Dev");
-            //services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
             else
-            {
                 app.UseHsts();
-            }
 
             ConfigureSwagger(app);
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            using(var ss = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                if (!ss.ServiceProvider.GetService<AppDbContext>().AllMigrationsApplied())
+                {
+                    ss.ServiceProvider.GetService<AppDbContext>().Database.Migrate();
+                    ss.ServiceProvider.GetService<AppDbContext>().InitialSeed();
+                }
+            }
         }
 
         private static void ConfigureSwagger(IApplicationBuilder app)

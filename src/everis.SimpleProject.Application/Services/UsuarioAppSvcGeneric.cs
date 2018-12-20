@@ -1,28 +1,29 @@
 ﻿using everis.SimpleProject.Data.EF;
 using everis.SimpleProject.Data.EF.Repositories;
 using everis.SimpleProject.Domain.Models;
-using everis.SimpleProject.Domain.Service;
+using everis.SimpleProject.Domain.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Text;
 
 namespace everis.SimpleProject.Application.Services
 {
-    public class UsuarioAppSvcGeneric : IUsuarioService
+    public class UsuarioAppSvcGeneric : GenericService<Usuario>, IUserService
     {
+        public UsuarioAppSvcGeneric(AppDbContext context) : base(context)
+        {
+            repository = new GenericRepository<Usuario>(context);
+        }
 
         //TODO: Testar
-
-        UsuarioRepository rep = new UsuarioRepository(new AppDbContext());
-
-        public Usuario Adicionar(Usuario obj)
+        public override IEnumerable<Usuario> BuscarPor(Usuario filter)
         {
             try
             {
-                rep.Adicionar(obj);
-                SaveChanges();
-                return obj;
+                var nomeToFind = filter?.NomeUsuario;
+                var result = repository.BuscarPor(b => b.NomeUsuario.Contains(
+                    string.IsNullOrEmpty(nomeToFind) ? b.NomeUsuario : nomeToFind
+                    ));
+                return result;
             }
             catch (Exception ex)
             {
@@ -30,112 +31,9 @@ namespace everis.SimpleProject.Application.Services
             }
         }
 
-     
-
-        public Usuario Atualizar(Usuario obj)
+        public IEnumerable<Usuario> MetodoForaDoGenerico()
         {
-            try
-            {
-                var currentEntity = rep.ObterPorId(obj.Id);
-                currentEntity.Email = obj.Email;
-                currentEntity.NomeUsuario = obj.NomeUsuario;
-                currentEntity.Senha = obj.Senha;
-                rep.Atualizar(currentEntity);
-                SaveChanges();
-
-                return currentEntity;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public Usuario Desativar(int id)
-        {
-            try
-            {
-                var obj  = rep.Desativar(id);
-                return obj;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public Usuario Ativar(int id)
-        {
-            try
-            {
-                var obj = rep.Ativar(id);
-                return obj;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        //public IEnumerable<Usuario> BuscarPor(Usuario filtro)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        public void Dispose()
-        {
-            rep.Dispose();
-        }
-
-     
-
-        public Usuario ObterPorId(int id)
-        {
-            try
-            {
-                return rep.ObterPorId(id);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public IEnumerable<Usuario> ObterTodos()
-        {
-            try
-            {
-                return rep.ObterTodos();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public bool Remover(int id)
-        {
-            try
-            {
-                var obj = rep.Remover(id);
-                return obj;
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public int SaveChanges()
-        {
-            try
-            {
-                return rep.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            };
+            throw new NotImplementedException();
         }
     }
 }

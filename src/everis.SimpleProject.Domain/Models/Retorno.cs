@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace everis.SimpleProject.Domain.Models
+﻿namespace everis.SimpleProject.Domain.Models
 {
     public class Retorno
     {
-        public Retorno()
-        {
-            Parameters = new Dictionary<string, object>();
-        }
+        public bool Sucesso { get; set; }
         public int Codigo { get; set; }
         public string Mensagem { get; set; }
-        public string Data { get; set; }
-        public new Dictionary<string, object> Parameters { get; set; }
+        public dynamic Data{ get; set; }
 
     }
 }

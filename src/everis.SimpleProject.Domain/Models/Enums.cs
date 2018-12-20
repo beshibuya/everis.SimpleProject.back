@@ -40,6 +40,12 @@
         Master = 1,
         Lider = 2,
         Colaborador = 3
+    }
 
+    public enum TipoTelefone
+    {
+        Celular = 1,
+        Fixo = 2,
+        Ramal = 3
     }
 }

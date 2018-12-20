@@ -1,27 +1,22 @@
-﻿using everis.SimpleProject.Domain.Models;
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
 
 namespace everis.SimpleProject.Domain.Models
 {
     public class EsforcoProjeto : Entity
     {
    
-        [Required]
-        [ForeignKey("IdProjetoPessoa")]
         public int IdProjetoPessoa { get; set; }
         public ProjetoPessoa ProjetoPessoa { get; set; }
-
-        [Required]
         public short QtdHorasDia { get; set; }
-
-        [Required]
-        public DateTime DataInicio { get; set; }
-
-        public DateTime DataFim { get; set; }
-
-        [Required]
+        public DateTime? DataInicio { get; set; }
+        public DateTime? DataFim { get; set; }
         public DateTime DataRegistro { get; set; }
+
+        public override void MergeFrom(object other)
+        {
+            QtdHorasDia = ((EsforcoProjeto)other).QtdHorasDia;
+            DataFim = ((EsforcoProjeto)other).DataFim;
+            DataInicio = ((EsforcoProjeto)other).DataInicio;
+        }
     }
 }

@@ -1,6 +1,8 @@
-﻿using everis.SimpleProject.Data.EF.Mapping;
-using everis.SimpleProject.Domain.Models;
+﻿using everis.SimpleProject.Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Reflection;
 
 namespace everis.SimpleProject.Data.EF
 {
@@ -37,19 +39,18 @@ namespace everis.SimpleProject.Data.EF
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            var types = Assembly.GetAssembly(typeof(AppDbContext)).GetTypes()
+                .Where(
+                    w => w.AssemblyQualifiedName.Contains("everis.SimpleProject.Data.EF.Mapping")
+                    && !w.IsNestedPrivate
+                    && !w.IsAbstract
+                    && w.IsPublic);
+            foreach(var t  in types)
+            {
+                dynamic o = Activator.CreateInstance(t);
+                modelBuilder.ApplyConfiguration(o);
+            }
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<Usuario>(new UserMap().Configure);
-            modelBuilder.Entity<Anexo>(new AnexoMap().Configure);
-            modelBuilder.Entity<Change>(new ChangeMap().Configure);
-            modelBuilder.Entity<Colaborador>(new ColaboradorMap().Configure);
-            modelBuilder.Entity<Empresa>(new EmpresaMap().Configure);
-            modelBuilder.Entity<EsforcoProjeto>(new EsforcoProjetoMap().Configure);
-            modelBuilder.Entity<Pessoa>(new PessoaMap().Configure);
-            modelBuilder.Entity<Projeto>(new ProjetoMap().Configure);
-            modelBuilder.Entity<ProjetoPessoa>(new ProjetoPessoaMap().Configure);
-            modelBuilder.Entity<ProjetoPessoaAtribuicao>(new ProjetoPessoaAtribuicaoMap().Configure);
-            modelBuilder.Entity<Telefone>(new TelefoneMap().Configure);
         }
     }
 }

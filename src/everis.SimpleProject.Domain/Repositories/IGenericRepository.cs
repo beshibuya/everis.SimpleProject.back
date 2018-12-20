@@ -6,18 +6,18 @@ using System.Linq.Expressions;
 
 namespace everis.SimpleProject.Domain.Repositories
 {
-    public interface IGenericRepository<TEntity> : IDisposable where TEntity : Entity
+    public interface IGenericRepository<T> where T : Entity
     {
-        TEntity Adicionar(TEntity obj);
-        TEntity ObterPorId(int id);
-        IEnumerable<TEntity> ObterTodos();
-        TEntity Atualizar(TEntity obj);
+        T Adicionar(T obj);
+        T ObterPorId(int id);
+        IEnumerable<T> ObterTodos();
+        T Atualizar(T obj);
         bool Remover(int id);
-        IQueryable<TEntity> BuscarPor(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includes);
-        TEntity Desativar(int Id);
-        TEntity Ativar(int Id);
+        IQueryable<T> BuscarPor(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes);
+        T Desativar(int Id);
+        T Ativar(int Id);
         int SaveChanges();
-        void Inativar(TEntity obj);
-        void Ativar(TEntity obj);
+        void Inativar(T obj);
+        void Ativar(T obj);
     }
 }
