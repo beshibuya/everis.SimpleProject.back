@@ -18,7 +18,9 @@ namespace everis.SimpleProject.Application.Tests
                 Email = "email@teste4.com",
                 NomeUsuario = "TestUser4",
                 Senha = "456",
-                SenhaTemporaria = true
+                SenhaTemporaria = true,
+                DataInativacao = null
+                
             };
             var retorno = svc.Adicionar(usuario);
             Assert.NotNull(retorno);

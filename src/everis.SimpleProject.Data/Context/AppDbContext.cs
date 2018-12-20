@@ -29,6 +29,8 @@ namespace everis.SimpleProject.Data.EF
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             if (!optionsBuilder.IsConfigured) {
                 optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0");
+                //optionsBuilder.UseSqlServer("Data Source=sao-h0pjc72;Database=SimpleProcessDB;User ID=admin;Password=#everis01;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+
             }
         }
 
