@@ -1,4 +1,4 @@
-﻿using everis.SimpleProject.Domain.Model;
+﻿using everis.SimpleProject.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

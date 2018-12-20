@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace everis.SimpleProject.Domain.Model
+namespace everis.SimpleProject.Domain.Models
 {
-    public class Telefone
+    public class Telefone : Entity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
