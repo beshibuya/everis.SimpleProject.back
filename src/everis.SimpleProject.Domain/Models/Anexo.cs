@@ -8,10 +8,6 @@ namespace everis.SimpleProject.Domain.Models
 
     public class Anexo : Entity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int IdAnexo { get; set; }
-
         [Required]
         public string Descricao { get; set; }
 
@@ -22,7 +18,8 @@ namespace everis.SimpleProject.Domain.Models
         public eTipoAnexo Tipo { get; set; }
 
         [Required]
-        public int IdProjeto { get; set; }   // FK 
-        public Projeto Projeto { get; set; }  // FK     
+        [ForeignKey("IdProjeto")]
+        public int IdProjeto { get; set; }
+        public Projeto Projeto { get; set; }     
     }
 }
