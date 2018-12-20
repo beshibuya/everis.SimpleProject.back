@@ -1,3 +1,4 @@
+using everis.SimpleProject.Domain.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -5,6 +6,8 @@ namespace everis.SimpleProject.Domain.Models
 {
     public class ProjetoPessoa : Entity
     {
+        
+
         [Required]
         [ForeignKey("IdProjeto")]
         public int IdProjeto { get; set; }
