@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\everis.SimpleProject.Application\everis.SimpleProject.Application.csproj" />
     <ProjectReference Include="..\everis.SimpleProject.Data\everis.SimpleProject.Data.EF.csproj" />
   </ItemGroup>
 

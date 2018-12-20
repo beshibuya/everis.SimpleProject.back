@@ -1,4 +1,4 @@
-﻿namespace everis.SimpleProject.Domain.Model.Enums
+﻿namespace everis.SimpleProject.Domain.Models.Enums
 {
     public enum eTipoAnexo
     {
