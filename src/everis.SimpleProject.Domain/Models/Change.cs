@@ -6,10 +6,6 @@ namespace everis.SimpleProject.Domain.Models
 {
     public class Change : Entity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int IdChange { get; set; }
-
         [Required]
         public string Descricao { get; set; }
 
@@ -18,5 +14,10 @@ namespace everis.SimpleProject.Domain.Models
 
         [Required]
         public DateTime DataHoraCadastro { get; set; }
+
+        [ForeignKey("IdProjeto")]
+        [Required]
+        public int IdProjeto { get; set; }
+        public Projeto Projeto { get; set; }
     }
 }

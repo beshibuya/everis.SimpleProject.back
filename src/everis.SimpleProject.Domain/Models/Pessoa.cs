@@ -4,12 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace everis.SimpleProject.Domain.Models
 {
-    public class Pessoa
+    public class Pessoa : Entity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int IdPessoa { get; set; }
-
         [Required]
         public string Nome { get; set; }
 
@@ -21,17 +17,13 @@ namespace everis.SimpleProject.Domain.Models
         public string Documento { get; set; }
 
         public long CPF { get; set; }
-
-        [Required]
-        public bool Ativo { get; set; }
-
+        
         public string FotoPath { get; set; }
 
         [Required]
-        public int IdEmpresa { get; set; }  // FK 
-
-        [Required]
-        public Empresa Empresa { get; set; } // FK 
+        [ForeignKey("IdEmpresa")]
+        public int IdEmpresa { get; set; }
+        public Empresa Empresa { get; set; }
 
     }
 }

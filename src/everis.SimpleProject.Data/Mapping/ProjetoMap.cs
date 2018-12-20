@@ -11,15 +11,25 @@ namespace everis.SimpleProject.Data.EF.Mapping
     {
         public void Configure(EntityTypeBuilder<Projeto> builder)
         {
-            //builder.HasKey(c => c.Id);
-            //builder.Property(c => c.Id).HasColumnName("IdUsuario");
-            //builder.Property(c => c.NomeUsuario).IsRequired();
-            //builder.Property(c => c.Senha).IsRequired();
-            //builder.Property(c => c.SenhaTemporaria).IsRequired();
-            //builder.Property(c => c.Email).IsRequired();
-            //builder.Property(c => c.DataCadastro).IsRequired();
-            //builder.Property(c => c.DataDesativacao);
-
+            builder.HasKey(c => c.Id);
+            builder.Property(c => c.Id).HasColumnName("IdProjeto");
+            builder.Property(c => c.QtdHorasServico1);
+            builder.Property(c => c.QtdHorasServico2);
+            builder.Property(c => c.QtdHorasServico3);
+            builder.Property(c => c.DataInicio).IsRequired();
+            builder.Property(c => c.EscopoProjeto).IsRequired();
+            builder.Property(c => c.DataEntrega);
+            builder.Property(c => c.ForaEscopoProjeto);
+            builder.Property(c => c.Premissas);
+            builder.Property(c => c.IdEmpresa).IsRequired();
+            builder.Property(c => c.Status).IsRequired();
+            builder.Property(c => c.DataPrevista).IsRequired();
+            builder.Property(c => c.CentroCusto).IsRequired();
+            builder.Property(c => c.BeneficioEntregue);
+            builder.Property(c => c.BeneficioResidual);
+            builder.Property(c => c.ProblemasExecucao);
+            builder.Property(c => c.Riscos);
+            builder.Property(c => c.LicoesAprendidas);
 
         }
     }

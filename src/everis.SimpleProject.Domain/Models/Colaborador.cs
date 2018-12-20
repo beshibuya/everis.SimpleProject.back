@@ -7,14 +7,9 @@ namespace everis.SimpleProject.Domain.Models
 {
     public class Colaborador : Entity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int IdColaborador { get; set; }
-
         [Required]
+        [ForeignKey("IdPessoa")]
         public int IdPessoa { get; set; }
-
-        [Required]
         public Pessoa Pessoa { get; set; }
 
         public string Racf { get; set; }
@@ -36,8 +31,6 @@ namespace everis.SimpleProject.Domain.Models
         [Required]
         public bool Disponivel { get; set; }
 
-        [Required]
-        public bool Ativo { get; set; }
     }
 
 }

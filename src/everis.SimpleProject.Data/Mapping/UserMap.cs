@@ -7,9 +7,6 @@ using System.Text;
 
 namespace everis.SimpleProject.Data.EF.Mapping
 {
-    /// <summary>
-    ///     Classe de Exemplo 
-    /// </summary>
     public class UserMap : IEntityTypeConfiguration<Usuario>
     {
         public void Configure(EntityTypeBuilder<Usuario> builder)

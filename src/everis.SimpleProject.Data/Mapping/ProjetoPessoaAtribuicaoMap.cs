@@ -11,16 +11,10 @@ namespace everis.SimpleProject.Data.EF.Mapping
     {
         public void Configure(EntityTypeBuilder<ProjetoPessoaAtribuicao> builder)
         {
-            //builder.HasKey(c => c.Id);
-            //builder.Property(c => c.Id).HasColumnName("IdUsuario");
-            //builder.Property(c => c.NomeUsuario).IsRequired();
-            //builder.Property(c => c.Senha).IsRequired();
-            //builder.Property(c => c.SenhaTemporaria).IsRequired();
-            //builder.Property(c => c.Email).IsRequired();
-            //builder.Property(c => c.DataCadastro).IsRequired();
-            //builder.Property(c => c.DataDesativacao);
-
-
+            builder.HasKey(c => c.Id);
+            builder.Property(c => c.Id).HasColumnName("IdProjetoPessoaAtribuicao");
+            builder.Property(c => c.IdProjetoPessoa).IsRequired();
+            builder.Property(c => c.Atribuicao).IsRequired();
         }
     }
 }

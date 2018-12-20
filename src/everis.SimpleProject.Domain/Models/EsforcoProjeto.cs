@@ -9,9 +9,8 @@ namespace everis.SimpleProject.Domain.Models
     {
    
         [Required]
+        [ForeignKey("IdProjetoPessoa")]
         public int IdProjetoPessoa { get; set; }
-
-        [Required]
         public ProjetoPessoa ProjetoPessoa { get; set; }
 
         [Required]

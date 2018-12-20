@@ -5,9 +5,10 @@ namespace everis.SimpleProject.Domain.Models
 {
     public class ProjetoPessoaAtribuicao : Entity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Required]
+        [ForeignKey("IdProjetoPessoa")]
         public int IdProjetoPessoa { get; set; }
+        public ProjetoPessoa ProjetoPessoa { get; set; }
 
         [Required]
         public int Atribuicao { get; set; }  
