@@ -12,8 +12,9 @@ namespace everis.SimpleProject.Domain.Service
         T ObterPorId(int id);
         IEnumerable<T> ObterTodos();
         T Atualizar(T obj);
-        void Remover(int id);
-        //IEnumerable<T> Buscar(Expression<Func<T, bool>> predicate);
+        bool Remover(int id);
+        T Ativar(int id);
+        T Desativar(int id);
         int SaveChanges();
     }
 }

@@ -1,5 +1,4 @@
-﻿using everis.SimpleProject.Data.EF.Configuration;
-using everis.SimpleProject.Data.EF.Mapping;
+﻿using everis.SimpleProject.Data.EF.Mapping;
 using everis.SimpleProject.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 

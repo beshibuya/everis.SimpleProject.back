@@ -12,8 +12,10 @@ namespace everis.SimpleProject.Domain.Repositories
         TEntity ObterPorId(int id);
         IEnumerable<TEntity> ObterTodos();
         TEntity Atualizar(TEntity obj);
-        void Remover(int id);
+        bool Remover(int id);
         IQueryable<TEntity> BuscarPor(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includes);
+        TEntity Desativar(int Id);
+        TEntity Ativar(int Id);
         int SaveChanges();
     }
 }

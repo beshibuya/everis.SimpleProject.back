@@ -12,6 +12,6 @@ namespace everis.SimpleProject.Domain.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public DateTime DataInativacao { get; set; }
+        public DateTime? DataInativacao { get; set; }
     }
 }
