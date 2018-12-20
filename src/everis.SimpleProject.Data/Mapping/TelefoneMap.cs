@@ -17,6 +17,8 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.NumeroTelefone).IsRequired();
             builder.Property(c => c.Tipo).IsRequired();
             builder.Property(c => c.IdPessoa).IsRequired();
+            builder.Property(c => c.DataInativacao);
+
 
 
         }

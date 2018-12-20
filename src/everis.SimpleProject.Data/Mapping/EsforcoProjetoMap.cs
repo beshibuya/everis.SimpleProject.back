@@ -18,6 +18,8 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.DataInicio).IsRequired();
             builder.Property(c => c.DataFim);
             builder.Property(c => c.DataRegistro).IsRequired();
+            builder.Property(c => c.DataInativacao);
+
 
         }
     }

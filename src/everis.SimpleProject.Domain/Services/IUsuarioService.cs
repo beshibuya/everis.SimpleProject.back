@@ -7,5 +7,6 @@ namespace everis.SimpleProject.Domain.Service
 {
     public interface IUsuarioService:IGenericService<Usuario>
     {
+         
     }
 }

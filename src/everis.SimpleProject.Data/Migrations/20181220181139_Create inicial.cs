@@ -4,23 +4,17 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
-    public partial class Configuraçãobancodedados : Migration
+    public partial class Createinicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<DateTime>(
-                name: "DataInativacao",
-                table: "Usuarios",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
-
             migrationBuilder.CreateTable(
                 name: "Empresas",
                 columns: table => new
                 {
                     IdEmpresa = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DataInativacao = table.Column<DateTime>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
                     Nome = table.Column<string>(nullable: false),
                     Segmento = table.Column<short>(nullable: false)
                 },
@@ -30,12 +24,31 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    IdUsuario = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
+                    NomeUsuario = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(nullable: false),
+                    Senha = table.Column<string>(maxLength: 255, nullable: false),
+                    SenhaTemporaria = table.Column<bool>(nullable: false),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
+                    DataDesativacao = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.IdUsuario);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Pessoas",
                 columns: table => new
                 {
                     IdPessoa = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DataInativacao = table.Column<DateTime>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
                     Nome = table.Column<string>(nullable: false),
                     Tipo = table.Column<int>(nullable: false),
                     Email = table.Column<string>(nullable: true),
@@ -62,7 +75,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 {
                     IdProjeto = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DataInativacao = table.Column<DateTime>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
                     Nome = table.Column<string>(nullable: false),
                     QtdHorasServico1 = table.Column<int>(nullable: false),
                     QtdHorasServico2 = table.Column<int>(nullable: false),
@@ -100,7 +113,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 {
                     IdColaborador = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DataInativacao = table.Column<DateTime>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
                     IdPessoa = table.Column<int>(nullable: false),
                     PessoaId = table.Column<int>(nullable: true),
                     Racf = table.Column<string>(nullable: true),
@@ -109,7 +122,8 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     NomeMaquina = table.Column<string>(nullable: true),
                     Funcao = table.Column<int>(nullable: false),
                     Perfil = table.Column<int>(nullable: false),
-                    Disponivel = table.Column<bool>(nullable: false)
+                    Disponivel = table.Column<bool>(nullable: false),
+                    Senha = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -128,7 +142,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 {
                     IdTelefone = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DataInativacao = table.Column<DateTime>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
                     NumeroTelefone = table.Column<string>(nullable: false),
                     Tipo = table.Column<short>(nullable: false),
                     IdPessoa = table.Column<int>(nullable: false),
@@ -151,7 +165,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 {
                     IdAnexo = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DataInativacao = table.Column<DateTime>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
                     Descricao = table.Column<string>(nullable: false),
                     Path = table.Column<string>(nullable: false),
                     Tipo = table.Column<int>(nullable: false),
@@ -175,7 +189,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 {
                     IdChange = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DataInativacao = table.Column<DateTime>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
                     Descricao = table.Column<string>(nullable: false),
                     HorasImpacto = table.Column<short>(nullable: false),
                     DataHoraCadastro = table.Column<DateTime>(nullable: false),
@@ -199,7 +213,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 {
                     IdProjetoPessoa = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DataInativacao = table.Column<DateTime>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
                     IdProjeto = table.Column<int>(nullable: false),
                     ProjetoId = table.Column<int>(nullable: true),
                     IdPessoa = table.Column<int>(nullable: false),
@@ -228,7 +242,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 {
                     IdEsforcoProjeto = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DataInativacao = table.Column<DateTime>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
                     IdProjetoPessoa = table.Column<int>(nullable: false),
                     ProjetoPessoaId = table.Column<int>(nullable: true),
                     QtdHorasDia = table.Column<short>(nullable: false),
@@ -253,7 +267,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 {
                     IdProjetoPessoaAtribuicao = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DataInativacao = table.Column<DateTime>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
                     IdProjetoPessoa = table.Column<int>(nullable: false),
                     ProjetoPessoaId = table.Column<int>(nullable: true),
                     Atribuicao = table.Column<int>(nullable: false)
@@ -341,6 +355,9 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 name: "Telefones");
 
             migrationBuilder.DropTable(
+                name: "Usuarios");
+
+            migrationBuilder.DropTable(
                 name: "ProjetoPessoas");
 
             migrationBuilder.DropTable(
@@ -351,10 +368,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
             migrationBuilder.DropTable(
                 name: "Empresas");
-
-            migrationBuilder.DropColumn(
-                name: "DataInativacao",
-                table: "Usuarios");
         }
     }
 }

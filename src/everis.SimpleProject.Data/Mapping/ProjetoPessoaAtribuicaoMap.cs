@@ -15,6 +15,8 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.Id).HasColumnName("IdProjetoPessoaAtribuicao");
             builder.Property(c => c.IdProjetoPessoa).IsRequired();
             builder.Property(c => c.Atribuicao).IsRequired();
+            builder.Property(c => c.DataInativacao);
+
         }
     }
 }

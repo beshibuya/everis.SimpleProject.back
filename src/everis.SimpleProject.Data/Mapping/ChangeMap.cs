@@ -14,6 +14,8 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.HorasImpacto).IsRequired();
             builder.Property(c => c.DataHoraCadastro).IsRequired();
             builder.Property(c => c.IdProjeto).IsRequired();
+            builder.Property(c => c.DataInativacao);
+
         }
     }
 }

@@ -77,5 +77,15 @@ namespace everis.SimpleProject.Application.Tests
             svc.Dispose();
 
         }
+
+
+        [Fact]
+        public void InativarTest()
+        {
+      
+            UsuarioAppSvcGeneric svc = new UsuarioAppSvcGeneric();
+            svc.Desativar(1);
+           
+        }
     }
 }
