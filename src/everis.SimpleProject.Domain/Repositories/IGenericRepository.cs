@@ -15,5 +15,7 @@ namespace everis.SimpleProject.Domain.Repositories
         void Remover(int id);
         IQueryable<TEntity> BuscarPor(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includes);
         int SaveChanges();
+        void Inativar(TEntity obj);
+        void Ativar(TEntity obj);
     }
 }

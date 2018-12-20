@@ -90,5 +90,9 @@ namespace everis.SimpleProject.Data.EF.Repositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        public void Inativar(T toUpdate) => _dbContext.Entry(toUpdate).State = EntityState.Modified;
+
+        public void Ativar(T toUpdate) => _dbContext.Entry(toUpdate).State = EntityState.Modified;
     }
 }

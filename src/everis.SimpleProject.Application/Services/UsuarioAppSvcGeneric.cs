@@ -31,6 +31,22 @@ namespace everis.SimpleProject.Application.Services
             }
         }
 
+        public void Ativar(Usuario obj)
+        {
+            try
+            {
+                var currentEntity = rep.ObterPorId(obj.Id);
+                currentEntity.Ativo = true;
+                SaveChanges();
+
+
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
         public Usuario Atualizar(Usuario obj)
         {
             try
@@ -59,6 +75,22 @@ namespace everis.SimpleProject.Application.Services
         public void Dispose()
         {
             rep.Dispose();
+        }
+
+        public void Inativar(Usuario obj)
+        {
+            try
+            {
+                var currentEntity = rep.ObterPorId(obj.Id);
+                currentEntity.Ativo = false;
+                SaveChanges();
+
+             
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
         }
 
         public Usuario ObterPorId(int id)
