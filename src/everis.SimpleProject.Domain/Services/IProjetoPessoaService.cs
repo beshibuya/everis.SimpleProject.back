@@ -1,4 +1,4 @@
-﻿using everis.SimpleProject.Domain.Model;
+﻿using everis.SimpleProject.Domain.Models;
 using System;
 
 namespace everis.SimpleProject.Domain.Service
