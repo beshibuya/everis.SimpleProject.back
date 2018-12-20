@@ -27,6 +27,8 @@ namespace everis.SimpleProject.API
             services.AddDbContext<AppDbContext>
                 (options => options.UseSqlServer(connection));
 
+
+
             ConfigDbContext(services);
             ConfigDIRepositories(services);
 

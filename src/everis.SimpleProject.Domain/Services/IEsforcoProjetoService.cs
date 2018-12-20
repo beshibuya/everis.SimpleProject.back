@@ -6,7 +6,7 @@ using System.Text;
 
 namespace everis.SimpleProject.Domain.Services
 {
-    interface IEsforcoProjeto : IGenericService<EsforcoProjeto>
+    interface IEsforcoProjetoService : IGenericService<EsforcoProjeto>
     {
 
     }
