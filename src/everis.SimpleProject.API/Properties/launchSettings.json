@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "SimpleProcessConnString": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SimpleProjectDB;Integrated Security=True"
       },
-      "applicationUrl": "https://localhost:61450;"
+      "applicationUrl": "http://localhost:61450;"
     }
   }
 }

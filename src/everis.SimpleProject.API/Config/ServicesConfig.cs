@@ -13,6 +13,7 @@ namespace everis.SimpleProject.API.Config
         {
             services.AddTransient<IGenericService<Usuario>, UsuarioAppSvcGeneric>();
             services.AddTransient<IUserService, UsuarioAppSvcGeneric>();
+            services.AddTransient<IGenericService<Anexo>, AnexoAppSvcGeneric>();
         }
     }
 }

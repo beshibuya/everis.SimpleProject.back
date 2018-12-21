@@ -149,7 +149,7 @@ namespace everis.SimpleProject.API.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("[action]")]
         public ActionResult Adicionar([FromServices]IGenericService<T> svc, [FromBody] T obj)
         {
             try
