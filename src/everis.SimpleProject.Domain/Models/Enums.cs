@@ -8,6 +8,14 @@
 
     }
 
+    //TODO: IMplementar mais tipos
+    public enum TipoSegmento
+    {
+        Banking = 0,
+        Telecomunicacao = 1
+
+    }
+
     public enum Status
     {
         EmExecucao = 1,
@@ -20,8 +28,9 @@
 
     public enum TipoPessoa
     {
-        Exemplo1 = 1,
-        Exemplo2 = 2
+        Colaborador = 1,
+        Cliente = 2,
+        Terceiro = 3
     }
 
     public enum Funcao

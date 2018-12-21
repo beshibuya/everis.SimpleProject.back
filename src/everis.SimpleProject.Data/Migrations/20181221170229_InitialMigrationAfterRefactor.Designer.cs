@@ -10,7 +10,7 @@ using everis.SimpleProject.Data.EF;
 namespace everis.SimpleProject.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20181220225937_InitialMigrationAfterRefactor")]
+    [Migration("20181221170229_InitialMigrationAfterRefactor")]
     partial class InitialMigrationAfterRefactor
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -124,7 +124,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<string>("Nome");
 
-                    b.Property<short>("Segmento");
+                    b.Property<int>("Segmento");
 
                     b.HasKey("Id");
 

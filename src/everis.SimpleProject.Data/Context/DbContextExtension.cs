@@ -1,5 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore.Infrastructure;
+﻿using everis.SimpleProject.Domain.Models;
+using everis.SimpleProject.Domain.Models.Enums;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 using System.Linq;
 
 namespace everis.SimpleProject.Data.EF.Context
@@ -19,6 +22,30 @@ namespace everis.SimpleProject.Data.EF.Context
         public static void InitialSeed(this AppDbContext context)
         {
 
+            context.Add(new Empresa
+            {
+                Nome = "Everis é com e minúsculo",
+                Segmento = TipoSegmento.Banking
+            });
+
+            context.Add(new Projeto
+            {
+                DataInicio = DateTime.Now,
+                EscopoProjeto = "Escopo teste",
+                QtdHorasServico1 = 1000,
+                Nome = "Simple Process",
+                IdEmpresa = 1,
+                DataPrevista = DateTime.Now.AddDays(7),
+                CentroCusto = "EXTNÂOLEMBROORESTO112"
+            });
+
+            context.Add(new Pessoa
+            {
+                Nome = "David Rezende Torres",
+                Tipo = TipoPessoa.Colaborador
+            });
+
+            context.SaveChanges();
         }
     }
 }
