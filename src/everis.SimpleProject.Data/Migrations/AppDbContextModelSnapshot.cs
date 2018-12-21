@@ -122,7 +122,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<string>("Nome");
 
-                    b.Property<short>("Segmento");
+                    b.Property<int>("Segmento");
 
                     b.HasKey("Id");
 

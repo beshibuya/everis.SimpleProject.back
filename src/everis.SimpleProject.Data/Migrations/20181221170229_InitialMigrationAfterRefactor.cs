@@ -17,7 +17,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     Ativo = table.Column<bool>(nullable: false),
                     DataInativacao = table.Column<DateTime>(nullable: true),
                     Nome = table.Column<string>(nullable: true),
-                    Segmento = table.Column<short>(nullable: false)
+                    Segmento = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
