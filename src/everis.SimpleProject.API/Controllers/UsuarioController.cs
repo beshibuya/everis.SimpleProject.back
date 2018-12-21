@@ -9,7 +9,7 @@ namespace everis.SimpleProject.API.Controllers
         [HttpGet("[action]")]
         public IActionResult MetodoForaDoGenerico([FromServices]IUserService svc,[FromBody]Usuario obj)
         {
-            return Ok(obj);
+            return Ok(obj); 
         }
     }
 }

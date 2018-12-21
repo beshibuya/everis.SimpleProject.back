@@ -1,4 +1,5 @@
-﻿using System;
+﻿using everis.SimpleProject.Domain.Models.Enums;
+using System;
 
 namespace everis.SimpleProject.Domain.Models
 {
@@ -15,7 +16,7 @@ namespace everis.SimpleProject.Domain.Models
         public string Premissas { get; set; }
         public int IdEmpresa { get; set; }
         public Empresa Empresa { get; set; }
-        public short Status { get; set; }
+        public Status Status { get; set; }
         public DateTime DataPrevista { get; set; }
         public string BeneficioEntregue { get; set; }
         public string BeneficioResidual { get; set; }
