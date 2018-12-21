@@ -14,8 +14,8 @@ namespace everis.SimpleProject.Domain.Models
         public int Funcional { get; set; }
         public string NomeMaquina { get; set; }
 
-        public eFuncao Funcao { get; set; }
-        public ePerfil Perfil { get; set; }
+        public Funcao Funcao { get; set; }
+        public Perfil Perfil { get; set; }
         public bool Disponivel { get; set; }
         public string Senha { get; set; }
 

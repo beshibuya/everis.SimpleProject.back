@@ -5,7 +5,7 @@ namespace everis.SimpleProject.Domain.Models
     public class Pessoa : Entity
     {
         public string Nome { get; set; }
-        public eTipoPessoa Tipo { get; set; }
+        public TipoPessoa Tipo { get; set; }
         public string Email { get; set; }
         public string Documento { get; set; }
         public long CPF { get; set; }

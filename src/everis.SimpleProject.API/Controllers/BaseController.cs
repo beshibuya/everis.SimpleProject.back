@@ -23,7 +23,7 @@ namespace everis.SimpleProject.API.Controllers
             }
             catch (Exception ex)
             {
-                return Ok(new Retorno()
+                return BadRequest(new Retorno()
                 {
                     Codigo = 500,
                     Mensagem = ex.Message
@@ -47,7 +47,7 @@ namespace everis.SimpleProject.API.Controllers
             catch (Exception ex)
             {
 
-                return Ok(new Retorno()
+                return BadRequest(new Retorno()
                 {
                     Codigo = 500,
                     Mensagem = ex.Message
@@ -69,7 +69,7 @@ namespace everis.SimpleProject.API.Controllers
             }
             catch (Exception ex)
             {
-                return Ok(new Retorno()
+                return BadRequest(new Retorno()
                 {
                     Codigo = 500,
                     Mensagem = ex.Message
@@ -93,7 +93,7 @@ namespace everis.SimpleProject.API.Controllers
             catch (Exception ex)
             {
 
-                return Ok(new Retorno()
+                return BadRequest(new Retorno()
                 {
                     Codigo = 500,
                     Mensagem = ex.Message
@@ -117,7 +117,7 @@ namespace everis.SimpleProject.API.Controllers
             catch (Exception ex)
             {
 
-                return Ok(new Retorno()
+                return BadRequest(new Retorno()
                 {
                     Codigo = 500,
                     Mensagem = ex.Message
@@ -141,7 +141,7 @@ namespace everis.SimpleProject.API.Controllers
             catch (Exception ex)
             {
 
-                return Ok(new Retorno()
+                return BadRequest(new Retorno()
                 {
                     Codigo = 500,
                     Mensagem = ex.Message
@@ -164,7 +164,7 @@ namespace everis.SimpleProject.API.Controllers
             catch (Exception ex)
             {
 
-                return Ok(new Retorno()
+                return BadRequest(new Retorno()
                 {
                     Codigo = 500,
                     Mensagem = ex.Message

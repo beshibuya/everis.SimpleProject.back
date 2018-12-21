@@ -1,6 +1,6 @@
 ﻿namespace everis.SimpleProject.Domain.Models.Enums
 {
-    public enum eTipoAnexo
+    public enum TipoAnexo
     {
         Abertura = 0,
         Fechamento = 1,
@@ -18,13 +18,13 @@
         ControleQualidade = 6
     }
 
-    public enum eTipoPessoa
+    public enum TipoPessoa
     {
         Exemplo1 = 1,
         Exemplo2 = 2
     }
 
-    public enum eFuncao
+    public enum Funcao
     {
         SA = 1,
         SN = 2,
@@ -35,7 +35,7 @@
         Manager = 7
     }
 
-    public enum ePerfil
+    public enum Perfil
     {
         Master = 1,
         Lider = 2,

@@ -28,6 +28,7 @@ namespace everis.SimpleProject.Data.EF.Repositories
         {
             var entity = _dbContext.Set<T>().Find(Id);
             entity.DataInativacao = DateTime.Now;
+            entity.Ativo = false;
             _dbContext.Entry(entity).State = EntityState.Modified;
             _dbContext.SaveChanges();
             return entity;
@@ -37,6 +38,7 @@ namespace everis.SimpleProject.Data.EF.Repositories
         {
             var entity = _dbContext.Set<T>().Find(Id);
             entity.DataInativacao = null;
+            entity.Ativo = true;
             _dbContext.Entry(entity).State = EntityState.Modified;
             _dbContext.SaveChanges();
             return entity;

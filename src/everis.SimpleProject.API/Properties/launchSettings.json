@@ -8,23 +8,15 @@
     }
   },
   "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "api",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
     "everis.SimpleProject.API": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "SimpleProcessConnString": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SimpleProjectDB;Integrated Security=True"
       },
-      "applicationUrl": "https://localhost:6001;"
+      "applicationUrl": "https://localhost:61450;"
     }
   }
 }
