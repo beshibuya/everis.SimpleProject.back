@@ -6,9 +6,9 @@ namespace everis.SimpleProject.Domain.Models
 {
     public class ProjetoPessoa : Entity
     {
-        public int IdProjeto { get; set; }
+        public int ProjetoId { get; set; }
         public Projeto Projeto { get; set; }
-        public int IdPessoa { get; set; }
+        public int PessoaId { get; set; }
         public Pessoa Pessoa { get; set; }
 
         public override void MergeFrom(object other)

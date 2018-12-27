@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using everis.SimpleProject.Data.EF;
 using everis.SimpleProject.Data.EF.Repositories;
 using everis.SimpleProject.Domain.Models;
 using everis.SimpleProject.Domain.Repositories;
@@ -11,10 +12,12 @@ namespace everis.SimpleProject.Application.Services
     public abstract class GenericService<T> : IGenericService<T> where T : Entity
     {
         protected IGenericRepository<T> repository;
-
+        private readonly DbContext _context;
+        protected AppDbContext ctx => _context as AppDbContext;
         public GenericService(DbContext context)
         {
             repository = new GenericRepository<T>(context);
+            _context = context;
         }
 
         public virtual T Adicionar(T obj)

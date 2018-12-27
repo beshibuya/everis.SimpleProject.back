@@ -9,8 +9,8 @@ namespace everis.SimpleProject.Data.EF.Mapping
     {
         public void Configure(EntityTypeBuilder<ProjetoPessoa> builder)
         {
-            builder.Property(c => c.IdProjeto).IsRequired();
-            builder.Property(c => c.IdPessoa).IsRequired();
+            builder.Property(c => c.ProjetoId).IsRequired();
+            builder.Property(c => c.PessoaId).IsRequired();
 
             builder.HasOne(o => o.Pessoa).WithMany().HasForeignKey().OnDelete(DeleteBehavior.Restrict);
 

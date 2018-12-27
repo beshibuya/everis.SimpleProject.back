@@ -10,8 +10,8 @@ using everis.SimpleProject.Data.EF;
 namespace everis.SimpleProject.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20181221170229_InitialMigrationAfterRefactor")]
-    partial class InitialMigrationAfterRefactor
+    [Migration("20181227195717_Alterações")]
+    partial class Alterações
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -239,7 +239,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<string>("Riscos");
 
-                    b.Property<short>("Status");
+                    b.Property<int>("Status");
 
                     b.HasKey("Id");
 
@@ -258,13 +258,9 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<DateTime?>("DataInativacao");
 
-                    b.Property<int>("IdPessoa");
+                    b.Property<int>("PessoaId");
 
-                    b.Property<int>("IdProjeto");
-
-                    b.Property<int?>("PessoaId");
-
-                    b.Property<int?>("ProjetoId");
+                    b.Property<int>("ProjetoId");
 
                     b.HasKey("Id");
 
@@ -394,11 +390,13 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 {
                     b.HasOne("everis.SimpleProject.Domain.Models.Pessoa", "Pessoa")
                         .WithMany()
-                        .HasForeignKey("PessoaId");
+                        .HasForeignKey("PessoaId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("everis.SimpleProject.Domain.Models.Projeto", "Projeto")
-                        .WithMany()
-                        .HasForeignKey("ProjetoId");
+                        .WithMany("ProjetosPessoas")
+                        .HasForeignKey("ProjetoId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoPessoaAtribuicao", b =>
