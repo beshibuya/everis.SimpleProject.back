@@ -5,10 +5,10 @@ using System;
 
 namespace everis.SimpleProject.API.Controllers
 {
-    public class ProjetoController : BaseController<Projeto>
+    public class ColaboradorController : BaseController<Colaborador>
     {
         [HttpGet("[action]")]
-        public IActionResult BuscarPor([FromServices]IProjetoService svc, [FromBody]Projeto obj)
+        public IActionResult BuscarPor([FromServices]IColaboradorService svc, [FromBody]Colaborador obj)
         {
             try
             {
@@ -29,6 +29,5 @@ namespace everis.SimpleProject.API.Controllers
                 });
             }
         }
-
     }
 }
