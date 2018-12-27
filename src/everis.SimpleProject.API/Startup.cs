@@ -52,6 +52,14 @@ namespace everis.SimpleProject.API
 
             ConfigureSwagger(app);
 
+
+            app.UseCors(c =>
+            {
+                c.AllowAnyOrigin();
+                c.AllowAnyMethod();
+                c.AllowAnyHeader();
+            });
+
             app.UseHttpsRedirection();
             app.UseMvc();
             using(var ss = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
@@ -62,6 +70,7 @@ namespace everis.SimpleProject.API
                     ss.ServiceProvider.GetService<AppDbContext>().InitialSeed();
                 }
             }
+
         }
 
         private static void ConfigureSwagger(IApplicationBuilder app)
