@@ -15,7 +15,7 @@ namespace everis.SimpleProject.Domain.Models
         public string EscopoProjeto { get; set; }
         public string ForaEscopoProjeto { get; set; }
         public string Premissas { get; set; }
-        public int IdEmpresa { get; set; }
+        public int EmpresaId { get; set; }
         public Empresa Empresa { get; set; }
         public Status Status { get; set; }
         public DateTime DataPrevista { get; set; }

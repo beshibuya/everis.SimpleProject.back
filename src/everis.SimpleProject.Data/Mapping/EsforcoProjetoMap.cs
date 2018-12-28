@@ -8,7 +8,8 @@ namespace everis.SimpleProject.Data.EF.Mapping
     {
         public void Configure(EntityTypeBuilder<EsforcoProjeto> builder)
         {
-            builder.Property(c => c.IdProjetoPessoa).IsRequired();
+            base.Configure(builder);
+            builder.Property(c => c.ProjetoPessoaId).IsRequired();
             builder.Property(c => c.QtdHorasDia).IsRequired();
             builder.Property(c => c.DataInicio).IsRequired();
             builder.Property(c => c.DataRegistro).IsRequired();

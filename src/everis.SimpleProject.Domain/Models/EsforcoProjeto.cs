@@ -5,7 +5,7 @@ namespace everis.SimpleProject.Domain.Models
     public class EsforcoProjeto : Entity
     {
    
-        public int IdProjetoPessoa { get; set; }
+        public int ProjetoPessoaId { get; set; }
         public ProjetoPessoa ProjetoPessoa { get; set; }
         public short QtdHorasDia { get; set; }
         public DateTime? DataInicio { get; set; }

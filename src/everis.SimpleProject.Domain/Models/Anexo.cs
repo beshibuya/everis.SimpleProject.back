@@ -8,7 +8,7 @@ namespace everis.SimpleProject.Domain.Models
         public string Descricao { get; set; }
         public string Path { get; set; }
         public TipoAnexo Tipo { get; set; }
-        public int IdProjeto { get; set; }
+        public int ProjetoId { get; set; }
         public Projeto Projeto { get; set; }
 
         public override void MergeFrom(object other)

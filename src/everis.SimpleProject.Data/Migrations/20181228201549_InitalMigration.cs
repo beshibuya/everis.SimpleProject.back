@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
-    public partial class Alterações : Migration
+    public partial class InitalMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -57,8 +57,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     Documento = table.Column<string>(nullable: true),
                     CPF = table.Column<long>(nullable: false),
                     FotoPath = table.Column<string>(nullable: true),
-                    IdEmpresa = table.Column<int>(nullable: false),
-                    EmpresaId = table.Column<int>(nullable: true)
+                    EmpresaId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -68,7 +67,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         column: x => x.EmpresaId,
                         principalTable: "Empresas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -88,8 +87,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     EscopoProjeto = table.Column<string>(nullable: true),
                     ForaEscopoProjeto = table.Column<string>(nullable: true),
                     Premissas = table.Column<string>(nullable: true),
-                    IdEmpresa = table.Column<int>(nullable: false),
-                    EmpresaId = table.Column<int>(nullable: true),
+                    EmpresaId = table.Column<int>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     DataPrevista = table.Column<DateTime>(nullable: false),
                     BeneficioEntregue = table.Column<string>(nullable: true),
@@ -107,7 +105,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         column: x => x.EmpresaId,
                         principalTable: "Empresas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -118,8 +116,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Ativo = table.Column<bool>(nullable: false),
                     DataInativacao = table.Column<DateTime>(nullable: true),
-                    IdPessoa = table.Column<int>(nullable: false),
-                    PessoaId = table.Column<int>(nullable: true),
+                    PessoaId = table.Column<int>(nullable: false),
                     Racf = table.Column<string>(nullable: true),
                     EmailCorporativo = table.Column<string>(nullable: true),
                     Funcional = table.Column<int>(nullable: false),
@@ -137,7 +134,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         column: x => x.PessoaId,
                         principalTable: "Pessoas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -150,8 +147,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     DataInativacao = table.Column<DateTime>(nullable: true),
                     NumeroTelefone = table.Column<string>(nullable: true),
                     TipoTelefone = table.Column<int>(nullable: false),
-                    IdPessoa = table.Column<int>(nullable: false),
-                    PessoaId = table.Column<int>(nullable: true)
+                    PessoaId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -161,7 +157,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         column: x => x.PessoaId,
                         principalTable: "Pessoas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -175,8 +171,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     Descricao = table.Column<string>(nullable: true),
                     Path = table.Column<string>(nullable: true),
                     Tipo = table.Column<int>(nullable: false),
-                    IdProjeto = table.Column<int>(nullable: false),
-                    ProjetoId = table.Column<int>(nullable: true)
+                    ProjetoId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -186,7 +181,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         column: x => x.ProjetoId,
                         principalTable: "Projetos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -200,8 +195,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     Descricao = table.Column<string>(nullable: true),
                     HorasImpacto = table.Column<short>(nullable: false),
                     DataHoraCadastro = table.Column<DateTime>(nullable: false),
-                    IdProjeto = table.Column<int>(nullable: false),
-                    ProjetoId = table.Column<int>(nullable: true)
+                    ProjetoId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -211,7 +205,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         column: x => x.ProjetoId,
                         principalTable: "Projetos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -233,13 +227,13 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         column: x => x.PessoaId,
                         principalTable: "Pessoas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_ProjetoPessoas_Projetos_ProjetoId",
                         column: x => x.ProjetoId,
                         principalTable: "Projetos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -250,8 +244,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Ativo = table.Column<bool>(nullable: false),
                     DataInativacao = table.Column<DateTime>(nullable: true),
-                    IdProjetoPessoa = table.Column<int>(nullable: false),
-                    ProjetoPessoaId = table.Column<int>(nullable: true),
+                    ProjetoPessoaId = table.Column<int>(nullable: false),
                     QtdHorasDia = table.Column<short>(nullable: false),
                     DataInicio = table.Column<DateTime>(nullable: true),
                     DataFim = table.Column<DateTime>(nullable: true),
@@ -265,7 +258,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         column: x => x.ProjetoPessoaId,
                         principalTable: "ProjetoPessoas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -276,8 +269,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Ativo = table.Column<bool>(nullable: false),
                     DataInativacao = table.Column<DateTime>(nullable: true),
-                    IdProjetoPessoa = table.Column<int>(nullable: false),
-                    ProjetoPessoaId = table.Column<int>(nullable: true),
+                    ProjetoPessoaId = table.Column<int>(nullable: false),
                     Atribuicao = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -288,7 +280,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         column: x => x.ProjetoPessoaId,
                         principalTable: "ProjetoPessoas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

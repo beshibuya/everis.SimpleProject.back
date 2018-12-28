@@ -1,4 +1,5 @@
 ﻿using everis.SimpleProject.Domain.Models.Enums;
+using System.Collections.Generic;
 
 namespace everis.SimpleProject.Domain.Models
 {
@@ -10,8 +11,9 @@ namespace everis.SimpleProject.Domain.Models
         public string Documento { get; set; }
         public long CPF { get; set; }
         public string FotoPath { get; set; }
-        public int IdEmpresa { get; set; }
+        public int EmpresaId { get; set; }
         public Empresa Empresa { get; set; }
+        public List<ProjetoPessoa> ProjetosPessoas { get; set; }
 
         public override void MergeFrom(object other)
         {
@@ -20,7 +22,7 @@ namespace everis.SimpleProject.Domain.Models
             CPF = ((Pessoa)other).CPF;
             Tipo = ((Pessoa)other).Tipo;
             Documento = ((Pessoa)other).Documento;
-            IdEmpresa = ((Pessoa)other).IdEmpresa;
+            EmpresaId = ((Pessoa)other).EmpresaId;
             Empresa = ((Pessoa)other).Empresa;
         }
     }
