@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
-    public partial class InitialMigrationAfterRefactor : Migration
+    public partial class AjusteMigrationsThomas : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -90,7 +90,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     Premissas = table.Column<string>(nullable: true),
                     IdEmpresa = table.Column<int>(nullable: false),
                     EmpresaId = table.Column<int>(nullable: true),
-                    Status = table.Column<short>(nullable: false),
+                    Status = table.Column<int>(nullable: false),
                     DataPrevista = table.Column<DateTime>(nullable: false),
                     BeneficioEntregue = table.Column<string>(nullable: true),
                     BeneficioResidual = table.Column<string>(nullable: true),
@@ -222,10 +222,8 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Ativo = table.Column<bool>(nullable: false),
                     DataInativacao = table.Column<DateTime>(nullable: true),
-                    IdProjeto = table.Column<int>(nullable: false),
-                    ProjetoId = table.Column<int>(nullable: true),
-                    IdPessoa = table.Column<int>(nullable: false),
-                    PessoaId = table.Column<int>(nullable: true)
+                    ProjetoId = table.Column<int>(nullable: false),
+                    PessoaId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -235,13 +233,13 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         column: x => x.PessoaId,
                         principalTable: "Pessoas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ProjetoPessoas_Projetos_ProjetoId",
                         column: x => x.ProjetoId,
                         principalTable: "Projetos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
