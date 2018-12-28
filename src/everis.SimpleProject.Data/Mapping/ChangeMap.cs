@@ -8,6 +8,8 @@ namespace everis.SimpleProject.Data.EF.Mapping
     {
         public void Configure(EntityTypeBuilder<Change> builder)
         {
+
+            base.Configure(builder);
             builder.Property(c => c.Descricao).IsRequired();
             builder.Property(c => c.HorasImpacto).IsRequired();
             builder.Property(c => c.DataHoraCadastro).IsRequired();

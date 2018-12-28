@@ -8,6 +8,7 @@ namespace everis.SimpleProject.Data.EF.Mapping
     {
         public void Configure(EntityTypeBuilder<Anexo> builder)
         {
+            base.Configure(builder);
             builder.Property(c => c.Descricao).IsRequired();
             builder.Property(c => c.Path).IsRequired();
             builder.Property(c => c.Tipo).IsRequired();
