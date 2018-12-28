@@ -7,7 +7,7 @@ namespace everis.SimpleProject.Domain.Models
         public string Descricao { get; set; }
         public short HorasImpacto { get; set; }
         public DateTime DataHoraCadastro { get; set; }
-        public int IdProjeto { get; set; }
+        public int ProjetoId { get; set; }
         public Projeto Projeto { get; set; }
 
         public override void MergeFrom(object other)

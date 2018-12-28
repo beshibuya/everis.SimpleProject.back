@@ -34,7 +34,7 @@ namespace everis.SimpleProject.Data.EF.Context
                 EscopoProjeto = "Escopo teste",
                 QtdHorasServico1 = 1000,
                 Nome = "Simple Process",
-                IdEmpresa = 1,
+                EmpresaId = 1,
                 DataPrevista = DateTime.Now.AddDays(7),
                 CentroCusto = "EXTNÂOLEMBROORESTO112"
             });

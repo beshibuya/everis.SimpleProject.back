@@ -5,7 +5,7 @@ namespace everis.SimpleProject.Domain.Models
 {
     public class Colaborador : Entity
     {
-        public int IdPessoa { get; set; }
+        public int PessoaId { get; set; }
         public Pessoa Pessoa { get; set; }
 
         public string Racf { get; set; }

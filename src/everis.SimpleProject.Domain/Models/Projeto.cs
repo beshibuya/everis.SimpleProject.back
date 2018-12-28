@@ -1,5 +1,6 @@
 ﻿using everis.SimpleProject.Domain.Models.Enums;
 using System;
+using System.Collections.Generic;
 
 namespace everis.SimpleProject.Domain.Models
 {
@@ -14,7 +15,7 @@ namespace everis.SimpleProject.Domain.Models
         public string EscopoProjeto { get; set; }
         public string ForaEscopoProjeto { get; set; }
         public string Premissas { get; set; }
-        public int IdEmpresa { get; set; }
+        public int EmpresaId { get; set; }
         public Empresa Empresa { get; set; }
         public Status Status { get; set; }
         public DateTime DataPrevista { get; set; }
@@ -24,6 +25,7 @@ namespace everis.SimpleProject.Domain.Models
         public string Riscos { get; set; }
         public string LicoesAprendidas { get; set; }
         public string CentroCusto { get; set; }
+        public List<ProjetoPessoa> ProjetosPessoas { get; set; }
 
         public override void MergeFrom(object other)
         {
