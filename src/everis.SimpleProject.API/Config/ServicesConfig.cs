@@ -20,7 +20,7 @@ namespace everis.SimpleProject.API.Config
             services.AddTransient<IGenericService<Anexo>, AnexoAppSvcGeneric>();
 
             services.AddTransient<IGenericService<EsforcoProjeto>, EsforcoProjetoAppSvcGeneric>();
-            //services.AddTransient<IEsforcoProjetoService, EsforcoProjetoAppSvcGeneric>();
+            services.AddTransient<IEsforcoProjetoService, EsforcoProjetoAppSvcGeneric>();
         }
     }
 }
