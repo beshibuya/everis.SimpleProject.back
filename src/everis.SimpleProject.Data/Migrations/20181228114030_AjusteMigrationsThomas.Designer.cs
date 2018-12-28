@@ -10,8 +10,8 @@ using everis.SimpleProject.Data.EF;
 namespace everis.SimpleProject.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20181227195717_Alterações")]
-    partial class Alterações
+    [Migration("20181228114030_AjusteMigrationsThomas")]
+    partial class AjusteMigrationsThomas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

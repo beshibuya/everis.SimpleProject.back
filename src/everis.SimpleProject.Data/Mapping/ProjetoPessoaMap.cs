@@ -9,6 +9,7 @@ namespace everis.SimpleProject.Data.EF.Mapping
     {
         public void Configure(EntityTypeBuilder<ProjetoPessoa> builder)
         {
+            base.Configure(builder);
             builder.Property(c => c.ProjetoId).IsRequired();
             builder.Property(c => c.PessoaId).IsRequired();
 

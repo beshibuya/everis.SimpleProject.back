@@ -8,6 +8,8 @@ namespace everis.SimpleProject.Data.EF.Mapping
     {
         public void Configure(EntityTypeBuilder<Colaborador> builder)
         {
+
+            base.Configure(builder);
             builder.Property(c => c.EmailCorporativo).IsRequired();
             builder.Property(c => c.Funcional).IsRequired();
             builder.Property(c => c.Funcao).IsRequired();

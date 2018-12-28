@@ -12,8 +12,7 @@ namespace everis.SimpleProject.API.Config
         {
             var connString = Environment.GetEnvironmentVariable("SimpleProcessConnString");
             services.AddDbContext<AppDbContext>(
-                o => o.UseSqlServer(connString ?? "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SimpleProjectDB;Integrated Security=True")
-                );
+                o => o.UseSqlServer(connString));
         }
     }
 }
