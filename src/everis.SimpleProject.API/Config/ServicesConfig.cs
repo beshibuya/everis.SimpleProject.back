@@ -14,7 +14,9 @@ namespace everis.SimpleProject.API.Config
             services.AddTransient<IGenericService<Usuario>, UsuarioAppSvcGeneric>();
             services.AddTransient<IUserService, UsuarioAppSvcGeneric>();
             services.AddTransient<IProjetoService, ProjetoAppSvcGeneric>();
+            services.AddTransient<IPessoaService, PessoaAppSvcGeneric>();
             services.AddTransient<IGenericService<Projeto>, ProjetoAppSvcGeneric>();
+            services.AddTransient<IGenericService<Pessoa>, PessoaAppSvcGeneric>();
 
             services.AddTransient<IGenericService<Anexo>, AnexoAppSvcGeneric>();
         }
