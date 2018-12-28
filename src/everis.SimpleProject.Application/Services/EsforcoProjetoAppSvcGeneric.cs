@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using everis.SimpleProject.Data.EF.Repositories;
 using everis.SimpleProject.Domain.Models;
+using everis.SimpleProject.Domain.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace everis.SimpleProject.Application.Services
 {
-    public class EsforcoProjetoAppSvcGeneric : GenericService<EsforcoProjeto>
+    public class EsforcoProjetoAppSvcGeneric : GenericService<EsforcoProjeto>, IEsforcoProjetoService
     {
         public EsforcoProjetoAppSvcGeneric(DbContext context) : base(context)
         {
