@@ -16,9 +16,7 @@ namespace everis.SimpleProject.Application.Services
             repository = new GenericRepository<Pessoa>(context);
         }
 
-    
 
-        //TODO: Testar
         public override IEnumerable<Pessoa> BuscarPor(Pessoa filter)
         {
             try

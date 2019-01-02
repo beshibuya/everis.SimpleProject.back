@@ -22,6 +22,12 @@ namespace everis.SimpleProject.Application.Services
             return res;
         }
 
+        public override IEnumerable<Projeto> ObterTodos()
+        {
+            var res = ctx.Projetos.Include(i => i.ProjetosPessoas);
+            return res;
+        }
+
         //TODO: Testar
         public override IEnumerable<Projeto> BuscarPor(Projeto filter)
         {

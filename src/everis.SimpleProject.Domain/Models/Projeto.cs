@@ -46,6 +46,7 @@ namespace everis.SimpleProject.Domain.Models
             Riscos = ((Projeto)other).Riscos;
             LicoesAprendidas = ((Projeto)other).LicoesAprendidas;
             CentroCusto = ((Projeto)other).CentroCusto;
+            ProjetosPessoas = ((Projeto)other).ProjetosPessoas;
         }
     }
        
