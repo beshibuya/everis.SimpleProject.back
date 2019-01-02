@@ -16,7 +16,7 @@ namespace everis.SimpleProject.Data.EF.Repositories
         {
             _dbContext = dbContext;
         }
-
+        
 
         public T Adicionar(T obj)
         {

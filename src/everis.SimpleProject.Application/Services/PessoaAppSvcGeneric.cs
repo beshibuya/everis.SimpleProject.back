@@ -16,26 +16,14 @@ namespace everis.SimpleProject.Application.Services
             repository = new GenericRepository<Pessoa>(context);
         }
 
-        //public override Pessoa ObterPorId(int id)
-        //{
-        //    var res = ctx.Pessoas.Include(i => i.ProjetosPessoas).FirstOrDefault(f => f.Id == id);
-        //    return res;
-        //}
 
-        //public override IEnumerable<Pessoa> ObterTodos()
-        //{
-        //    var res = ctx.Pessoas.Include(i => i.ProjetosPessoas);
-        //    return res;
-        //}
-
-        //TODO: Testar
         public override IEnumerable<Pessoa> BuscarPor(Pessoa filter)
         {
             try
             {
                 var nomeToFind = filter?.Nome;
                 var result = repository.BuscarPor(b => b.Nome.Contains(
-                    string.IsNullOrEmpty(nomeToFind) ? b.Nome : nomeToFind
+                    string.IsNullOrEmpty(nomeToFind) ? b.Nome: nomeToFind
                     ));
                 return result;
             }
