@@ -42,6 +42,7 @@ namespace everis.SimpleProject.Data.EF.Context
             context.Add(new Pessoa
             {
                 Nome = "David Rezende Torres",
+                EmpresaId = 1,
                 Tipo = TipoPessoa.Colaborador
             });
 
