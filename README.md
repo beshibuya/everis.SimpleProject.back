@@ -6,11 +6,14 @@ Para incluir um item, seguir a ordem
 1 - Adicionar a entidade everis.SimpleProject.Domain\Models (Ex: EntidadeNova.cs)
 
 2 - A entidade criada deve herdar de entity e fornecer uma implementação par ao método abstrato MergeFrom, se não for passível de merge, o método deverá ter apenas um return;
-public class EntidadeNova : Entity{
- public override void MergeFrom(object other){
- return;
- }
-}
+
+  public class EntidadeNova : Entity
+  {
+      public override void MergeFrom(object other)
+      {
+          return;
+      }
+  }
 
 3 - Adicionar o AppService da entidade criada, em everis.SimpleProject.Application\Services (EntidadeNovaAppService.cs)
 
