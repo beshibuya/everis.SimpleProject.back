@@ -2,7 +2,7 @@
 
 namespace everis.SimpleProject.API.Controllers
 {
-    public class ProjetoController : BaseController<Projeto>
+    public class ChangeController : BaseController<Change>
     {
     }
 }

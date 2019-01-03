@@ -5,7 +5,7 @@ namespace everis.SimpleProject.Data.EF.Mapping
 {
     public class EmpresaMap : BaseMapping<Empresa>
     {
-        public void Configure(EntityTypeBuilder<Empresa> builder)
+        public override void Configure(EntityTypeBuilder<Empresa> builder)
         {
 
             base.Configure(builder);

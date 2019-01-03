@@ -6,7 +6,7 @@ namespace everis.SimpleProject.Data.EF.Mapping
 {
     public class ColaboradorMap : BaseMapping<Colaborador>
     {
-        public void Configure(EntityTypeBuilder<Colaborador> builder)
+        public override void Configure(EntityTypeBuilder<Colaborador> builder)
         {
 
             base.Configure(builder);
@@ -16,7 +16,7 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.Perfil).IsRequired();
             builder.Property(c => c.Disponivel).IsRequired();
 
-            builder.HasOne(o => o.Pessoa).WithMany().HasForeignKey().OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(o => o.Pessoa).WithMany().HasForeignKey(f => f.PessoaId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

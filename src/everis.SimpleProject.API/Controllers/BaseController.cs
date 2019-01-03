@@ -149,7 +149,7 @@ namespace everis.SimpleProject.API.Controllers
             }
         }
 
-        [HttpPost("[action]")]
+        [HttpPost]
         public ActionResult Adicionar([FromServices]IGenericService<T> svc, [FromBody] T obj)
         {
             try
@@ -171,6 +171,29 @@ namespace everis.SimpleProject.API.Controllers
                 });
             }
 
+        }
+
+        [HttpGet("[action]")]
+        public IActionResult BuscarPor([FromServices]IGenericService<T> svc, [FromBody]T obj)
+        {
+            try
+            {
+                var retorno = new Retorno()
+                {
+                    Codigo = 200,
+                    Data = svc.BuscarPor(obj)
+                };
+                return Ok(retorno);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new Retorno()
+                {
+                    Codigo = 500,
+                    Mensagem = ex.Message
+                });
+            }
         }
     }
 }

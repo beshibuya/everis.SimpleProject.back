@@ -1,7 +1,6 @@
 ﻿using everis.SimpleProject.Data.EF;
 using everis.SimpleProject.Data.EF.Repositories;
 using everis.SimpleProject.Domain.Models;
-using everis.SimpleProject.Domain.Services;
 using System;
 using System.Collections.Generic;
 

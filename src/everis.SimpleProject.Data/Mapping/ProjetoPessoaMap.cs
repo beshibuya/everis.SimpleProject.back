@@ -7,7 +7,7 @@ namespace everis.SimpleProject.Data.EF.Mapping
 
     public class ProjetoPessoaMap : BaseMapping<ProjetoPessoa>
     {
-        public void Configure(EntityTypeBuilder<ProjetoPessoa> builder)
+        public override void Configure(EntityTypeBuilder<ProjetoPessoa> builder)
         {
             base.Configure(builder);
             builder.HasOne(o => o.Pessoa).WithMany(o => o.ProjetosPessoas).IsRequired().OnDelete(DeleteBehavior.Restrict);

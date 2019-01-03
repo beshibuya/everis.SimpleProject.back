@@ -1,7 +1,6 @@
 ﻿using everis.SimpleProject.Data.EF;
 using everis.SimpleProject.Data.EF.Repositories;
 using everis.SimpleProject.Domain.Models;
-using everis.SimpleProject.Domain.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Linq;
 
 namespace everis.SimpleProject.Application.Services
 {
-    public class ProjetoAppSvcGeneric : GenericService<Projeto>, IProjetoService
+    public class ProjetoAppSvcGeneric : GenericService<Projeto>
     {
         public ProjetoAppSvcGeneric(AppDbContext context) : base(context)
         {
