@@ -23,7 +23,6 @@ namespace everis.SimpleProject.Data.EF
 
         #endregion
 
-
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public AppDbContext() { }
         

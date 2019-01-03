@@ -5,7 +5,7 @@ namespace everis.SimpleProject.Data.EF.Mapping
 {
     public class PessoaMap : BaseMapping<Pessoa>
     {
-        public void Configure(EntityTypeBuilder<Pessoa> builder)
+        public override void Configure(EntityTypeBuilder<Pessoa> builder)
         {
             base.Configure(builder);
             builder.Property(c => c.Nome).IsRequired();

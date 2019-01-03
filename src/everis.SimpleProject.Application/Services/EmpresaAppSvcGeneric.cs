@@ -1,9 +1,6 @@
 ﻿using everis.SimpleProject.Data.EF;
 using everis.SimpleProject.Domain.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace everis.SimpleProject.Application.Services
 {

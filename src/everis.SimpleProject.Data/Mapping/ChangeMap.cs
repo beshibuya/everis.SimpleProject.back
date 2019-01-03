@@ -6,7 +6,7 @@ namespace everis.SimpleProject.Data.EF.Mapping
 {
     public class ChangeMap : BaseMapping<Change>
     {
-        public void Configure(EntityTypeBuilder<Change> builder)
+        public override void Configure(EntityTypeBuilder<Change> builder)
         {
 
             base.Configure(builder);
@@ -15,9 +15,7 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.DataHoraCadastro).IsRequired();
             builder.Property(c => c.ProjetoId).IsRequired();
             builder.Property(c => c.DataInativacao);
-
-            builder.HasOne(o => o.Projeto).WithMany().HasForeignKey().OnDelete(DeleteBehavior.Restrict);
-
+            builder.HasOne(o => o.Projeto).WithMany().HasForeignKey(f => f.ProjetoId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

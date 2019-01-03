@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using everis.SimpleProject.Data.EF;
+﻿using everis.SimpleProject.Data.EF;
 using everis.SimpleProject.Data.EF.Repositories;
 using everis.SimpleProject.Domain.Models;
-using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 
 namespace everis.SimpleProject.Application.Services
 {
