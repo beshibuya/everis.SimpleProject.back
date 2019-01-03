@@ -19,8 +19,8 @@ se não for passível de merge, o método deverá ter apenas um return;
 3 - Adicionar o AppService da entidade criada, em everis.SimpleProject.Application\Services (EntidadeNovaAppService.cs)
 
 4 - O Service criado deve herdar de GenericService, e fornecer a entidade atribuída a esse service, além disso, deve fornecer 
-  a) a implementação para o método abstrato "BuscarPor"
-  b) a implementação do construtor que será utilizada na injeção de dependência
+a) a implementação para o método abstrato "BuscarPor"
+b) a implementação do construtor que será utilizada na injeção de dependência
 
       public class EntidadeNovaAppService : GenericService<EntidadeNova>
       {
