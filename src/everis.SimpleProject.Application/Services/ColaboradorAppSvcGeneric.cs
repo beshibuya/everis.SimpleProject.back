@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using everis.SimpleProject.Data.EF;
 using everis.SimpleProject.Data.EF.Repositories;
 using everis.SimpleProject.Domain.Models;
-using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 
 namespace everis.SimpleProject.Application.Services
 {
     public class ColaboradorAppSvcGeneric : GenericService<Colaborador>
     {
-        public ColaboradorAppSvcGeneric(DbContext context) : base(context)
+        public ColaboradorAppSvcGeneric(AppDbContext context) : base(context)
         {
             repository = new GenericRepository<Colaborador>(context);
         }
