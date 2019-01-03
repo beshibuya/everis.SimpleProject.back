@@ -415,7 +415,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.Telefone", b =>
                 {
                     b.HasOne("everis.SimpleProject.Domain.Models.Pessoa", "Pessoa")
-                        .WithMany()
+                        .WithMany("Telefones")
                         .HasForeignKey("PessoaId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });

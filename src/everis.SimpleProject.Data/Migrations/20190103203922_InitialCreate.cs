@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -228,13 +228,13 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         column: x => x.PessoaId,
                         principalTable: "Projetos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ProjetoPessoas_Pessoas_PessoaId1",
                         column: x => x.PessoaId1,
                         principalTable: "Pessoas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(

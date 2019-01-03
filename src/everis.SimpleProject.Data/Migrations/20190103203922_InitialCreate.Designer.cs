@@ -10,8 +10,8 @@ using everis.SimpleProject.Data.EF;
 namespace everis.SimpleProject.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190103170220_Initial Migration")]
-    partial class InitialMigration
+    [Migration("20190103203922_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -417,7 +417,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.Telefone", b =>
                 {
                     b.HasOne("everis.SimpleProject.Domain.Models.Pessoa", "Pessoa")
-                        .WithMany()
+                        .WithMany("Telefones")
                         .HasForeignKey("PessoaId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });

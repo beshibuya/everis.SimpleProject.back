@@ -11,12 +11,25 @@ namespace everis.SimpleProject.API.Controllers
 
 
         [HttpPost("[action]")]
-        public ActionResult CriarPessoaColaborador([FromServices]IGenericService<Pessoa> pessoaSvc, [FromServices] IGenericService<Colaborador> colaboradorSvc, [FromBody] PessoaColaborador pcv)
+        public ActionResult CriarPessoaColaborador([FromServices]IGenericService<Pessoa> pessoaSvc, 
+            [FromServices] IGenericService<Colaborador> colaboradorSvc, [FromServices] IGenericService<Telefone> telSvc,  [FromBody] PessoaColaborador pcv)
         {
             try
             {
 
+                var lstTelefone = pcv.pessoa.Telefones;
+
+                pcv.pessoa.Telefones = null;
+                pcv.pessoa.EmpresaId = 1;
+
                 var novaPessoa = pessoaSvc.Adicionar(pcv.pessoa);
+
+                foreach (var item in lstTelefone)
+                {
+                    item.PessoaId = novaPessoa.Id;
+                    telSvc.Adicionar(item);
+                }
+                pcv.pessoa.Telefones = lstTelefone;
                 pcv.colaborador.PessoaId = novaPessoa.Id;
                 var novoColaborador = colaboradorSvc.Adicionar(pcv.colaborador);
 
@@ -24,7 +37,7 @@ namespace everis.SimpleProject.API.Controllers
                 {
                     pessoa = novaPessoa,
                     colaborador = novoColaborador
-                };
+                };  
 
                 var retorno = new Retorno()
                 {
