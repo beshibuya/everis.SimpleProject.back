@@ -13,6 +13,7 @@ namespace everis.SimpleProject.Application.Services
             repository = new GenericRepository<Colaborador>(context);
         }
 
+
         public override IEnumerable<Colaborador> BuscarPor(Colaborador filter)
         {
             try

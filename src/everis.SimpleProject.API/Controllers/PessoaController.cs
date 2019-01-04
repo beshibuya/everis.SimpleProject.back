@@ -11,8 +11,8 @@ namespace everis.SimpleProject.API.Controllers
 
 
         [HttpPost("[action]")]
-        public ActionResult CriarPessoaColaborador([FromServices]IGenericService<Pessoa> pessoaSvc, 
-            [FromServices] IGenericService<Colaborador> colaboradorSvc, [FromServices] IGenericService<Telefone> telSvc,  [FromBody] PessoaColaborador pcv)
+        public ActionResult CriarPessoaColaborador([FromServices]IGenericService<Pessoa> pessoaSvc,
+            [FromServices] IGenericService<Colaborador> colaboradorSvc, [FromServices] IGenericService<Telefone> telSvc, [FromBody] PessoaColaborador pcv)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace everis.SimpleProject.API.Controllers
                 {
                     pessoa = novaPessoa,
                     colaborador = novoColaborador
-                };  
+                };
 
                 var retorno = new Retorno()
                 {
@@ -58,6 +58,41 @@ namespace everis.SimpleProject.API.Controllers
             }
 
         }
+
+
+        [HttpGet("[action]")]
+        public ActionResult ObterPessoasColaboradores([FromServices] IGenericService<Colaborador> svcColaborador, [FromServices] IGenericService<Pessoa> svcPessoa)
+        {
+            try
+            {
+                var dbColborador = svcColaborador.ObterTodos();
+
+                foreach (var item in dbColborador)
+                {
+                    item.Pessoa = svcPessoa.ObterPorId(item.PessoaId);
+                }
+
+                var retorno = new Retorno()
+                {
+                    Codigo = 200,
+                    Data = dbColborador
+
+                };
+                return Ok(retorno);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(new Retorno()
+                {
+                    Codigo = 500,
+                    Mensagem = ex.Message
+                });
+            }
+
+
+        }
+
 
     }
 }
