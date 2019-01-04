@@ -3,6 +3,7 @@ using everis.SimpleProject.Domain.Models.Enums;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace everis.SimpleProject.Data.EF.Context
@@ -43,10 +44,35 @@ namespace everis.SimpleProject.Data.EF.Context
             {
                 Nome = "David Rezende Torres",
                 EmpresaId = 1,
-                Tipo = TipoPessoa.Colaborador
+                Tipo = TipoPessoa.Terceiro,
+                Email = "david@rezende.com"
             });
+
+            context.Add(new Pessoa
+            {
+                Nome = "Ricardo",
+                EmpresaId = 1,
+                Tipo = TipoPessoa.Colaborador,
+                Email = "ricardo@rossetti.com"
+            }
+            
+            );
+
+            context.SaveChanges();
+
+            context.Add(new Colaborador
+            {
+                PessoaId = 2,
+                Disponivel = false,
+                EmailCorporativo = "ricardo@everis.com",
+                Funcional = 423947238,
+                Funcao = Funcao.SA,
+            });
+
+
 
             context.SaveChanges();
         }
     }
 }
+

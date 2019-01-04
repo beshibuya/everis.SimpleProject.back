@@ -13,7 +13,7 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.EmailCorporativo).IsRequired();
             builder.Property(c => c.Funcional).IsRequired();
             builder.Property(c => c.Funcao).IsRequired();
-            builder.Property(c => c.Perfil).IsRequired();
+            //builder.Property(c => c.Perfil).IsRequired();
             builder.Property(c => c.Disponivel).IsRequired();
 
             builder.HasOne(o => o.Pessoa).WithMany().HasForeignKey(f => f.PessoaId).OnDelete(DeleteBehavior.Restrict);
