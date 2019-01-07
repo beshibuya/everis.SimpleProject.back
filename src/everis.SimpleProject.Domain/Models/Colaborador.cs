@@ -1,5 +1,5 @@
 ﻿using everis.SimpleProject.Domain.Models.Enums;
-
+using System.Collections.Generic;
 
 namespace everis.SimpleProject.Domain.Models
 {
@@ -13,6 +13,7 @@ namespace everis.SimpleProject.Domain.Models
 
         public int Funcional { get; set; }
         public string NomeMaquina { get; set; }
+        public List<AcessoFerramenta> Acessos { get; set; }
 
         public Funcao Funcao { get; set; }
         public Perfil Perfil { get; set; }
@@ -29,6 +30,7 @@ namespace everis.SimpleProject.Domain.Models
             Funcao = ((Colaborador)other).Funcao;
             Disponivel = ((Colaborador)other).Disponivel;
             Senha = ((Colaborador)other).Senha;
+            Acessos = ((Colaborador)other).Acessos;
         }
     }
 

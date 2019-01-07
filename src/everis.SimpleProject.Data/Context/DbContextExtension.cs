@@ -69,6 +69,35 @@ namespace everis.SimpleProject.Data.EF.Context
                 Funcao = Funcao.SA,
             });
 
+            context.Add(new Ferramenta {
+                Descricao = "Visual Studio",
+            });
+
+            context.Add(new Ferramenta
+            {
+                Descricao = "RTC",
+            });
+
+            context.Add(new Ferramenta
+            {
+                Descricao = "Angular",
+            });
+
+            context.Add(new Ferramenta
+            {
+                Descricao = "GIT",
+            });
+
+            context.Add(new Ferramenta
+            {
+                Descricao = "Confluence",
+            });
+
+            context.Add(new Ferramenta
+            {
+                Descricao = "Jira",
+            });
+
 
 
             context.SaveChanges();
