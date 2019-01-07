@@ -98,6 +98,8 @@ namespace everis.SimpleProject.Data.EF.Context
                 CentroCusto = "EXTNÂOLEMBROORESTO112"
             });
 
+            #endregion
+
             context.Add(new Ferramenta {
                 Descricao = "Visual Studio",
             });
@@ -132,4 +134,3 @@ namespace everis.SimpleProject.Data.EF.Context
         }
     }
 }
-

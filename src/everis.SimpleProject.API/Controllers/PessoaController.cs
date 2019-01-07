@@ -30,6 +30,7 @@ namespace everis.SimpleProject.API.Controllers
                     item.PessoaId = novaPessoa.Id;
                     telSvc.Adicionar(item);
                 }
+
                 pcv.pessoa.Telefones = lstTelefone;
                 pcv.pessoa.ColaboradorId = novoColaborador.Id;
 

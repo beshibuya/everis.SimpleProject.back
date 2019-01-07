@@ -14,6 +14,7 @@ namespace everis.SimpleProject.Application.Services
         protected IGenericRepository<T> repository;
         private readonly DbContext _context;
         protected AppDbContext ctx => _context as AppDbContext;
+
         public GenericService(DbContext context)
         {
             repository = new GenericRepository<T>(context);
