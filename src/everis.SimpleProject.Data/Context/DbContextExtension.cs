@@ -85,8 +85,6 @@ namespace everis.SimpleProject.Data.EF.Context
 
             #endregion
 
-            #region Inserts Projeto
-
             context.Add(new Projeto
             {
                 DataInicio = DateTime.Now,
@@ -129,6 +127,7 @@ namespace everis.SimpleProject.Data.EF.Context
                 Descricao = "Jira",
             });
 
+            context.SaveChanges();
 
 
         }

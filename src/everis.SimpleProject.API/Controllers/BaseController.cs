@@ -181,7 +181,7 @@ namespace everis.SimpleProject.API.Controllers
         }
 
         [HttpGet("[action]")]
-        public IActionResult BuscarPor([FromServices]IGenericService<T> svc, [FromBody]T obj)
+        public IActionResult BuscarPor([FromServices]IGenericService<T> svc,T obj)
         {
             try
             {
