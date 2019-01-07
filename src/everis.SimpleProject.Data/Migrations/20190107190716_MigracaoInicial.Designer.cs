@@ -10,7 +10,7 @@ using everis.SimpleProject.Data.EF;
 namespace everis.SimpleProject.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190107183407_MigracaoInicial")]
+    [Migration("20190107190716_MigracaoInicial")]
     partial class MigracaoInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -430,7 +430,8 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 {
                     b.HasOne("everis.SimpleProject.Domain.Models.Colaborador", "Colaborador")
                         .WithMany()
-                        .HasForeignKey("ColaboradorId");
+                        .HasForeignKey("ColaboradorId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("everis.SimpleProject.Domain.Models.Empresa", "Empresa")
                         .WithMany()

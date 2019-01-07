@@ -29,7 +29,7 @@ namespace everis.SimpleProject.Data.EF.Context
                 Disponivel = false,
                 EmailCorporativo = "ricardo@everis.com",
                 Funcional = 423947238,
-                Funcao = Funcao.SA,
+                Funcao = Funcao.SA
             });
 
             context.Add(new Colaborador
@@ -62,7 +62,8 @@ namespace everis.SimpleProject.Data.EF.Context
                 Nome = "David Rezende Torres",
                 EmpresaId = 1,
                 Tipo = TipoPessoa.Terceiro,
-                Email = "david@rezende.com"
+                Email = "david@rezende.com",
+                ColaboradorId = 1
             });
 
             context.Add(new Pessoa
@@ -85,6 +86,9 @@ namespace everis.SimpleProject.Data.EF.Context
 
             #endregion
 
+
+            #region Inserts Projeto
+
             context.Add(new Projeto
             {
                 DataInicio = DateTime.Now,
@@ -97,6 +101,9 @@ namespace everis.SimpleProject.Data.EF.Context
             });
 
             #endregion
+
+
+            #region Inserts Ferramentas
 
             context.Add(new Ferramenta {
                 Descricao = "Visual Studio",
@@ -126,6 +133,8 @@ namespace everis.SimpleProject.Data.EF.Context
             {
                 Descricao = "Jira",
             });
+
+            #endregion
 
             context.SaveChanges();
 

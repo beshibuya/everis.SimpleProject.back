@@ -18,6 +18,11 @@ namespace everis.SimpleProject.Domain.Models
         public bool Disponivel { get; set; }
         public string Senha { get; set; }
 
+        public Colaborador()
+        {
+            Disponivel = true;
+        }
+
 
         public override void MergeFrom(object other)
         {

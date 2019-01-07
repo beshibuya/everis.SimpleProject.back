@@ -23,16 +23,15 @@ namespace everis.SimpleProject.API.Controllers
                 pcv.pessoa.EmpresaId = 1;
 
                 var novoColaborador = colaboradorSvc.Adicionar(pcv.colaborador);
+                pcv.pessoa.ColaboradorId = novoColaborador.Id;
                 var novaPessoa = pessoaSvc.Adicionar(pcv.pessoa);
+                novaPessoa.Telefones = lstTelefone;
 
                 foreach (var item in lstTelefone)
                 {
                     item.PessoaId = novaPessoa.Id;
                     telSvc.Adicionar(item);
                 }
-
-                pcv.pessoa.Telefones = lstTelefone;
-                pcv.pessoa.ColaboradorId = novoColaborador.Id;
 
                 var pessoaColaborador = new PessoaColaborador
                 {

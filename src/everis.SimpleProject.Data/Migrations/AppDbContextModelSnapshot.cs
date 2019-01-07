@@ -428,7 +428,8 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 {
                     b.HasOne("everis.SimpleProject.Domain.Models.Colaborador", "Colaborador")
                         .WithMany()
-                        .HasForeignKey("ColaboradorId");
+                        .HasForeignKey("ColaboradorId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("everis.SimpleProject.Domain.Models.Empresa", "Empresa")
                         .WithMany()
