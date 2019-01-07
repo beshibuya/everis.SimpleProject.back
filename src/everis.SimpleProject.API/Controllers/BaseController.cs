@@ -38,6 +38,7 @@ namespace everis.SimpleProject.API.Controllers
             {
                 var retorno = new Retorno()
                 {
+                    Sucesso = true,
                     Codigo = 200,
                     Data = svc.ObterTodos()
                 };
@@ -174,7 +175,7 @@ namespace everis.SimpleProject.API.Controllers
         }
 
         [HttpGet("[action]")]
-        public IActionResult BuscarPor([FromServices]IGenericService<T> svc, [FromBody]T obj)
+        public IActionResult BuscarPor([FromServices]IGenericService<T> svc,T obj)
         {
             try
             {
