@@ -13,15 +13,13 @@ namespace everis.SimpleProject.Application.Services
             repository = new GenericRepository<Colaborador>(context);
         }
 
+
         public override IEnumerable<Colaborador> BuscarPor(Colaborador filter)
         {
             try
             {
-                var nomeToFind = filter?.Pessoa.Nome;
-                var result = repository.BuscarPor(b => b.Pessoa.Nome.Contains(
-                    string.IsNullOrEmpty(nomeToFind) ? b.Pessoa.Nome : nomeToFind
-                    ));
-                return result;
+             
+                return null;
             }
             catch (Exception ex)
             {

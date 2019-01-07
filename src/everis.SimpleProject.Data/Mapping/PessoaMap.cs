@@ -1,4 +1,5 @@
 ﻿using everis.SimpleProject.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace everis.SimpleProject.Data.EF.Mapping
@@ -12,6 +13,8 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.Tipo).IsRequired();
             builder.Property(c => c.EmpresaId).IsRequired();
             builder.HasMany(c => c.ProjetosPessoas).WithOne(x => x.Pessoa);
+            builder.HasMany(c => c.Telefones).WithOne(x => x.Pessoa);
+            builder.HasOne(o => o.Colaborador);
 
         }
     }

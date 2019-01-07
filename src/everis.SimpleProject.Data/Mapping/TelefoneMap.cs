@@ -12,8 +12,7 @@ namespace everis.SimpleProject.Data.EF.Mapping
             base.Configure(builder);
             builder.Property(c => c.NumeroTelefone).IsRequired();
             builder.Property(c => c.TipoTelefone).IsRequired();
-            builder.Property(c => c.PessoaId).IsRequired();
-            builder.HasOne(o=>o.Pessoa).WithMany().HasForeignKey(k=>k.PessoaId).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(o => o.Pessoa).WithMany(o => o.Telefones).IsRequired().OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

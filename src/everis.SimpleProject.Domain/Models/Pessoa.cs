@@ -14,6 +14,9 @@ namespace everis.SimpleProject.Domain.Models
         public int EmpresaId { get; set; }
         public Empresa Empresa { get; set; }
         public List<ProjetoPessoa> ProjetosPessoas { get; set; }
+        public List<Telefone> Telefones { get; set; }
+        public int? ColaboradorId { get; set; }
+        public Colaborador Colaborador { get; set; }
 
         public override void MergeFrom(object other)
         {
