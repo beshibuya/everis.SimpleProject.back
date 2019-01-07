@@ -5,8 +5,6 @@ namespace everis.SimpleProject.Domain.Models
 {
     public class Colaborador : Entity
     {
-        public int PessoaId { get; set; }
-        public Pessoa Pessoa { get; set; }
 
         public string Racf { get; set; }
         public string EmailCorporativo { get; set; }
@@ -18,6 +16,7 @@ namespace everis.SimpleProject.Domain.Models
         public Perfil Perfil { get; set; }
         public bool Disponivel { get; set; }
         public string Senha { get; set; }
+
 
         public override void MergeFrom(object other)
         {

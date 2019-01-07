@@ -22,6 +22,29 @@ namespace everis.SimpleProject.Data.EF.Context
 
         public static void InitialSeed(this AppDbContext context)
         {
+            #region Inserts Colaborador
+
+            context.Add(new Colaborador
+            {
+                Disponivel = false,
+                EmailCorporativo = "ricardo@everis.com",
+                Funcional = 423947238,
+                Funcao = Funcao.SA,
+            });
+
+            context.Add(new Colaborador
+            {
+                Disponivel = true,
+                EmailCorporativo = "nicholas@everis.com",
+                Funcional = 423947876,
+                Funcao = Funcao.SA,
+            });
+
+            context.SaveChanges();
+
+            #endregion
+
+            #region Inserts Empresa
 
             context.Add(new Empresa
             {
@@ -29,16 +52,10 @@ namespace everis.SimpleProject.Data.EF.Context
                 Segmento = TipoSegmento.Banking
             });
 
-            context.Add(new Projeto
-            {
-                DataInicio = DateTime.Now,
-                EscopoProjeto = "Escopo teste",
-                QtdHorasServico1 = 1000,
-                Nome = "Simple Process",
-                EmpresaId = 1,
-                DataPrevista = DateTime.Now.AddDays(7),
-                CentroCusto = "EXTNÂOLEMBROORESTO112"
-            });
+            #endregion
+
+            #region Inserts Pesoa
+
 
             context.Add(new Pessoa
             {
@@ -53,25 +70,38 @@ namespace everis.SimpleProject.Data.EF.Context
                 Nome = "Ricardo",
                 EmpresaId = 1,
                 Tipo = TipoPessoa.Colaborador,
-                Email = "ricardo@rossetti.com"
-            }
-            
-            );
-
-            context.SaveChanges();
-
-            context.Add(new Colaborador
-            {
-                PessoaId = 2,
-                Disponivel = false,
-                EmailCorporativo = "ricardo@everis.com",
-                Funcional = 423947238,
-                Funcao = Funcao.SA,
+                Email = "ricardo@rossetti.com",
+                ColaboradorId = 1
             });
 
+            context.Add(new Pessoa
+            {
+                Nome = "Nicholas",
+                EmpresaId = 1,
+                Tipo = TipoPessoa.Colaborador,
+                Email = "nicholas@torre.com",
+                ColaboradorId = 2
+            });
 
+            #endregion
 
+            #region Inserts Projeto
+
+            context.Add(new Projeto
+            {
+                DataInicio = DateTime.Now,
+                EscopoProjeto = "Escopo teste",
+                QtdHorasServico1 = 1000,
+                Nome = "Simple Process",
+                EmpresaId = 1,
+                DataPrevista = DateTime.Now.AddDays(7),
+                CentroCusto = "EXTNÂOLEMBROORESTO112"
+            });
+
+            #endregion
             context.SaveChanges();
+
+
         }
     }
 }

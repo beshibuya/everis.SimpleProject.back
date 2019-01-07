@@ -1,8 +1,10 @@
 ﻿using everis.SimpleProject.Data.EF;
 using everis.SimpleProject.Data.EF.Repositories;
 using everis.SimpleProject.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace everis.SimpleProject.Application.Services
 {
@@ -13,6 +15,19 @@ namespace everis.SimpleProject.Application.Services
             repository = new GenericRepository<Pessoa>(context);
         }
 
+        public override IEnumerable<Pessoa> ObterTodos()
+        {
+            try
+            {
+
+            var res = ctx.Pessoas.Include(i => i.Colaborador).ToList();
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public override IEnumerable<Pessoa> BuscarPor(Pessoa filter)
         {
