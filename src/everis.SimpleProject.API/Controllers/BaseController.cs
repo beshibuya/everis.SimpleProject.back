@@ -15,6 +15,7 @@ namespace everis.SimpleProject.API.Controllers
             {
                 var retorno = new Retorno()
                 {
+                    Sucesso = true,
                     Codigo = 200,
                     Data = svc.ObterPorId(id)
                 };
@@ -63,6 +64,7 @@ namespace everis.SimpleProject.API.Controllers
             {
                 var retorno = new Retorno()
                 {
+                    Sucesso = true,
                     Codigo = 200,
                     Data = svc.Ativar(id)
                 };
@@ -85,6 +87,7 @@ namespace everis.SimpleProject.API.Controllers
             {
                 var retorno = new Retorno()
                 {
+                    Sucesso = true,
                     Codigo = 200,
                     Data = svc.Desativar(id)
                 };
@@ -109,6 +112,7 @@ namespace everis.SimpleProject.API.Controllers
             {
                 var retorno = new Retorno()
                 {
+                    Sucesso = true,
                     Codigo = 200,
                     Data = svc.Remover(id)
                 };
@@ -133,6 +137,7 @@ namespace everis.SimpleProject.API.Controllers
             {
                 var retorno = new Retorno()
                 {
+                    Sucesso = true,
                     Codigo = 200,
                     Data = svc.Atualizar(obj)
                 };
@@ -151,12 +156,13 @@ namespace everis.SimpleProject.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public ActionResult Adicionar([FromServices]IGenericService<T> svc, [FromBody] T obj)
+        public virtual ActionResult Adicionar([FromServices]IGenericService<T> svc, [FromBody] T obj)
         {
             try
             {
                 var retorno = new Retorno()
                 {
+                    Sucesso = true,
                     Codigo = 200,
                     Data = svc.Adicionar(obj)
                 };
@@ -181,6 +187,7 @@ namespace everis.SimpleProject.API.Controllers
             {
                 var retorno = new Retorno()
                 {
+                    Sucesso = true,
                     Codigo = 200,
                     Data = svc.BuscarPor(obj)
                 };
