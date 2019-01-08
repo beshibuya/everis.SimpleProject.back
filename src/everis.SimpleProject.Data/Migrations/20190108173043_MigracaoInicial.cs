@@ -9,6 +9,28 @@ namespace everis.SimpleProject.Data.EF.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Colaboradors",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Ativo = table.Column<bool>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
+                    Racf = table.Column<string>(nullable: true),
+                    EmailCorporativo = table.Column<string>(nullable: false),
+                    Funcional = table.Column<int>(nullable: false),
+                    NomeMaquina = table.Column<string>(nullable: true),
+                    Funcao = table.Column<int>(nullable: false),
+                    Perfil = table.Column<int>(nullable: false),
+                    Disponivel = table.Column<bool>(nullable: false),
+                    Senha = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Colaboradors", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Empresas",
                 columns: table => new
                 {
@@ -22,6 +44,21 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Empresas", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Ferramenta",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Ativo = table.Column<bool>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
+                    Descricao = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ferramenta", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -57,11 +94,18 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     Documento = table.Column<string>(nullable: true),
                     CPF = table.Column<long>(nullable: false),
                     FotoPath = table.Column<string>(nullable: true),
-                    EmpresaId = table.Column<int>(nullable: false)
+                    EmpresaId = table.Column<int>(nullable: false),
+                    ColaboradorId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pessoas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Pessoas_Colaboradors_ColaboradorId",
+                        column: x => x.ColaboradorId,
+                        principalTable: "Colaboradors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Pessoas_Empresas_EmpresaId",
                         column: x => x.EmpresaId,
@@ -109,32 +153,32 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Colaboradors",
+                name: "AcessoFerramenta",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Ativo = table.Column<bool>(nullable: false),
                     DataInativacao = table.Column<DateTime>(nullable: true),
-                    PessoaId = table.Column<int>(nullable: false),
-                    Racf = table.Column<string>(nullable: true),
-                    EmailCorporativo = table.Column<string>(nullable: false),
-                    Funcional = table.Column<int>(nullable: false),
-                    NomeMaquina = table.Column<string>(nullable: true),
-                    Funcao = table.Column<int>(nullable: false),
-                    Perfil = table.Column<int>(nullable: false),
-                    Disponivel = table.Column<bool>(nullable: false),
-                    Senha = table.Column<string>(nullable: true)
+                    FerramentaId = table.Column<int>(nullable: false),
+                    Sigla = table.Column<string>(nullable: false),
+                    ColaboradorId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Colaboradors", x => x.Id);
+                    table.PrimaryKey("PK_AcessoFerramenta", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Colaboradors_Pessoas_PessoaId",
-                        column: x => x.PessoaId,
-                        principalTable: "Pessoas",
+                        name: "FK_AcessoFerramenta_Colaboradors_ColaboradorId",
+                        column: x => x.ColaboradorId,
+                        principalTable: "Colaboradors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AcessoFerramenta_Ferramenta_FerramentaId",
+                        column: x => x.FerramentaId,
+                        principalTable: "Ferramenta",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -197,7 +241,8 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     ProjetoId = table.Column<int>(nullable: false),
                     QtdHorasServico1 = table.Column<int>(nullable: false),
                     QtdHorasServico2 = table.Column<int>(nullable: false),
-                    QtdHorasServico3 = table.Column<int>(nullable: false)
+                    QtdHorasServico3 = table.Column<int>(nullable: false),
+                    ProjetoId1 = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -205,6 +250,12 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     table.ForeignKey(
                         name: "FK_Changes_Projetos_ProjetoId",
                         column: x => x.ProjetoId,
+                        principalTable: "Projetos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Changes_Projetos_ProjetoId1",
+                        column: x => x.ProjetoId1,
                         principalTable: "Projetos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -287,6 +338,16 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_AcessoFerramenta_ColaboradorId",
+                table: "AcessoFerramenta",
+                column: "ColaboradorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AcessoFerramenta_FerramentaId",
+                table: "AcessoFerramenta",
+                column: "FerramentaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Anexos_ProjetoId",
                 table: "Anexos",
                 column: "ProjetoId");
@@ -297,14 +358,19 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 column: "ProjetoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Colaboradors_PessoaId",
-                table: "Colaboradors",
-                column: "PessoaId");
+                name: "IX_Changes_ProjetoId1",
+                table: "Changes",
+                column: "ProjetoId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EsforcoProjetos_ProjetoPessoaId",
                 table: "EsforcoProjetos",
                 column: "ProjetoPessoaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pessoas_ColaboradorId",
+                table: "Pessoas",
+                column: "ColaboradorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pessoas_EmpresaId",
@@ -340,13 +406,13 @@ namespace everis.SimpleProject.Data.EF.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "AcessoFerramenta");
+
+            migrationBuilder.DropTable(
                 name: "Anexos");
 
             migrationBuilder.DropTable(
                 name: "Changes");
-
-            migrationBuilder.DropTable(
-                name: "Colaboradors");
 
             migrationBuilder.DropTable(
                 name: "EsforcoProjetos");
@@ -361,6 +427,9 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 name: "Usuarios");
 
             migrationBuilder.DropTable(
+                name: "Ferramenta");
+
+            migrationBuilder.DropTable(
                 name: "ProjetoPessoas");
 
             migrationBuilder.DropTable(
@@ -368,6 +437,9 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
             migrationBuilder.DropTable(
                 name: "Pessoas");
+
+            migrationBuilder.DropTable(
+                name: "Colaboradors");
 
             migrationBuilder.DropTable(
                 name: "Empresas");
