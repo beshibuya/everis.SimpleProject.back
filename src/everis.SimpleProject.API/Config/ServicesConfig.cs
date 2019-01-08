@@ -1,6 +1,7 @@
 ﻿using everis.SimpleProject.Application.Services;
 using everis.SimpleProject.Domain.Models;
 using everis.SimpleProject.Domain.Service;
+using everis.SimpleProject.Domain.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 
@@ -17,6 +18,7 @@ namespace everis.SimpleProject.API.Config
             services.AddTransient<IGenericService<EsforcoProjeto>, EsforcoProjetoAppSvcGeneric>();
             services.AddTransient<IGenericService<Pessoa>, PessoaAppSvcGeneric>();
             services.AddTransient<IGenericService<Projeto>, ProjetoAppSvcGeneric>();
+            services.AddTransient<IProjetoService, ProjetoAppSvcGeneric>();
             services.AddTransient<IGenericService<ProjetoPessoa>, ProjetoPessoaAppSvcGeneric>();
             services.AddTransient<IGenericService<Telefone>, TelefoneAppSvcGeneric>();
             services.AddTransient<IGenericService<Usuario>, UsuarioAppSvcGeneric>();

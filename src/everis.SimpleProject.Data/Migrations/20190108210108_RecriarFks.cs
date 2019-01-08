@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
-    public partial class MigracaoInicial : Migration
+    public partial class RecriarFks : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -241,8 +241,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     ProjetoId = table.Column<int>(nullable: false),
                     QtdHorasServico1 = table.Column<int>(nullable: false),
                     QtdHorasServico2 = table.Column<int>(nullable: false),
-                    QtdHorasServico3 = table.Column<int>(nullable: false),
-                    ProjetoId1 = table.Column<int>(nullable: true)
+                    QtdHorasServico3 = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -250,12 +249,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     table.ForeignKey(
                         name: "FK_Changes_Projetos_ProjetoId",
                         column: x => x.ProjetoId,
-                        principalTable: "Projetos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Changes_Projetos_ProjetoId1",
-                        column: x => x.ProjetoId1,
                         principalTable: "Projetos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -356,11 +349,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 name: "IX_Changes_ProjetoId",
                 table: "Changes",
                 column: "ProjetoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Changes_ProjetoId1",
-                table: "Changes",
-                column: "ProjetoId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EsforcoProjetos_ProjetoPessoaId",

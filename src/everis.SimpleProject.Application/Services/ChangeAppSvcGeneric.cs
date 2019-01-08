@@ -17,10 +17,11 @@ namespace everis.SimpleProject.Application.Services
         {
             try
             {
-                var nomeToFind = filter?.Projeto.Nome ;
-                var result = repository.BuscarPor(b => b.Projeto.Nome.Contains(
-                    string.IsNullOrEmpty(nomeToFind) ? b.Projeto.Nome : nomeToFind
-                    ));
+                var nomeToFind = filter.Projeto?.Nome ;
+                var result = repository.BuscarPor(
+                    b => (b.Projeto.Nome.Contains(string.IsNullOrEmpty(nomeToFind) ? b.Projeto.Nome : nomeToFind))
+                    && (b.ProjetoId == (filter.ProjetoId == 0 ? b.ProjetoId : filter.ProjetoId))
+                    );
                 return result;
             }
             catch (Exception ex)

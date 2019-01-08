@@ -10,8 +10,8 @@ using everis.SimpleProject.Data.EF;
 namespace everis.SimpleProject.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190108173043_MigracaoInicial")]
-    partial class MigracaoInicial
+    [Migration("20190108210108_RecriarFks")]
+    partial class RecriarFks
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -91,8 +91,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<int>("ProjetoId");
 
-                    b.Property<int?>("ProjetoId1");
-
                     b.Property<int>("QtdHorasServico1");
 
                     b.Property<int>("QtdHorasServico2");
@@ -102,8 +100,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ProjetoId");
-
-                    b.HasIndex("ProjetoId1");
 
                     b.ToTable("Changes");
                 });
@@ -423,11 +419,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.HasOne("everis.SimpleProject.Domain.Models.Projeto", "Projeto")
                         .WithMany()
                         .HasForeignKey("ProjetoId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("everis.SimpleProject.Domain.Models.Projeto")
-                        .WithMany("Changes")
-                        .HasForeignKey("ProjetoId1")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
