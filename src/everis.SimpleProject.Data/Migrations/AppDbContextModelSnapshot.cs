@@ -61,9 +61,13 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.Property<string>("Descricao")
                         .IsRequired();
 
-                    b.Property<short>("HorasImpacto");
-
                     b.Property<int>("ProjetoId");
+
+                    b.Property<int>("QtdHorasServico1");
+
+                    b.Property<int>("QtdHorasServico2");
+
+                    b.Property<int>("QtdHorasServico3");
 
                     b.HasKey("Id");
 

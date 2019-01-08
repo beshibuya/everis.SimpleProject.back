@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
-    public partial class initialMigration : Migration
+    public partial class MigracaoInicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -193,9 +193,11 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     Ativo = table.Column<bool>(nullable: false),
                     DataInativacao = table.Column<DateTime>(nullable: true),
                     Descricao = table.Column<string>(nullable: false),
-                    HorasImpacto = table.Column<short>(nullable: false),
                     DataHoraCadastro = table.Column<DateTime>(nullable: false),
-                    ProjetoId = table.Column<int>(nullable: false)
+                    ProjetoId = table.Column<int>(nullable: false),
+                    QtdHorasServico1 = table.Column<int>(nullable: false),
+                    QtdHorasServico2 = table.Column<int>(nullable: false),
+                    QtdHorasServico3 = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -10,8 +10,8 @@ using everis.SimpleProject.Data.EF;
 namespace everis.SimpleProject.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190104185105_initialMigration")]
-    partial class initialMigration
+    [Migration("20190108165825_MigracaoInicial")]
+    partial class MigracaoInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,9 +63,13 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.Property<string>("Descricao")
                         .IsRequired();
 
-                    b.Property<short>("HorasImpacto");
-
                     b.Property<int>("ProjetoId");
+
+                    b.Property<int>("QtdHorasServico1");
+
+                    b.Property<int>("QtdHorasServico2");
+
+                    b.Property<int>("QtdHorasServico3");
 
                     b.HasKey("Id");
 
