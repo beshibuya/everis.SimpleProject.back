@@ -155,7 +155,7 @@ namespace everis.SimpleProject.API.Controllers
             }
         }
 
-        [HttpPost("[action]")]
+        [HttpPost]
         public virtual ActionResult Adicionar([FromServices]IGenericService<T> svc, [FromBody] T obj)
         {
             try
