@@ -22,12 +22,72 @@ namespace everis.SimpleProject.Data.EF.Context
 
         public static void InitialSeed(this AppDbContext context)
         {
+            #region Inserts Colaborador
+
+            context.Add(new Colaborador
+            {
+                Disponivel = false,
+                EmailCorporativo = "ricardo@everis.com",
+                Funcional = 423947238,
+                Funcao = Funcao.SA
+            });
+
+            context.Add(new Colaborador
+            {
+                Disponivel = true,
+                EmailCorporativo = "nicholas@everis.com",
+                Funcional = 423947876,
+                Funcao = Funcao.SA,
+            });
+
+            context.SaveChanges();
+
+            #endregion
+
+            #region Inserts Empresa
 
             context.Add(new Empresa
             {
                 Nome = "Everis é com e minúsculo",
                 Segmento = TipoSegmento.Banking
             });
+
+            #endregion
+
+            #region Inserts Pesoa
+
+
+            context.Add(new Pessoa
+            {
+                Nome = "David Rezende Torres",
+                EmpresaId = 1,
+                Tipo = TipoPessoa.Terceiro,
+                Email = "david@rezende.com",
+                ColaboradorId = 1
+            });
+
+            context.Add(new Pessoa
+            {
+                Nome = "Ricardo",
+                EmpresaId = 1,
+                Tipo = TipoPessoa.Colaborador,
+                Email = "ricardo@rossetti.com",
+                ColaboradorId = 1
+            });
+
+            context.Add(new Pessoa
+            {
+                Nome = "Nicholas",
+                EmpresaId = 1,
+                Tipo = TipoPessoa.Colaborador,
+                Email = "nicholas@torre.com",
+                ColaboradorId = 2
+            });
+
+            #endregion
+
+
+            #region Inserts Projeto
 
             context.Add(new Projeto
             {
@@ -40,39 +100,45 @@ namespace everis.SimpleProject.Data.EF.Context
                 CentroCusto = "EXTNÂOLEMBROORESTO112"
             });
 
-            context.Add(new Pessoa
-            {
-                Nome = "David Rezende Torres",
-                EmpresaId = 1,
-                Tipo = TipoPessoa.Terceiro,
-                Email = "david@rezende.com"
+            #endregion
+
+
+            #region Inserts Ferramentas
+
+            context.Add(new Ferramenta {
+                Descricao = "Visual Studio",
             });
 
-            context.Add(new Pessoa
+            context.Add(new Ferramenta
             {
-                Nome = "Ricardo",
-                EmpresaId = 1,
-                Tipo = TipoPessoa.Colaborador,
-                Email = "ricardo@rossetti.com"
-            }
-            
-            );
+                Descricao = "RTC",
+            });
+
+            context.Add(new Ferramenta
+            {
+                Descricao = "Angular",
+            });
+
+            context.Add(new Ferramenta
+            {
+                Descricao = "GIT",
+            });
+
+            context.Add(new Ferramenta
+            {
+                Descricao = "Confluence",
+            });
+
+            context.Add(new Ferramenta
+            {
+                Descricao = "Jira",
+            });
+
+            #endregion
 
             context.SaveChanges();
 
-            context.Add(new Colaborador
-            {
-                PessoaId = 2,
-                Disponivel = false,
-                EmailCorporativo = "ricardo@everis.com",
-                Funcional = 423947238,
-                Funcao = Funcao.SA,
-            });
 
-
-
-            context.SaveChanges();
         }
     }
 }
-

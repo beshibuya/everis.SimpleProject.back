@@ -27,7 +27,6 @@ namespace everis.SimpleProject.API
                 .AddJsonOptions(
                     op =>
                     {
-                        op.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
                         op.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                         op.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
                     }

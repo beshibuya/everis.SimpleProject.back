@@ -56,7 +56,7 @@ namespace everis.SimpleProject.API.Controllers
         }
 
         [HttpPut("[action]/{id}")]
-        public ActionResult Ativar([FromServices]IGenericService<T> svc, int id)
+        public virtual ActionResult Ativar([FromServices]IGenericService<T> svc, int id)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace everis.SimpleProject.API.Controllers
         }
 
         [HttpPut("[action]/{id}")]
-        public ActionResult Desativar([FromServices]IGenericService<T> svc, int id)
+        public virtual ActionResult Desativar([FromServices]IGenericService<T> svc, int id)
         {
             try
             {
@@ -102,7 +102,7 @@ namespace everis.SimpleProject.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult Remover([FromServices]IGenericService<T> svc, int id)
+        public virtual ActionResult Remover([FromServices]IGenericService<T> svc, int id)
         {
             try
             {
@@ -126,7 +126,7 @@ namespace everis.SimpleProject.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult Atualizar([FromServices]IGenericService<T> svc, [FromBody] T obj, int id)
+        public virtual ActionResult Atualizar([FromServices]IGenericService<T> svc, [FromBody] T obj, int id)
         {
             try
             {
@@ -149,8 +149,8 @@ namespace everis.SimpleProject.API.Controllers
             }
         }
 
-        [HttpPost("[action]")]
-        public ActionResult Adicionar([FromServices]IGenericService<T> svc, [FromBody] T obj)
+        [HttpPost]
+        public virtual ActionResult Adicionar([FromServices]IGenericService<T> svc, [FromBody] T obj)
         {
             try
             {
@@ -174,7 +174,7 @@ namespace everis.SimpleProject.API.Controllers
         }
 
         [HttpGet("[action]")]
-        public IActionResult BuscarPor([FromServices]IGenericService<T> svc, [FromBody]T obj)
+        public virtual IActionResult BuscarPor([FromServices]IGenericService<T> svc,T obj)
         {
             try
             {

@@ -18,11 +18,8 @@ namespace everis.SimpleProject.Application.Services
         {
             try
             {
-                var nomeToFind = filter?.Pessoa.Nome;
-                var result = repository.BuscarPor(b => b.Pessoa.Nome.Contains(
-                    string.IsNullOrEmpty(nomeToFind) ? b.Pessoa.Nome : nomeToFind
-                    ));
-                return result;
+             
+                return null;
             }
             catch (Exception ex)
             {

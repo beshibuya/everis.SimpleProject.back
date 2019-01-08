@@ -14,7 +14,9 @@ namespace everis.SimpleProject.Application.Services
 
         public override IEnumerable<Empresa> BuscarPor(Empresa filter)
         {
-            return null;
+            var nomeBusca = filter?.Nome;
+            var result = repository.BuscarPor(f => f.Nome.Contains(string.IsNullOrEmpty(nomeBusca) ? f.Nome : nomeBusca));
+            return result;
         }
     }
 }
