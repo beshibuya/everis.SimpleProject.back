@@ -23,7 +23,7 @@ namespace everis.SimpleProject.Application.Services
 
         public override IEnumerable<Projeto> ObterTodos()
         {
-            var res = ctx.Projetos.Include(i => i.ProjetosPessoas);
+            var res = ctx.Projetos.Include(i => i.ProjetosPessoas).Include(i => i.Changes);
             return res;
         }
 
