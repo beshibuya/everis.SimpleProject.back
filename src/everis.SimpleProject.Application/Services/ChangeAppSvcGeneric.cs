@@ -22,6 +22,7 @@ namespace everis.SimpleProject.Application.Services
                 var result = repository.BuscarPor(
                     b => (b.Descricao.Contains(string.IsNullOrEmpty(descricaoToFind) ? b.Descricao : descricaoToFind))
                     && (b.ProjetoId == (filter.ProjetoId == 0 ? b.ProjetoId : filter.ProjetoId))
+                    && b.Ativo == filter.Ativo
                     );
                 return result;
             }

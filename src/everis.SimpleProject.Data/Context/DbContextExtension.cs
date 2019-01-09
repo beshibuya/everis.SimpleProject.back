@@ -54,7 +54,7 @@ namespace everis.SimpleProject.Data.EF.Context
 
             #endregion
 
-            #region Inserts Pesoa
+            #region Inserts Pessoa
 
 
             context.Add(new Pessoa
@@ -105,6 +105,17 @@ namespace everis.SimpleProject.Data.EF.Context
                 EscopoProjeto = "Escopo teste",
                 QtdHorasServico1 = 1000,
                 Nome = "Projeto 2",
+                EmpresaId = 1,
+                DataPrevista = DateTime.Now.AddDays(7),
+                CentroCusto = "EXTNÂOLEMBROORESTO112"
+            });
+
+            context.Add(new Projeto
+            {
+                DataInicio = DateTime.Now,
+                EscopoProjeto = "Escopo teste",
+                QtdHorasServico1 = 1000,
+                Nome = "Projeto 3",
                 EmpresaId = 1,
                 DataPrevista = DateTime.Now.AddDays(7),
                 CentroCusto = "EXTNÂOLEMBROORESTO112"
@@ -178,6 +189,28 @@ namespace everis.SimpleProject.Data.EF.Context
                 ProjetoId = 2,
                 QtdHorasServico1 = 0,
                 QtdHorasServico2 = 0,
+                QtdHorasServico3 = 59,
+                Ativo = true
+            });
+
+            context.Add(new Change
+            {
+                Descricao = "Change 4",
+                DataHoraCadastro = DateTime.Now,
+                ProjetoId = 2,
+                QtdHorasServico1 = 5,
+                QtdHorasServico2 = 3,
+                QtdHorasServico3 = 59,
+                Ativo = true
+            });
+
+            context.Add(new Change
+            {
+                Descricao = "Change 5",
+                DataHoraCadastro = DateTime.Now,
+                ProjetoId = 3,
+                QtdHorasServico1 = 544,
+                QtdHorasServico2 = 33,
                 QtdHorasServico3 = 59,
                 Ativo = true
             });
