@@ -155,8 +155,8 @@ namespace everis.SimpleProject.Data.EF.Context
                 DataHoraCadastro = DateTime.Now,
                 ProjetoId = 1,
                 QtdHorasServico1 = 13,
-                QtdHorasServico2 = 0,
-                QtdHorasServico3 = 5,
+                QtdHorasServico2 = 2,
+                QtdHorasServico3 = 34,
                 Ativo = true
             });
 
@@ -165,9 +165,9 @@ namespace everis.SimpleProject.Data.EF.Context
                 Descricao = "Change 2",
                 DataHoraCadastro = DateTime.Now,
                 ProjetoId = 1,
-                QtdHorasServico1 = 13,
+                QtdHorasServico1 = 344,
                 QtdHorasServico2 = 0,
-                QtdHorasServico3 = 5,
+                QtdHorasServico3 = 0,
                 Ativo = true
             });
 
@@ -176,9 +176,9 @@ namespace everis.SimpleProject.Data.EF.Context
                 Descricao = "Change 3",
                 DataHoraCadastro = DateTime.Now,
                 ProjetoId = 2,
-                QtdHorasServico1 = 13,
+                QtdHorasServico1 = 0,
                 QtdHorasServico2 = 0,
-                QtdHorasServico3 = 5,
+                QtdHorasServico3 = 59,
                 Ativo = true
             });
 
