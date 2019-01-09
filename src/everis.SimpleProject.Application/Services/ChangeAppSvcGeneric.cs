@@ -1,12 +1,13 @@
 ﻿using everis.SimpleProject.Data.EF;
 using everis.SimpleProject.Data.EF.Repositories;
 using everis.SimpleProject.Domain.Models;
+using everis.SimpleProject.Domain.Services;
 using System;
 using System.Collections.Generic;
 
 namespace everis.SimpleProject.Application.Services
 {
-    public class ChangeAppSvcGeneric : GenericService<Change>
+    public class ChangeAppSvcGeneric : GenericService<Change>, IChangeService
     {
         public ChangeAppSvcGeneric(AppDbContext context) : base(context)
         {
@@ -17,11 +18,26 @@ namespace everis.SimpleProject.Application.Services
         {
             try
             {
-                var nomeToFind = filter.Projeto?.Nome ;
+                var descricaoToFind = filter.Descricao ;
                 var result = repository.BuscarPor(
-                    b => (b.Projeto.Nome.Contains(string.IsNullOrEmpty(nomeToFind) ? b.Projeto.Nome : nomeToFind))
+                    b => (b.Descricao.Contains(string.IsNullOrEmpty(descricaoToFind) ? b.Descricao : descricaoToFind))
                     && (b.ProjetoId == (filter.ProjetoId == 0 ? b.ProjetoId : filter.ProjetoId))
                     );
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public IEnumerable<Change> ObterListaPorId(Change filter)
+        {
+            try
+            {
+                var nomeToFind = filter.Projeto?.Nome;
+                var result = repository.BuscarPor(
+                    b => (b.ProjetoId == (filter.ProjetoId == 0 ? b.ProjetoId : filter.ProjetoId)));
                 return result;
             }
             catch (Exception ex)

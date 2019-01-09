@@ -13,6 +13,7 @@ namespace everis.SimpleProject.API.Config
         {
             services.AddTransient<IGenericService<Anexo>, AnexoAppSvcGeneric>();
             services.AddTransient<IGenericService<Change>, ChangeAppSvcGeneric>();
+            services.AddTransient<IChangeService, ChangeAppSvcGeneric>();
             services.AddTransient<IGenericService<Colaborador>, ColaboradorAppSvcGeneric>();
             services.AddTransient<IGenericService<Empresa>, EmpresaAppSvcGeneric>();
             services.AddTransient<IGenericService<EsforcoProjeto>, EsforcoProjetoAppSvcGeneric>();
@@ -24,6 +25,7 @@ namespace everis.SimpleProject.API.Config
             services.AddTransient<IGenericService<Usuario>, UsuarioAppSvcGeneric>();
             services.AddTransient<IGenericService<AcessoFerramenta>, AcessoFerramentaAppSvcGeneric>();
             services.AddTransient<IGenericService<Ferramenta>, FerramentaAppSvcGeneric>();
+            
         }
     }
 }
