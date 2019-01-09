@@ -86,7 +86,6 @@ namespace everis.SimpleProject.Data.EF.Context
 
             #endregion
 
-
             #region Inserts Projeto
 
             context.Add(new Projeto
@@ -94,7 +93,18 @@ namespace everis.SimpleProject.Data.EF.Context
                 DataInicio = DateTime.Now,
                 EscopoProjeto = "Escopo teste",
                 QtdHorasServico1 = 1000,
-                Nome = "Simple Process",
+                Nome = "Projeto 1",
+                EmpresaId = 1,
+                DataPrevista = DateTime.Now.AddDays(7),
+                CentroCusto = "EXTNÂOLEMBROORESTO112"
+            });
+
+            context.Add(new Projeto
+            {
+                DataInicio = DateTime.Now,
+                EscopoProjeto = "Escopo teste",
+                QtdHorasServico1 = 1000,
+                Nome = "Projeto 2",
                 EmpresaId = 1,
                 DataPrevista = DateTime.Now.AddDays(7),
                 CentroCusto = "EXTNÂOLEMBROORESTO112"
@@ -102,6 +112,7 @@ namespace everis.SimpleProject.Data.EF.Context
 
             #endregion
 
+            context.SaveChanges();
 
             #region Inserts Ferramentas
 
@@ -132,6 +143,43 @@ namespace everis.SimpleProject.Data.EF.Context
             context.Add(new Ferramenta
             {
                 Descricao = "Jira",
+            });
+
+            #endregion
+
+            #region Inserts Change
+
+            context.Add(new Change
+            {
+                Descricao = "Change 1",
+                DataHoraCadastro = DateTime.Now,
+                ProjetoId = 1,
+                QtdHorasServico1 = 13,
+                QtdHorasServico2 = 0,
+                QtdHorasServico3 = 5,
+                Ativo = true
+            });
+
+            context.Add(new Change
+            {
+                Descricao = "Change 2",
+                DataHoraCadastro = DateTime.Now,
+                ProjetoId = 1,
+                QtdHorasServico1 = 13,
+                QtdHorasServico2 = 0,
+                QtdHorasServico3 = 5,
+                Ativo = true
+            });
+
+            context.Add(new Change
+            {
+                Descricao = "Change 3",
+                DataHoraCadastro = DateTime.Now,
+                ProjetoId = 2,
+                QtdHorasServico1 = 13,
+                QtdHorasServico2 = 0,
+                QtdHorasServico3 = 5,
+                Ativo = true
             });
 
             #endregion
