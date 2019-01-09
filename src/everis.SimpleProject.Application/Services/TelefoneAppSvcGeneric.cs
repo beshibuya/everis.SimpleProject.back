@@ -1,6 +1,7 @@
 ﻿using everis.SimpleProject.Data.EF;
 using everis.SimpleProject.Data.EF.Repositories;
 using everis.SimpleProject.Domain.Models;
+using System;
 using System.Collections.Generic;
 
 namespace everis.SimpleProject.Application.Services
@@ -14,7 +15,18 @@ namespace everis.SimpleProject.Application.Services
 
         public override IEnumerable<Telefone> BuscarPor(Telefone filter)
         {
-            return null;
+            try
+            {
+                var result = repository.BuscarPor(
+                    b => (b.PessoaId == (filter.PessoaId == 0 ? b.PessoaId : filter.PessoaId))
+                    );
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
     }
 }

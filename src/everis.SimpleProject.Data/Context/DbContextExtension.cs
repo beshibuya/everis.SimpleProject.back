@@ -63,7 +63,7 @@ namespace everis.SimpleProject.Data.EF.Context
                 EmpresaId = 1,
                 Tipo = TipoPessoa.Terceiro,
                 Email = "david@rezende.com",
-                ColaboradorId = 1
+                ColaboradorId = null
             });
 
             context.Add(new Pessoa
