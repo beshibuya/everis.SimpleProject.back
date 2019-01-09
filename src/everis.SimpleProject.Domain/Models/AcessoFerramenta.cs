@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace everis.SimpleProject.Domain.Models
+﻿namespace everis.SimpleProject.Domain.Models
 {
     public class AcessoFerramenta : Entity
     {
