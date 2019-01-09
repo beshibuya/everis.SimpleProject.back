@@ -31,24 +31,6 @@ namespace everis.SimpleProject.Application.Services
             }
         }
 
-        //public override IEnumerable<Change> BuscarPor(Change filter)
-        //{
-        //    try
-        //    {
-        //        var nomeToFind = filter.Projeto?.Nome;
-        //        var result = repository.BuscarPor(
-        //            b => (b.Projeto.Nome.Contains(string.IsNullOrEmpty(nomeToFind) ? b.Projeto.Nome : nomeToFind))
-        //            && (b.ProjetoId == (filter.ProjetoId == 0 ? b.ProjetoId : filter.ProjetoId))
-        //            );
-        //        return result;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
-
-
         public IEnumerable<Change> ObterListaPorId(Change filter)
         {
             try
