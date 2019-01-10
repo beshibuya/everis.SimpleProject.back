@@ -48,7 +48,13 @@ namespace everis.SimpleProject.Data.EF.Context
 
             context.Add(new Empresa
             {
-                Nome = "Everis é com e minúsculo",
+                Nome = "empresa 1",
+                Segmento = TipoSegmento.Banking
+            });
+
+            context.Add(new Empresa
+            {
+                Nome = "empresa 2",
                 Segmento = TipoSegmento.Banking
             });
 
@@ -105,17 +111,6 @@ namespace everis.SimpleProject.Data.EF.Context
                 EscopoProjeto = "Escopo teste",
                 QtdHorasServico1 = 1000,
                 Nome = "Projeto 2",
-                EmpresaId = 1,
-                DataPrevista = DateTime.Now.AddDays(7),
-                CentroCusto = "EXTNÂOLEMBROORESTO112"
-            });
-
-            context.Add(new Projeto
-            {
-                DataInicio = DateTime.Now,
-                EscopoProjeto = "Escopo teste",
-                QtdHorasServico1 = 1000,
-                Nome = "Projeto 3",
                 EmpresaId = 1,
                 DataPrevista = DateTime.Now.AddDays(7),
                 CentroCusto = "EXTNÂOLEMBROORESTO112"
@@ -186,7 +181,7 @@ namespace everis.SimpleProject.Data.EF.Context
             {
                 Descricao = "Change 3",
                 DataHoraCadastro = DateTime.Now,
-                ProjetoId = 2,
+                ProjetoId = 1,
                 QtdHorasServico1 = 0,
                 QtdHorasServico2 = 0,
                 QtdHorasServico3 = 59,
@@ -208,7 +203,7 @@ namespace everis.SimpleProject.Data.EF.Context
             {
                 Descricao = "Change 5",
                 DataHoraCadastro = DateTime.Now,
-                ProjetoId = 3,
+                ProjetoId = 2,
                 QtdHorasServico1 = 544,
                 QtdHorasServico2 = 33,
                 QtdHorasServico3 = 59,
