@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
-    public partial class RecriarFks : Migration
+    public partial class MigracaoInicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,7 +47,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Ferramenta",
+                name: "Ferramentas",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -58,7 +58,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Ferramenta", x => x.Id);
+                    table.PrimaryKey("PK_Ferramentas", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -153,7 +153,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AcessoFerramenta",
+                name: "AcessoFerramentas",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -166,17 +166,17 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AcessoFerramenta", x => x.Id);
+                    table.PrimaryKey("PK_AcessoFerramentas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AcessoFerramenta_Colaboradors_ColaboradorId",
+                        name: "FK_AcessoFerramentas_Colaboradors_ColaboradorId",
                         column: x => x.ColaboradorId,
                         principalTable: "Colaboradors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_AcessoFerramenta_Ferramenta_FerramentaId",
+                        name: "FK_AcessoFerramentas_Ferramentas_FerramentaId",
                         column: x => x.FerramentaId,
-                        principalTable: "Ferramenta",
+                        principalTable: "Ferramentas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -331,13 +331,13 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AcessoFerramenta_ColaboradorId",
-                table: "AcessoFerramenta",
+                name: "IX_AcessoFerramentas_ColaboradorId",
+                table: "AcessoFerramentas",
                 column: "ColaboradorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AcessoFerramenta_FerramentaId",
-                table: "AcessoFerramenta",
+                name: "IX_AcessoFerramentas_FerramentaId",
+                table: "AcessoFerramentas",
                 column: "FerramentaId");
 
             migrationBuilder.CreateIndex(
@@ -394,7 +394,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AcessoFerramenta");
+                name: "AcessoFerramentas");
 
             migrationBuilder.DropTable(
                 name: "Anexos");
@@ -415,7 +415,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 name: "Usuarios");
 
             migrationBuilder.DropTable(
-                name: "Ferramenta");
+                name: "Ferramentas");
 
             migrationBuilder.DropTable(
                 name: "ProjetoPessoas");
