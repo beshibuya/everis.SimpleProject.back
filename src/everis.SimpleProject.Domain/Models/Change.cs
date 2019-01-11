@@ -2,7 +2,7 @@
 
 namespace everis.SimpleProject.Domain.Models
 {
-    public class Change : Entity
+    public class SolicitacaoMudanca : Entity
     {
         public string Descricao { get; set; }
         public DateTime DataHoraCadastro { get; set; }
@@ -14,10 +14,10 @@ namespace everis.SimpleProject.Domain.Models
 
         public override void MergeFrom(object other)
         {
-            Descricao = ((Change)other).Descricao;
-            QtdHorasServico1 = ((Change)other).QtdHorasServico1;
-            QtdHorasServico2 = ((Change)other).QtdHorasServico2;
-            QtdHorasServico3 = ((Change)other).QtdHorasServico3;
+            Descricao = ((SolicitacaoMudanca)other).Descricao;
+            QtdHorasServico1 = ((SolicitacaoMudanca)other).QtdHorasServico1;
+            QtdHorasServico2 = ((SolicitacaoMudanca)other).QtdHorasServico2;
+            QtdHorasServico3 = ((SolicitacaoMudanca)other).QtdHorasServico3;
 
         }
     }

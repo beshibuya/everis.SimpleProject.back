@@ -12,11 +12,11 @@ namespace everis.SimpleProject.Application.Services
 {
     public class ProjetoAppSvcGeneric : GenericService<Projeto>, IProjetoService
     {
-        readonly IGenericRepository<Change> repChanges;
+        readonly IGenericRepository<SolicitacaoMudanca> repChanges;
         public ProjetoAppSvcGeneric(AppDbContext context) : base(context)
         {
             repository = new GenericRepository<Projeto>(context);
-            repChanges = new GenericRepository<Change>(context);
+            repChanges = new GenericRepository<SolicitacaoMudanca>(context);
         }
 
         public override Projeto ObterPorId(int id)

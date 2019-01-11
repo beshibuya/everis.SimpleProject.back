@@ -7,14 +7,14 @@ using System.Collections.Generic;
 
 namespace everis.SimpleProject.Application.Services
 {
-    public class ChangeAppSvcGeneric : GenericService<Change>, IChangeService
+    public class SolicitacaoMudancaAppSvcGeneric : GenericService<SolicitacaoMudanca>, ISolicitacaoMudancaService
     {
-        public ChangeAppSvcGeneric(AppDbContext context) : base(context)
+        public SolicitacaoMudancaAppSvcGeneric(AppDbContext context) : base(context)
         {
-            repository = new GenericRepository<Change>(context);
+            repository = new GenericRepository<SolicitacaoMudanca>(context);
         }
 
-        public override IEnumerable<Change> BuscarPor(Change filter)
+        public override IEnumerable<SolicitacaoMudanca> BuscarPor(SolicitacaoMudanca filter)
         {
             try
             {
@@ -32,7 +32,7 @@ namespace everis.SimpleProject.Application.Services
             }
         }
 
-        public IEnumerable<Change> ObterListaPorId(Change filter)
+        public IEnumerable<SolicitacaoMudanca> ObterListaPorId(SolicitacaoMudanca filter)
         {
             try
             {
