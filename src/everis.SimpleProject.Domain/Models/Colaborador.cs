@@ -17,7 +17,6 @@ namespace everis.SimpleProject.Domain.Models
         public Perfil Perfil { get; set; }
         public bool Disponivel { get; set; }
         public string Senha { get; set; }
-        public string token { get; set; }
 
         public Colaborador()
         {
