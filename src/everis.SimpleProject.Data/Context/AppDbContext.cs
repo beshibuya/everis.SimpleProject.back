@@ -11,7 +11,7 @@ namespace everis.SimpleProject.Data.EF
         #region DBSets
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Anexo> Anexos { get; set; }
-        public DbSet<Change> Changes { get; set; }
+        public DbSet<SolicitacaoMudanca> Changes { get; set; }
         public DbSet<Colaborador> Colaboradors { get; set; }
         public DbSet<Empresa> Empresas { get; set; }
         public DbSet<Fase> Fases { get; set; }

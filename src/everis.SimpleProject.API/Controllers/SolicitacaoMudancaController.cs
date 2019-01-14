@@ -6,10 +6,10 @@ using System;
 
 namespace everis.SimpleProject.API.Controllers
 {
-    public class ChangeController : BaseController<Change>
+    public class SolicitacaoMudancaController : BaseController<SolicitacaoMudanca>
     {
         [HttpGet("[action]")]
-        public virtual IActionResult BuscarListaPorId([FromServices]IChangeService svc, Change obj)
+        public virtual IActionResult BuscarListaPorId([FromServices]ISolicitacaoMudancaService svc, SolicitacaoMudanca obj)
         {
             try
             {

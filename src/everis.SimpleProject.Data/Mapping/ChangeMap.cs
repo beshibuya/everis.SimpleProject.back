@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace everis.SimpleProject.Data.EF.Mapping
 {
-    public class ChangeMap : BaseMapping<Change>
+    public class ChangeMap : BaseMapping<SolicitacaoMudanca>
     {
-        public override void Configure(EntityTypeBuilder<Change> builder)
+        public override void Configure(EntityTypeBuilder<SolicitacaoMudanca> builder)
         {
 
             base.Configure(builder);

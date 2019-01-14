@@ -155,7 +155,7 @@ namespace everis.SimpleProject.Data.EF.Context
 
             #region Inserts Change
 
-            context.Add(new Change
+            context.Add(new SolicitacaoMudanca
             {
                 Descricao = "Change 1",
                 DataHoraCadastro = DateTime.Now,
@@ -166,7 +166,7 @@ namespace everis.SimpleProject.Data.EF.Context
                 Ativo = true
             });
 
-            context.Add(new Change
+            context.Add(new SolicitacaoMudanca
             {
                 Descricao = "Change 2",
                 DataHoraCadastro = DateTime.Now,
@@ -177,7 +177,7 @@ namespace everis.SimpleProject.Data.EF.Context
                 Ativo = true
             });
 
-            context.Add(new Change
+            context.Add(new SolicitacaoMudanca
             {
                 Descricao = "Change 3",
                 DataHoraCadastro = DateTime.Now,
@@ -188,7 +188,7 @@ namespace everis.SimpleProject.Data.EF.Context
                 Ativo = true
             });
 
-            context.Add(new Change
+            context.Add(new SolicitacaoMudanca
             {
                 Descricao = "Change 4",
                 DataHoraCadastro = DateTime.Now,
@@ -199,7 +199,7 @@ namespace everis.SimpleProject.Data.EF.Context
                 Ativo = true
             });
 
-            context.Add(new Change
+            context.Add(new SolicitacaoMudanca
             {
                 Descricao = "Change 5",
                 DataHoraCadastro = DateTime.Now,
