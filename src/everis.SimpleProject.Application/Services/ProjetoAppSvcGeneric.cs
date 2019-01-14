@@ -12,11 +12,13 @@ namespace everis.SimpleProject.Application.Services
 {
     public class ProjetoAppSvcGeneric : GenericService<Projeto>, IProjetoService
     {
+        readonly IGenericRepository<Fase> repFase;
         readonly IGenericRepository<Change> repChanges;
         public ProjetoAppSvcGeneric(AppDbContext context) : base(context)
         {
             repository = new GenericRepository<Projeto>(context);
             repChanges = new GenericRepository<Change>(context);
+            repFase = new GenericRepository<Fase>(context);
         }
 
         public override Projeto ObterPorId(int id)
@@ -36,7 +38,7 @@ namespace everis.SimpleProject.Application.Services
             {
                 var nomeToFind = filter?.Nome;
                 var result = repository.BuscarPor(b => b.Nome.Contains(
-                    string.IsNullOrEmpty(nomeToFind) ? b.Nome: nomeToFind
+                    string.IsNullOrEmpty(nomeToFind) ? b.Nome : nomeToFind
                     ));
                 return result;
             }
@@ -60,7 +62,7 @@ namespace everis.SimpleProject.Application.Services
                 select pj
                 ).ToList();
             var lstResult = new List<dynamic>();
-            foreach(var p in lstProjeto)
+            foreach (var p in lstProjeto)
             {
                 lstResult.Add(new
                 {
@@ -69,6 +71,25 @@ namespace everis.SimpleProject.Application.Services
                 });
             }
             return lstResult;
+        }
+
+        public IEnumerable<dynamic> ListarProjetosComFase(Projeto filtro)
+        {
+            var nomeFind = filtro?.Nome;
+            var data = (from ep in ctx.Fases
+                        join pp in ctx.ProjetoPessoas.Include(i => i.Projeto).Include(i => i.Pessoa)
+                            on ep.ProjetoPessoaId equals pp.Id
+                        select new
+                        {
+                            pp.ProjetoId,
+                            NomeProjeto = pp.Projeto.Nome,
+                            pp.Pessoa,
+                            ep.DataInicio,
+                            ep.DataFim,
+                            ep.QtdHorasDia
+                        }).Where(pp => pp.ProjetoId == filtro.Id).ToList();
+
+            return data;
         }
     }
 }

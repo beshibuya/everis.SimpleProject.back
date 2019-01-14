@@ -212,6 +212,25 @@ namespace everis.SimpleProject.Data.EF.Context
 
             #endregion
 
+            #region Inserts Tipo Fase
+
+            context.Add(new TipoFase
+            {
+                Nome = "Idle"
+            });
+
+            context.Add(new TipoFase
+            {
+                Nome = "Overhead"
+            });
+
+            context.Add(new TipoFase
+            {
+                Nome = "Trabalhado"
+            });
+
+            #endregion
+
             context.SaveChanges();
 
 

@@ -6,14 +6,14 @@ using System.Collections.Generic;
 
 namespace everis.SimpleProject.Application.Services
 {
-    public class EsforcoProjetoAppSvcGeneric : GenericService<EsforcoProjeto>
+    public class FaseAppSvcGeneric : GenericService<Fase>
     {
-        public EsforcoProjetoAppSvcGeneric(DbContext context) : base(context)
+        public FaseAppSvcGeneric(DbContext context) : base(context)
         {
-            repository = new GenericRepository<EsforcoProjeto>(context);
+            repository = new GenericRepository<Fase>(context);
         }
 
-        public override IEnumerable<EsforcoProjeto> BuscarPor(EsforcoProjeto filter)
+        public override IEnumerable<Fase> BuscarPor(Fase filter)
         {
             try
             {
