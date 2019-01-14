@@ -1,21 +1,22 @@
 ﻿using everis.SimpleProject.Domain.Models;
+using everis.SimpleProject.Domain.Service;
 using everis.SimpleProject.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
 namespace everis.SimpleProject.API.Controllers
 {
-    public class EsforcoProjetoController : BaseController<EsforcoProjeto>
+    public class SolicitacaoMudancaController : BaseController<SolicitacaoMudanca>
     {
         [HttpGet("[action]")]
-        public IActionResult BuscarPor([FromServices]IEsforcoProjetoService svc, [FromBody]EsforcoProjeto obj)
+        public virtual IActionResult BuscarListaPorId([FromServices]ISolicitacaoMudancaService svc, SolicitacaoMudanca obj)
         {
             try
             {
                 var retorno = new Retorno()
                 {
                     Codigo = 200,
-                    Data = svc.BuscarPor(obj)
+                    Data = svc.ObterListaPorId(obj)
                 };
                 return Ok(retorno);
 
@@ -29,6 +30,5 @@ namespace everis.SimpleProject.API.Controllers
                 });
             }
         }
-
     }
 }

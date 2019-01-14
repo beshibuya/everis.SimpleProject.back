@@ -2,8 +2,7 @@
 
 namespace everis.SimpleProject.API.Controllers
 {
-    public class AnexoController : BaseController<Anexo>
+    public class TipoFaseController : BaseController<TipoFase>
     {
-       
     }
 }

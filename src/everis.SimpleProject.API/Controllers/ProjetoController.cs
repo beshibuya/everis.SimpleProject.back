@@ -8,14 +8,14 @@ namespace everis.SimpleProject.API.Controllers
     public class ProjetoController : BaseController<Projeto>
     {
         [HttpGet("[action]")]
-        public IActionResult BuscarPor([FromServices]IProjetoService svc, [FromBody]Projeto obj)
+        public IActionResult ListarProjetoComChanges([FromServices]IProjetoService svc, Projeto filtro)
         {
             try
             {
                 var retorno = new Retorno()
                 {
                     Codigo = 200,
-                    Data = svc.BuscarPor(obj)
+                    Data = svc.ListarProjetosComChange(filtro)
                 };
                 return Ok(retorno);
 
@@ -29,6 +29,5 @@ namespace everis.SimpleProject.API.Controllers
                 });
             }
         }
-
     }
 }

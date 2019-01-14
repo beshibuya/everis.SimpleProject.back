@@ -1,9 +1,7 @@
 ﻿using everis.SimpleProject.Data.EF;
+using everis.SimpleProject.Data.EF.Repositories;
 using everis.SimpleProject.Domain.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace everis.SimpleProject.Application.Services
 {
@@ -11,11 +9,17 @@ namespace everis.SimpleProject.Application.Services
     {
         public EmpresaAppSvcGeneric(AppDbContext context) : base(context)
         {
+            repository = new GenericRepository<Empresa>(context);
         }
 
         public override IEnumerable<Empresa> BuscarPor(Empresa filter)
         {
-            return null;
+            var nomeBusca = filter?.Nome;
+            var result = repository.BuscarPor(f => f.Nome.Contains(string.IsNullOrEmpty(nomeBusca) ? f.Nome : nomeBusca)
+            && f.Ativo == filter.Ativo
+            );
+                
+            return result;
         }
     }
 }

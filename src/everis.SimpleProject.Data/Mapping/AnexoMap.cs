@@ -6,7 +6,7 @@ namespace everis.SimpleProject.Data.EF.Mapping
 {
     public class AnexoMap : BaseMapping<Anexo>
     {
-        public void Configure(EntityTypeBuilder<Anexo> builder)
+        public override void Configure(EntityTypeBuilder<Anexo> builder)
         {
             base.Configure(builder);
             builder.Property(c => c.Descricao).IsRequired();
@@ -14,7 +14,7 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.Tipo).IsRequired();
             builder.Property(c => c.ProjetoId).IsRequired();
             builder.Property(c => c.DataInativacao);
-            builder.HasOne(o => o.Projeto).WithMany().HasForeignKey().OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(o => o.Projeto).WithMany().HasForeignKey(f => f.ProjetoId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

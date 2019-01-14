@@ -7,5 +7,9 @@
         public string Mensagem { get; set; }
         public dynamic Data{ get; set; }
 
+        public Retorno()
+        {
+            Sucesso = true;
+        }
     }
 }

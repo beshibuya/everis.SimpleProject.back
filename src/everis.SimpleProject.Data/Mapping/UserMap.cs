@@ -5,7 +5,7 @@ namespace everis.SimpleProject.Data.EF.Mapping
 {
     public class UserMap : BaseMapping<Usuario>
     {
-        public void Configure(EntityTypeBuilder<Usuario> builder)
+        public override void Configure(EntityTypeBuilder<Usuario> builder)
         {
             base.Configure(builder);
             builder.Property(c => c.NomeUsuario).IsRequired();

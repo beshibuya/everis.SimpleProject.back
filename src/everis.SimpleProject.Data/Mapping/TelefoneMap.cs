@@ -7,13 +7,12 @@ namespace everis.SimpleProject.Data.EF.Mapping
 
     public class TelefoneMap : BaseMapping<Telefone>
     {
-        public void Configure(EntityTypeBuilder<Telefone> builder)
+        public override void Configure(EntityTypeBuilder<Telefone> builder)
         {
             base.Configure(builder);
             builder.Property(c => c.NumeroTelefone).IsRequired();
             builder.Property(c => c.TipoTelefone).IsRequired();
-            builder.Property(c => c.PessoaId).IsRequired();
-            builder.HasOne(o=>o.Pessoa).WithMany().HasForeignKey().OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(o => o.Pessoa).WithMany(o => o.Telefones).IsRequired().OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

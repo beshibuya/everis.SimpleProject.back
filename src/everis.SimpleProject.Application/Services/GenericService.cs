@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using everis.SimpleProject.Data.EF;
 using everis.SimpleProject.Data.EF.Repositories;
 using everis.SimpleProject.Domain.Models;
 using everis.SimpleProject.Domain.Repositories;
 using everis.SimpleProject.Domain.Service;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 
 namespace everis.SimpleProject.Application.Services
@@ -14,6 +16,7 @@ namespace everis.SimpleProject.Application.Services
         protected IGenericRepository<T> repository;
         private readonly DbContext _context;
         protected AppDbContext ctx => _context as AppDbContext;
+
         public GenericService(DbContext context)
         {
             repository = new GenericRepository<T>(context);
@@ -62,6 +65,23 @@ namespace everis.SimpleProject.Application.Services
                 throw ex;
             }
         }
+
+        public virtual void Exportar(IEnumerable<T> listaFiltrada, List<string> camposExportar)
+        {
+            try
+            {
+                //var current = repository.ObterPorId(obj.Id);
+                //current.MergeFrom(obj);
+                //repository.Atualizar(current);
+                //repository.SaveChanges();
+                //return current;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         public virtual T Desativar(int id)
         {

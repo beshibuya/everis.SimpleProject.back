@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using everis.SimpleProject.Data.EF.Repositories;
+﻿using everis.SimpleProject.Data.EF.Repositories;
 using everis.SimpleProject.Domain.Models;
-using everis.SimpleProject.Domain.Services;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 
 namespace everis.SimpleProject.Application.Services
 {
-    public class EsforcoProjetoAppSvcGeneric : GenericService<EsforcoProjeto>, IEsforcoProjetoService
+    public class FaseAppSvcGeneric : GenericService<Fase>
     {
-        public EsforcoProjetoAppSvcGeneric(DbContext context) : base(context)
+        public FaseAppSvcGeneric(DbContext context) : base(context)
         {
-            repository = new GenericRepository<EsforcoProjeto>(context);
+            repository = new GenericRepository<Fase>(context);
         }
 
-        public override IEnumerable<EsforcoProjeto> BuscarPor(EsforcoProjeto filter)
+        public override IEnumerable<Fase> BuscarPor(Fase filter)
         {
             try
             {

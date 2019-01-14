@@ -7,15 +7,39 @@ namespace everis.SimpleProject.API.Controllers
 {
     public class ColaboradorController : BaseController<Colaborador>
     {
-        [HttpGet("[action]")]
-        public IActionResult BuscarPor([FromServices]IColaboradorService svc, [FromBody]Colaborador obj)
+        [HttpGet("[action]/{colaboradorId}")]
+        public IActionResult ListarFerramentasDisponiveis([FromServices]IColaboradorService svc, int colaboradorId)
         {
             try
             {
                 var retorno = new Retorno()
                 {
                     Codigo = 200,
-                    Data = svc.BuscarPor(obj)
+                    Data = svc.ListarFerramentasDisponiveis(colaboradorId)
+                };
+                return Ok(retorno);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new Retorno()
+                {
+                    Codigo = 500,
+                    Mensagem = ex.Message
+                });
+            }
+        }
+
+
+        [HttpGet("[action]/{colaboradorId}")]
+        public IActionResult ListarFerramentasAssociadas([FromServices]IColaboradorService svc, int colaboradorId)
+        {
+            try
+            {
+                var retorno = new Retorno()
+                {
+                    Codigo = 200,
+                    Data = svc.ListarFerramentasAssociadas(colaboradorId)
                 };
                 return Ok(retorno);
 

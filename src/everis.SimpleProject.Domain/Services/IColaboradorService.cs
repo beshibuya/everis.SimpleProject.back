@@ -5,6 +5,7 @@ namespace everis.SimpleProject.Domain.Services
 {
     public interface IColaboradorService
     {
-        IEnumerable<Colaborador> BuscarPor(Colaborador filter);
+        IEnumerable<Ferramenta> ListarFerramentasDisponiveis(int colaboradorId);
+        IEnumerable<Ferramenta> ListarFerramentasAssociadas(int colaboradorId);
     }
 }

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace everis.SimpleProject.Domain.Services
 {
-    public interface IEsforcoProjetoService
+    public interface ISolicitacaoMudancaService
     {
-        IEnumerable<EsforcoProjeto> BuscarPor(EsforcoProjeto filter);
+        IEnumerable<SolicitacaoMudanca> ObterListaPorId(SolicitacaoMudanca filtro);
     }
 }

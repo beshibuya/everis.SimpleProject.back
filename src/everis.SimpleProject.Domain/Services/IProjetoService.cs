@@ -5,6 +5,6 @@ namespace everis.SimpleProject.Domain.Services
 {
     public interface IProjetoService
     {
-        IEnumerable<Projeto> BuscarPor(Projeto filter);
+        IEnumerable<dynamic> ListarProjetosComChange(Projeto filtro);
     }
 }
