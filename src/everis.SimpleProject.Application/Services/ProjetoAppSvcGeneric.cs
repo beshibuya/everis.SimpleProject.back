@@ -34,9 +34,9 @@ namespace everis.SimpleProject.Application.Services
         {
             try
             {
-                var nomeToFind = filter?.Nome;
-                var result = repository.BuscarPor(b => b.Nome.Contains(
-                    string.IsNullOrEmpty(nomeToFind) ? b.Nome: nomeToFind
+                var projetoToFind = filter?.CodigoProjeto;
+                var result = repository.BuscarPor(b => b.CodigoProjeto.Contains(
+                    string.IsNullOrEmpty(projetoToFind) ? b.CodigoProjeto: projetoToFind
                     ));
                 return result;
             }

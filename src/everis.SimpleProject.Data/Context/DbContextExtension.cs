@@ -92,6 +92,35 @@ namespace everis.SimpleProject.Data.EF.Context
 
             #endregion
 
+            #region Inserts Status
+
+            context.Add(new Status
+            {
+                Codigo = "APR",
+                Descricao = "Em Aprovação"
+            });
+
+            context.Add(new Status
+            {
+                Codigo = "EXE",
+                Descricao = "Em Execução"
+            });
+
+            context.Add(new Status
+            {
+                Codigo = "CN",
+                Descricao = "Cancelado"
+            });
+
+            context.Add(new Status
+            {
+                Codigo = "CO",
+                Descricao = "Concluído"
+            });
+            #endregion
+
+            context.SaveChanges();
+
             #region Inserts Projeto
 
             context.Add(new Projeto
@@ -102,7 +131,9 @@ namespace everis.SimpleProject.Data.EF.Context
                 Nome = "Projeto 1",
                 EmpresaId = 1,
                 DataPrevista = DateTime.Now.AddDays(7),
-                CentroCusto = "EXTNÂOLEMBROORESTO112"
+                CentroCusto = "EXTNÂOLEMBROORESTO112",
+                CodigoProjeto = "1",
+                StatusId = 1
             });
 
             context.Add(new Projeto
@@ -113,11 +144,14 @@ namespace everis.SimpleProject.Data.EF.Context
                 Nome = "Projeto 2",
                 EmpresaId = 1,
                 DataPrevista = DateTime.Now.AddDays(7),
-                CentroCusto = "EXTNÂOLEMBROORESTO112"
+                CentroCusto = "EXTNÂOLEMBROORESTO112",
+                CodigoProjeto = "2",
+                StatusId = 1
             });
 
             #endregion
 
+            
             context.SaveChanges();
 
             #region Inserts Ferramentas

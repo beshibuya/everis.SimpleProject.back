@@ -22,6 +22,7 @@ namespace everis.SimpleProject.Data.EF
         public DbSet<Telefone> Telefones { get; set; }
         public DbSet<AcessoFerramenta> AcessoFerramentas { get; set; }
         public DbSet<Ferramenta> Ferramentas { get; set; }
+        public DbSet<Status> Status { get; set; }
 
         #endregion
 
