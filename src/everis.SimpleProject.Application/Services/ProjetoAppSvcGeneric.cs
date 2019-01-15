@@ -12,11 +12,13 @@ namespace everis.SimpleProject.Application.Services
 {
     public class ProjetoAppSvcGeneric : GenericService<Projeto>, IProjetoService
     {
+        readonly IGenericRepository<Fase> repFase;
         readonly IGenericRepository<SolicitacaoMudanca> repChanges;
         public ProjetoAppSvcGeneric(AppDbContext context) : base(context)
         {
             repository = new GenericRepository<Projeto>(context);
             repChanges = new GenericRepository<SolicitacaoMudanca>(context);
+            repFase = new GenericRepository<Fase>(context);
         }
 
         public override Projeto ObterPorId(int id)
@@ -60,7 +62,7 @@ namespace everis.SimpleProject.Application.Services
                 select pj
                 ).ToList();
             var lstResult = new List<dynamic>();
-            foreach(var p in lstProjeto)
+            foreach (var p in lstProjeto)
             {
                 lstResult.Add(new
                 {
@@ -69,6 +71,25 @@ namespace everis.SimpleProject.Application.Services
                 });
             }
             return lstResult;
+        }
+
+        public IEnumerable<dynamic> ListarProjetosComFase(Projeto filtro)
+        {
+            var nomeFind = filtro?.Nome;
+            var data = (from ep in ctx.Fases
+                        join pp in ctx.ProjetoPessoas.Include(i => i.Projeto).Include(i => i.Pessoa)
+                            on ep.ProjetoPessoaId equals pp.Id
+                        select new
+                        {
+                            pp.ProjetoId,
+                            NomeProjeto = pp.Projeto.Nome,
+                            pp.Pessoa,
+                            ep.DataInicio,
+                            ep.DataFim,
+                            ep.QtdHorasDia
+                        }).Where(pp => pp.ProjetoId == filtro.Id).ToList();
+
+            return data;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace everis.SimpleProject.Data.EF
         public DbSet<SolicitacaoMudanca> Changes { get; set; }
         public DbSet<Colaborador> Colaboradors { get; set; }
         public DbSet<Empresa> Empresas { get; set; }
-        public DbSet<EsforcoProjeto> EsforcoProjetos { get; set; }
+        public DbSet<Fase> Fases { get; set; }
         public DbSet<Pessoa> Pessoas { get; set; }
         public DbSet<Projeto> Projetos { get; set; }
         public DbSet<ProjetoPessoa> ProjetoPessoas { get; set; }
@@ -23,6 +23,7 @@ namespace everis.SimpleProject.Data.EF
         public DbSet<AcessoFerramenta> AcessoFerramentas { get; set; }
         public DbSet<Ferramenta> Ferramentas { get; set; }
         public DbSet<Status> Status { get; set; }
+        public DbSet<TipoFase> TiposFases { get; set; }
 
         #endregion
 

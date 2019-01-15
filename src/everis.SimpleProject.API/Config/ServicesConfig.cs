@@ -1,4 +1,5 @@
-﻿using everis.SimpleProject.Application.Services;
+﻿
+using everis.SimpleProject.Application.Services;
 using everis.SimpleProject.Domain.Models;
 using everis.SimpleProject.Domain.Service;
 using everis.SimpleProject.Domain.Services;
@@ -17,16 +18,21 @@ namespace everis.SimpleProject.API.Config
             services.AddTransient<IGenericService<Colaborador>, ColaboradorAppSvcGeneric>();
             services.AddTransient<IColaboradorService, ColaboradorAppSvcGeneric>();
             services.AddTransient<IGenericService<Empresa>, EmpresaAppSvcGeneric>();
-            services.AddTransient<IGenericService<EsforcoProjeto>, EsforcoProjetoAppSvcGeneric>();
+            services.AddTransient<IGenericService<Fase>, FaseAppSvcGeneric>();
             services.AddTransient<IGenericService<Pessoa>, PessoaAppSvcGeneric>();
             services.AddTransient<IGenericService<Projeto>, ProjetoAppSvcGeneric>();
             services.AddTransient<IProjetoService, ProjetoAppSvcGeneric>();
             services.AddTransient<IGenericService<ProjetoPessoa>, ProjetoPessoaAppSvcGeneric>();
             services.AddTransient<IGenericService<Telefone>, TelefoneAppSvcGeneric>();
             services.AddTransient<IGenericService<Usuario>, UsuarioAppSvcGeneric>();
-            services.AddTransient<IGenericService<AcessoFerramenta>, AcessoFerramentaAppSvcGeneric>();
-            services.AddTransient<IGenericService<Ferramenta>, FerramentaAppSvcGeneric>();
-            
+            services.AddTransient<IUserService, UsuarioAppSvcGeneric>();
+            services.AddTransient<IProjetoService, ProjetoAppSvcGeneric>();
+            services.AddTransient<IGenericService<Projeto>, ProjetoAppSvcGeneric>();
+            services.AddTransient<IGenericService<Pessoa>, PessoaAppSvcGeneric>();
+            services.AddTransient<IGenericService<Empresa>, EmpresaAppSvcGeneric>();
+            services.AddTransient<ILoginService, LoginAppSvcGeneric>();
+            services.AddTransient<IGenericService<Anexo>, AnexoAppSvcGeneric>();
+            services.AddTransient<IGenericService<Pessoa>, PessoaAppSvcGeneric>();
         }
     }
 }

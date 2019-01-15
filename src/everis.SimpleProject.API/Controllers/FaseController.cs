@@ -2,7 +2,7 @@
 
 namespace everis.SimpleProject.API.Controllers
 {
-    public class EsforcoProjetoController : BaseController<EsforcoProjeto>
+    public class FaseController : BaseController<Fase>
     {
     }
 }
