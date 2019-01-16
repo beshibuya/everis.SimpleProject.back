@@ -119,9 +119,7 @@ namespace everis.SimpleProject.Data.EF.Context
                 AreaContratanteId = 2,
                 PoloAcessoId = 1,
                 DiretoriaContratanteId = 3,
-                TipoServicoId = 1
-                Funcional = 423947238,
-                Funcao = Funcao.SA,
+                TipoServicoId = 1,
                 Senha = "1234"
             });
 
