@@ -306,7 +306,8 @@ namespace everis.SimpleProject.Data.EF.Context
                 QtdHorasServico1 = 13,
                 QtdHorasServico2 = 2,
                 QtdHorasServico3 = 34,
-                Ativo = true
+                Ativo = true,
+                PessoaId = 1
             });
 
             context.Add(new SolicitacaoMudanca
@@ -317,7 +318,8 @@ namespace everis.SimpleProject.Data.EF.Context
                 QtdHorasServico1 = 344,
                 QtdHorasServico2 = 0,
                 QtdHorasServico3 = 0,
-                Ativo = true
+                Ativo = true,
+                PessoaId = 1
             });
 
             context.Add(new SolicitacaoMudanca
@@ -328,7 +330,8 @@ namespace everis.SimpleProject.Data.EF.Context
                 QtdHorasServico1 = 0,
                 QtdHorasServico2 = 0,
                 QtdHorasServico3 = 59,
-                Ativo = true
+                Ativo = true,
+                PessoaId = 2
             });
 
             context.Add(new SolicitacaoMudanca
@@ -339,7 +342,8 @@ namespace everis.SimpleProject.Data.EF.Context
                 QtdHorasServico1 = 5,
                 QtdHorasServico2 = 3,
                 QtdHorasServico3 = 59,
-                Ativo = true
+                Ativo = true,
+                PessoaId = 2
             });
 
             context.Add(new SolicitacaoMudanca
@@ -350,7 +354,8 @@ namespace everis.SimpleProject.Data.EF.Context
                 QtdHorasServico1 = 544,
                 QtdHorasServico2 = 33,
                 QtdHorasServico3 = 59,
-                Ativo = true
+                Ativo = true,
+                PessoaId = 1
             });
 
             #endregion

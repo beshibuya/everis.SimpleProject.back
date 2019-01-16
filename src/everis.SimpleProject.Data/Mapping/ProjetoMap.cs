@@ -20,7 +20,6 @@ namespace everis.SimpleProject.Data.EF.Mapping
 
             builder.HasOne(o => o.Status).WithMany().HasForeignKey(f => f.StatusId).OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(o => o.Empresa).WithMany().HasForeignKey(f=>f.EmpresaId).OnDelete(DeleteBehavior.Restrict);
-            builder.HasMany(o => o.ProjetosPessoas).WithOne().HasForeignKey(f => f.PessoaId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

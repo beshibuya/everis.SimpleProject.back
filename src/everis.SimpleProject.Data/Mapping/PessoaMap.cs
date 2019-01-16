@@ -14,8 +14,6 @@ namespace everis.SimpleProject.Data.EF.Mapping
             //builder.Property(c => c.EmpresaId).IsRequired();
             //builder.HasOne(o => o.Colaborador);
             builder.Property(c => c.Sexo).IsRequired();
-            builder.HasMany(c => c.ProjetosPessoas).WithOne(x => x.Pessoa);
-            builder.HasMany(c => c.Telefones).WithOne(x => x.Pessoa);
             //builder.HasOne(o => o.Colaborador); //TODO: está linha não está causando duplicidade?
             //builder.HasOne(o => o.Colaborador).WithMany().HasForeignKey(f => f.ColaboradorId).OnDelete(DeleteBehavior.Restrict);
 

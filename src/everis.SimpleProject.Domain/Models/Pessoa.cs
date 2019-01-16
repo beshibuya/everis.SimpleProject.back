@@ -10,8 +10,6 @@ namespace everis.SimpleProject.Domain.Models
         public Colaborador Colaborador { get; set; }
         public int EmpresaId { get; set; }
         public Empresa Empresa { get; set; }
-        public List<ProjetoPessoa> ProjetosPessoas { get; set; }
-        public List<Telefone> Telefones { get; set; }
         public TipoPessoa Tipo { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
