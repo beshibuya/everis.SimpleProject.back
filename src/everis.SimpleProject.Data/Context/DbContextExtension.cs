@@ -29,7 +29,8 @@ namespace everis.SimpleProject.Data.EF.Context
                 Disponivel = false,
                 EmailCorporativo = "ricardo@everis.com",
                 Funcional = 423947238,
-                Funcao = Funcao.SA
+                Funcao = Funcao.SA,
+                Senha = "1234"
             });
 
             context.Add(new Colaborador

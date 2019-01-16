@@ -39,7 +39,7 @@ namespace everis.SimpleProject.Application.Services
                 var projetoToFind = filter?.CodigoProjeto;
                 var result = repository.BuscarPor(b => b.CodigoProjeto.Contains(
                     string.IsNullOrEmpty(projetoToFind) ? b.CodigoProjeto: projetoToFind
-                    ));
+                    ),i=>i.Status);
                 return result;
             }
             catch (Exception ex)
