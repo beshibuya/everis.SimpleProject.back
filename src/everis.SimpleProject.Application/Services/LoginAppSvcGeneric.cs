@@ -6,8 +6,7 @@ using everis.SimpleProject.Domain.Services;
 using System.Linq;
 using everis.SimpleProject.Data.EF;
 
-namespace everis.SimpleProject.Application.Services
-{
+namespace everis.SimpleProject.Application.Services {
     public class LoginAppSvcGeneric : GenericService<Colaborador>, ILoginService
     {
         public LoginAppSvcGeneric(AppDbContext context) : base(context)

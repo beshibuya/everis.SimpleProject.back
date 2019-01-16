@@ -4,9 +4,10 @@ namespace everis.SimpleProject.Domain.Models
 {
     public class Fase : Entity
     {
-   
-        public int ProjetoPessoaId { get; set; }
-        public ProjetoPessoa ProjetoPessoa { get; set; }
+        public int ProjetoId { get; set; }
+        public Projeto Projeto { get; set; }
+        public int PessoaId { get; set; }
+        public Pessoa Pessoa { get; set; }
         public int TipoFaseId { get; set; }
         public TipoFase TipoFase { get; set; }
         public short QtdHorasDia { get; set; }
@@ -18,9 +19,13 @@ namespace everis.SimpleProject.Domain.Models
 
         public override void MergeFrom(object other)
         {
+            TipoFaseId = ((Fase)other).TipoFaseId;
+            TipoFase = ((Fase)other).TipoFase;
             QtdHorasDia = ((Fase)other).QtdHorasDia;
             DataFim = ((Fase)other).DataFim;
             DataInicio = ((Fase)other).DataInicio;
+            Observacao = ((Fase)other).Observacao;
+            CodigoFase = ((Fase)other).CodigoFase;
         }
     }
 }

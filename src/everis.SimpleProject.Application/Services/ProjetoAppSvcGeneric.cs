@@ -36,9 +36,9 @@ namespace everis.SimpleProject.Application.Services
         {
             try
             {
-                var nomeToFind = filter?.Nome;
-                var result = repository.BuscarPor(b => b.Nome.Contains(
-                    string.IsNullOrEmpty(nomeToFind) ? b.Nome : nomeToFind
+                var projetoToFind = filter?.CodigoProjeto;
+                var result = repository.BuscarPor(b => b.CodigoProjeto.Contains(
+                    string.IsNullOrEmpty(projetoToFind) ? b.CodigoProjeto: projetoToFind
                     ));
                 return result;
             }
@@ -76,20 +76,44 @@ namespace everis.SimpleProject.Application.Services
         public IEnumerable<dynamic> ListarProjetosComFase(Projeto filtro)
         {
             var nomeFind = filtro?.Nome;
-            var data = (from ep in ctx.Fases
-                        join pp in ctx.ProjetoPessoas.Include(i => i.Projeto).Include(i => i.Pessoa)
-                            on ep.ProjetoPessoaId equals pp.Id
-                        select new
-                        {
-                            pp.ProjetoId,
-                            NomeProjeto = pp.Projeto.Nome,
-                            pp.Pessoa,
-                            ep.DataInicio,
-                            ep.DataFim,
-                            ep.QtdHorasDia
-                        }).Where(pp => pp.ProjetoId == filtro.Id).ToList();
-
-            return data;
+            var data = (from fa in ctx.Fases
+                        join pj in ctx.Projetos on fa.ProjetoId equals pj.Id
+                        select fa).ToList();
+            var lstProjeto = (
+               from d in data
+               group d by d.ProjetoId into g
+               join pj in ctx.Projetos on g.Key equals pj.Id
+               select pj
+               ).ToList();
+            var lstResult = new List<dynamic>();
+            foreach (var p in lstProjeto)
+            {
+                lstResult.Add(new
+                {
+                    projeto = p,
+                    fases = data.Where(w => w.ProjetoId == p.Id)
+                });
+            }
+            return lstResult;
         }
+
+        //public IEnumerable<dynamic> ListarProjetosComFase(Projeto filtro)
+        //{
+        //    var nomeFind = filtro?.Nome;
+        //    var data = (from ep in ctx.Fases
+        //                join pp in ctx.ProjetoPessoas.Include(i => i.Projeto).Include(i => i.Pessoa)
+        //                    on ep.ProjetoPessoaId equals pp.Id
+        //                select new
+        //                {
+        //                    pp.ProjetoId,
+        //                    NomeProjeto = pp.Projeto.Nome,
+        //                    pp.Pessoa,
+        //                    ep.DataInicio,
+        //                    ep.DataFim,
+        //                    ep.QtdHorasDia
+        //                }).Where(pp => pp.ProjetoId == filtro.Id).ToList();
+
+        //    return data;
+        //}
     }
 }
