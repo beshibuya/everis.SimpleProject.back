@@ -27,6 +27,9 @@ namespace everis.SimpleProject.Domain.Models
         public string CentroCusto { get; set; }
         public List<ProjetoPessoa> ProjetosPessoas { get; set; }
 
+        public int? SquadId { get; set; }
+        public Squad Squad { get; set; }
+
         public override void MergeFrom(object other)
         {
             Nome = ((Projeto)other).Nome;

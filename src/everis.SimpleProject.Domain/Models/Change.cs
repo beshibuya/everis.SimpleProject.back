@@ -12,6 +12,9 @@ namespace everis.SimpleProject.Domain.Models
         public int QtdHorasServico2 { get; set; }
         public int QtdHorasServico3 { get; set; }
 
+        public int PessoaId { get; set; }
+        public Pessoa Pessoa { get; set; }
+
         public override void MergeFrom(object other)
         {
             Descricao = ((SolicitacaoMudanca)other).Descricao;

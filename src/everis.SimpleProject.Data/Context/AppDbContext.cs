@@ -23,7 +23,9 @@ namespace everis.SimpleProject.Data.EF
         public DbSet<AcessoFerramenta> AcessoFerramentas { get; set; }
         public DbSet<Ferramenta> Ferramentas { get; set; }
         public DbSet<TipoFase> TiposFases { get; set; }
-
+        public DbSet<Squad> Squads { get; set; }
+        public DbSet<Comunidade> Comunidades { get; set; }
+        public DbSet<SquadPessoa> SquadPessoas { get; set; }
         #endregion
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
