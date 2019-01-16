@@ -24,6 +24,16 @@ namespace everis.SimpleProject.Data.EF
         public DbSet<Ferramenta> Ferramentas { get; set; }
         public DbSet<Status> Status { get; set; }
         public DbSet<TipoFase> TiposFases { get; set; }
+        public DbSet<Squad> Squads { get; set; }
+        public DbSet<Comunidade> Comunidades { get; set; }
+        public DbSet<SquadPessoa> SquadPessoas { get; set; }
+        public DbSet<AcessoSigla> AcessoSiglas { get; set; }
+        public DbSet<Sigla> Siglas { get; set; }
+        public DbSet<PoloAcesso> PoloAcessos { get; set; }
+        public DbSet<AreaContratante> AreasContratantes { get; set; }
+        public DbSet<DiretoriaContratante> DiretoriasContratantes { get; set; }
+        public DbSet<TipoServico> TipoServicos { get; set; }
+
 
         #endregion
 

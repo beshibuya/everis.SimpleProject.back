@@ -22,12 +22,104 @@ namespace everis.SimpleProject.Data.EF.Context
 
         public static void InitialSeed(this AppDbContext context)
         {
+
+
+            #region Inserts PoloAcesso
+
+            context.Add(new PoloAcesso {
+                Descricao = "Centro Tecnologico (CTO)"
+            });
+
+            context.Add(new PoloAcesso {
+                Descricao = "Centro Empresarial (CEIC)"
+            });
+
+            context.Add(new PoloAcesso {
+                Descricao = "ACESSO REMOTO"
+            });
+
+            #endregion
+
+            context.SaveChanges();
+
+            #region Inserts AreaContratante
+
+            context.Add(new AreaContratante {
+                Descricao = "SSRF"
+            });
+
+            context.Add(new AreaContratante {
+                Descricao = "SSFO"
+            });
+
+            context.Add(new AreaContratante {
+                Descricao = "SSPOA"
+            });
+
+            context.Add(new AreaContratante {
+                Descricao = "STIM"
+            });
+
+            context.Add(new AreaContratante {
+                Descricao = "SQT"
+            });
+
+            context.Add(new AreaContratante {
+                Descricao = "STIM"
+            });
+
+            #endregion
+
+            context.SaveChanges();
+
+            #region Inserts DiretoriaContratante
+
+            context.Add(new DiretoriaContratante {
+                Descricao = "DD"
+            });
+
+            context.Add(new DiretoriaContratante {
+                Descricao = "DESB"
+            });
+
+            context.Add(new DiretoriaContratante {
+                Descricao = "DCQPTI"
+            });
+
+            context.Add(new DiretoriaContratante {
+                Descricao = "DDS"
+            });
+
+
+            #endregion
+
+            context.SaveChanges();
+
+            #region Inserts TipoServico
+
+            context.Add(new TipoServico {
+                Descricao = "POOL"
+            });
+
+            context.Add(new TipoServico {
+                Descricao = "RFP(Consultoria)"
+            });
+
+            #endregion
+
+            context.SaveChanges();
+
             #region Inserts Colaborador
 
             context.Add(new Colaborador
             {
                 Disponivel = false,
                 EmailCorporativo = "ricardo@everis.com",
+                Funcao = Funcao.SA,
+                AreaContratanteId = 2,
+                PoloAcessoId = 1,
+                DiretoriaContratanteId = 3,
+                TipoServicoId = 1
                 Funcional = 423947238,
                 Funcao = Funcao.SA,
                 Senha = "1234"
@@ -37,8 +129,12 @@ namespace everis.SimpleProject.Data.EF.Context
             {
                 Disponivel = true,
                 EmailCorporativo = "nicholas@everis.com",
-                Funcional = 423947876,
                 Funcao = Funcao.SA,
+                AreaContratanteId = 1,
+                PoloAcessoId = 2,
+                DiretoriaContratanteId = 1,
+                TipoServicoId = 2
+
             });
 
             context.SaveChanges();
@@ -70,7 +166,9 @@ namespace everis.SimpleProject.Data.EF.Context
                 EmpresaId = 1,
                 Tipo = TipoPessoa.Terceiro,
                 Email = "david@rezende.com",
-                ColaboradorId = null
+                Funcional = 423947876,
+                ColaboradorId = null,
+                Sexo = "Masculino"
             });
 
             context.Add(new Pessoa
@@ -79,7 +177,10 @@ namespace everis.SimpleProject.Data.EF.Context
                 EmpresaId = 1,
                 Tipo = TipoPessoa.Colaborador,
                 Email = "ricardo@rossetti.com",
-                ColaboradorId = 1
+                ColaboradorId = 1,
+                Sexo = "Masculino",
+                Funcional = 544633677
+
             });
 
             context.Add(new Pessoa
@@ -88,7 +189,17 @@ namespace everis.SimpleProject.Data.EF.Context
                 EmpresaId = 1,
                 Tipo = TipoPessoa.Colaborador,
                 Email = "nicholas@torre.com",
-                ColaboradorId = 2
+                ColaboradorId = 2,
+                Sexo = "Masculino"
+            });
+
+            context.Add(new Pessoa {
+                Nome = "Maria das Dores",
+                EmpresaId = 1,
+                Tipo = TipoPessoa.Terceiro,
+                Email = "maria_das_dores@doeu.com",
+                ColaboradorId = 2,
+                Sexo = "Feminino",
             });
 
             #endregion
@@ -198,7 +309,8 @@ namespace everis.SimpleProject.Data.EF.Context
                 QtdHorasServico1 = 13,
                 QtdHorasServico2 = 2,
                 QtdHorasServico3 = 34,
-                Ativo = true
+                Ativo = true,
+                PessoaId = 1
             });
 
             context.Add(new SolicitacaoMudanca
@@ -209,7 +321,8 @@ namespace everis.SimpleProject.Data.EF.Context
                 QtdHorasServico1 = 344,
                 QtdHorasServico2 = 0,
                 QtdHorasServico3 = 0,
-                Ativo = true
+                Ativo = true,
+                PessoaId = 1
             });
 
             context.Add(new SolicitacaoMudanca
@@ -220,7 +333,8 @@ namespace everis.SimpleProject.Data.EF.Context
                 QtdHorasServico1 = 0,
                 QtdHorasServico2 = 0,
                 QtdHorasServico3 = 59,
-                Ativo = true
+                Ativo = true,
+                PessoaId = 2
             });
 
             context.Add(new SolicitacaoMudanca
@@ -231,7 +345,8 @@ namespace everis.SimpleProject.Data.EF.Context
                 QtdHorasServico1 = 5,
                 QtdHorasServico2 = 3,
                 QtdHorasServico3 = 59,
-                Ativo = true
+                Ativo = true,
+                PessoaId = 2
             });
 
             context.Add(new SolicitacaoMudanca
@@ -242,7 +357,8 @@ namespace everis.SimpleProject.Data.EF.Context
                 QtdHorasServico1 = 544,
                 QtdHorasServico2 = 33,
                 QtdHorasServico3 = 59,
-                Ativo = true
+                Ativo = true,
+                PessoaId = 1
             });
 
             #endregion
@@ -265,6 +381,22 @@ namespace everis.SimpleProject.Data.EF.Context
             });
 
             #endregion
+
+            #region Inserts Sigla
+
+            context.Add(new Sigla {
+                Descricao = "Sigla_01"
+            });
+
+            context.Add(new Sigla {
+                Descricao = "Sigla_02"
+            });
+
+            context.Add(new Sigla {
+                Descricao = "Sigla_03"
+            });
+            #endregion
+
 
             context.SaveChanges();
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using everis.SimpleProject.Domain.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -10,11 +11,24 @@ namespace everis.SimpleProject.CrossCutting
 {
     public static class ExportarParaTabela<T>
     {
-        public static byte[] GerarArquivoExportar(IEnumerable<T> itensparaExportar, bool gerarCsv = true)
+        public static byte[] GerarArquivoExportar(IEnumerable<T> itensparaExportar, List<int> campos, bool gerarCsv = true)
         {
-            var dataTableExportar = ConverterParaDataTable(itensparaExportar.ToList());
+            var tipoDet = typeof(T);
+            var propriedades = tipoDet.GetProperties(BindingFlags.Public | BindingFlags.Instance).OrderBy(x => ((OrdemExportacao)x.GetCustomAttributes(typeof(OrdemExportacao), false).First()).Value).ToList();
+
+            if (campos != null && campos.Any())
+            {
+                var propriedadesFiltradas = propriedades.Where(x => campos.Contains(((OrdemExportacao)x.GetCustomAttributes(typeof(OrdemExportacao), false).First()).Value)).ToList();
+                propriedades.Clear();
+                foreach (var coluna in campos)
+                {
+                    propriedades.Add(propriedadesFiltradas.FirstOrDefault(x => ((OrdemExportacao)x.GetCustomAttributes(typeof(OrdemExportacao), false).First()).Value == coluna));
+                }
+            }
+
+            var dataTableExportar = ConverterParaDataTable(itensparaExportar.ToList(), propriedades, tipoDet.Name);
             var cabecalho = GerarCabecalho(dataTableExportar.Columns, gerarCsv);
-            var conteudo = GerarConteudo(dataTableExportar.Rows, typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance), gerarCsv);
+            var conteudo = GerarConteudo(dataTableExportar.Rows, propriedades, gerarCsv);
 
             var sbResultado = new StringBuilder();
 
@@ -45,7 +59,7 @@ namespace everis.SimpleProject.CrossCutting
             return sb.ToString();
         }
 
-        public static string GerarConteudo(DataRowCollection linhas, PropertyInfo[] propriedades, bool gerarCsv = true)
+        public static string GerarConteudo(DataRowCollection linhas, List<PropertyInfo> propriedades, bool gerarCsv = true)
         {
             var sb = new StringBuilder();
             foreach (DataRow linha in linhas)
@@ -85,16 +99,15 @@ namespace everis.SimpleProject.CrossCutting
             return $"{(!gerarCsv ? "<tbody>\n" : "")}{sb.ToString()}{(!gerarCsv ? "</tbody>" : "")}";
         }
 
-        public static DataTable ConverterParaDataTable(List<T> items)
+        public static DataTable ConverterParaDataTable(List<T> items, List<PropertyInfo> propriedades, string NomeDataTable)
         {
-            var tipoDet = typeof(T);
-            var dt = new DataTable(tipoDet.Name);
-            var propriedades = tipoDet.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-            propriedades.ToList().ForEach(f => dt.Columns.Add(f.Name));
+            var dt = new DataTable(NomeDataTable);
+
+            propriedades.ForEach(f => dt.Columns.Add(f.Name));
             items.ForEach(item =>
             {
-                var valores = new object[propriedades.Length];
-                for (int i = 0; i < propriedades.Length; i++)
+                var valores = new object[propriedades.Count()];
+                for (int i = 0; i < propriedades.Count(); i++)
                 {
                     valores[i] = propriedades[i].GetValue(item, null);
                 }

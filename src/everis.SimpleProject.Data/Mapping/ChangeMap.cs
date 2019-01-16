@@ -17,7 +17,9 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.QtdHorasServico1);
             builder.Property(c => c.QtdHorasServico2);
             builder.Property(c => c.QtdHorasServico3);
+
             builder.HasOne(o => o.Projeto).WithMany().HasForeignKey(f => f.ProjetoId).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(o => o.Pessoa).WithMany().HasForeignKey(f => f.PessoaId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
