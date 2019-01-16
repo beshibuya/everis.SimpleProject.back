@@ -33,9 +33,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<int>("FerramentaId");
 
-                    b.Property<string>("Sigla")
-                        .IsRequired();
-
                     b.HasKey("Id");
 
                     b.HasIndex("ColaboradorId");
@@ -43,6 +40,29 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.HasIndex("FerramentaId");
 
                     b.ToTable("AcessoFerramentas");
+                });
+
+            modelBuilder.Entity("everis.SimpleProject.Domain.Models.AcessoSigla", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Ativo");
+
+                    b.Property<int>("ColaboradorId");
+
+                    b.Property<DateTime?>("DataInativacao");
+
+                    b.Property<int>("SiglaId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ColaboradorId");
+
+                    b.HasIndex("SiglaId");
+
+                    b.ToTable("AcessoSiglas");
                 });
 
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.Anexo", b =>
@@ -72,7 +92,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.ToTable("Anexos");
                 });
 
-            modelBuilder.Entity("everis.SimpleProject.Domain.Models.Colaborador", b =>
+            modelBuilder.Entity("everis.SimpleProject.Domain.Models.AreaContratante", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -82,28 +102,94 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<DateTime?>("DataInativacao");
 
+                    b.Property<string>("Descricao");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AreasContratantes");
+                });
+
+            modelBuilder.Entity("everis.SimpleProject.Domain.Models.Colaborador", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AreaContratanteId");
+
+                    b.Property<bool>("Ativo");
+
+                    b.Property<bool>("Clt");
+
+                    b.Property<string>("ContratoSAP");
+
+                    b.Property<DateTime>("DataAdmissão");
+
+                    b.Property<DateTime>("DataDemissao");
+
+                    b.Property<DateTime?>("DataInativacao");
+
+                    b.Property<DateTime>("DataNascimento");
+
+                    b.Property<int>("DiretoriaContratanteId");
+
                     b.Property<bool>("Disponivel");
 
                     b.Property<string>("EmailCorporativo")
                         .IsRequired();
 
-                    b.Property<int>("Funcao");
+                    b.Property<bool>("ExclusivoItau");
 
-                    b.Property<int>("Funcional");
+                    b.Property<int>("Funcao");
 
                     b.Property<string>("NomeMaquina");
 
+                    b.Property<bool>("OcupacaoFisicaPoloAdm");
+
                     b.Property<int>("Perfil");
+
+                    b.Property<int>("PoloAcessoId");
 
                     b.Property<string>("Racf");
 
+                    b.Property<bool>("Scf");
+
                     b.Property<string>("Senha");
 
-                    b.Property<string>("token");
+                    b.Property<string>("TipoContratacao");
+
+                    b.Property<int>("TipoServicoId");
+
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AreaContratanteId");
+
+                    b.HasIndex("DiretoriaContratanteId");
+
+                    b.HasIndex("PoloAcessoId");
+
+                    b.HasIndex("TipoServicoId");
+
                     b.ToTable("Colaboradors");
+                });
+
+            modelBuilder.Entity("everis.SimpleProject.Domain.Models.DiretoriaContratante", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Ativo");
+
+                    b.Property<DateTime?>("DataInativacao");
+
+                    b.Property<string>("Descricao");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DiretoriasContratantes");
                 });
 
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.Empresa", b =>
@@ -202,10 +288,21 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<string>("FotoPath");
 
+                    b.Property<int>("Funcional");
+
                     b.Property<string>("Nome")
                         .IsRequired();
 
+                    b.Property<string>("OrgaoEmissor");
+
+                    b.Property<long>("Rg");
+
+                    b.Property<string>("Sexo")
+                        .IsRequired();
+
                     b.Property<int>("Tipo");
+
+                    b.Property<string>("UFRg");
 
                     b.HasKey("Id");
 
@@ -214,6 +311,23 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.HasIndex("EmpresaId");
 
                     b.ToTable("Pessoas");
+                });
+
+            modelBuilder.Entity("everis.SimpleProject.Domain.Models.PoloAcesso", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Ativo");
+
+                    b.Property<DateTime?>("DataInativacao");
+
+                    b.Property<string>("Descricao");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PoloAcessos");
                 });
 
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.Projeto", b =>
@@ -323,6 +437,24 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.ToTable("ProjetoPessoaAtribuicoes");
                 });
 
+            modelBuilder.Entity("everis.SimpleProject.Domain.Models.Sigla", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Ativo");
+
+                    b.Property<DateTime?>("DataInativacao");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Siglas");
+                });
+
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.SolicitacaoMudanca", b =>
                 {
                     b.Property<int>("Id")
@@ -416,6 +548,24 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.ToTable("TiposFases");
                 });
 
+            modelBuilder.Entity("everis.SimpleProject.Domain.Models.TipoServico", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Ativo");
+
+                    b.Property<DateTime?>("DataInativacao");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TipoServicos");
+                });
+
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")
@@ -458,6 +608,19 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("everis.SimpleProject.Domain.Models.AcessoSigla", b =>
+                {
+                    b.HasOne("everis.SimpleProject.Domain.Models.Colaborador", "Colaborador")
+                        .WithMany()
+                        .HasForeignKey("ColaboradorId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("everis.SimpleProject.Domain.Models.Sigla", "Sigla")
+                        .WithMany()
+                        .HasForeignKey("SiglaId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.Anexo", b =>
                 {
                     b.HasOne("everis.SimpleProject.Domain.Models.Projeto", "Projeto")
@@ -466,11 +629,26 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("everis.SimpleProject.Domain.Models.Change", b =>
+            modelBuilder.Entity("everis.SimpleProject.Domain.Models.Colaborador", b =>
                 {
-                    b.HasOne("everis.SimpleProject.Domain.Models.Projeto", "Projeto")
+                    b.HasOne("everis.SimpleProject.Domain.Models.AreaContratante", "AreaContratante")
                         .WithMany()
-                        .HasForeignKey("ProjetoId")
+                        .HasForeignKey("AreaContratanteId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("everis.SimpleProject.Domain.Models.DiretoriaContratante", "DiretoriaContratante")
+                        .WithMany()
+                        .HasForeignKey("DiretoriaContratanteId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("everis.SimpleProject.Domain.Models.PoloAcesso", "PoloAcesso")
+                        .WithMany()
+                        .HasForeignKey("PoloAcessoId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("everis.SimpleProject.Domain.Models.TipoServico", "TipoServico")
+                        .WithMany()
+                        .HasForeignKey("TipoServicoId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

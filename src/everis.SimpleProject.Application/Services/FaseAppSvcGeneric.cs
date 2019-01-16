@@ -1,4 +1,5 @@
-﻿using everis.SimpleProject.Data.EF.Repositories;
+﻿using everis.SimpleProject.Data.EF;
+using everis.SimpleProject.Data.EF.Repositories;
 using everis.SimpleProject.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,7 +9,7 @@ namespace everis.SimpleProject.Application.Services
 {
     public class FaseAppSvcGeneric : GenericService<Fase>
     {
-        public FaseAppSvcGeneric(DbContext context) : base(context)
+        public FaseAppSvcGeneric(AppDbContext context) : base(context)
         {
             repository = new GenericRepository<Fase>(context);
         }
