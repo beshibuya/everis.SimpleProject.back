@@ -24,12 +24,6 @@ namespace everis.SimpleProject.Domain.Models
         public string FotoPath { get; set; }
         public int Funcional { get; set; }
 
-
-        public int EmpresaId { get; set; }
-        public Empresa Empresa { get; set; }
-        public int? ColaboradorId { get; set; }
-        public Colaborador Colaborador { get; set; }
-
         public override void MergeFrom(object other)
         {
             Nome = ((Pessoa)other).Nome;
