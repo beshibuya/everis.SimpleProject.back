@@ -16,15 +16,16 @@
 
     }
 
-    public enum Status
-    {
-        EmExecucao = 1,
-        Concluido = 2,
-        Cancelado = 3,
-        Congelado = 4,
-        PendenteCliente = 5,
-        ControleQualidade = 6
-    }
+    //**Obsoleto depois da criacao do model Status
+    //public enum Status
+    //{
+    //    EmExecucao = 1,
+    //    Concluido = 2,
+    //    Cancelado = 3,
+    //    Congelado = 4,
+    //    PendenteCliente = 5,
+    //    ControleQualidade = 6
+    //}
 
     public enum TipoPessoa
     {

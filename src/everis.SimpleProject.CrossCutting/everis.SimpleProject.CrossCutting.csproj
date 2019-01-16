@@ -9,4 +9,8 @@
     <PackageReference Include="Microsoft.PowerShell.3.ReferenceAssemblies" Version="1.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\everis.SimpleProject.Domain\everis.SimpleProject.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

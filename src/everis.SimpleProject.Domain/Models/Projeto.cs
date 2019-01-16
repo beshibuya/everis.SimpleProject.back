@@ -7,6 +7,7 @@ namespace everis.SimpleProject.Domain.Models
     public class Projeto : Entity
     {
         public string Nome { get; set; }
+        public string CodigoProjeto { get; set; }
         public int QtdHorasServico1 { get; set; }
         public int QtdHorasServico2 { get; set; }
         public int QtdHorasServico3 { get; set; }
@@ -17,6 +18,7 @@ namespace everis.SimpleProject.Domain.Models
         public string Premissas { get; set; }
         public int EmpresaId { get; set; }
         public Empresa Empresa { get; set; }
+        public int? StatusId { get; set; }
         public Status Status { get; set; }
         public DateTime DataPrevista { get; set; }
         public string BeneficioEntregue { get; set; }
@@ -30,6 +32,7 @@ namespace everis.SimpleProject.Domain.Models
         public override void MergeFrom(object other)
         {
             Nome = ((Projeto)other).Nome;
+            CodigoProjeto = ((Projeto)other).CodigoProjeto;
             QtdHorasServico1 = ((Projeto)other).QtdHorasServico1;
             QtdHorasServico2 = ((Projeto)other).QtdHorasServico2;
             QtdHorasServico3 = ((Projeto)other).QtdHorasServico3;
@@ -38,7 +41,6 @@ namespace everis.SimpleProject.Domain.Models
             EscopoProjeto = ((Projeto)other).EscopoProjeto;
             ForaEscopoProjeto = ((Projeto)other).ForaEscopoProjeto;
             Premissas = ((Projeto)other).Premissas;
-            Status = ((Projeto)other).Status;
             DataPrevista = ((Projeto)other).DataPrevista;
             BeneficioEntregue = ((Projeto)other).BeneficioEntregue;
             BeneficioResidual = ((Projeto)other).BeneficioResidual;
@@ -47,6 +49,7 @@ namespace everis.SimpleProject.Domain.Models
             LicoesAprendidas = ((Projeto)other).LicoesAprendidas;
             CentroCusto = ((Projeto)other).CentroCusto;
             ProjetosPessoas = ((Projeto)other).ProjetosPessoas;
+            StatusId = ((Projeto)other).StatusId;
         }
     }
        

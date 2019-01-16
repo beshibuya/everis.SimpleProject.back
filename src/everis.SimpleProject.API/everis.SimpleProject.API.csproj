@@ -14,13 +14,13 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.PowerShell.3.ReferenceAssemblies" Version="1.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\everis.SimpleProject.Application\everis.SimpleProject.Application.csproj" />
+    <ProjectReference Include="..\everis.SimpleProject.CrossCutting\everis.SimpleProject.CrossCutting.csproj" />
     <ProjectReference Include="..\everis.SimpleProject.Data\everis.SimpleProject.Data.EF.csproj" />
     <ProjectReference Include="..\everis.SimpleProject.Domain\everis.SimpleProject.Domain.csproj" />
   </ItemGroup>

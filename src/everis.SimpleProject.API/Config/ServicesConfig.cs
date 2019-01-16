@@ -1,4 +1,5 @@
-﻿using everis.SimpleProject.Application.Services;
+﻿
+using everis.SimpleProject.Application.Services;
 using everis.SimpleProject.Domain.Models;
 using everis.SimpleProject.Domain.Service;
 using everis.SimpleProject.Domain.Services;
@@ -21,14 +22,14 @@ namespace everis.SimpleProject.API.Config
             services.AddTransient<IFaseService, FaseAppSvcGeneric>(); 
             services.AddTransient<IGenericService<Pessoa>, PessoaAppSvcGeneric>();
             services.AddTransient<IGenericService<Projeto>, ProjetoAppSvcGeneric>();
-            services.AddTransient<IProjetoService, ProjetoAppSvcGeneric>();
             services.AddTransient<IGenericService<ProjetoPessoa>, ProjetoPessoaAppSvcGeneric>();
             services.AddTransient<IGenericService<Telefone>, TelefoneAppSvcGeneric>();
             services.AddTransient<IGenericService<Usuario>, UsuarioAppSvcGeneric>();
-            services.AddTransient<IGenericService<AcessoFerramenta>, AcessoFerramentaAppSvcGeneric>();
-            services.AddTransient<IGenericService<Ferramenta>, FerramentaAppSvcGeneric>();
-            services.AddTransient<IGenericService<TipoFase>, TipoFaseAppSvcGeneric>();
-            
+            services.AddTransient<IUserService, UsuarioAppSvcGeneric>();
+            services.AddTransient<IProjetoService, ProjetoAppSvcGeneric>();
+            services.AddTransient<ILoginService, LoginAppSvcGeneric>();
+            services.AddTransient<IGenericService<Status>, StatusAppSvcGeneric>();
+
         }
     }
 }
