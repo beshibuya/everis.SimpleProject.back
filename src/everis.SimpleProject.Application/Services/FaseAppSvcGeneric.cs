@@ -1,13 +1,14 @@
 ﻿using everis.SimpleProject.Data.EF;
 using everis.SimpleProject.Data.EF.Repositories;
 using everis.SimpleProject.Domain.Models;
+using everis.SimpleProject.Domain.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 
 namespace everis.SimpleProject.Application.Services
 {
-    public class FaseAppSvcGeneric : GenericService<Fase>
+    public class FaseAppSvcGeneric : GenericService<Fase>, IFaseService
     {
         public FaseAppSvcGeneric(AppDbContext context) : base(context)
         {
@@ -18,10 +19,23 @@ namespace everis.SimpleProject.Application.Services
         {
             try
             {
-                var nomeToFind = filter?.ProjetoPessoa.Pessoa.Nome;
-                var result = repository.BuscarPor(b => b.ProjetoPessoa.Pessoa.Nome.Contains(
-                    string.IsNullOrEmpty(nomeToFind) ? b.ProjetoPessoa.Pessoa.Nome : nomeToFind
-                    ));
+                var nomeToFind = filter.CodigoFase.ToString();
+                var result = repository.BuscarPor(b => b.CodigoFase.ToString().Contains(string.IsNullOrEmpty(nomeToFind) ? b.CodigoFase.ToString() : nomeToFind));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public IEnumerable<Fase> ObterListaPorId(Fase filter)
+        {
+            try
+            {
+                var nomeToFind = filter.Projeto?.Nome;
+                var result = repository.BuscarPor(
+                    b => (b.ProjetoId == (filter.ProjetoId == 0 ? b.ProjetoId : filter.ProjetoId)));
                 return result;
             }
             catch (Exception ex)
