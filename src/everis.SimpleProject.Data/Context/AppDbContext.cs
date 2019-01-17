@@ -24,6 +24,7 @@ namespace everis.SimpleProject.Data.EF
         public DbSet<Ferramenta> Ferramentas { get; set; }
         public DbSet<Status> Status { get; set; }
         public DbSet<TipoFase> TiposFases { get; set; }
+        public DbSet<Atribuicao> Atribuicao { get; set; }
 
         #endregion
 
