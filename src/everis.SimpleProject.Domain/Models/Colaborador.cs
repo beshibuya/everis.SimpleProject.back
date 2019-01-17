@@ -20,7 +20,7 @@ namespace everis.SimpleProject.Domain.Models
         public string Racf { get; set; }
         public string EmailCorporativo { get; set; }
         public DateTime DataNascimento { get; set; }
-        public DateTime DataAdmissão { get; set; }
+        public DateTime DataAdmissao { get; set; }
         public DateTime DataDemissao { get; set; }
         public string NomeMaquina { get; set; }
         public bool Scf { get; set; }
@@ -29,14 +29,15 @@ namespace everis.SimpleProject.Domain.Models
         public string Senha { get; set; }
         public bool OcupacaoFisicaPoloAdm { get; set; }
         public string ContratoSAP { get; set; }
-        public bool ExclusivoItau { get; set; }
+        public bool ExclusivoCliente { get; set; }
         public string TipoContratacao { get; set; }
+        public string GestorTecnicoCliente { get; set; }
 
         public Colaborador()
         {
             Disponivel = true;
             OcupacaoFisicaPoloAdm = false;
-            ExclusivoItau = true;
+            ExclusivoCliente = true;
             TipoContratacao = "Terceirizado";
         }
 
@@ -50,7 +51,7 @@ namespace everis.SimpleProject.Domain.Models
             Funcao = ((Colaborador)other).Funcao;
             Disponivel = ((Colaborador)other).Disponivel;
             Senha = ((Colaborador)other).Senha;
-            DataAdmissão = ((Colaborador)other).DataAdmissão;
+            DataAdmissao = ((Colaborador)other).DataAdmissao;
             DataNascimento = ((Colaborador)other).DataNascimento;
             DataDemissao = ((Colaborador)other).DataDemissao;
             Scf = ((Colaborador)other).Scf;
@@ -61,7 +62,7 @@ namespace everis.SimpleProject.Domain.Models
             AreaContratanteId = ((Colaborador)other).AreaContratanteId;
             OcupacaoFisicaPoloAdm = ((Colaborador)other).OcupacaoFisicaPoloAdm;
             ContratoSAP = ((Colaborador)other).ContratoSAP;
-            ExclusivoItau = ((Colaborador)other).ExclusivoItau;
+            ExclusivoCliente = ((Colaborador)other).ExclusivoCliente;
             TipoContratacao = ((Colaborador)other).TipoContratacao;
             //PerfilId = ((Colaborador)other).PerfilId;
             //Perfil = ((Colaborador)other).Perfil;
