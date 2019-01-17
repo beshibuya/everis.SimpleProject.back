@@ -23,6 +23,82 @@ namespace everis.SimpleProject.Data.EF.Context
         public static void InitialSeed(this AppDbContext context)
         {
 
+            //#region Inserts Perfis
+
+            //context.Add(new Perfil {
+
+            //});
+
+            //#endregion
+
+            #region Inserts TipoPessoas
+
+            context.Add(new TipoPessoa {
+                Descricao = "Colaborador"
+            });
+
+            context.Add(new TipoPessoa {
+                Descricao = "Cliente"
+            });
+
+            context.Add(new TipoPessoa {
+                Descricao = "Terceiro"
+            });
+
+            #endregion
+
+            #region Inserts TipoTelefones
+
+            context.Add(new TipoTelefone {
+                Descricao = "Celular"
+            });
+
+            context.Add(new TipoTelefone {
+                Descricao = "Fixo"
+            });
+
+            context.Add(new TipoTelefone {
+                Descricao = "Ramal"
+            });
+
+            #endregion
+
+            context.SaveChanges();
+
+            #region Inserts Funcoes
+
+            context.Add(new Funcao {
+                Descricao = "SA"
+            });
+
+            context.Add(new Funcao {
+                Descricao = "SN"
+            });
+
+            context.Add(new Funcao {
+                Descricao = "STL"
+            });
+
+            context.Add(new Funcao {
+                Descricao = "SPL"
+            });
+
+            context.Add(new Funcao {
+                Descricao = "SK"
+            });
+
+            context.Add(new Funcao {
+                Descricao = "SKL"
+            });
+
+            context.Add(new Funcao {
+                Descricao = "Manager"
+            });
+
+            #endregion
+
+            context.SaveChanges();
+
 
             #region Inserts PoloAcesso
 
@@ -115,22 +191,19 @@ namespace everis.SimpleProject.Data.EF.Context
             {
                 Disponivel = false,
                 EmailCorporativo = "ricardo@everis.com",
-                Funcao = Funcao.SA,
+                FuncaoId = 1,
                 AreaContratanteId = 2,
                 PoloAcessoId = 1,
-                DiretoriaContratanteId = 3,
-                TipoServicoId = 1,
-                Senha = "1234"
+                TipoServicoId = 1
             });
 
             context.Add(new Colaborador
             {
                 Disponivel = true,
                 EmailCorporativo = "nicholas@everis.com",
-                Funcao = Funcao.SA,
+                FuncaoId = 2,
                 AreaContratanteId = 1,
                 PoloAcessoId = 2,
-                DiretoriaContratanteId = 1,
                 TipoServicoId = 2
 
             });
@@ -162,18 +235,19 @@ namespace everis.SimpleProject.Data.EF.Context
             {
                 Nome = "David Rezende Torres",
                 EmpresaId = 1,
-                Tipo = TipoPessoa.Terceiro,
+                TipoId = 3,
                 Email = "david@rezende.com",
                 Funcional = 423947876,
                 ColaboradorId = null,
-                Sexo = "Masculino"
+                Sexo = "Masculino",
+                DiretoriaId = 1
             });
 
             context.Add(new Pessoa
             {
                 Nome = "Ricardo",
                 EmpresaId = 1,
-                Tipo = TipoPessoa.Colaborador,
+                TipoId = 1,
                 Email = "ricardo@rossetti.com",
                 ColaboradorId = 1,
                 Sexo = "Masculino",
@@ -185,7 +259,7 @@ namespace everis.SimpleProject.Data.EF.Context
             {
                 Nome = "Nicholas",
                 EmpresaId = 1,
-                Tipo = TipoPessoa.Colaborador,
+                TipoId = 1,
                 Email = "nicholas@torre.com",
                 ColaboradorId = 2,
                 Sexo = "Masculino"
@@ -194,10 +268,11 @@ namespace everis.SimpleProject.Data.EF.Context
             context.Add(new Pessoa {
                 Nome = "Maria das Dores",
                 EmpresaId = 1,
-                Tipo = TipoPessoa.Terceiro,
+                TipoId = 3,
                 Email = "maria_das_dores@doeu.com",
                 ColaboradorId = 2,
                 Sexo = "Feminino",
+                DiretoriaId = 2
             });
 
             #endregion

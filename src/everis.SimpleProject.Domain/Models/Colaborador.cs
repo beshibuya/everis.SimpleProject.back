@@ -6,15 +6,16 @@ namespace everis.SimpleProject.Domain.Models
 {
     public class Colaborador : Entity
     {
+        public int FuncaoId { get; set; }
+        public Funcao Funcao { get; set; }
+        //public int PerfilId { get; set; }
+        //public Perfil Perfil { get; set; }
         public int PoloAcessoId { get; set; }
         public PoloAcesso PoloAcesso { get; set; }
         public int AreaContratanteId { get; set; }
         public AreaContratante AreaContratante { get; set; }
-        public int DiretoriaContratanteId { get; set; }
-        public DiretoriaContratante DiretoriaContratante { get; set; }
         public int TipoServicoId { get; set; }
         public TipoServico TipoServico { get; set; }
-        public List<AcessoFerramenta> Acessos { get; set; }
         public string UserId { get; set; }
         public string Racf { get; set; }
         public string EmailCorporativo { get; set; }
@@ -24,8 +25,6 @@ namespace everis.SimpleProject.Domain.Models
         public string NomeMaquina { get; set; }
         public bool Scf { get; set; }
         public bool Clt { get; set; }
-        public Funcao Funcao { get; set; }
-        public Perfil Perfil { get; set; }
         public bool Disponivel { get; set; }
         public string Senha { get; set; }
         public bool OcupacaoFisicaPoloAdm { get; set; }
@@ -47,11 +46,10 @@ namespace everis.SimpleProject.Domain.Models
             Racf = ((Colaborador)other).Racf;
             EmailCorporativo = ((Colaborador)other).EmailCorporativo;
             NomeMaquina = ((Colaborador)other).NomeMaquina;
-            Perfil = ((Colaborador)other).Perfil;
+            FuncaoId = ((Colaborador)other).FuncaoId;
             Funcao = ((Colaborador)other).Funcao;
             Disponivel = ((Colaborador)other).Disponivel;
             Senha = ((Colaborador)other).Senha;
-            Acessos = ((Colaborador)other).Acessos;
             DataAdmissão = ((Colaborador)other).DataAdmissão;
             DataNascimento = ((Colaborador)other).DataNascimento;
             DataDemissao = ((Colaborador)other).DataDemissao;
@@ -65,6 +63,8 @@ namespace everis.SimpleProject.Domain.Models
             ContratoSAP = ((Colaborador)other).ContratoSAP;
             ExclusivoItau = ((Colaborador)other).ExclusivoItau;
             TipoContratacao = ((Colaborador)other).TipoContratacao;
+            //PerfilId = ((Colaborador)other).PerfilId;
+            //Perfil = ((Colaborador)other).Perfil;
         }
     }
 

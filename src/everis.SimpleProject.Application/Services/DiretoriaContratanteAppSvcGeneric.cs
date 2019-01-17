@@ -14,7 +14,7 @@ namespace everis.SimpleProject.Application.Services {
         }
 
         public override IEnumerable<DiretoriaContratante> BuscarPor(DiretoriaContratante filter) {
-            throw new NotImplementedException();
+            return null;
         }
     }
 }

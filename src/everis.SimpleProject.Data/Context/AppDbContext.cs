@@ -33,6 +33,10 @@ namespace everis.SimpleProject.Data.EF
         public DbSet<AreaContratante> AreasContratantes { get; set; }
         public DbSet<DiretoriaContratante> DiretoriasContratantes { get; set; }
         public DbSet<TipoServico> TipoServicos { get; set; }
+        public DbSet<Perfil> Perfis { get; set; }
+        public DbSet<Funcao> Funcoes { get; set; }
+        public DbSet<TipoPessoa> TipoPessoas { get; set; }
+        public DbSet<TipoTelefone> TipoTelefones { get; set; }
 
         #endregion
 
