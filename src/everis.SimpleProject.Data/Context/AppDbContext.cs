@@ -34,8 +34,6 @@ namespace everis.SimpleProject.Data.EF
         public DbSet<DiretoriaContratante> DiretoriasContratantes { get; set; }
         public DbSet<TipoServico> TipoServicos { get; set; }
 
-        public DbSet<Atribuicao> Atribuicao { get; set; }
-
         #endregion
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }

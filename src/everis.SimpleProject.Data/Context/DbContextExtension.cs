@@ -394,7 +394,33 @@ namespace everis.SimpleProject.Data.EF.Context
                 Descricao = "Sigla_03"
             });
             #endregion
+            #region Inserts Atribuição
 
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Desenvolvedor"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Tester"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Gerente"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Líder"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Analista responsável de TI - técnico"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Analista responsável Outsourcing"
+            });
+            #endregion
 
             context.SaveChanges();
 
