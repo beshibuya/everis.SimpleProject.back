@@ -27,35 +27,35 @@
     //    ControleQualidade = 6
     //}
 
-    public enum TipoPessoa
-    {
-        Colaborador = 1,
-        Cliente = 2,
-        Terceiro = 3
-    }
+    //public enum TipoPessoa
+    //{
+    //    Colaborador = 1,
+    //    Cliente = 2,
+    //    Terceiro = 3
+    //}
 
-    public enum Funcao
-    {
-        SA = 1,
-        SN = 2,
-        STL = 3,
-        SPL = 4,
-        SK = 5,
-        SKL = 6,
-        Manager = 7
-    }
+    //public enum Funcao
+    //{
+    //    SA = 1,
+    //    SN = 2,
+    //    STL = 3,
+    //    SPL = 4,
+    //    SK = 5,
+    //    SKL = 6,
+    //    Manager = 7
+    //}
 
-    public enum Perfil
-    {
-        Master = 1,
-        Lider = 2,
-        Colaborador = 3
-    }
+    //public enum Perfil
+    //{
+    //    Master = 1,
+    //    Lider = 2,
+    //    Colaborador = 3
+    //}
 
-    public enum TipoTelefone
-    {
-        Celular = 1,
-        Fixo = 2,
-        Ramal = 3
-    }
+    //public enum TipoTelefone
+    //{
+    //    Celular = 1,
+    //    Fixo = 2,
+    //    Ramal = 3
+    //}
 }
