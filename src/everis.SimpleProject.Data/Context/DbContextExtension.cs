@@ -194,7 +194,8 @@ namespace everis.SimpleProject.Data.EF.Context
                 FuncaoId = 1,
                 AreaContratanteId = 2,
                 PoloAcessoId = 1,
-                TipoServicoId = 1
+                TipoServicoId = 1,
+                Senha = "everis"
             });
 
             context.Add(new Colaborador
