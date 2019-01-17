@@ -38,7 +38,6 @@ namespace everis.SimpleProject.Data.EF
         public DbSet<TipoPessoa> TipoPessoas { get; set; }
         public DbSet<TipoTelefone> TipoTelefones { get; set; }
 
-
         #endregion
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }

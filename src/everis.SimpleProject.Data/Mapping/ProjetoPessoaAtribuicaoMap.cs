@@ -11,7 +11,6 @@ namespace everis.SimpleProject.Data.EF.Mapping
             base.Configure(builder);
             builder.Property(c => c.Atribuicao).IsRequired();
 
-            builder.HasOne(o => o.ProjetoPessoa).WithMany().HasForeignKey(c => c.ProjetoPessoaId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
