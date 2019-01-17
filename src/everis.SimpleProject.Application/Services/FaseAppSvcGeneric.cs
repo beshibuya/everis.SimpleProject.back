@@ -5,6 +5,7 @@ using everis.SimpleProject.Domain.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace everis.SimpleProject.Application.Services
 {
@@ -19,8 +20,11 @@ namespace everis.SimpleProject.Application.Services
         {
             try
             {
-                var nomeToFind = filter.CodigoFase.ToString();
-                var result = repository.BuscarPor(b => b.CodigoFase.ToString().Contains(string.IsNullOrEmpty(nomeToFind) ? b.CodigoFase.ToString() : nomeToFind));
+                var codigoFaseToFind = filter.CodigoFase.ToString();
+                var result = repository.BuscarPor(
+                    b => (b.CodigoFase.ToString().Contains(string.IsNullOrEmpty(codigoFaseToFind) ? b.CodigoFase.ToString() : codigoFaseToFind))
+                    && (b.ProjetoId == (filter.ProjetoId == 0 ? b.ProjetoId : filter.ProjetoId))
+                    && b.Ativo == filter.Ativo);
                 return result;
             }
             catch (Exception ex)
