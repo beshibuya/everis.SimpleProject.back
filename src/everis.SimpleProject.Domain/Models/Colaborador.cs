@@ -16,7 +16,6 @@ namespace everis.SimpleProject.Domain.Models
         public AreaContratante AreaContratante { get; set; }
         public int TipoServicoId { get; set; }
         public TipoServico TipoServico { get; set; }
-        public string UserId { get; set; }
         public string Racf { get; set; }
         public string EmailCorporativo { get; set; }
         public DateTime DataNascimento { get; set; }
@@ -56,7 +55,6 @@ namespace everis.SimpleProject.Domain.Models
             DataDemissao = ((Colaborador)other).DataDemissao;
             Scf = ((Colaborador)other).Scf;
             Clt = ((Colaborador)other).Clt;
-            UserId = ((Colaborador)other).UserId;
             PoloAcesso = ((Colaborador)other).PoloAcesso;
             AreaContratante = ((Colaborador)other).AreaContratante;
             AreaContratanteId = ((Colaborador)other).AreaContratanteId;
