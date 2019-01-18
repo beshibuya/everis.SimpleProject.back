@@ -5,11 +5,13 @@ namespace everis.SimpleProject.Domain.Models
 {
     public class Pessoa : Entity
     {
-
+        public int? DiretoriaId { get; set; }
+        public DiretoriaContratante Diretoria { get; set; }
         public int? ColaboradorId { get; set; }
         public Colaborador Colaborador { get; set; }
         public int EmpresaId { get; set; }
         public Empresa Empresa { get; set; }
+        public int TipoId { get; set; }
         public TipoPessoa Tipo { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
@@ -21,6 +23,7 @@ namespace everis.SimpleProject.Domain.Models
         public string UFRg { get; set; }
         public string FotoPath { get; set; }
         public int Funcional { get; set; }
+        public bool GestorTecnico { get; set; }
 
         public override void MergeFrom(object other)
         {
@@ -35,6 +38,8 @@ namespace everis.SimpleProject.Domain.Models
             OrgaoEmissor = ((Pessoa)other).OrgaoEmissor;
             UFRg = ((Pessoa)other).UFRg;
             Sexo = ((Pessoa)other).Sexo;
+            Tipo = ((Pessoa)other).Tipo;
+            TipoId = ((Pessoa)other).TipoId;
         }
     }
 }

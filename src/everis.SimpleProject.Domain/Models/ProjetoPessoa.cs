@@ -10,6 +10,9 @@ namespace everis.SimpleProject.Domain.Models
         public Projeto Projeto { get; set; }
         public int PessoaId { get; set; }
         public Pessoa Pessoa { get; set; }
+        public int AtribuicaoId { get; set; }
+        public ProjetoPessoaAtribuicao Atribuicao { get; set; }
+        public bool Responsavel { get; set; }
 
         public override void MergeFrom(object other)
         {
