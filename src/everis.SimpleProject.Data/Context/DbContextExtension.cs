@@ -206,27 +206,46 @@ namespace everis.SimpleProject.Data.EF.Context
 
             context.Add(new Status
             {
+                Codigo = "DES",
+                Descricao = "Em desenvolvimento"
+            });
+
+            context.Add(new Status
+            {
                 Codigo = "APR",
-                Descricao = "Em Aprovação"
+                Descricao = "Aguardando aprovação"
             });
 
             context.Add(new Status
             {
-                Codigo = "EXE",
-                Descricao = "Em Execução"
+                Codigo = "CON",
+                Descricao = "Concluído"
             });
 
             context.Add(new Status
             {
-                Codigo = "CN",
+                Codigo = "ENT",
+                Descricao = "Entregue"
+            });
+
+            context.Add(new Status
+            {
+                Codigo = "AAB",
+                Descricao = "Aguardando abertura"
+            });
+
+            context.Add(new Status
+            {
+                Codigo = "CAN",
                 Descricao = "Cancelado"
             });
 
             context.Add(new Status
             {
-                Codigo = "CO",
-                Descricao = "Concluído"
+                Codigo = "PRO",
+                Descricao = "Proposta"
             });
+
             #endregion
 
             context.SaveChanges();
@@ -256,12 +275,25 @@ namespace everis.SimpleProject.Data.EF.Context
                 DataPrevista = DateTime.Now.AddDays(7),
                 CentroCusto = "EXTNÂOLEMBROORESTO112",
                 CodigoProjeto = "2",
-                StatusId = 1
+                StatusId = 2
+            });
+
+            context.Add(new Projeto
+            {
+                DataInicio = DateTime.Now,
+                EscopoProjeto = "Escopo teste333",
+                QtdHorasServico1 = 3000,
+                Nome = "Projeto 3",
+                EmpresaId = 1,
+                DataPrevista = DateTime.Now.AddDays(7),
+                CentroCusto = "EXTNÂOLEMBROORESTO112_PACOCA",
+                CodigoProjeto = "1",
+                StatusId = 3
             });
 
             #endregion
 
-            
+
             context.SaveChanges();
 
             #region Inserts Ferramentas
