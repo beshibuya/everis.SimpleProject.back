@@ -12,9 +12,8 @@ namespace everis.SimpleProject.Data.EF.Mapping
         public override void Configure(EntityTypeBuilder<AcessoFerramenta> builder)
         {
             base.Configure(builder);
-            builder.Property(c => c.Sigla).IsRequired();
             builder.HasOne(c => c.Ferramenta);
-            builder.HasOne(o => o.Colaborador).WithMany(o => o.Acessos).IsRequired().OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(o => o.Colaborador).WithMany().HasForeignKey(f => f.ColaboradorId).OnDelete(DeleteBehavior.Restrict);
 
 
         }

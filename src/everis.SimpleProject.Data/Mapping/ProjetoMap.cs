@@ -12,7 +12,7 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.DataInicio).IsRequired();
             builder.Property(c => c.EscopoProjeto).IsRequired();
             builder.Property(c => c.EmpresaId).IsRequired();
-            builder.Property(c => c.Status).HasColumnType("int").IsRequired(); ;
+            builder.Property(c => c.StatusId).IsRequired();
             builder.Property(c => c.DataPrevista).IsRequired();
             builder.Property(c => c.Ext).IsRequired();
             builder.Property(c => c.DataRecebida).IsRequired();
@@ -29,8 +29,8 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.Tarifa).IsRequired();
             builder.Property(c => c.Superintendencia).IsRequired();
 
+            builder.HasOne(o => o.Status).WithMany().HasForeignKey(f => f.StatusId).OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(o => o.Empresa).WithMany().HasForeignKey(f=>f.EmpresaId).OnDelete(DeleteBehavior.Restrict);
-            builder.HasMany(o => o.ProjetosPessoas).WithOne().HasForeignKey(f => f.PessoaId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

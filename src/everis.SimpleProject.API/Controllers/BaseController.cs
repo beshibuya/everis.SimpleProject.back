@@ -202,7 +202,7 @@ namespace everis.SimpleProject.API.Controllers
         }
 
         [HttpGet("[action]")]
-        public virtual IActionResult Exportar([FromServices]IGenericService<T> svc, T obj, string tipoArquivo = "csv")//, List<string> campos
+        public virtual IActionResult Exportar([FromServices]IGenericService<T> svc, T obj, string tipoArquivo = "csv", List<int> campos = null)
         {
             try
             {
@@ -235,7 +235,7 @@ namespace everis.SimpleProject.API.Controllers
 
                     var mimeTypeRetorno = $"application/{(isCsv ? "csv" : "vnd.ms-excel")}";
 
-                    var byteArrayParaExportar = ExportarParaTabela<T>.GerarArquivoExportar(listaFiltrada,isCsv);
+                    var byteArrayParaExportar = ExportarParaTabela<T>.GerarArquivoExportar(listaFiltrada, campos, isCsv);
                     var resultadoArquivo = new FileContentResult(byteArrayParaExportar, mimeTypeRetorno)
                     {
                         FileDownloadName = $"Export_{typeof(T).Name}_{DateTime.Now.ToString("dd_MM_yyyy_HH_mm_ss")}.{tipoArquivo}"

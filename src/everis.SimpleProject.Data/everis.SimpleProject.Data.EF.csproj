@@ -5,6 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190114190121_CriacaoStatusModel.cs" />
+    <Compile Remove="Migrations\20190114191628_CriacaoStatusModel.cs" />
+    <Compile Remove="Migrations\20190114192113_RelacionamentoProjetoStatus.cs" />
+    <Compile Remove="Migrations\20190114192307_RelacionamentoProjetoStatus.cs" />
+    <Compile Remove="Migrations\20190114192528_RelacionamentoProjetoStatus.cs" />
+    <Compile Remove="Migrations\20190114193058_RelacionamentoProjetoStatus.cs" />
+    <Compile Remove="Migrations\20190114194046_RelacionamentoStatusProjeto.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />
