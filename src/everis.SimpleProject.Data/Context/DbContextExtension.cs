@@ -365,7 +365,6 @@ namespace everis.SimpleProject.Data.EF.Context
                 Nome = "Projeto 1",
                 EmpresaId = 1,
                 DataPrevista = DateTime.Now.AddDays(7),
-                CentroCusto = "EXTNÂOLEMBROORESTO112",
                 CodigoProjeto = "1",
                 StatusId = 1
             });
@@ -378,7 +377,6 @@ namespace everis.SimpleProject.Data.EF.Context
                 Nome = "Projeto 2",
                 EmpresaId = 1,
                 DataPrevista = DateTime.Now.AddDays(7),
-                CentroCusto = "EXTNÂOLEMBROORESTO112",
                 CodigoProjeto = "2",
                 StatusId = 2
             });
@@ -391,7 +389,6 @@ namespace everis.SimpleProject.Data.EF.Context
                 Nome = "Projeto 3",
                 EmpresaId = 1,
                 DataPrevista = DateTime.Now.AddDays(7),
-                CentroCusto = "EXTNÂOLEMBROORESTO112_PACOCA",
                 CodigoProjeto = "1",
                 StatusId = 3
             });

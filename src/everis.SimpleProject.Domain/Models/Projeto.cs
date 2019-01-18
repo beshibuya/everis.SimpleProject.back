@@ -29,7 +29,6 @@ namespace everis.SimpleProject.Domain.Models
         public string Ext { get; set; }
         public List<ProjetoPessoa> ProjetosPessoas { get; set; }
         public DateTime DataRecebida { get; set; }
-        public int CodigoProjeto { get; set; }
         public int Fase { get; set; }
         public string Tecnologia { get; set; }    
         public string Sigla { get; set; }
@@ -68,7 +67,6 @@ namespace everis.SimpleProject.Domain.Models
             Ext = ((Projeto)other).Ext;
             ProjetosPessoas = ((Projeto)other).ProjetosPessoas;
             DataRecebida = ((Projeto)other).DataRecebida;
-            CodigoProjeto = ((Projeto)other).CodigoProjeto;
             Fase = ((Projeto)other).Fase;
             Tecnologia = ((Projeto)other).Tecnologia;
             Sigla = ((Projeto)other).Sigla;
