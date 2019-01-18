@@ -346,9 +346,18 @@ namespace everis.SimpleProject.Data.EF.Context
                 Nome = "Projeto 1",
                 EmpresaId = 1,
                 DataPrevista = DateTime.Now.AddDays(7),
-                CentroCusto = "EXTNÂOLEMBROORESTO112",
                 CodigoProjeto = "1",
-                StatusId = 1
+                StatusId = 1,
+                DataRecebida = DateTime.Now,
+                Tecnologia = "Tecnologia teste",
+                Sigla = "Sigla teste",
+                RespOutsourcing = "RespOutsourcing teste",
+                RespTI = "RespTI teste",
+                RespGerente = "RespGerente teste",
+                Tamanho = 'P',
+                TipoDemanda = "Servico 1 teste",
+                Tarifa = "Tarifa teste",
+                Superintendencia = "Superintendencia",
             });
 
             context.Add(new Projeto
@@ -359,9 +368,20 @@ namespace everis.SimpleProject.Data.EF.Context
                 Nome = "Projeto 2",
                 EmpresaId = 1,
                 DataPrevista = DateTime.Now.AddDays(7),
-                CentroCusto = "EXTNÂOLEMBROORESTO112",
                 CodigoProjeto = "2",
-                StatusId = 1
+                StatusId = 1,
+                DataRecebida= DateTime.Now,
+                Tecnologia= "Tecnologia teste",
+                Sigla= "Sigla teste",
+                RespOutsourcing= "RespOutsourcing teste",
+                RespTI= "RespTI teste",
+                RespGerente= "RespGerente teste",
+                Tamanho= 'P',
+                TipoDemanda= "Servico 1 teste",
+                Tarifa= "Tarifa teste",
+                Superintendencia= "Superintendencia",
+                DiretoriaId = 1
+
             });
 
             #endregion

@@ -30,8 +30,4 @@
     <ProjectReference Include="..\everis.SimpleProject.Domain\everis.SimpleProject.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>
