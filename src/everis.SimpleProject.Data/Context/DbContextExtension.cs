@@ -311,27 +311,46 @@ namespace everis.SimpleProject.Data.EF.Context
 
             context.Add(new Status
             {
+                Codigo = "DES",
+                Descricao = "Em desenvolvimento"
+            });
+
+            context.Add(new Status
+            {
                 Codigo = "APR",
-                Descricao = "Em Aprovação"
+                Descricao = "Aguardando aprovação"
             });
 
             context.Add(new Status
             {
-                Codigo = "EXE",
-                Descricao = "Em Execução"
+                Codigo = "CON",
+                Descricao = "Concluído"
             });
 
             context.Add(new Status
             {
-                Codigo = "CN",
+                Codigo = "ENT",
+                Descricao = "Entregue"
+            });
+
+            context.Add(new Status
+            {
+                Codigo = "AAB",
+                Descricao = "Aguardando abertura"
+            });
+
+            context.Add(new Status
+            {
+                Codigo = "CAN",
                 Descricao = "Cancelado"
             });
 
             context.Add(new Status
             {
-                Codigo = "CO",
-                Descricao = "Concluído"
+                Codigo = "PRO",
+                Descricao = "Proposta"
             });
+
             #endregion
 
             context.SaveChanges();
@@ -386,7 +405,7 @@ namespace everis.SimpleProject.Data.EF.Context
 
             #endregion
 
-            
+
             context.SaveChanges();
 
             #region Inserts Ferramentas
