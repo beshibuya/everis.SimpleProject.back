@@ -23,6 +23,7 @@ namespace everis.SimpleProject.Domain.Models
         public string UFRg { get; set; }
         public string FotoPath { get; set; }
         public int Funcional { get; set; }
+        public bool GestorTecnico { get; set; }
 
         public override void MergeFrom(object other)
         {

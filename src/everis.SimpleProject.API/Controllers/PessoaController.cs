@@ -15,23 +15,11 @@ namespace everis.SimpleProject.API.Controllers
             [FromServices] IGenericService<Colaborador> colaboradorSvc, [FromServices] IGenericService<Telefone> telSvc, [FromBody] PessoaColaborador pcv)
         {
             try
-            {
-
-                //var lstTelefone = pcv.pessoa.Telefones;
-
-                //pcv.pessoa.Telefones = null;
+            {              
                 pcv.pessoa.EmpresaId = 1;
-
                 var novoColaborador = colaboradorSvc.Adicionar(pcv.colaborador);
                 pcv.pessoa.ColaboradorId = novoColaborador.Id;
                 var novaPessoa = pessoaSvc.Adicionar(pcv.pessoa);
-                //novaPessoa.Telefones = lstTelefone;
-
-                //foreach (var item in lstTelefone)
-                //{
-                //    item.PessoaId = novaPessoa.Id;
-                //    telSvc.Adicionar(item);
-                //}
 
                 var pessoaColaborador = new PessoaColaborador
                 {

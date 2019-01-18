@@ -194,7 +194,8 @@ namespace everis.SimpleProject.Data.EF.Context
                 FuncaoId = 1,
                 AreaContratanteId = 2,
                 PoloAcessoId = 1,
-                TipoServicoId = 1
+                TipoServicoId = 1,
+                Senha = "everis"
             });
 
             context.Add(new Colaborador
@@ -231,8 +232,7 @@ namespace everis.SimpleProject.Data.EF.Context
             #region Inserts Pessoa
 
 
-            context.Add(new Pessoa
-            {
+            context.Add(new Pessoa {
                 Nome = "David Rezende Torres",
                 EmpresaId = 1,
                 TipoId = 3,
@@ -240,7 +240,8 @@ namespace everis.SimpleProject.Data.EF.Context
                 Funcional = 423947876,
                 ColaboradorId = null,
                 Sexo = "Masculino",
-                DiretoriaId = 1
+                DiretoriaId = 1,
+                GestorTecnico = true
             });
 
             context.Add(new Pessoa

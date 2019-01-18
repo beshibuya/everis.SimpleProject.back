@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using everis.SimpleProject.Data.EF;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190117183520_AddPropPessoas")]
+    partial class AddPropPessoas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -157,6 +159,8 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.Property<string>("TipoContratacao");
 
                     b.Property<int>("TipoServicoId");
+
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
@@ -465,8 +469,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<bool>("Ativo");
 
-                    b.Property<int>("AtribuicaoId");
-
                     b.Property<DateTime?>("DataInativacao");
 
                     b.Property<int>("PessoaId");
@@ -475,11 +477,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<int?>("ProjetoId1");
 
-                    b.Property<bool>("Responsavel");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("AtribuicaoId");
 
                     b.HasIndex("PessoaId");
 
@@ -498,12 +496,15 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<bool>("Ativo");
 
-                    b.Property<string>("Atribuicao")
-                        .IsRequired();
+                    b.Property<int>("Atribuicao");
 
                     b.Property<DateTime?>("DataInativacao");
 
+                    b.Property<int>("ProjetoPessoaId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ProjetoPessoaId");
 
                     b.ToTable("ProjetoPessoaAtribuicoes");
                 });
@@ -887,11 +888,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoPessoa", b =>
                 {
-                    b.HasOne("everis.SimpleProject.Domain.Models.ProjetoPessoaAtribuicao", "Atribuicao")
-                        .WithMany()
-                        .HasForeignKey("AtribuicaoId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("everis.SimpleProject.Domain.Models.Pessoa", "Pessoa")
                         .WithMany()
                         .HasForeignKey("PessoaId")
@@ -905,6 +901,14 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.HasOne("everis.SimpleProject.Domain.Models.Projeto")
                         .WithMany("ProjetosPessoas")
                         .HasForeignKey("ProjetoId1");
+                });
+
+            modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoPessoaAtribuicao", b =>
+                {
+                    b.HasOne("everis.SimpleProject.Domain.Models.ProjetoPessoa", "ProjetoPessoa")
+                        .WithMany()
+                        .HasForeignKey("ProjetoPessoaId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.SolicitacaoMudanca", b =>

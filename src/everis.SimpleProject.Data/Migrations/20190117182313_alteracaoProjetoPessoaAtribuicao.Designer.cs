@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using everis.SimpleProject.Data.EF;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190117182313_alteracaoProjetoPessoaAtribuicao")]
+    partial class alteracaoProjetoPessoaAtribuicao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -123,7 +125,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<string>("ContratoSAP");
 
-                    b.Property<DateTime>("DataAdmissao");
+                    b.Property<DateTime>("DataAdmissão");
 
                     b.Property<DateTime>("DataDemissao");
 
@@ -136,11 +138,9 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.Property<string>("EmailCorporativo")
                         .IsRequired();
 
-                    b.Property<bool>("ExclusivoCliente");
+                    b.Property<bool>("ExclusivoItau");
 
                     b.Property<int>("FuncaoId");
-
-                    b.Property<string>("GestorTecnicoCliente");
 
                     b.Property<string>("NomeMaquina");
 
@@ -157,6 +157,8 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.Property<string>("TipoContratacao");
 
                     b.Property<int>("TipoServicoId");
+
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
@@ -345,8 +347,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.Property<string>("FotoPath");
 
                     b.Property<int>("Funcional");
-
-                    b.Property<bool>("GestorTecnico");
 
                     b.Property<string>("Nome")
                         .IsRequired();
