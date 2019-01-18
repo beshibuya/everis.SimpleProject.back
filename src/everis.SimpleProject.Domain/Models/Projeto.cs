@@ -29,13 +29,13 @@ namespace everis.SimpleProject.Domain.Models
         public string Ext { get; set; }
         public List<ProjetoPessoa> ProjetosPessoas { get; set; }
         public DateTime DataRecebida { get; set; }
-        public int Fase { get; set; }
         public string Tecnologia { get; set; }    
         public string Sigla { get; set; }
         public string RespOutsourcing { get; set; }
         public string RespTI { get; set; }
         public string RespGerente { get; set; }
-        public string Diretoria { get; set; }
+        public int DiretoriaId { get; set; }
+        public DiretoriaContratante Diretoria { get; set; }
         public char Tamanho { get; set; }
         public string TipoDemanda { get; set; }
         public string Tarifa { get; set; }
@@ -49,7 +49,6 @@ namespace everis.SimpleProject.Domain.Models
         public override void MergeFrom(object other)
         {
             Nome = ((Projeto)other).Nome;
-            CodigoProjeto = ((Projeto)other).CodigoProjeto;
             QtdHorasServico1 = ((Projeto)other).QtdHorasServico1;
             QtdHorasServico2 = ((Projeto)other).QtdHorasServico2;
             QtdHorasServico3 = ((Projeto)other).QtdHorasServico3;
@@ -67,7 +66,7 @@ namespace everis.SimpleProject.Domain.Models
             Ext = ((Projeto)other).Ext;
             ProjetosPessoas = ((Projeto)other).ProjetosPessoas;
             DataRecebida = ((Projeto)other).DataRecebida;
-            Fase = ((Projeto)other).Fase;
+            CodigoProjeto = ((Projeto)other).CodigoProjeto;
             Tecnologia = ((Projeto)other).Tecnologia;
             Sigla = ((Projeto)other).Sigla;
             RespOutsourcing = ((Projeto)other).RespOutsourcing;

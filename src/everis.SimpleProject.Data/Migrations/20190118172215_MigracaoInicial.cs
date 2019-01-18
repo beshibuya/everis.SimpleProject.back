@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class MigracaoInicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -173,6 +173,21 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Status", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Superintendencia",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Ativo = table.Column<bool>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
+                    Descricao = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Superintendencia", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -508,14 +523,27 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     ForaEscopoProjeto = table.Column<string>(nullable: true),
                     Premissas = table.Column<string>(nullable: true),
                     EmpresaId = table.Column<int>(nullable: false),
-                    StatusId = table.Column<int>(nullable: true, defaultValueSql: "1"),
+                    StatusId = table.Column<int>(nullable: false),
                     DataPrevista = table.Column<DateTime>(nullable: false),
                     BeneficioEntregue = table.Column<string>(nullable: true),
                     BeneficioResidual = table.Column<string>(nullable: true),
                     ProblemasExecucao = table.Column<string>(nullable: true),
                     Riscos = table.Column<string>(nullable: true),
                     LicoesAprendidas = table.Column<string>(nullable: true),
-                    CentroCusto = table.Column<string>(nullable: false),
+                    Ext = table.Column<string>(nullable: false),
+                    DataRecebida = table.Column<DateTime>(nullable: false),
+                    Fase = table.Column<int>(nullable: false),
+                    Tecnologia = table.Column<string>(nullable: false),
+                    Sigla = table.Column<string>(nullable: false),
+                    RespOutsourcing = table.Column<string>(nullable: false),
+                    RespTI = table.Column<string>(nullable: false),
+                    RespGerente = table.Column<string>(nullable: false),
+                    Diretoria = table.Column<string>(nullable: false),
+                    Tamanho = table.Column<string>(nullable: false),
+                    TipoDemanda = table.Column<string>(nullable: false),
+                    Tarifa = table.Column<string>(nullable: false),
+                    SuperintendenciaId = table.Column<string>(nullable: true),
+                    Superintendencia = table.Column<string>(nullable: false),
                     SquadId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -896,6 +924,9 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
             migrationBuilder.DropTable(
                 name: "SquadPessoas");
+
+            migrationBuilder.DropTable(
+                name: "Superintendencia");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");
