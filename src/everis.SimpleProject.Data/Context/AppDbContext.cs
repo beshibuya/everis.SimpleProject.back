@@ -23,6 +23,7 @@ namespace everis.SimpleProject.Data.EF
         public DbSet<AcessoFerramenta> AcessoFerramentas { get; set; }
         public DbSet<Ferramenta> Ferramentas { get; set; }
         public DbSet<TipoFase> TiposFases { get; set; }
+        public DbSet<Superintendencia> Superintendencia { get; set; }
 
         #endregion
 

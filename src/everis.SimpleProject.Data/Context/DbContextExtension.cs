@@ -60,6 +60,35 @@ namespace everis.SimpleProject.Data.EF.Context
 
             #endregion
 
+            #region Inserts Superintendencia
+
+            context.Add(new Superintendencia
+            {
+                Descricao = "SDACS"              
+            });
+
+            context.Add(new Superintendencia
+            {
+                Descricao = "SDCD"
+            });
+            context.Add(new Superintendencia
+            {
+                Descricao = "SDCT"
+            });
+            context.Add(new Superintendencia
+            {
+                Descricao = "SDPSB"
+            });
+            context.Add(new Superintendencia
+            {
+                Descricao = "SPDC"
+            });
+            context.Add(new Superintendencia
+            {
+                Descricao = "SQT"
+            });
+            #endregion
+
             #region Inserts Pessoa
 
 

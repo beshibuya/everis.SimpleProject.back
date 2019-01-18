@@ -33,6 +33,7 @@ namespace everis.SimpleProject.API.Config
             services.AddTransient<ILoginService, LoginAppSvcGeneric>();
             services.AddTransient<IGenericService<Anexo>, AnexoAppSvcGeneric>();
             services.AddTransient<IGenericService<Pessoa>, PessoaAppSvcGeneric>();
+            services.AddTransient<IGenericService<Superintendencia>, SuperintendenciaAppSvcGeneric>();
         }
     }
 }
