@@ -378,6 +378,7 @@ namespace everis.SimpleProject.Data.EF.Context
                 TipoDemanda = "Servico 1 teste",
                 Tarifa = "Tarifa teste",
                 Superintendencia = "Superintendencia",
+                DiretoriaId = 2
             });
 
             context.Add(new Projeto
@@ -566,7 +567,49 @@ namespace everis.SimpleProject.Data.EF.Context
             {
                 Atribuicao = "Analista responsável Outsourcing"
             });
+            #region Inserts Atribuição
+
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Desenvolvedor"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Tester"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Gerente"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Líder"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Analista responsável de TI - técnico"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Analista responsável Outsourcing"
+            });
             #endregion
+            #endregion
+
+            #region Inserts Comunidade
+
+            context.Add(new Sigla
+            {
+                Descricao = "Finanças"
+            });
+
+            context.Add(new Sigla
+            {
+                Descricao = "Créditos e Garantias"
+            });
+
+            #endregion
+
 
             context.SaveChanges();
 
