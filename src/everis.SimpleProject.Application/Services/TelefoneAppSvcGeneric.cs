@@ -2,8 +2,10 @@
 using everis.SimpleProject.Data.EF.Repositories;
 using everis.SimpleProject.Domain.Models;
 using everis.SimpleProject.Domain.Services;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace everis.SimpleProject.Application.Services {
     public class TelefoneAppSvcGeneric : GenericService<Telefone> , ITelefoneService
@@ -12,13 +14,14 @@ namespace everis.SimpleProject.Application.Services {
             repository = new GenericRepository<Telefone>(context);
         }
 
-        public IEnumerable<Telefone> AdicionarTelefones(List<Telefone> telefones) {
+        public List<Telefone> AdicionarTelefones(List<Telefone> telefones) {
 
             try {
 
                 var dbResult = new List<Telefone>();
 
                 foreach (var item in telefones) {
+                    item.Tipo = null;
                     dbResult.Add(repository.Adicionar(item));
                 }
 
@@ -30,6 +33,11 @@ namespace everis.SimpleProject.Application.Services {
             }
             
         }
+
+        //public override Telefone ObterPorId(int id) {
+        //    var res = ctx.Telefones.Include(i => i.Tipo).FirstOrDefault(f => f.Id == id);
+        //    return res;
+        //}
 
         public override IEnumerable<Telefone> BuscarPor(Telefone filter) {
             try {

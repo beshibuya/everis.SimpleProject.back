@@ -1,6 +1,7 @@
 ﻿using everis.SimpleProject.Data.EF;
 using everis.SimpleProject.Data.EF.Repositories;
 using everis.SimpleProject.Domain.Models;
+using everis.SimpleProject.Domain.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Linq;
 
 namespace everis.SimpleProject.Application.Services
 {
-    public class PessoaAppSvcGeneric : GenericService<Pessoa>
+    public class PessoaAppSvcGeneric : GenericService<Pessoa>, IPessoaService
     {
         public PessoaAppSvcGeneric(AppDbContext context) : base(context)
         {
@@ -43,6 +44,20 @@ namespace everis.SimpleProject.Application.Services
             {
                 throw ex;
             }
+        }
+
+        public IEnumerable<Pessoa> ObterGestoresTecnicos() {
+
+            var gestores = new List<Pessoa>();
+            var todasPessoas = repository.ObterTodos();
+
+            foreach (var item in todasPessoas) {
+                if(item.GestorTecnico == true) {
+                    gestores.Add(item);
+                }
+            }
+
+            return gestores;
         }
     }
 }
