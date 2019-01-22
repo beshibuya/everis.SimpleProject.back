@@ -19,12 +19,14 @@ namespace everis.SimpleProject.Data.EF
         public DbSet<Projeto> Projetos { get; set; }
         public DbSet<ProjetoPessoa> ProjetoPessoas { get; set; }
         public DbSet<ProjetoPessoaAtribuicao> ProjetoPessoaAtribuicoes { get; set; }
+        public DbSet<ProjetoTecnologia> ProjetoTecnologia { get; set; }
         public DbSet<Telefone> Telefones { get; set; }
         public DbSet<AcessoFerramenta> AcessoFerramentas { get; set; }
         public DbSet<Ferramenta> Ferramentas { get; set; }
         public DbSet<Status> Status { get; set; }
         public DbSet<TipoFase> TiposFases { get; set; }
         public DbSet<Superintendencia> Superintendencia { get; set; }
+        public DbSet<Tecnologia> Tecnologia { get; set; }
         public DbSet<Squad> Squads { get; set; }
         public DbSet<Comunidade> Comunidades { get; set; }
         public DbSet<SquadPessoa> SquadPessoas { get; set; }

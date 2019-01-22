@@ -4,13 +4,13 @@ using System.Text;
 
 namespace everis.SimpleProject.Domain.Models
 {
-    public class Sigla : Entity
+    public class Tecnologia : Entity
     {
-        public string Descricao { get; set; }
-
+        public string Nome { get; set; }
+        
         public override void MergeFrom(object other)
         {
-            Descricao = ((Sigla)other).Descricao;
+            Nome = ((Tecnologia)other).Nome;
         }
-    }
+    }   
 }

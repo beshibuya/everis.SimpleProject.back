@@ -1,5 +1,4 @@
 ﻿using everis.SimpleProject.Domain.Models;
-using everis.SimpleProject.Domain.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace everis.SimpleProject.Data.EF.Mapping
