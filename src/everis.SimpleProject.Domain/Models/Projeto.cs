@@ -30,6 +30,7 @@ namespace everis.SimpleProject.Domain.Models
         public List<ProjetoPessoa> ProjetosPessoas { get; set; }
         public DateTime DataRecebida { get; set; }
         public string Tecnologia { get; set; }    
+        public string TecnologiaId { get; set; }
         public string Sigla { get; set; }
         public string RespOutsourcing { get; set; }
         public string RespTI { get; set; }

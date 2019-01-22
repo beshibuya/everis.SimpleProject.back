@@ -353,6 +353,20 @@ namespace everis.SimpleProject.Data.EF.Context
 
             #endregion
 
+            #region Inserts Tecnologia
+
+            context.Add(new Tecnologia
+            {
+                Nome = ".Net"
+            });
+            context.Add(new Tecnologia
+            {
+                Nome = "Java"
+            });
+
+            #endregion
+
+
             context.SaveChanges();
 
             #region Inserts Projeto

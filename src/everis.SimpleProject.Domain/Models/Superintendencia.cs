@@ -12,5 +12,5 @@ namespace everis.SimpleProject.Domain.Models
         {
             Descricao = ((Superintendencia)other).Descricao;
         }
-    }
+    }   
 }
