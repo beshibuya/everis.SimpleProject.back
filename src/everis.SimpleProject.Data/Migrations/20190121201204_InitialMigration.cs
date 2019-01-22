@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
-    public partial class MigracaoInicial : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -532,13 +532,12 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     LicoesAprendidas = table.Column<string>(nullable: true),
                     Ext = table.Column<string>(nullable: false),
                     DataRecebida = table.Column<DateTime>(nullable: false),
-                    Fase = table.Column<int>(nullable: false),
                     Tecnologia = table.Column<string>(nullable: false),
                     Sigla = table.Column<string>(nullable: false),
                     RespOutsourcing = table.Column<string>(nullable: false),
                     RespTI = table.Column<string>(nullable: false),
                     RespGerente = table.Column<string>(nullable: false),
-                    Diretoria = table.Column<string>(nullable: false),
+                    DiretoriaId = table.Column<int>(nullable: false),
                     Tamanho = table.Column<string>(nullable: false),
                     TipoDemanda = table.Column<string>(nullable: false),
                     Tarifa = table.Column<string>(nullable: false),
@@ -549,6 +548,12 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Projetos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Projetos_DiretoriasContratantes_DiretoriaId",
+                        column: x => x.DiretoriaId,
+                        principalTable: "DiretoriasContratantes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Projetos_Empresas_EmpresaId",
                         column: x => x.EmpresaId,
@@ -847,6 +852,11 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 name: "IX_ProjetoPessoas_ProjetoId1",
                 table: "ProjetoPessoas",
                 column: "ProjetoId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Projetos_DiretoriaId",
+                table: "Projetos",
+                column: "DiretoriaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projetos_EmpresaId",

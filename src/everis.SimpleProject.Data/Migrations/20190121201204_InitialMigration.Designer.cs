@@ -10,8 +10,8 @@ using everis.SimpleProject.Data.EF;
 namespace everis.SimpleProject.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190118172215_MigracaoInicial")]
-    partial class MigracaoInicial
+    [Migration("20190121201204_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -418,8 +418,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<DateTime>("DataRecebida");
 
-                    b.Property<string>("Diretoria")
-                        .IsRequired();
+                    b.Property<int>("DiretoriaId");
 
                     b.Property<int>("EmpresaId");
 
@@ -428,8 +427,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<string>("Ext")
                         .IsRequired();
-
-                    b.Property<int>("Fase");
 
                     b.Property<string>("ForaEscopoProjeto");
 
@@ -485,6 +482,8 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .IsRequired();
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DiretoriaId");
 
                     b.HasIndex("EmpresaId");
 
@@ -925,6 +924,11 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.Projeto", b =>
                 {
+                    b.HasOne("everis.SimpleProject.Domain.Models.DiretoriaContratante", "Diretoria")
+                        .WithMany()
+                        .HasForeignKey("DiretoriaId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("everis.SimpleProject.Domain.Models.Empresa", "Empresa")
                         .WithMany()
                         .HasForeignKey("EmpresaId")

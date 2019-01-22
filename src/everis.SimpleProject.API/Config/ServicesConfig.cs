@@ -49,6 +49,7 @@ namespace everis.SimpleProject.API.Config
             services.AddTransient<IGenericService<TipoPessoa>, TipoPessoaAppSvcGeneric>();
             services.AddTransient<IGenericService<TipoTelefone>, TipoTelefoneAppSvcGeneric>();
             services.AddTransient<IGenericService<ProjetoPessoaAtribuicao>, ProjetoPessoaAtribuicaoAppSvcGeneric>();
+            services.AddTransient<IGenericService<Comunidade>, ComunidadeAppSvcGeneric>();
 
             
 

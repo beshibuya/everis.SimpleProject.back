@@ -377,6 +377,7 @@ namespace everis.SimpleProject.Data.EF.Context
                 EscopoProjeto = "Escopo teste",
                 QtdHorasServico1 = 1000,
                 Nome = "Projeto 1",
+                Ext = "EXT-00000000000",
                 EmpresaId = 1,
                 DataPrevista = DateTime.Now.AddDays(7),
                 CodigoProjeto = "1",
@@ -391,6 +392,7 @@ namespace everis.SimpleProject.Data.EF.Context
                 TipoDemanda = "Servico 1 teste",
                 Tarifa = "Tarifa teste",
                 Superintendencia = "Superintendencia",
+                DiretoriaId = 2
             });
 
             context.Add(new Projeto
@@ -398,6 +400,7 @@ namespace everis.SimpleProject.Data.EF.Context
                 DataInicio = DateTime.Now,
                 EscopoProjeto = "Escopo teste",
                 QtdHorasServico1 = 1000,
+                Ext = "EXT-00000000000",
                 Nome = "Projeto 2",
                 EmpresaId = 1,
                 DataPrevista = DateTime.Now.AddDays(7),
@@ -578,7 +581,49 @@ namespace everis.SimpleProject.Data.EF.Context
             {
                 Atribuicao = "Analista responsável Outsourcing"
             });
+            #region Inserts Atribuição
+
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Desenvolvedor"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Tester"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Gerente"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Líder"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Analista responsável de TI - técnico"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Analista responsável Outsourcing"
+            });
             #endregion
+            #endregion
+
+            #region Inserts Comunidade
+
+            context.Add(new Sigla
+            {
+                Descricao = "Finanças"
+            });
+
+            context.Add(new Sigla
+            {
+                Descricao = "Créditos e Garantias"
+            });
+
+            #endregion
+
 
             context.SaveChanges();
 
