@@ -10,8 +10,8 @@ using everis.SimpleProject.Data.EF;
 namespace everis.SimpleProject.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190117154558_AddPropPessoas_AltEnum")]
-    partial class AddPropPessoas_AltEnum
+    [Migration("20190122123202_adicionadoProjetoTecnologia")]
+    partial class adicionadoProjetoTecnologia
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -125,7 +125,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<string>("ContratoSAP");
 
-                    b.Property<DateTime>("DataAdmissão");
+                    b.Property<DateTime>("DataAdmissao");
 
                     b.Property<DateTime>("DataDemissao");
 
@@ -138,9 +138,11 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.Property<string>("EmailCorporativo")
                         .IsRequired();
 
-                    b.Property<bool>("ExclusivoItau");
+                    b.Property<bool>("ExclusivoCliente");
 
                     b.Property<int>("FuncaoId");
+
+                    b.Property<string>("GestorTecnicoCliente");
 
                     b.Property<string>("NomeMaquina");
 
@@ -157,8 +159,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.Property<string>("TipoContratacao");
 
                     b.Property<int>("TipoServicoId");
-
-                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
@@ -348,6 +348,8 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<int>("Funcional");
 
+                    b.Property<bool>("GestorTecnico");
+
                     b.Property<string>("Nome")
                         .IsRequired();
 
@@ -404,9 +406,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<string>("BeneficioResidual");
 
-                    b.Property<string>("CentroCusto")
-                        .IsRequired();
-
                     b.Property<string>("CodigoProjeto");
 
                     b.Property<DateTime>("DataEntrega");
@@ -417,9 +416,16 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<DateTime>("DataPrevista");
 
+                    b.Property<DateTime>("DataRecebida");
+
+                    b.Property<int>("DiretoriaId");
+
                     b.Property<int>("EmpresaId");
 
                     b.Property<string>("EscopoProjeto")
+                        .IsRequired();
+
+                    b.Property<string>("Ext")
                         .IsRequired();
 
                     b.Property<string>("ForaEscopoProjeto");
@@ -438,15 +444,48 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<int>("QtdHorasServico3");
 
+                    b.Property<string>("RespGerente")
+                        .IsRequired();
+
+                    b.Property<string>("RespOutsourcing")
+                        .IsRequired();
+
+                    b.Property<string>("RespTI")
+                        .IsRequired();
+
                     b.Property<string>("Riscos");
+
+                    b.Property<string>("Sigla")
+                        .IsRequired();
 
                     b.Property<int?>("SquadId");
 
                     b.Property<int?>("StatusId")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("1");
+                        .IsRequired();
+
+                    b.Property<string>("Superintendencia")
+                        .IsRequired();
+
+                    b.Property<string>("SuperintendenciaId");
+
+                    b.Property<string>("Tamanho")
+                        .IsRequired()
+                        .HasConversion(new ValueConverter<string, string>(v => default(string), v => default(string), new ConverterMappingHints(size: 1)));
+
+                    b.Property<string>("Tarifa")
+                        .IsRequired();
+
+                    b.Property<string>("Tecnologia")
+                        .IsRequired();
+
+                    b.Property<string>("TecnologiaId");
+
+                    b.Property<string>("TipoDemanda")
+                        .IsRequired();
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DiretoriaId");
 
                     b.HasIndex("EmpresaId");
 
@@ -465,6 +504,8 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<bool>("Ativo");
 
+                    b.Property<int>("AtribuicaoId");
+
                     b.Property<DateTime?>("DataInativacao");
 
                     b.Property<int>("PessoaId");
@@ -473,7 +514,11 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<int?>("ProjetoId1");
 
+                    b.Property<bool>("Responsavel");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("AtribuicaoId");
 
                     b.HasIndex("PessoaId");
 
@@ -492,17 +537,37 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<bool>("Ativo");
 
-                    b.Property<int>("Atribuicao");
+                    b.Property<string>("Atribuicao")
+                        .IsRequired();
 
                     b.Property<DateTime?>("DataInativacao");
 
-                    b.Property<int>("ProjetoPessoaId");
+                    b.HasKey("Id");
+
+                    b.ToTable("ProjetoPessoaAtribuicoes");
+                });
+
+            modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoTecnologia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Ativo");
+
+                    b.Property<DateTime?>("DataInativacao");
+
+                    b.Property<int>("ProjetoId");
+
+                    b.Property<int>("TecnologiaId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProjetoPessoaId");
+                    b.HasIndex("ProjetoId");
 
-                    b.ToTable("ProjetoPessoaAtribuicoes");
+                    b.HasIndex("TecnologiaId");
+
+                    b.ToTable("ProjetoTecnologia");
                 });
 
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.Sigla", b =>
@@ -639,6 +704,40 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Status");
+                });
+
+            modelBuilder.Entity("everis.SimpleProject.Domain.Models.Superintendencia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Ativo");
+
+                    b.Property<DateTime?>("DataInativacao");
+
+                    b.Property<string>("Descricao");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Superintendencia");
+                });
+
+            modelBuilder.Entity("everis.SimpleProject.Domain.Models.Tecnologia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Ativo");
+
+                    b.Property<DateTime?>("DataInativacao");
+
+                    b.Property<string>("Nome");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tecnologia");
                 });
 
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.Telefone", b =>
@@ -867,6 +966,11 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.Projeto", b =>
                 {
+                    b.HasOne("everis.SimpleProject.Domain.Models.DiretoriaContratante", "Diretoria")
+                        .WithMany()
+                        .HasForeignKey("DiretoriaId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("everis.SimpleProject.Domain.Models.Empresa", "Empresa")
                         .WithMany()
                         .HasForeignKey("EmpresaId")
@@ -884,6 +988,11 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoPessoa", b =>
                 {
+                    b.HasOne("everis.SimpleProject.Domain.Models.ProjetoPessoaAtribuicao", "Atribuicao")
+                        .WithMany()
+                        .HasForeignKey("AtribuicaoId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("everis.SimpleProject.Domain.Models.Pessoa", "Pessoa")
                         .WithMany()
                         .HasForeignKey("PessoaId")
@@ -899,11 +1008,16 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .HasForeignKey("ProjetoId1");
                 });
 
-            modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoPessoaAtribuicao", b =>
+            modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoTecnologia", b =>
                 {
-                    b.HasOne("everis.SimpleProject.Domain.Models.ProjetoPessoa", "ProjetoPessoa")
+                    b.HasOne("everis.SimpleProject.Domain.Models.Projeto", "Projeto")
                         .WithMany()
-                        .HasForeignKey("ProjetoPessoaId")
+                        .HasForeignKey("ProjetoId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("everis.SimpleProject.Domain.Models.Tecnologia", "Tecnologia")
+                        .WithMany()
+                        .HasForeignKey("TecnologiaId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

@@ -2,21 +2,22 @@
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
-    public partial class RetiradaPropUserIdDeColaborador : Migration
+    public partial class ALteraçãoIdSquad : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "UserId",
-                table: "Colaboradors");
+                name: "IdSquad",
+                table: "Squads");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "UserId",
-                table: "Colaboradors",
-                nullable: true);
+            migrationBuilder.AddColumn<int>(
+                name: "IdSquad",
+                table: "Squads",
+                nullable: false,
+                defaultValue: 0);
         }
     }
 }

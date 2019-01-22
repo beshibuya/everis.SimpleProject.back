@@ -1,15 +1,16 @@
-﻿using everis.SimpleProject.Domain.Annotations;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace everis.SimpleProject.Domain.Models
 {
-    public class Comunidade : Entity
+    public class Tecnologia : Entity
     {
-        [OrdemExportacao(3)]
         public string Nome { get; set; }
-
+        
         public override void MergeFrom(object other)
         {
-            Nome = ((Comunidade)other).Nome;
+            Nome = ((Tecnologia)other).Nome;
         }
-    }
+    }   
 }

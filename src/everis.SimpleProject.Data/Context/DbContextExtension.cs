@@ -229,6 +229,35 @@ namespace everis.SimpleProject.Data.EF.Context
 
             #endregion
 
+            #region Inserts Superintendencia
+
+            context.Add(new Superintendencia
+            {
+                Descricao = "SDACS"              
+            });
+
+            context.Add(new Superintendencia
+            {
+                Descricao = "SDCD"
+            });
+            context.Add(new Superintendencia
+            {
+                Descricao = "SDCT"
+            });
+            context.Add(new Superintendencia
+            {
+                Descricao = "SDPSB"
+            });
+            context.Add(new Superintendencia
+            {
+                Descricao = "SPDC"
+            });
+            context.Add(new Superintendencia
+            {
+                Descricao = "SQT"
+            });
+            #endregion
+
             #region Inserts Pessoa
 
 
@@ -282,28 +311,61 @@ namespace everis.SimpleProject.Data.EF.Context
 
             context.Add(new Status
             {
+                Codigo = "DES",
+                Descricao = "Em desenvolvimento"
+            });
+
+            context.Add(new Status
+            {
                 Codigo = "APR",
-                Descricao = "Em Aprovação"
+                Descricao = "Aguardando aprovação"
             });
 
             context.Add(new Status
             {
-                Codigo = "EXE",
-                Descricao = "Em Execução"
+                Codigo = "CON",
+                Descricao = "Concluído"
             });
 
             context.Add(new Status
             {
-                Codigo = "CN",
+                Codigo = "ENT",
+                Descricao = "Entregue"
+            });
+
+            context.Add(new Status
+            {
+                Codigo = "AAB",
+                Descricao = "Aguardando abertura"
+            });
+
+            context.Add(new Status
+            {
+                Codigo = "CAN",
                 Descricao = "Cancelado"
             });
 
             context.Add(new Status
             {
-                Codigo = "CO",
-                Descricao = "Concluído"
+                Codigo = "PRO",
+                Descricao = "Proposta"
             });
+
             #endregion
+
+            #region Inserts Tecnologia
+
+            context.Add(new Tecnologia
+            {
+                Nome = ".Net"
+            });
+            context.Add(new Tecnologia
+            {
+                Nome = "Java"
+            });
+
+            #endregion
+
 
             context.SaveChanges();
 
@@ -315,11 +377,22 @@ namespace everis.SimpleProject.Data.EF.Context
                 EscopoProjeto = "Escopo teste",
                 QtdHorasServico1 = 1000,
                 Nome = "Projeto 1",
+                Ext = "EXT-00000000000",
                 EmpresaId = 1,
                 DataPrevista = DateTime.Now.AddDays(7),
-                CentroCusto = "EXTNÂOLEMBROORESTO112",
                 CodigoProjeto = "1",
-                StatusId = 1
+                StatusId = 1,
+                DataRecebida = DateTime.Now,
+                Tecnologia = "Tecnologia teste",
+                Sigla = "Sigla teste",
+                RespOutsourcing = "RespOutsourcing teste",
+                RespTI = "RespTI teste",
+                RespGerente = "RespGerente teste",
+                Tamanho = 'P',
+                TipoDemanda = "Servico 1 teste",
+                Tarifa = "Tarifa teste",
+                Superintendencia = "Superintendencia",
+                DiretoriaId = 2
             });
 
             context.Add(new Projeto
@@ -327,17 +400,29 @@ namespace everis.SimpleProject.Data.EF.Context
                 DataInicio = DateTime.Now,
                 EscopoProjeto = "Escopo teste",
                 QtdHorasServico1 = 1000,
+                Ext = "EXT-00000000000",
                 Nome = "Projeto 2",
                 EmpresaId = 1,
                 DataPrevista = DateTime.Now.AddDays(7),
-                CentroCusto = "EXTNÂOLEMBROORESTO112",
                 CodigoProjeto = "2",
-                StatusId = 1
+                StatusId = 1,
+                DataRecebida= DateTime.Now,
+                Tecnologia= "Tecnologia teste",
+                Sigla= "Sigla teste",
+                RespOutsourcing= "RespOutsourcing teste",
+                RespTI= "RespTI teste",
+                RespGerente= "RespGerente teste",
+                Tamanho= 'P',
+                TipoDemanda= "Servico 1 teste",
+                Tarifa= "Tarifa teste",
+                Superintendencia= "Superintendencia",
+                DiretoriaId = 1
+
             });
 
             #endregion
 
-            
+
             context.SaveChanges();
 
             #region Inserts Ferramentas
@@ -496,7 +581,49 @@ namespace everis.SimpleProject.Data.EF.Context
             {
                 Atribuicao = "Analista responsável Outsourcing"
             });
+            #region Inserts Atribuição
+
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Desenvolvedor"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Tester"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Gerente"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Líder"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Analista responsável de TI - técnico"
+            });
+            context.Add(new ProjetoPessoaAtribuicao
+            {
+                Atribuicao = "Analista responsável Outsourcing"
+            });
             #endregion
+            #endregion
+
+            #region Inserts Comunidade
+
+            context.Add(new Sigla
+            {
+                Descricao = "Finanças"
+            });
+
+            context.Add(new Sigla
+            {
+                Descricao = "Créditos e Garantias"
+            });
+
+            #endregion
+
 
             context.SaveChanges();
 
