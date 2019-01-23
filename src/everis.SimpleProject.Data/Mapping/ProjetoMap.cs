@@ -16,15 +16,12 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.DataPrevista).IsRequired();
             builder.Property(c => c.Ext).IsRequired();
             builder.Property(c => c.DataRecebida).IsRequired();
-            builder.Property(c => c.Tecnologia).IsRequired();
-            builder.Property(c => c.Sigla).IsRequired();
-            builder.Property(c => c.RespOutsourcing).IsRequired();
-            builder.Property(c => c.RespTI).IsRequired();
-            builder.Property(c => c.RespGerente).IsRequired();
+            builder.Property(c => c.TecnologiaId).IsRequired();
+            builder.Property(c => c.SiglaId).IsRequired();
             builder.Property(c => c.Tamanho).IsRequired();
             builder.Property(c => c.TipoDemanda).IsRequired();
             builder.Property(c => c.Tarifa).IsRequired();
-            builder.Property(c => c.Superintendencia).IsRequired();
+            builder.Property(c => c.SuperintendenciaId).IsRequired();
             builder.Property(c => c.DataProposta).IsRequired();
             builder.Property(c => c.StatusProposta).IsRequired();
             

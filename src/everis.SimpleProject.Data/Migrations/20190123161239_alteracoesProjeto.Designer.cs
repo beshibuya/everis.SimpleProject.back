@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using everis.SimpleProject.Data.EF;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190123161239_alteracoesProjeto")]
+    partial class alteracoesProjeto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -405,6 +407,8 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.Property<string>("BeneficioResidual");
 
                     b.Property<string>("CodigoProjeto");
+
+                    b.Property<DateTime>("DataEntrega");
 
                     b.Property<DateTime?>("DataInativacao");
 

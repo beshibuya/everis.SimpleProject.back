@@ -12,7 +12,6 @@ namespace everis.SimpleProject.Domain.Models
         public int QtdHorasServico2 { get; set; }
         public int QtdHorasServico3 { get; set; }
         public DateTime DataInicio { get; set; }
-        public DateTime DataEntrega { get; set; }
         public string EscopoProjeto { get; set; }
         public string ForaEscopoProjeto { get; set; }
         public string Premissas { get; set; }
@@ -31,9 +30,10 @@ namespace everis.SimpleProject.Domain.Models
         public string Ext { get; set; }
         public List<ProjetoPessoa> ProjetosPessoas { get; set; }
         public DateTime DataRecebida { get; set; }
-        public string Tecnologia { get; set; }    
-        public string TecnologiaId { get; set; }
-        public string Sigla { get; set; }
+        public Tecnologia Tecnologia { get; set; }    
+        public int TecnologiaId { get; set; }
+        public Sigla Sigla { get; set; }
+        public int SiglaId { get; set; }
         public string RespOutsourcing { get; set; }
         public string RespTI { get; set; }
         public string RespGerente { get; set; }
@@ -42,10 +42,8 @@ namespace everis.SimpleProject.Domain.Models
         public char Tamanho { get; set; }
         public string TipoDemanda { get; set; }
         public string Tarifa { get; set; }
-        public string SuperintendenciaId { get; set; }
-        public string Superintendencia { get; set; }
-        
-
+        public int SuperintendenciaId { get; set; }
+        public Superintendencia Superintendencia { get; set; }
         public int? SquadId { get; set; }
         public Squad Squad { get; set; }
 
@@ -56,7 +54,6 @@ namespace everis.SimpleProject.Domain.Models
             QtdHorasServico2 = ((Projeto)other).QtdHorasServico2;
             QtdHorasServico3 = ((Projeto)other).QtdHorasServico3;
             DataInicio = ((Projeto)other).DataInicio;
-            DataEntrega = ((Projeto)other).DataEntrega;
             EscopoProjeto = ((Projeto)other).EscopoProjeto;
             ForaEscopoProjeto = ((Projeto)other).ForaEscopoProjeto;
             Premissas = ((Projeto)other).Premissas;
@@ -82,7 +79,8 @@ namespace everis.SimpleProject.Domain.Models
             Superintendencia = ((Projeto)other).Superintendencia;
             DataProposta = ((Projeto)other).DataProposta;
             StatusProposta = ((Projeto)other).StatusProposta;
-            
+            SquadId = ((Projeto)other).SquadId;
+
 
 
             StatusId = ((Projeto)other).StatusId;

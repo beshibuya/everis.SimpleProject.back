@@ -365,7 +365,23 @@ namespace everis.SimpleProject.Data.EF.Context
             });
 
             #endregion
+            #region Inserts Sigla
 
+            context.Add(new Sigla
+            {
+                Descricao = "Sigla_01"
+            });
+
+            context.Add(new Sigla
+            {
+                Descricao = "Sigla_02"
+            });
+
+            context.Add(new Sigla
+            {
+                Descricao = "Sigla_03"
+            });
+            #endregion
 
             context.SaveChanges();
 
@@ -383,16 +399,18 @@ namespace everis.SimpleProject.Data.EF.Context
                 CodigoProjeto = "1",
                 StatusId = 1,
                 DataRecebida = DateTime.Now,
-                Tecnologia = "Tecnologia teste",
-                Sigla = "Sigla teste",
+                TecnologiaId = 1,
+                SiglaId = 1,
                 RespOutsourcing = "RespOutsourcing teste",
                 RespTI = "RespTI teste",
                 RespGerente = "RespGerente teste",
                 Tamanho = 'P',
                 TipoDemanda = "Servico 1 teste",
                 Tarifa = "Tarifa teste",
-                Superintendencia = "Superintendencia",
-                DiretoriaId = 2
+                SuperintendenciaId = 1,
+                DiretoriaId = 2,
+                StatusProposta = "teste",
+                DataProposta = DateTime.Now
             });
 
             context.Add(new Projeto
@@ -406,17 +424,19 @@ namespace everis.SimpleProject.Data.EF.Context
                 DataPrevista = DateTime.Now.AddDays(7),
                 CodigoProjeto = "2",
                 StatusId = 1,
-                DataRecebida= DateTime.Now,
-                Tecnologia= "Tecnologia teste",
-                Sigla= "Sigla teste",
-                RespOutsourcing= "RespOutsourcing teste",
-                RespTI= "RespTI teste",
-                RespGerente= "RespGerente teste",
-                Tamanho= 'P',
-                TipoDemanda= "Servico 1 teste",
-                Tarifa= "Tarifa teste",
-                Superintendencia= "Superintendencia",
-                DiretoriaId = 1
+                DataRecebida = DateTime.Now,
+                TecnologiaId = 1,
+                SiglaId = 1,
+                RespOutsourcing = "RespOutsourcing teste",
+                RespTI = "RespTI teste",
+                RespGerente = "RespGerente teste",
+                Tamanho = 'P',
+                TipoDemanda = "Servico 1 teste",
+                Tarifa = "Tarifa teste",
+                SuperintendenciaId = 1,
+                DiretoriaId = 1,
+                StatusProposta = "teste",
+                DataProposta = DateTime.Now
 
             });
 
@@ -541,20 +561,6 @@ namespace everis.SimpleProject.Data.EF.Context
 
             #endregion
 
-            #region Inserts Sigla
-
-            context.Add(new Sigla {
-                Descricao = "Sigla_01"
-            });
-
-            context.Add(new Sigla {
-                Descricao = "Sigla_02"
-            });
-
-            context.Add(new Sigla {
-                Descricao = "Sigla_03"
-            });
-            #endregion
             #region Inserts Atribuição
 
             context.Add(new ProjetoPessoaAtribuicao
