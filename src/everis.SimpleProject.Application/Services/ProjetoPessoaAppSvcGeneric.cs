@@ -16,16 +16,11 @@ namespace everis.SimpleProject.Application.Services
 
         public override IEnumerable<ProjetoPessoa> BuscarPor(ProjetoPessoa filter)
         {
-            return null;
-        }
-
-        public IEnumerable<ProjetoPessoa> PessoasProjeto(int projetoId)
-        {
             try
             {
-                return repository.BuscarPor(p => p.ProjetoId == projetoId, i => i.Pessoa);
+                return repository.BuscarPor(p => p.ProjetoId == filter.ProjetoId && p.Ativo == filter.Ativo, i => i.Pessoa);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
