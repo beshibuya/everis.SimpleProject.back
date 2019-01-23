@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using everis.SimpleProject.Data.EF;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190122174436_ALteraçãoIdSquad")]
+    partial class ALteraçãoIdSquad
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -476,8 +478,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.Property<string>("Tecnologia")
                         .IsRequired();
 
-                    b.Property<string>("TecnologiaId");
-
                     b.Property<string>("TipoDemanda")
                         .IsRequired();
 
@@ -543,29 +543,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProjetoPessoaAtribuicoes");
-                });
-
-            modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoTecnologia", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Ativo");
-
-                    b.Property<DateTime?>("DataInativacao");
-
-                    b.Property<int>("ProjetoId");
-
-                    b.Property<int>("TecnologiaId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjetoId");
-
-                    b.HasIndex("TecnologiaId");
-
-                    b.ToTable("ProjetoTecnologia");
                 });
 
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.Sigla", b =>
@@ -634,12 +611,26 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<DateTime>("DataInicio");
 
+                    b.Property<string>("GerenteComunidade")
+                        .IsRequired();
+
+                    b.Property<string>("GerenteResponsavel")
+                        .IsRequired();
+
                     b.Property<string>("Nome")
                         .IsRequired();
+
+                    b.Property<int>("PessoaId");
+
+                    b.Property<int?>("TelefoneId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ComunidadeId");
+
+                    b.HasIndex("PessoaId");
+
+                    b.HasIndex("TelefoneId");
 
                     b.ToTable("Squads");
                 });
@@ -703,23 +694,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Superintendencia");
-                });
-
-            modelBuilder.Entity("everis.SimpleProject.Domain.Models.Tecnologia", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Ativo");
-
-                    b.Property<DateTime?>("DataInativacao");
-
-                    b.Property<string>("Nome");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tecnologia");
                 });
 
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.Telefone", b =>
@@ -990,19 +964,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .HasForeignKey("ProjetoId1");
                 });
 
-            modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoTecnologia", b =>
-                {
-                    b.HasOne("everis.SimpleProject.Domain.Models.Projeto", "Projeto")
-                        .WithMany()
-                        .HasForeignKey("ProjetoId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("everis.SimpleProject.Domain.Models.Tecnologia", "Tecnologia")
-                        .WithMany()
-                        .HasForeignKey("TecnologiaId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.SolicitacaoMudanca", b =>
                 {
                     b.HasOne("everis.SimpleProject.Domain.Models.Pessoa", "Pessoa")
@@ -1022,6 +983,15 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .WithMany()
                         .HasForeignKey("ComunidadeId")
                         .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("everis.SimpleProject.Domain.Models.Pessoa", "Pessoa")
+                        .WithMany()
+                        .HasForeignKey("PessoaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("everis.SimpleProject.Domain.Models.Telefone", "Telefone")
+                        .WithMany()
+                        .HasForeignKey("TelefoneId");
                 });
 
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.SquadPessoa", b =>

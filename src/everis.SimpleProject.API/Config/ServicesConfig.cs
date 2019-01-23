@@ -13,6 +13,7 @@ namespace everis.SimpleProject.API.Config
         public static void Configure(this IServiceCollection services)
         {
             services.AddTransient<IGenericService<Sigla>, SiglaAppSvcGeneric>();
+            services.AddTransient<IAcessoSiglaService, AcessoSiglaAppSvcGeneric>();
             services.AddTransient<IGenericService<AcessoSigla>, AcessoSiglaAppSvcGeneric>();
             services.AddTransient<IGenericService<Anexo>, AnexoAppSvcGeneric>();
             services.AddTransient<IGenericService<SolicitacaoMudanca>, SolicitacaoMudancaAppSvcGeneric>();
@@ -23,9 +24,12 @@ namespace everis.SimpleProject.API.Config
             services.AddTransient<IGenericService<Fase>, FaseAppSvcGeneric>();
             services.AddTransient<IFaseService, FaseAppSvcGeneric>(); 
             services.AddTransient<IGenericService<Pessoa>, PessoaAppSvcGeneric>();
+            services.AddTransient<IPessoaService, PessoaAppSvcGeneric>();
             services.AddTransient<IGenericService<Projeto>, ProjetoAppSvcGeneric>();
             services.AddTransient<IGenericService<ProjetoPessoa>, ProjetoPessoaAppSvcGeneric>();
             services.AddTransient<IProjetoPessoaService, ProjetoPessoaAppSvcGeneric>();
+            services.AddTransient<IGenericService<ProjetoTecnologia>, ProjetoTecnologiaAppSvcGeneric>();
+            services.AddTransient<IProjetoTecnologiaService, ProjetoTecnologiaAppSvcGeneric>();
             services.AddTransient<ITelefoneService, TelefoneAppSvcGeneric>();
             services.AddTransient<IGenericService<Telefone>, TelefoneAppSvcGeneric>();
             services.AddTransient<IGenericService<Usuario>, UsuarioAppSvcGeneric>();
@@ -35,6 +39,7 @@ namespace everis.SimpleProject.API.Config
             services.AddTransient<IGenericService<Anexo>, AnexoAppSvcGeneric>();
             services.AddTransient<IGenericService<Pessoa>, PessoaAppSvcGeneric>();
             services.AddTransient<IGenericService<Superintendencia>, SuperintendenciaAppSvcGeneric>();
+            services.AddTransient<IGenericService<Tecnologia>, TecnologiaAppSvcGeneric>();
             services.AddTransient<IGenericService<Status>, StatusAppSvcGeneric>();
             services.AddTransient<IGenericService<Ferramenta>, FerramentaAppSvcGeneric>();
             services.AddTransient<IGenericService<PoloAcesso>, PoloAcessoAppSvcGeneric>();
@@ -45,8 +50,12 @@ namespace everis.SimpleProject.API.Config
             services.AddTransient<IGenericService<Perfil>, PerfilAppSvcGeneric>();
             services.AddTransient<IGenericService<TipoPessoa>, TipoPessoaAppSvcGeneric>();
             services.AddTransient<IGenericService<TipoTelefone>, TipoTelefoneAppSvcGeneric>();
+            services.AddTransient<IGenericService<AcessoFerramenta>, AcessoFerramentaAppSvcGeneric>();
+            services.AddTransient<IAcessoFerramentaService, AcessoFerramentaAppSvcGeneric>();
             services.AddTransient<IGenericService<ProjetoPessoaAtribuicao>, ProjetoPessoaAtribuicaoAppSvcGeneric>();
             services.AddTransient<IGenericService<Comunidade>, ComunidadeAppSvcGeneric>();
+            services.AddTransient<IGenericService<Squad>, SquadAppSvcGeneric>();
+            services.AddTransient<IGenericService<SquadPessoa>, SquadPessoaAppSvcGeneric>();
 
             
 
