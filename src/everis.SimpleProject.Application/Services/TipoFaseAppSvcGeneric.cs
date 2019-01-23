@@ -15,7 +15,18 @@ namespace everis.SimpleProject.Application.Services
 
         public override IEnumerable<TipoFase> BuscarPor(TipoFase filter)
         {
-            return null;
+            try
+            {
+                var nomeToFind = filter?.Nome;
+                var result = repository.BuscarPor(b => b.Nome.Contains(
+                    string.IsNullOrEmpty(nomeToFind) ? b.Nome : nomeToFind
+                    ));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

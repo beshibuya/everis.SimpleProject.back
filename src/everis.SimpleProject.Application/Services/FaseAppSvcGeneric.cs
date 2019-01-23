@@ -20,9 +20,8 @@ namespace everis.SimpleProject.Application.Services
         {
             try
             {
-                var codigoFaseToFind = filter.CodigoFase.ToString();
-                var result = repository.BuscarPor(
-                    b => (b.CodigoFase.ToString().Contains(string.IsNullOrEmpty(codigoFaseToFind) ? b.CodigoFase.ToString() : codigoFaseToFind))
+                var result = ctx.Fases.Include(X => X.TipoFase).Include(X => X.Pessoa).Where(
+                    b => (filter.CodigoFase == 0 ||  b.CodigoFase == filter.CodigoFase)
                     && (b.ProjetoId == (filter.ProjetoId == 0 ? b.ProjetoId : filter.ProjetoId))
                     && b.Ativo == filter.Ativo);
                 return result;
