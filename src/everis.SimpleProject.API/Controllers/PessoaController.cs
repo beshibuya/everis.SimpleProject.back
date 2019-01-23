@@ -11,6 +11,7 @@ namespace everis.SimpleProject.API.Controllers {
 
         [HttpPost("[action]")]
         public ActionResult CriarPessoaColaborador([FromServices]IGenericService<Pessoa> pessoaSvc,
+            [FromServices] IGenericService<Colaborador> colaboradorSvc,
              [FromServices] IAcessoFerramentaService ferramentaSvc, [FromServices] ITelefoneService telSvc,
              [FromServices] IAcessoSiglaService siglaSvc, [FromBody] PessoaColaborador pcv) {
             try {
@@ -18,24 +19,25 @@ namespace everis.SimpleProject.API.Controllers {
                     pcv.pessoa.EmpresaId = 1;
                 }
                 var novaPessoa = pessoaSvc.Adicionar(pcv.pessoa);
+                pcv.colaborador.PessoaId = novaPessoa.Id;
+                var novoColaborador = colaboradorSvc.Adicionar(pcv.colaborador);
                 if (pcv.pessoa.TipoId == 1) {
-                    var lstAcessoFerramenta = ferramentaSvc.AdicionarListaAcessoFerramenta(pcv.FerramentasAssociadas, novaPessoa.Colaborador.Id);
-                    var lstAcessoSigla = siglaSvc.AdicionarListaAcessoSigla(pcv.SiglasAssociadas, novaPessoa.Colaborador.Id);
+                    var lstAcessoFerramenta = ferramentaSvc.AdicionarListaAcessoFerramenta(pcv.FerramentasAssociadas, novoColaborador.Id);
+                    var lstAcessoSigla = siglaSvc.AdicionarListaAcessoSigla(pcv.SiglasAssociadas, novoColaborador.Id);
                 }
 
                 var lstTelefone = telSvc.AdicionarTelefones(pcv.Telefones, novaPessoa.Id);
 
-                var pessoaColaborador = new PessoaColaborador {
-                    pessoa = novaPessoa,
-                    Telefones = lstTelefone
-                };
-
-                var retorno = new Retorno() {
+                return Ok(new Retorno()
+                {
                     Codigo = 200,
-                    Data = pessoaColaborador
-
-                };
-                return Ok(retorno);
+                    Data = new PessoaColaborador
+                    {
+                        pessoa = novaPessoa,
+                        colaborador = novoColaborador,
+                        Telefones = lstTelefone
+                    }
+                });
             }
             catch (Exception ex) {
 

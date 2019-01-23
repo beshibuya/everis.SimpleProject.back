@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class Release_MVP_1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -191,6 +191,21 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Tecnologia",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Ativo = table.Column<bool>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
+                    Nome = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tecnologia", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TipoPessoas",
                 columns: table => new
                 {
@@ -270,6 +285,164 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Squads",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Ativo = table.Column<bool>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
+                    Nome = table.Column<string>(nullable: false),
+                    Codigo = table.Column<int>(nullable: true),
+                    DataInicio = table.Column<DateTime>(nullable: false),
+                    ComunidadeId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Squads", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Squads_Comunidades_ComunidadeId",
+                        column: x => x.ComunidadeId,
+                        principalTable: "Comunidades",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Pessoas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Ativo = table.Column<bool>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
+                    DiretoriaId = table.Column<int>(nullable: true),
+                    EmpresaId = table.Column<int>(nullable: false),
+                    TipoId = table.Column<int>(nullable: false),
+                    Nome = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(nullable: true),
+                    Sexo = table.Column<string>(nullable: false),
+                    Documento = table.Column<string>(nullable: true),
+                    CPF = table.Column<long>(nullable: false),
+                    Rg = table.Column<long>(nullable: false),
+                    OrgaoEmissor = table.Column<string>(nullable: true),
+                    UFRg = table.Column<string>(nullable: true),
+                    FotoPath = table.Column<string>(nullable: true),
+                    Funcional = table.Column<int>(nullable: false),
+                    GestorTecnico = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pessoas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Pessoas_DiretoriasContratantes_DiretoriaId",
+                        column: x => x.DiretoriaId,
+                        principalTable: "DiretoriasContratantes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Pessoas_Empresas_EmpresaId",
+                        column: x => x.EmpresaId,
+                        principalTable: "Empresas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Pessoas_TipoPessoas_TipoId",
+                        column: x => x.TipoId,
+                        principalTable: "TipoPessoas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Projetos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Ativo = table.Column<bool>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
+                    Nome = table.Column<string>(nullable: true),
+                    CodigoProjeto = table.Column<string>(nullable: true),
+                    QtdHorasServico1 = table.Column<int>(nullable: false),
+                    QtdHorasServico2 = table.Column<int>(nullable: false),
+                    QtdHorasServico3 = table.Column<int>(nullable: false),
+                    DataInicio = table.Column<DateTime>(nullable: false),
+                    EscopoProjeto = table.Column<string>(nullable: false),
+                    ForaEscopoProjeto = table.Column<string>(nullable: true),
+                    Premissas = table.Column<string>(nullable: true),
+                    EmpresaId = table.Column<int>(nullable: false),
+                    StatusId = table.Column<int>(nullable: false),
+                    DataPrevista = table.Column<DateTime>(nullable: false),
+                    DataProposta = table.Column<DateTime>(nullable: false),
+                    StatusProposta = table.Column<string>(nullable: false),
+                    BeneficioEntregue = table.Column<string>(nullable: true),
+                    BeneficioResidual = table.Column<string>(nullable: true),
+                    ProblemasExecucao = table.Column<string>(nullable: true),
+                    Riscos = table.Column<string>(nullable: true),
+                    LicoesAprendidas = table.Column<string>(nullable: true),
+                    Ext = table.Column<string>(nullable: false),
+                    DataRecebida = table.Column<DateTime>(nullable: false),
+                    TecnologiaId = table.Column<int>(nullable: false),
+                    SiglaId = table.Column<int>(nullable: false),
+                    RespOutsourcing = table.Column<string>(nullable: true),
+                    RespTI = table.Column<string>(nullable: true),
+                    RespGerente = table.Column<string>(nullable: true),
+                    DiretoriaId = table.Column<int>(nullable: false),
+                    Tamanho = table.Column<string>(nullable: false),
+                    TipoDemanda = table.Column<string>(nullable: false),
+                    Tarifa = table.Column<string>(nullable: false),
+                    SuperintendenciaId = table.Column<int>(nullable: false),
+                    SquadId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Projetos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Projetos_DiretoriasContratantes_DiretoriaId",
+                        column: x => x.DiretoriaId,
+                        principalTable: "DiretoriasContratantes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Projetos_Empresas_EmpresaId",
+                        column: x => x.EmpresaId,
+                        principalTable: "Empresas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Projetos_Siglas_SiglaId",
+                        column: x => x.SiglaId,
+                        principalTable: "Siglas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Projetos_Squads_SquadId",
+                        column: x => x.SquadId,
+                        principalTable: "Squads",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Projetos_Status_StatusId",
+                        column: x => x.StatusId,
+                        principalTable: "Status",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Projetos_Superintendencia_SuperintendenciaId",
+                        column: x => x.SuperintendenciaId,
+                        principalTable: "Superintendencia",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Projetos_Tecnologia_TecnologiaId",
+                        column: x => x.TecnologiaId,
+                        principalTable: "Tecnologia",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Colaboradors",
                 columns: table => new
                 {
@@ -278,6 +451,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     Ativo = table.Column<bool>(nullable: false),
                     DataInativacao = table.Column<DateTime>(nullable: true),
                     FuncaoId = table.Column<int>(nullable: false),
+                    PessoaId = table.Column<int>(nullable: false),
                     PoloAcessoId = table.Column<int>(nullable: false),
                     AreaContratanteId = table.Column<int>(nullable: false),
                     TipoServicoId = table.Column<int>(nullable: false),
@@ -313,6 +487,12 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
+                        name: "FK_Colaboradors_Pessoas_PessoaId",
+                        column: x => x.PessoaId,
+                        principalTable: "Pessoas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Colaboradors_PoloAcessos_PoloAcessoId",
                         column: x => x.PoloAcessoId,
                         principalTable: "PoloAcessos",
@@ -327,110 +507,29 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AcessoFerramentas",
+                name: "SquadPessoas",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Ativo = table.Column<bool>(nullable: false),
                     DataInativacao = table.Column<DateTime>(nullable: true),
-                    FerramentaId = table.Column<int>(nullable: false),
-                    ColaboradorId = table.Column<int>(nullable: false)
+                    SquadId = table.Column<int>(nullable: false),
+                    PessoaId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AcessoFerramentas", x => x.Id);
+                    table.PrimaryKey("PK_SquadPessoas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AcessoFerramentas_Colaboradors_ColaboradorId",
-                        column: x => x.ColaboradorId,
-                        principalTable: "Colaboradors",
+                        name: "FK_SquadPessoas_Pessoas_PessoaId",
+                        column: x => x.PessoaId,
+                        principalTable: "Pessoas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_AcessoFerramentas_Ferramentas_FerramentaId",
-                        column: x => x.FerramentaId,
-                        principalTable: "Ferramentas",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AcessoSiglas",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Ativo = table.Column<bool>(nullable: false),
-                    DataInativacao = table.Column<DateTime>(nullable: true),
-                    SiglaId = table.Column<int>(nullable: false),
-                    ColaboradorId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AcessoSiglas", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AcessoSiglas_Colaboradors_ColaboradorId",
-                        column: x => x.ColaboradorId,
-                        principalTable: "Colaboradors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_AcessoSiglas_Siglas_SiglaId",
-                        column: x => x.SiglaId,
-                        principalTable: "Siglas",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Pessoas",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Ativo = table.Column<bool>(nullable: false),
-                    DataInativacao = table.Column<DateTime>(nullable: true),
-                    DiretoriaId = table.Column<int>(nullable: true),
-                    ColaboradorId = table.Column<int>(nullable: true),
-                    EmpresaId = table.Column<int>(nullable: false),
-                    TipoId = table.Column<int>(nullable: false),
-                    Nome = table.Column<string>(nullable: false),
-                    Email = table.Column<string>(nullable: true),
-                    Sexo = table.Column<string>(nullable: false),
-                    Documento = table.Column<string>(nullable: true),
-                    CPF = table.Column<long>(nullable: false),
-                    Rg = table.Column<long>(nullable: false),
-                    OrgaoEmissor = table.Column<string>(nullable: true),
-                    UFRg = table.Column<string>(nullable: true),
-                    FotoPath = table.Column<string>(nullable: true),
-                    Funcional = table.Column<int>(nullable: false),
-                    GestorTecnico = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Pessoas", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Pessoas_Colaboradors_ColaboradorId",
-                        column: x => x.ColaboradorId,
-                        principalTable: "Colaboradors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Pessoas_DiretoriasContratantes_DiretoriaId",
-                        column: x => x.DiretoriaId,
-                        principalTable: "DiretoriasContratantes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Pessoas_Empresas_EmpresaId",
-                        column: x => x.EmpresaId,
-                        principalTable: "Empresas",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Pessoas_TipoPessoas_TipoId",
-                        column: x => x.TipoId,
-                        principalTable: "TipoPessoas",
+                        name: "FK_SquadPessoas_Squads_SquadId",
+                        column: x => x.SquadId,
+                        principalTable: "Squads",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -460,144 +559,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         name: "FK_Telefones_TipoTelefones_TipoId",
                         column: x => x.TipoId,
                         principalTable: "TipoTelefones",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Squads",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Ativo = table.Column<bool>(nullable: false),
-                    DataInativacao = table.Column<DateTime>(nullable: true),
-                    Nome = table.Column<string>(nullable: false),
-                    DataInicio = table.Column<DateTime>(nullable: false),
-                    IdSquad = table.Column<int>(nullable: false),
-                    GerenteResponsavel = table.Column<string>(nullable: false),
-                    GerenteComunidade = table.Column<string>(nullable: false),
-                    PessoaId = table.Column<int>(nullable: false),
-                    ComunidadeId = table.Column<int>(nullable: false),
-                    TelefoneId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Squads", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Squads_Comunidades_ComunidadeId",
-                        column: x => x.ComunidadeId,
-                        principalTable: "Comunidades",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Squads_Pessoas_PessoaId",
-                        column: x => x.PessoaId,
-                        principalTable: "Pessoas",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Squads_Telefones_TelefoneId",
-                        column: x => x.TelefoneId,
-                        principalTable: "Telefones",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Projetos",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Ativo = table.Column<bool>(nullable: false),
-                    DataInativacao = table.Column<DateTime>(nullable: true),
-                    Nome = table.Column<string>(nullable: true),
-                    CodigoProjeto = table.Column<string>(nullable: true),
-                    QtdHorasServico1 = table.Column<int>(nullable: false),
-                    QtdHorasServico2 = table.Column<int>(nullable: false),
-                    QtdHorasServico3 = table.Column<int>(nullable: false),
-                    DataInicio = table.Column<DateTime>(nullable: false),
-                    DataEntrega = table.Column<DateTime>(nullable: false),
-                    EscopoProjeto = table.Column<string>(nullable: false),
-                    ForaEscopoProjeto = table.Column<string>(nullable: true),
-                    Premissas = table.Column<string>(nullable: true),
-                    EmpresaId = table.Column<int>(nullable: false),
-                    StatusId = table.Column<int>(nullable: false),
-                    DataPrevista = table.Column<DateTime>(nullable: false),
-                    BeneficioEntregue = table.Column<string>(nullable: true),
-                    BeneficioResidual = table.Column<string>(nullable: true),
-                    ProblemasExecucao = table.Column<string>(nullable: true),
-                    Riscos = table.Column<string>(nullable: true),
-                    LicoesAprendidas = table.Column<string>(nullable: true),
-                    Ext = table.Column<string>(nullable: false),
-                    DataRecebida = table.Column<DateTime>(nullable: false),
-                    Tecnologia = table.Column<string>(nullable: false),
-                    Sigla = table.Column<string>(nullable: false),
-                    RespOutsourcing = table.Column<string>(nullable: false),
-                    RespTI = table.Column<string>(nullable: false),
-                    RespGerente = table.Column<string>(nullable: false),
-                    DiretoriaId = table.Column<int>(nullable: false),
-                    Tamanho = table.Column<string>(nullable: false),
-                    TipoDemanda = table.Column<string>(nullable: false),
-                    Tarifa = table.Column<string>(nullable: false),
-                    SuperintendenciaId = table.Column<string>(nullable: true),
-                    Superintendencia = table.Column<string>(nullable: false),
-                    SquadId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Projetos", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Projetos_DiretoriasContratantes_DiretoriaId",
-                        column: x => x.DiretoriaId,
-                        principalTable: "DiretoriasContratantes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Projetos_Empresas_EmpresaId",
-                        column: x => x.EmpresaId,
-                        principalTable: "Empresas",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Projetos_Squads_SquadId",
-                        column: x => x.SquadId,
-                        principalTable: "Squads",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Projetos_Status_StatusId",
-                        column: x => x.StatusId,
-                        principalTable: "Status",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "SquadPessoas",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Ativo = table.Column<bool>(nullable: false),
-                    DataInativacao = table.Column<DateTime>(nullable: true),
-                    SquadId = table.Column<int>(nullable: false),
-                    PessoaId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SquadPessoas", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_SquadPessoas_Pessoas_PessoaId",
-                        column: x => x.PessoaId,
-                        principalTable: "Pessoas",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_SquadPessoas_Squads_SquadId",
-                        column: x => x.SquadId,
-                        principalTable: "Squads",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -743,6 +704,90 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ProjetoTecnologia",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Ativo = table.Column<bool>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
+                    ProjetoId = table.Column<int>(nullable: false),
+                    TecnologiaId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjetoTecnologia", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProjetoTecnologia_Projetos_ProjetoId",
+                        column: x => x.ProjetoId,
+                        principalTable: "Projetos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ProjetoTecnologia_Tecnologia_TecnologiaId",
+                        column: x => x.TecnologiaId,
+                        principalTable: "Tecnologia",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AcessoFerramentas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Ativo = table.Column<bool>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
+                    FerramentaId = table.Column<int>(nullable: false),
+                    ColaboradorId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AcessoFerramentas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AcessoFerramentas_Colaboradors_ColaboradorId",
+                        column: x => x.ColaboradorId,
+                        principalTable: "Colaboradors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AcessoFerramentas_Ferramentas_FerramentaId",
+                        column: x => x.FerramentaId,
+                        principalTable: "Ferramentas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AcessoSiglas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Ativo = table.Column<bool>(nullable: false),
+                    DataInativacao = table.Column<DateTime>(nullable: true),
+                    SiglaId = table.Column<int>(nullable: false),
+                    ColaboradorId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AcessoSiglas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AcessoSiglas_Colaboradors_ColaboradorId",
+                        column: x => x.ColaboradorId,
+                        principalTable: "Colaboradors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AcessoSiglas_Siglas_SiglaId",
+                        column: x => x.SiglaId,
+                        principalTable: "Siglas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AcessoFerramentas_ColaboradorId",
                 table: "AcessoFerramentas",
@@ -789,6 +834,11 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 column: "FuncaoId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Colaboradors_PessoaId",
+                table: "Colaboradors",
+                column: "PessoaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Colaboradors_PoloAcessoId",
                 table: "Colaboradors",
                 column: "PoloAcessoId");
@@ -812,11 +862,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 name: "IX_Fases_TipoFaseId",
                 table: "Fases",
                 column: "TipoFaseId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Pessoas_ColaboradorId",
-                table: "Pessoas",
-                column: "ColaboradorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pessoas_DiretoriaId",
@@ -864,6 +909,11 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 column: "EmpresaId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Projetos_SiglaId",
+                table: "Projetos",
+                column: "SiglaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Projetos_SquadId",
                 table: "Projetos",
                 column: "SquadId");
@@ -872,6 +922,26 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 name: "IX_Projetos_StatusId",
                 table: "Projetos",
                 column: "StatusId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Projetos_SuperintendenciaId",
+                table: "Projetos",
+                column: "SuperintendenciaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Projetos_TecnologiaId",
+                table: "Projetos",
+                column: "TecnologiaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjetoTecnologia_ProjetoId",
+                table: "ProjetoTecnologia",
+                column: "ProjetoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjetoTecnologia_TecnologiaId",
+                table: "ProjetoTecnologia",
+                column: "TecnologiaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SquadPessoas_PessoaId",
@@ -887,16 +957,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 name: "IX_Squads_ComunidadeId",
                 table: "Squads",
                 column: "ComunidadeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Squads_PessoaId",
-                table: "Squads",
-                column: "PessoaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Squads_TelefoneId",
-                table: "Squads",
-                column: "TelefoneId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Telefones_PessoaId",
@@ -933,10 +993,13 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 name: "ProjetoPessoas");
 
             migrationBuilder.DropTable(
+                name: "ProjetoTecnologia");
+
+            migrationBuilder.DropTable(
                 name: "SquadPessoas");
 
             migrationBuilder.DropTable(
-                name: "Superintendencia");
+                name: "Telefones");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");
@@ -945,7 +1008,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 name: "Ferramentas");
 
             migrationBuilder.DropTable(
-                name: "Siglas");
+                name: "Colaboradors");
 
             migrationBuilder.DropTable(
                 name: "TiposFases");
@@ -957,25 +1020,37 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 name: "Projetos");
 
             migrationBuilder.DropTable(
+                name: "TipoTelefones");
+
+            migrationBuilder.DropTable(
+                name: "AreasContratantes");
+
+            migrationBuilder.DropTable(
+                name: "Funcoes");
+
+            migrationBuilder.DropTable(
+                name: "Pessoas");
+
+            migrationBuilder.DropTable(
+                name: "PoloAcessos");
+
+            migrationBuilder.DropTable(
+                name: "TipoServicos");
+
+            migrationBuilder.DropTable(
+                name: "Siglas");
+
+            migrationBuilder.DropTable(
                 name: "Squads");
 
             migrationBuilder.DropTable(
                 name: "Status");
 
             migrationBuilder.DropTable(
-                name: "Comunidades");
+                name: "Superintendencia");
 
             migrationBuilder.DropTable(
-                name: "Telefones");
-
-            migrationBuilder.DropTable(
-                name: "Pessoas");
-
-            migrationBuilder.DropTable(
-                name: "TipoTelefones");
-
-            migrationBuilder.DropTable(
-                name: "Colaboradors");
+                name: "Tecnologia");
 
             migrationBuilder.DropTable(
                 name: "DiretoriasContratantes");
@@ -987,16 +1062,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
                 name: "TipoPessoas");
 
             migrationBuilder.DropTable(
-                name: "AreasContratantes");
-
-            migrationBuilder.DropTable(
-                name: "Funcoes");
-
-            migrationBuilder.DropTable(
-                name: "PoloAcessos");
-
-            migrationBuilder.DropTable(
-                name: "TipoServicos");
+                name: "Comunidades");
         }
     }
 }

@@ -21,7 +21,7 @@ namespace everis.SimpleProject.Application.Services
             try
             {
 
-            var res = ctx.Pessoas.Include(i => i.Colaborador).ToList();
+            var res = ctx.Pessoas.ToList();
                 return res;
             }
             catch (Exception ex)
@@ -34,7 +34,7 @@ namespace everis.SimpleProject.Application.Services
             try {
 
              
-                var result = repository.BuscarPor(b => b.Id == id, i => i.Colaborador).FirstOrDefault();
+                var result = repository.BuscarPor(b => b.Id == id).FirstOrDefault();
                 return result;
 
             }
@@ -51,8 +51,7 @@ namespace everis.SimpleProject.Application.Services
             {
                 var nomeToFind = filter?.Nome;
                 var result = repository.BuscarPor(b => b.Nome.Contains(
-                    string.IsNullOrEmpty(nomeToFind) ? b.Nome: nomeToFind
-                    ));
+                    string.IsNullOrEmpty(nomeToFind) ? b.Nome: nomeToFind));
                 return result;
             }
             catch (Exception ex)

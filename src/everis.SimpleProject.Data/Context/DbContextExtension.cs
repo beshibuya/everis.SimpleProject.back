@@ -23,611 +23,617 @@ namespace everis.SimpleProject.Data.EF.Context
         public static void InitialSeed(this AppDbContext context)
         {
 
-            //#region Inserts Perfis
-
-            //context.Add(new Perfil {
-
-            //});
-
-            //#endregion
 
             #region Inserts TipoPessoas
 
-            context.Add(new TipoPessoa {
-                Descricao = "Colaborador"
-            });
+            if (!context.TipoPessoas.Any())
+            {
+                context.Add(new TipoPessoa
+                {
+                    Descricao = "Colaborador"
+                });
 
-            context.Add(new TipoPessoa {
-                Descricao = "Cliente"
-            });
+                context.Add(new TipoPessoa
+                {
+                    Descricao = "Cliente"
+                });
 
-            context.Add(new TipoPessoa {
-                Descricao = "Terceiro"
-            });
-
+                context.Add(new TipoPessoa
+                {
+                    Descricao = "Terceiro"
+                });
+                context.SaveChanges();
+            }
             #endregion
 
             #region Inserts TipoTelefones
+            if (!context.TipoTelefones.Any())
+            {
+                context.Add(new TipoTelefone
+                {
+                    Descricao = "Celular"
+                });
 
-            context.Add(new TipoTelefone {
-                Descricao = "Celular"
-            });
+                context.Add(new TipoTelefone
+                {
+                    Descricao = "Fixo"
+                });
 
-            context.Add(new TipoTelefone {
-                Descricao = "Fixo"
-            });
+                context.Add(new TipoTelefone
+                {
+                    Descricao = "Ramal"
+                });
 
-            context.Add(new TipoTelefone {
-                Descricao = "Ramal"
-            });
+                context.SaveChanges();
 
+            }
             #endregion
-
-            context.SaveChanges();
 
             #region Inserts Funcoes
+            if (!context.Funcoes.Any())
+            {
+                context.Add(new Funcao
+                {
+                    Descricao = "SA"
+                });
 
-            context.Add(new Funcao {
-                Descricao = "SA"
-            });
+                context.Add(new Funcao
+                {
+                    Descricao = "SN"
+                });
 
-            context.Add(new Funcao {
-                Descricao = "SN"
-            });
+                context.Add(new Funcao
+                {
+                    Descricao = "STL"
+                });
 
-            context.Add(new Funcao {
-                Descricao = "STL"
-            });
+                context.Add(new Funcao
+                {
+                    Descricao = "SPL"
+                });
 
-            context.Add(new Funcao {
-                Descricao = "SPL"
-            });
+                context.Add(new Funcao
+                {
+                    Descricao = "SK"
+                });
 
-            context.Add(new Funcao {
-                Descricao = "SK"
-            });
+                context.Add(new Funcao
+                {
+                    Descricao = "SKL"
+                });
 
-            context.Add(new Funcao {
-                Descricao = "SKL"
-            });
+                context.Add(new Funcao
+                {
+                    Descricao = "Manager"
+                });
 
-            context.Add(new Funcao {
-                Descricao = "Manager"
-            });
-
+                context.SaveChanges();
+            }
             #endregion
 
-            context.SaveChanges();
 
 
             #region Inserts PoloAcesso
+            if (!context.PoloAcessos.Any())
+            {
+                context.Add(new PoloAcesso
+                {
+                    Descricao = "Centro Tecnologico (CTO)"
+                });
 
-            context.Add(new PoloAcesso {
-                Descricao = "Centro Tecnologico (CTO)"
-            });
+                context.Add(new PoloAcesso
+                {
+                    Descricao = "Centro Empresarial (CEIC)"
+                });
 
-            context.Add(new PoloAcesso {
-                Descricao = "Centro Empresarial (CEIC)"
-            });
+                context.Add(new PoloAcesso
+                {
+                    Descricao = "ACESSO REMOTO"
+                });
 
-            context.Add(new PoloAcesso {
-                Descricao = "ACESSO REMOTO"
-            });
+                #endregion
 
-            #endregion
-
-            context.SaveChanges();
-
+                context.SaveChanges();
+            }
             #region Inserts AreaContratante
 
-            context.Add(new AreaContratante {
-                Descricao = "SSRF"
-            });
+            if (!context.AreasContratantes.Any())
+            {
+                context.Add(new AreaContratante
+                {
+                    Descricao = "SSRF"
+                });
 
-            context.Add(new AreaContratante {
-                Descricao = "SSFO"
-            });
+                context.Add(new AreaContratante
+                {
+                    Descricao = "SSFO"
+                });
 
-            context.Add(new AreaContratante {
-                Descricao = "SSPOA"
-            });
+                context.Add(new AreaContratante
+                {
+                    Descricao = "SSPOA"
+                });
 
-            context.Add(new AreaContratante {
-                Descricao = "STIM"
-            });
+                context.Add(new AreaContratante
+                {
+                    Descricao = "STIM"
+                });
 
-            context.Add(new AreaContratante {
-                Descricao = "SQT"
-            });
+                context.Add(new AreaContratante
+                {
+                    Descricao = "SQT"
+                });
 
-            context.Add(new AreaContratante {
-                Descricao = "STIM"
-            });
-
+                context.Add(new AreaContratante
+                {
+                    Descricao = "STIM"
+                });
+                context.SaveChanges();
+            }
             #endregion
-
-            context.SaveChanges();
 
             #region Inserts DiretoriaContratante
 
-            context.Add(new DiretoriaContratante {
-                Descricao = "DD"
-            });
+            if (!context.DiretoriasContratantes.Any())
+            {
+                context.Add(new DiretoriaContratante
+                {
+                    Descricao = "DD"
+                });
 
-            context.Add(new DiretoriaContratante {
-                Descricao = "DESB"
-            });
+                context.Add(new DiretoriaContratante
+                {
+                    Descricao = "DESB"
+                });
 
-            context.Add(new DiretoriaContratante {
-                Descricao = "DCQPTI"
-            });
+                context.Add(new DiretoriaContratante
+                {
+                    Descricao = "DCQPTI"
+                });
 
-            context.Add(new DiretoriaContratante {
-                Descricao = "DDS"
-            });
-
-
+                context.Add(new DiretoriaContratante
+                {
+                    Descricao = "DDS"
+                });
+                context.SaveChanges();
+            }
             #endregion
 
-            context.SaveChanges();
 
             #region Inserts TipoServico
 
-            context.Add(new TipoServico {
-                Descricao = "POOL"
-            });
-
-            context.Add(new TipoServico {
-                Descricao = "RFP(Consultoria)"
-            });
-
-            #endregion
-
-            context.SaveChanges();
-
-            #region Inserts Colaborador
-
-            context.Add(new Colaborador
+            if (!context.TipoServicos.Any())
             {
-                Disponivel = false,
-                EmailCorporativo = "ricardo@everis.com",
-                FuncaoId = 1,
-                AreaContratanteId = 2,
-                PoloAcessoId = 1,
-                TipoServicoId = 1,
-                Senha = "everis"
-            });
+                context.Add(new TipoServico
+                {
+                    Descricao = "POOL"
+                });
 
-            context.Add(new Colaborador
-            {
-                Disponivel = true,
-                EmailCorporativo = "nicholas@everis.com",
-                FuncaoId = 2,
-                AreaContratanteId = 1,
-                PoloAcessoId = 2,
-                TipoServicoId = 2
-
-            });
-
-            context.SaveChanges();
-
+                context.Add(new TipoServico
+                {
+                    Descricao = "RFP(Consultoria)"
+                });
+                context.SaveChanges();
+            }
             #endregion
 
             #region Inserts Empresa
 
-            context.Add(new Empresa
+            if (!context.Empresas.Any())
             {
-                Nome = "empresa 1",
-                Segmento = TipoSegmento.Banking
-            });
-
-            context.Add(new Empresa
-            {
-                Nome = "empresa 2",
-                Segmento = TipoSegmento.Banking
-            });
-
+                context.Add(new Empresa
+                {
+                    Nome = "Itau",
+                    Segmento = TipoSegmento.Banking
+                });
+                context.SaveChanges();
+            }
             #endregion
 
             #region Inserts Superintendencia
 
-            context.Add(new Superintendencia
+            if (!context.Superintendencia.Any())
             {
-                Descricao = "SDACS"              
-            });
+                context.Add(new Superintendencia
+                {
+                    Descricao = "SDACS"
+                });
 
-            context.Add(new Superintendencia
-            {
-                Descricao = "SDCD"
-            });
-            context.Add(new Superintendencia
-            {
-                Descricao = "SDCT"
-            });
-            context.Add(new Superintendencia
-            {
-                Descricao = "SDPSB"
-            });
-            context.Add(new Superintendencia
-            {
-                Descricao = "SPDC"
-            });
-            context.Add(new Superintendencia
-            {
-                Descricao = "SQT"
-            });
+                context.Add(new Superintendencia
+                {
+                    Descricao = "SDCD"
+                });
+                context.Add(new Superintendencia
+                {
+                    Descricao = "SDCT"
+                });
+                context.Add(new Superintendencia
+                {
+                    Descricao = "SDPSB"
+                });
+                context.Add(new Superintendencia
+                {
+                    Descricao = "SPDC"
+                });
+                context.Add(new Superintendencia
+                {
+                    Descricao = "SQT"
+                });
+                context.SaveChanges();
+            }
             #endregion
 
             #region Inserts Pessoa
 
 
-            context.Add(new Pessoa {
-                Nome = "David Rezende Torres",
-                EmpresaId = 1,
-                TipoId = 3,
-                Email = "david@rezende.com",
-                Funcional = 423947876,
-                ColaboradorId = null,
-                Sexo = "Masculino",
-                DiretoriaId = 1,
-                GestorTecnico = true
-            });
-
-            context.Add(new Pessoa
+            if (!context.Pessoas.Any())
             {
-                Nome = "Ricardo",
-                EmpresaId = 1,
-                TipoId = 1,
-                Email = "ricardo@rossetti.com",
-                ColaboradorId = 1,
-                Sexo = "Masculino",
-                Funcional = 544633677
+                context.Add(new Pessoa
+                {
+                    Nome = "David Rezende Torres",
+                    EmpresaId = 1,
+                    TipoId = 3,
+                    Email = "david@rezende.com",
+                    Funcional = 423947876,
+                    Sexo = "Masculino",
+                    DiretoriaId = 1,
+                    GestorTecnico = true
+                });
 
-            });
+                context.Add(new Pessoa
+                {
+                    Nome = "Ricardo",
+                    EmpresaId = 1,
+                    TipoId = 1,
+                    Email = "ricardo@rossetti.com",
+                    Sexo = "Masculino",
+                    Funcional = 544633677
 
-            context.Add(new Pessoa
+                });
+
+                context.Add(new Pessoa
+                {
+                    Nome = "Nicholas",
+                    EmpresaId = 1,
+                    TipoId = 1,
+                    Email = "nicholas@torre.com",
+                    Sexo = "Masculino"
+                });
+
+                context.Add(new Pessoa
+                {
+                    Nome = "Maria das Dores",
+                    EmpresaId = 1,
+                    TipoId = 3,
+                    Email = "maria_das_dores@doeu.com",
+                    Sexo = "Feminino",
+                    DiretoriaId = 2
+                });
+                context.SaveChanges();
+            }
+            #endregion
+
+            #region Inserts Colaborador
+
+            if (!context.Colaboradors.Any())
             {
-                Nome = "Nicholas",
-                EmpresaId = 1,
-                TipoId = 1,
-                Email = "nicholas@torre.com",
-                ColaboradorId = 2,
-                Sexo = "Masculino"
-            });
+                context.Add(new Colaborador
+                {
+                    Disponivel = false,
+                    EmailCorporativo = "ricardo@everis.com",
+                    FuncaoId = 1,
+                    AreaContratanteId = 2,
+                    PoloAcessoId = 1,
+                    TipoServicoId = 1,
+                    Senha = "everis",
+                    PessoaId = 1
+                });
 
-            context.Add(new Pessoa {
-                Nome = "Maria das Dores",
-                EmpresaId = 1,
-                TipoId = 3,
-                Email = "maria_das_dores@doeu.com",
-                ColaboradorId = 2,
-                Sexo = "Feminino",
-                DiretoriaId = 2
-            });
+                context.Add(new Colaborador
+                {
+                    Disponivel = true,
+                    EmailCorporativo = "nicholas@everis.com",
+                    FuncaoId = 2,
+                    AreaContratanteId = 1,
+                    PoloAcessoId = 2,
+                    TipoServicoId = 2,
+                    PessoaId = 1
 
+                });
+
+                context.SaveChanges();
+            }
             #endregion
 
             #region Inserts Status
 
-            context.Add(new Status
+            if (!context.Status.Any())
             {
-                Codigo = "DES",
-                Descricao = "Em desenvolvimento"
-            });
+                context.Add(new Status
+                {
+                    Codigo = "DES",
+                    Descricao = "Em desenvolvimento"
+                });
 
-            context.Add(new Status
-            {
-                Codigo = "APR",
-                Descricao = "Aguardando aprovação"
-            });
+                context.Add(new Status
+                {
+                    Codigo = "APR",
+                    Descricao = "Aguardando aprovação"
+                });
 
-            context.Add(new Status
-            {
-                Codigo = "CON",
-                Descricao = "Concluído"
-            });
+                context.Add(new Status
+                {
+                    Codigo = "CON",
+                    Descricao = "Concluído"
+                });
 
-            context.Add(new Status
-            {
-                Codigo = "ENT",
-                Descricao = "Entregue"
-            });
+                context.Add(new Status
+                {
+                    Codigo = "ENT",
+                    Descricao = "Entregue"
+                });
 
-            context.Add(new Status
-            {
-                Codigo = "AAB",
-                Descricao = "Aguardando abertura"
-            });
+                context.Add(new Status
+                {
+                    Codigo = "AAB",
+                    Descricao = "Aguardando abertura"
+                });
 
-            context.Add(new Status
-            {
-                Codigo = "CAN",
-                Descricao = "Cancelado"
-            });
+                context.Add(new Status
+                {
+                    Codigo = "CAN",
+                    Descricao = "Cancelado"
+                });
 
-            context.Add(new Status
-            {
-                Codigo = "PRO",
-                Descricao = "Proposta"
-            });
-
+                context.Add(new Status
+                {
+                    Codigo = "PRO",
+                    Descricao = "Proposta"
+                });
+                context.SaveChanges();
+            }
             #endregion
 
             #region Inserts Tecnologia
 
-            context.Add(new Tecnologia
+            if (!context.Tecnologia.Any())
             {
-                Nome = ".Net"
-            });
-            context.Add(new Tecnologia
-            {
-                Nome = "Java"
-            });
-
+                context.Add(new Tecnologia
+                {
+                    Nome = ".Net"
+                });
+                context.Add(new Tecnologia
+                {
+                    Nome = "Java"
+                });
+                context.SaveChanges();
+            }
             #endregion
+
+
             #region Inserts Sigla
-
-            context.Add(new Sigla
+            if (!context.Siglas.Any())
             {
-                Descricao = "Sigla_01"
-            });
 
-            context.Add(new Sigla
-            {
-                Descricao = "Sigla_02"
-            });
+                context.Add(new Sigla
+                {
+                    Descricao = "Sigla_01"
+                });
 
-            context.Add(new Sigla
-            {
-                Descricao = "Sigla_03"
-            });
+                context.Add(new Sigla
+                {
+                    Descricao = "Sigla_02"
+                });
+
+                context.Add(new Sigla
+                {
+                    Descricao = "Sigla_03"
+                });
+                context.SaveChanges();
+            }
             #endregion
-
-            context.SaveChanges();
 
             #region Inserts Projeto
 
-            context.Add(new Projeto
+            if (!context.Projetos.Any())
             {
-                DataInicio = DateTime.Now,
-                EscopoProjeto = "Escopo teste",
-                QtdHorasServico1 = 1000,
-                Nome = "Projeto 1",
-                Ext = "EXT-00000000000",
-                EmpresaId = 1,
-                DataPrevista = DateTime.Now.AddDays(7),
-                CodigoProjeto = "1",
-                StatusId = 1,
-                DataRecebida = DateTime.Now,
-                TecnologiaId = 1,
-                SiglaId = 1,
-                RespOutsourcing = "RespOutsourcing teste",
-                RespTI = "RespTI teste",
-                RespGerente = "RespGerente teste",
-                Tamanho = 'P',
-                TipoDemanda = "Servico 1 teste",
-                Tarifa = "Tarifa teste",
-                SuperintendenciaId = 1,
-                DiretoriaId = 2,
-                StatusProposta = "teste",
-                DataProposta = DateTime.Now
-            });
-
-            context.Add(new Projeto
-            {
-                DataInicio = DateTime.Now,
-                EscopoProjeto = "Escopo teste",
-                QtdHorasServico1 = 1000,
-                Ext = "EXT-00000000000",
-                Nome = "Projeto 2",
-                EmpresaId = 1,
-                DataPrevista = DateTime.Now.AddDays(7),
-                CodigoProjeto = "2",
-                StatusId = 1,
-                DataRecebida = DateTime.Now,
-                TecnologiaId = 1,
-                SiglaId = 1,
-                RespOutsourcing = "RespOutsourcing teste",
-                RespTI = "RespTI teste",
-                RespGerente = "RespGerente teste",
-                Tamanho = 'P',
-                TipoDemanda = "Servico 1 teste",
-                Tarifa = "Tarifa teste",
-                SuperintendenciaId = 1,
-                DiretoriaId = 1,
-                StatusProposta = "teste",
-                DataProposta = DateTime.Now
-
-            });
-
+                context.Add(new Projeto
+                {
+                    DataInicio = DateTime.Now,
+                    EscopoProjeto = "Escopo teste",
+                    QtdHorasServico1 = 1000,
+                    Nome = "Projeto 1",
+                    Ext = "EXT-00000000000",
+                    EmpresaId = 1,
+                    DataPrevista = DateTime.Now.AddDays(7),
+                    CodigoProjeto = "1",
+                    StatusId = 1,
+                    DataRecebida = DateTime.Now,
+                    TecnologiaId = 1,
+                    SiglaId = 1,
+                    RespOutsourcing = "RespOutsourcing teste",
+                    RespTI = "RespTI teste",
+                    RespGerente = "RespGerente teste",
+                    Tamanho = 'P',
+                    TipoDemanda = "Servico 1 teste",
+                    Tarifa = "Tarifa teste",
+                    SuperintendenciaId = 1,
+                    DiretoriaId = 2,
+                    StatusProposta = "N/A",
+                    DataProposta =DateTime.Now
+                });
+                context.SaveChanges();
+            }
             #endregion
-
-
-            context.SaveChanges();
 
             #region Inserts Ferramentas
 
-            context.Add(new Ferramenta {
-                Descricao = "Visual Studio",
-            });
-
-            context.Add(new Ferramenta
+            if (!context.Ferramentas.Any())
             {
-                Descricao = "RTC",
-            });
-
-            context.Add(new Ferramenta
-            {
-                Descricao = "Angular",
-            });
-
-            context.Add(new Ferramenta
-            {
-                Descricao = "GIT",
-            });
-
-            context.Add(new Ferramenta
-            {
-                Descricao = "Confluence",
-            });
-
-            context.Add(new Ferramenta
-            {
-                Descricao = "Jira",
-            });
-
+                context.AddRange(
+                    new List<Ferramenta>
+                    {
+                    new Ferramenta {
+                        Descricao = "Visual Studio"
+                    },
+                    new Ferramenta
+                    {
+                        Descricao = "RTC"
+                    },
+                        new Ferramenta
+                    {
+                        Descricao = "Angular"
+                    },
+                        new Ferramenta
+                    {
+                        Descricao = "GIT"
+                    },
+                        new Ferramenta
+                    {
+                        Descricao = "Confluence"
+                    },
+                        new Ferramenta
+                    {
+                        Descricao = "Jira"
+                    }
+                    });
+                context.SaveChanges();
+            }
             #endregion
 
             #region Inserts Change
-
-            context.Add(new SolicitacaoMudanca
+            if (!context.Changes.Any())
             {
-                Descricao = "Change 1",
-                DataHoraCadastro = DateTime.Now,
-                ProjetoId = 1,
-                QtdHorasServico1 = 13,
-                QtdHorasServico2 = 2,
-                QtdHorasServico3 = 34,
-                Ativo = true,
-                PessoaId = 1
-            });
 
-            context.Add(new SolicitacaoMudanca
-            {
-                Descricao = "Change 2",
-                DataHoraCadastro = DateTime.Now,
-                ProjetoId = 1,
-                QtdHorasServico1 = 344,
-                QtdHorasServico2 = 0,
-                QtdHorasServico3 = 0,
-                Ativo = true,
-                PessoaId = 1
-            });
+                context.Add(new SolicitacaoMudanca
+                {
+                    Descricao = "Change 1",
+                    DataHoraCadastro = DateTime.Now,
+                    ProjetoId = 1,
+                    QtdHorasServico1 = 13,
+                    QtdHorasServico2 = 2,
+                    QtdHorasServico3 = 34,
+                    Ativo = true,
+                    PessoaId = 1
+                });
 
-            context.Add(new SolicitacaoMudanca
-            {
-                Descricao = "Change 3",
-                DataHoraCadastro = DateTime.Now,
-                ProjetoId = 1,
-                QtdHorasServico1 = 0,
-                QtdHorasServico2 = 0,
-                QtdHorasServico3 = 59,
-                Ativo = true,
-                PessoaId = 2
-            });
+                context.Add(new SolicitacaoMudanca
+                {
+                    Descricao = "Change 2",
+                    DataHoraCadastro = DateTime.Now,
+                    ProjetoId = 1,
+                    QtdHorasServico1 = 344,
+                    QtdHorasServico2 = 0,
+                    QtdHorasServico3 = 0,
+                    Ativo = true,
+                    PessoaId = 1
+                });
 
-            context.Add(new SolicitacaoMudanca
-            {
-                Descricao = "Change 4",
-                DataHoraCadastro = DateTime.Now,
-                ProjetoId = 2,
-                QtdHorasServico1 = 5,
-                QtdHorasServico2 = 3,
-                QtdHorasServico3 = 59,
-                Ativo = true,
-                PessoaId = 2
-            });
+                context.Add(new SolicitacaoMudanca
+                {
+                    Descricao = "Change 3",
+                    DataHoraCadastro = DateTime.Now,
+                    ProjetoId = 1,
+                    QtdHorasServico1 = 0,
+                    QtdHorasServico2 = 0,
+                    QtdHorasServico3 = 59,
+                    Ativo = true,
+                    PessoaId = 1
+                });
 
-            context.Add(new SolicitacaoMudanca
-            {
-                Descricao = "Change 5",
-                DataHoraCadastro = DateTime.Now,
-                ProjetoId = 2,
-                QtdHorasServico1 = 544,
-                QtdHorasServico2 = 33,
-                QtdHorasServico3 = 59,
-                Ativo = true,
-                PessoaId = 1
-            });
+                context.Add(new SolicitacaoMudanca
+                {
+                    Descricao = "Change 4",
+                    DataHoraCadastro = DateTime.Now,
+                    ProjetoId = 1,
+                    QtdHorasServico1 = 5,
+                    QtdHorasServico2 = 3,
+                    QtdHorasServico3 = 59,
+                    Ativo = true,
+                    PessoaId = 1
+                });
+
+                context.Add(new SolicitacaoMudanca
+                {
+                    Descricao = "Change 5",
+                    DataHoraCadastro = DateTime.Now,
+                    ProjetoId = 1,
+                    QtdHorasServico1 = 544,
+                    QtdHorasServico2 = 33,
+                    QtdHorasServico3 = 59,
+                    Ativo = true,
+                    PessoaId = 1
+                });
+                context.SaveChanges();
+            }
 
             #endregion
 
             #region Inserts Tipo Fase
-
-            context.Add(new TipoFase
+            if (!context.TiposFases.Any())
             {
-                Nome = "Idle"
-            });
 
-            context.Add(new TipoFase
-            {
-                Nome = "Overhead"
-            });
+                context.Add(new TipoFase
+                {
+                    Nome = "Idle"
+                });
 
-            context.Add(new TipoFase
-            {
-                Nome = "Trabalhado"
-            });
+                context.Add(new TipoFase
+                {
+                    Nome = "Overhead"
+                });
 
+                context.Add(new TipoFase
+                {
+                    Nome = "Trabalhado"
+                });
+            }
             #endregion
 
             #region Inserts Atribuição
+            if (!context.ProjetoPessoaAtribuicoes.Any())
+            {
 
-            context.Add(new ProjetoPessoaAtribuicao
-            {
-                Atribuicao = "Desenvolvedor"
-            });
-            context.Add(new ProjetoPessoaAtribuicao
-            {
-                Atribuicao = "Tester"
-            });
-            context.Add(new ProjetoPessoaAtribuicao
-            {
-                Atribuicao = "Gerente"
-            });
-            context.Add(new ProjetoPessoaAtribuicao
-            {
-                Atribuicao = "Líder"
-            });
-            context.Add(new ProjetoPessoaAtribuicao
-            {
-                Atribuicao = "Analista responsável de TI - técnico"
-            });
-            context.Add(new ProjetoPessoaAtribuicao
-            {
-                Atribuicao = "Analista responsável Outsourcing"
-            });
-            #region Inserts Atribuição
-
-            context.Add(new ProjetoPessoaAtribuicao
-            {
-                Atribuicao = "Desenvolvedor"
-            });
-            context.Add(new ProjetoPessoaAtribuicao
-            {
-                Atribuicao = "Tester"
-            });
-            context.Add(new ProjetoPessoaAtribuicao
-            {
-                Atribuicao = "Gerente"
-            });
-            context.Add(new ProjetoPessoaAtribuicao
-            {
-                Atribuicao = "Líder"
-            });
-            context.Add(new ProjetoPessoaAtribuicao
-            {
-                Atribuicao = "Analista responsável de TI - técnico"
-            });
-            context.Add(new ProjetoPessoaAtribuicao
-            {
-                Atribuicao = "Analista responsável Outsourcing"
-            });
-            #endregion
+                context.Add(new ProjetoPessoaAtribuicao
+                {
+                    Atribuicao = "Desenvolvedor"
+                });
+                context.Add(new ProjetoPessoaAtribuicao
+                {
+                    Atribuicao = "Tester"
+                });
+                context.Add(new ProjetoPessoaAtribuicao
+                {
+                    Atribuicao = "Gerente"
+                });
+                context.Add(new ProjetoPessoaAtribuicao
+                {
+                    Atribuicao = "Líder"
+                });
+                context.Add(new ProjetoPessoaAtribuicao
+                {
+                    Atribuicao = "Analista responsável de TI - técnico"
+                });
+                context.Add(new ProjetoPessoaAtribuicao
+                {
+                    Atribuicao = "Analista responsável Outsourcing"
+                });
+            }
             #endregion
 
             #region Inserts Comunidade
-
-            context.Add(new Sigla
+            if (!context.Comunidades.Any())
             {
-                Descricao = "Finanças"
-            });
 
-            context.Add(new Sigla
-            {
-                Descricao = "Créditos e Garantias"
-            });
-
+                context.Add(new Sigla
+                {
+                    Descricao = "Finanças"
+                });
+                context.Add(new Sigla
+                {
+                    Descricao = "Créditos e Garantias"
+                });
+            }
             #endregion
 
 

@@ -146,6 +146,8 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<bool>("OcupacaoFisicaPoloAdm");
 
+                    b.Property<int>("PessoaId");
+
                     b.Property<int>("PoloAcessoId");
 
                     b.Property<string>("Racf");
@@ -163,6 +165,8 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.HasIndex("AreaContratanteId");
 
                     b.HasIndex("FuncaoId");
+
+                    b.HasIndex("PessoaId");
 
                     b.HasIndex("PoloAcessoId");
 
@@ -330,8 +334,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<long>("CPF");
 
-                    b.Property<int?>("ColaboradorId");
-
                     b.Property<DateTime?>("DataInativacao");
 
                     b.Property<int?>("DiretoriaId");
@@ -363,8 +365,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.Property<string>("UFRg");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ColaboradorId");
 
                     b.HasIndex("DiretoriaId");
 
@@ -896,6 +896,11 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .HasForeignKey("FuncaoId")
                         .OnDelete(DeleteBehavior.Restrict);
 
+                    b.HasOne("everis.SimpleProject.Domain.Models.Pessoa", "Pessoa")
+                        .WithMany()
+                        .HasForeignKey("PessoaId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("everis.SimpleProject.Domain.Models.PoloAcesso", "PoloAcesso")
                         .WithMany()
                         .HasForeignKey("PoloAcessoId")
@@ -927,10 +932,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.Pessoa", b =>
                 {
-                    b.HasOne("everis.SimpleProject.Domain.Models.Colaborador", "Colaborador")
-                        .WithMany()
-                        .HasForeignKey("ColaboradorId");
-
                     b.HasOne("everis.SimpleProject.Domain.Models.DiretoriaContratante", "Diretoria")
                         .WithMany()
                         .HasForeignKey("DiretoriaId")
