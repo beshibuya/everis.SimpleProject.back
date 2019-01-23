@@ -23,7 +23,7 @@ namespace everis.SimpleProject.API.Controllers {
                     var lstAcessoSigla = siglaSvc.AdicionarListaAcessoSigla(pcv.SiglasAssociadas, novaPessoa.Colaborador.Id);
                 }
 
-                var lstTelefone = telSvc.AdicionarTelefones(pcv.Telefones);
+                var lstTelefone = telSvc.AdicionarTelefones(pcv.Telefones, novaPessoa.Id);
 
                 var pessoaColaborador = new PessoaColaborador {
                     pessoa = novaPessoa,

@@ -14,7 +14,7 @@ namespace everis.SimpleProject.Application.Services {
             repository = new GenericRepository<Telefone>(context);
         }
 
-        public List<Telefone> AdicionarTelefones(List<Telefone> telefones) {
+        public List<Telefone> AdicionarTelefones(List<Telefone> telefones, int pessoaId) {
 
             try {
 
@@ -22,8 +22,12 @@ namespace everis.SimpleProject.Application.Services {
 
                 foreach (var item in telefones) {
                     item.Tipo = null;
-                    dbResult.Add(repository.Adicionar(item));
+                    item.Pessoa = null;
+                    item.PessoaId = pessoaId;
+                    var retorno = repository.Adicionar(item);
+                    dbResult.Add(retorno);
                 }
+                repository.SaveChanges();
 
                 return dbResult;
             }
@@ -41,9 +45,7 @@ namespace everis.SimpleProject.Application.Services {
 
         public override IEnumerable<Telefone> BuscarPor(Telefone filter) {
             try {
-                var result = repository.BuscarPor(
-                    b => (b.PessoaId == (filter.PessoaId == 0 ? b.PessoaId : filter.PessoaId))
-                    );
+                var result = repository.BuscarPor(b => b.PessoaId == filter.PessoaId, i => i.Tipo).ToList();
                 return result;
             }
             catch (Exception ex) {

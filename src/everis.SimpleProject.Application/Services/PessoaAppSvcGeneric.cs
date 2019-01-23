@@ -30,6 +30,21 @@ namespace everis.SimpleProject.Application.Services
             }
         }
 
+        public override Pessoa ObterPorId(int id) {
+            try {
+
+             
+                var result = repository.BuscarPor(b => b.Id == id, i => i.Colaborador).FirstOrDefault();
+                return result;
+
+            }
+            catch (Exception ex) {
+
+                throw ex;
+            }
+        }
+
+
         public override IEnumerable<Pessoa> BuscarPor(Pessoa filter)
         {
             try

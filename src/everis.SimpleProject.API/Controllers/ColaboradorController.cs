@@ -53,5 +53,43 @@ namespace everis.SimpleProject.API.Controllers
                 });
             }
         }
+
+
+        [HttpGet("[action]/{colaboradorId}")]
+        public IActionResult ListarSiglasDisponiveis([FromServices]IColaboradorService svc, int colaboradorId) {
+            try {
+                var retorno = new Retorno() {
+                    Codigo = 200,
+                    Data = svc.ListarSiglasDisponiveis(colaboradorId)
+                };
+                return Ok(retorno);
+
+            }
+            catch (Exception ex) {
+                return BadRequest(new Retorno() {
+                    Codigo = 500,
+                    Mensagem = ex.Message
+                });
+            }
+        }
+
+
+        [HttpGet("[action]/{colaboradorId}")]
+        public IActionResult ListarSiglasAssociadas([FromServices]IColaboradorService svc, int colaboradorId) {
+            try {
+                var retorno = new Retorno() {
+                    Codigo = 200,
+                    Data = svc.ListarSiglasAssociadas(colaboradorId)
+                };
+                return Ok(retorno);
+
+            }
+            catch (Exception ex) {
+                return BadRequest(new Retorno() {
+                    Codigo = 500,
+                    Mensagem = ex.Message
+                });
+            }
+        }
     }
 }

@@ -25,11 +25,15 @@ namespace everis.SimpleProject.Application.Services
 
                 foreach (var item in lstFerramenta) {
 
-                    novoAcesso = new AcessoFerramenta();           
+                    novoAcesso = new AcessoFerramenta();
+                    novoAcesso.Colaborador = null;
+                    novoAcesso.Ferramenta = null;
                     novoAcesso.ColaboradorId = colaboradorId;
                     novoAcesso.FerramentaId = item.Id;
                     lstDbResult.Add(repository.Adicionar(novoAcesso));
                 }
+
+                repository.SaveChanges();
 
                 return lstDbResult;
             }

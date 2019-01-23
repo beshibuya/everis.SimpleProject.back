@@ -23,10 +23,13 @@ namespace everis.SimpleProject.Application.Services {
                 foreach (var item in lstSigla) {
 
                     novoAcesso = new AcessoSigla();
+                    novoAcesso.Colaborador = null;
+                    novoAcesso.Sigla = null;
                     novoAcesso.ColaboradorId = colaboradorId;
                     novoAcesso.SiglaId = item.Id;
                     lstDbResult.Add(repository.Adicionar(novoAcesso));
                 }
+                repository.SaveChanges();
 
                 return lstDbResult;
             }
