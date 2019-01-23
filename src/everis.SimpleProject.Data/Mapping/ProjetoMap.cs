@@ -25,8 +25,13 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.TipoDemanda).IsRequired();
             builder.Property(c => c.Tarifa).IsRequired();
             builder.Property(c => c.Superintendencia).IsRequired();
-
+            builder.Property(c => c.DataProposta).IsRequired();
+            builder.Property(c => c.StatusProposta).IsRequired();
             
+
+
+
+
 
             builder.HasOne(o => o.Status).WithMany().HasForeignKey(f => f.StatusId).OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(o => o.Diretoria).WithMany().HasForeignKey(f => f.DiretoriaId).OnDelete(DeleteBehavior.Restrict);

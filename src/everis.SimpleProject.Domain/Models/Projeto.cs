@@ -21,6 +21,8 @@ namespace everis.SimpleProject.Domain.Models
         public int? StatusId { get; set; }
         public Status Status { get; set; }
         public DateTime DataPrevista { get; set; }
+        public DateTime DataProposta { get; set; }
+        public string StatusProposta { get; set; }
         public string BeneficioEntregue { get; set; }
         public string BeneficioResidual { get; set; }
         public string ProblemasExecucao { get; set; }
@@ -78,6 +80,10 @@ namespace everis.SimpleProject.Domain.Models
             TipoDemanda = ((Projeto)other).TipoDemanda;
             Tarifa = ((Projeto)other).Tarifa;
             Superintendencia = ((Projeto)other).Superintendencia;
+            DataProposta = ((Projeto)other).DataProposta;
+            StatusProposta = ((Projeto)other).StatusProposta;
+            
+
 
             StatusId = ((Projeto)other).StatusId;
         }

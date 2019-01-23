@@ -5,6 +5,7 @@ namespace everis.SimpleProject.Domain.Models
     public class Squad : Entity
     {
         public string Nome { get; set; }
+        public int? Codigo { get; set; }
         public DateTime DataInicio { get; set; }
 
 
