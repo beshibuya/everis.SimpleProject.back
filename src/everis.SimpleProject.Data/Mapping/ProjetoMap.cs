@@ -26,7 +26,10 @@ namespace everis.SimpleProject.Data.EF.Mapping
             builder.Property(c => c.Tarifa).IsRequired();
             builder.Property(c => c.Superintendencia).IsRequired();
             builder.Property(c => c.DataProposta).IsRequired();
+            builder.Property(c => c.StatusProposta).IsRequired();
             
+
+
 
 
 
