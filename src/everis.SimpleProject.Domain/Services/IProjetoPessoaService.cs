@@ -5,6 +5,5 @@ namespace everis.SimpleProject.Domain.Services
 {
     public interface IProjetoPessoaService
     {
-        IEnumerable<ProjetoPessoa> PessoasProjeto(int projetoId);
     }
 }

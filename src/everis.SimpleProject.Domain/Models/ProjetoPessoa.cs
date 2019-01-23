@@ -16,6 +16,9 @@ namespace everis.SimpleProject.Domain.Models
 
         public override void MergeFrom(object other)
         {
+            AtribuicaoId = ((ProjetoPessoa)other).AtribuicaoId;
+            Responsavel = ((ProjetoPessoa)other).Responsavel;
+            Ativo = ((ProjetoPessoa)other).Ativo;
             return;
         }
     }
