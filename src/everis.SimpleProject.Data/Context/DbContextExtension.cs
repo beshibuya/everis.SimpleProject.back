@@ -111,8 +111,6 @@ namespace everis.SimpleProject.Data.EF.Context
             }
             #endregion
 
-
-
             #region Inserts PoloAcesso
             if (!context.PoloAcessos.Any())
             {
@@ -131,10 +129,10 @@ namespace everis.SimpleProject.Data.EF.Context
                     Descricao = "ACESSO REMOTO"
                 });
 
-                #endregion
-
                 context.SaveChanges();
             }
+            #endregion
+
             #region Inserts AreaContratante
 
             if (!context.AreasContratantes.Any())
@@ -199,7 +197,6 @@ namespace everis.SimpleProject.Data.EF.Context
             }
             #endregion
 
-
             #region Inserts TipoServico
 
             if (!context.TipoServicos.Any())
@@ -223,7 +220,7 @@ namespace everis.SimpleProject.Data.EF.Context
             {
                 context.Add(new Empresa
                 {
-                    Nome = "Itau",
+                    Nome = "Everis",
                     Segmento = TipoSegmento.Banking
                 });
                 context.SaveChanges();
@@ -270,45 +267,16 @@ namespace everis.SimpleProject.Data.EF.Context
             {
                 context.Add(new Pessoa
                 {
-                    Nome = "David Rezende Torres",
+                    Nome = "Administrador",
                     EmpresaId = 1,
                     TipoId = 3,
-                    Email = "david@rezende.com",
+                    Email = "admin@admin.com",
                     Funcional = 423947876,
                     Sexo = "Masculino",
                     DiretoriaId = 1,
                     GestorTecnico = true
                 });
 
-                context.Add(new Pessoa
-                {
-                    Nome = "Ricardo",
-                    EmpresaId = 1,
-                    TipoId = 1,
-                    Email = "ricardo@rossetti.com",
-                    Sexo = "Masculino",
-                    Funcional = 544633677
-
-                });
-
-                context.Add(new Pessoa
-                {
-                    Nome = "Nicholas",
-                    EmpresaId = 1,
-                    TipoId = 1,
-                    Email = "nicholas@torre.com",
-                    Sexo = "Masculino"
-                });
-
-                context.Add(new Pessoa
-                {
-                    Nome = "Maria das Dores",
-                    EmpresaId = 1,
-                    TipoId = 3,
-                    Email = "maria_das_dores@doeu.com",
-                    Sexo = "Feminino",
-                    DiretoriaId = 2
-                });
                 context.SaveChanges();
             }
             #endregion
@@ -320,25 +288,13 @@ namespace everis.SimpleProject.Data.EF.Context
                 context.Add(new Colaborador
                 {
                     Disponivel = false,
-                    EmailCorporativo = "ricardo@everis.com",
+                    EmailCorporativo = "admin@admin.com",
                     FuncaoId = 1,
                     AreaContratanteId = 2,
                     PoloAcessoId = 1,
                     TipoServicoId = 1,
-                    Senha = "everis",
+                    Senha = "admin",
                     PessoaId = 1
-                });
-
-                context.Add(new Colaborador
-                {
-                    Disponivel = true,
-                    EmailCorporativo = "nicholas@everis.com",
-                    FuncaoId = 2,
-                    AreaContratanteId = 1,
-                    PoloAcessoId = 2,
-                    TipoServicoId = 2,
-                    PessoaId = 1
-
                 });
 
                 context.SaveChanges();
@@ -410,7 +366,6 @@ namespace everis.SimpleProject.Data.EF.Context
             }
             #endregion
 
-
             #region Inserts Sigla
             if (!context.Siglas.Any())
             {
@@ -432,40 +387,7 @@ namespace everis.SimpleProject.Data.EF.Context
                 context.SaveChanges();
             }
             #endregion
-
-            #region Inserts Projeto
-
-            if (!context.Projetos.Any())
-            {
-                context.Add(new Projeto
-                {
-                    DataInicio = DateTime.Now,
-                    EscopoProjeto = "Escopo teste",
-                    QtdHorasServico1 = 1000,
-                    Nome = "Projeto 1",
-                    Ext = "EXT-00000000000",
-                    EmpresaId = 1,
-                    DataPrevista = DateTime.Now.AddDays(7),
-                    CodigoProjeto = "1",
-                    StatusId = 1,
-                    DataRecebida = DateTime.Now,
-                    TecnologiaId = 1,
-                    SiglaId = 1,
-                    RespOutsourcing = "RespOutsourcing teste",
-                    RespTI = "RespTI teste",
-                    RespGerente = "RespGerente teste",
-                    Tamanho = 'P',
-                    TipoDemanda = "Servico 1 teste",
-                    Tarifa = "Tarifa teste",
-                    SuperintendenciaId = 1,
-                    DiretoriaId = 2,
-                    StatusProposta = "N/A",
-                    DataProposta =DateTime.Now
-                });
-                context.SaveChanges();
-            }
-            #endregion
-
+            
             #region Inserts Ferramentas
 
             if (!context.Ferramentas.Any())
@@ -499,74 +421,6 @@ namespace everis.SimpleProject.Data.EF.Context
                     });
                 context.SaveChanges();
             }
-            #endregion
-
-            #region Inserts Change
-            if (!context.Changes.Any())
-            {
-
-                context.Add(new SolicitacaoMudanca
-                {
-                    Descricao = "Change 1",
-                    DataHoraCadastro = DateTime.Now,
-                    ProjetoId = 1,
-                    QtdHorasServico1 = 13,
-                    QtdHorasServico2 = 2,
-                    QtdHorasServico3 = 34,
-                    Ativo = true,
-                    PessoaId = 1
-                });
-
-                context.Add(new SolicitacaoMudanca
-                {
-                    Descricao = "Change 2",
-                    DataHoraCadastro = DateTime.Now,
-                    ProjetoId = 1,
-                    QtdHorasServico1 = 344,
-                    QtdHorasServico2 = 0,
-                    QtdHorasServico3 = 0,
-                    Ativo = true,
-                    PessoaId = 1
-                });
-
-                context.Add(new SolicitacaoMudanca
-                {
-                    Descricao = "Change 3",
-                    DataHoraCadastro = DateTime.Now,
-                    ProjetoId = 1,
-                    QtdHorasServico1 = 0,
-                    QtdHorasServico2 = 0,
-                    QtdHorasServico3 = 59,
-                    Ativo = true,
-                    PessoaId = 1
-                });
-
-                context.Add(new SolicitacaoMudanca
-                {
-                    Descricao = "Change 4",
-                    DataHoraCadastro = DateTime.Now,
-                    ProjetoId = 1,
-                    QtdHorasServico1 = 5,
-                    QtdHorasServico2 = 3,
-                    QtdHorasServico3 = 59,
-                    Ativo = true,
-                    PessoaId = 1
-                });
-
-                context.Add(new SolicitacaoMudanca
-                {
-                    Descricao = "Change 5",
-                    DataHoraCadastro = DateTime.Now,
-                    ProjetoId = 1,
-                    QtdHorasServico1 = 544,
-                    QtdHorasServico2 = 33,
-                    QtdHorasServico3 = 59,
-                    Ativo = true,
-                    PessoaId = 1
-                });
-                context.SaveChanges();
-            }
-
             #endregion
 
             #region Inserts Tipo Fase
@@ -620,22 +474,6 @@ namespace everis.SimpleProject.Data.EF.Context
                 });
             }
             #endregion
-
-            #region Inserts Comunidade
-            if (!context.Comunidades.Any())
-            {
-
-                context.Add(new Sigla
-                {
-                    Descricao = "Finanças"
-                });
-                context.Add(new Sigla
-                {
-                    Descricao = "Créditos e Garantias"
-                });
-            }
-            #endregion
-
 
             context.SaveChanges();
 
