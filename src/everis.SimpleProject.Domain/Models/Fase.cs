@@ -20,7 +20,6 @@ namespace everis.SimpleProject.Domain.Models
         public override void MergeFrom(object other)
         {
             TipoFaseId = ((Fase)other).TipoFaseId;
-            TipoFase = ((Fase)other).TipoFase;
             QtdHorasDia = ((Fase)other).QtdHorasDia;
             DataFim = ((Fase)other).DataFim;
             DataInicio = ((Fase)other).DataInicio;

@@ -10,6 +10,8 @@ namespace everis.SimpleProject.Domain.Models
         public Funcao Funcao { get; set; }
         //public int PerfilId { get; set; }
         //public Perfil Perfil { get; set; }
+        public int PessoaId { get; set; }
+        public Pessoa Pessoa { get; set; }
         public int PoloAcessoId { get; set; }
         public PoloAcesso PoloAcesso { get; set; }
         public int AreaContratanteId { get; set; }

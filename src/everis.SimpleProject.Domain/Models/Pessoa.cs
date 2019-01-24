@@ -7,8 +7,8 @@ namespace everis.SimpleProject.Domain.Models
     {
         public int? DiretoriaId { get; set; }
         public DiretoriaContratante Diretoria { get; set; }
-        public int? ColaboradorId { get; set; }
-        public Colaborador Colaborador { get; set; }
+        //public int? ColaboradorId { get; set; }
+        //public Colaborador Colaborador { get; set; }
         public int EmpresaId { get; set; }
         public Empresa Empresa { get; set; }
         public int TipoId { get; set; }

@@ -1,45 +1,47 @@
 ﻿using everis.SimpleProject.API.ViewModel;
 using everis.SimpleProject.Domain.Models;
 using everis.SimpleProject.Domain.Service;
+using everis.SimpleProject.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace everis.SimpleProject.API.Controllers
-{
-    public class PessoaController : BaseController<Pessoa>
-    {
+namespace everis.SimpleProject.API.Controllers {
+    public class PessoaController : BaseController<Pessoa> {
 
 
         [HttpPost("[action]")]
         public ActionResult CriarPessoaColaborador([FromServices]IGenericService<Pessoa> pessoaSvc,
-            [FromServices] IGenericService<Colaborador> colaboradorSvc, [FromServices] IGenericService<Telefone> telSvc, [FromBody] PessoaColaborador pcv)
-        {
-            try
-            {              
-                pcv.pessoa.EmpresaId = 1;
-                var novoColaborador = colaboradorSvc.Adicionar(pcv.colaborador);
-                pcv.pessoa.ColaboradorId = novoColaborador.Id;
+            [FromServices] IGenericService<Colaborador> colaboradorSvc,
+             [FromServices] IAcessoFerramentaService ferramentaSvc, [FromServices] ITelefoneService telSvc,
+             [FromServices] IAcessoSiglaService siglaSvc, [FromBody] PessoaColaborador pcv) {
+            try {
+                if (pcv.pessoa.TipoId == 1) {
+                    pcv.pessoa.EmpresaId = 1;
+                }
                 var novaPessoa = pessoaSvc.Adicionar(pcv.pessoa);
+                pcv.colaborador.PessoaId = novaPessoa.Id;
+                var novoColaborador = colaboradorSvc.Adicionar(pcv.colaborador);
+                if (pcv.pessoa.TipoId == 1) {
+                    var lstAcessoFerramenta = ferramentaSvc.AdicionarListaAcessoFerramenta(pcv.FerramentasAssociadas, novoColaborador.Id);
+                    var lstAcessoSigla = siglaSvc.AdicionarListaAcessoSigla(pcv.SiglasAssociadas, novoColaborador.Id);
+                }
 
-                var pessoaColaborador = new PessoaColaborador
-                {
-                    pessoa = novaPessoa,
-                    colaborador = novoColaborador
-                };
+                var lstTelefone = telSvc.AdicionarTelefones(pcv.Telefones, novaPessoa.Id);
 
-                var retorno = new Retorno()
+                return Ok(new Retorno()
                 {
                     Codigo = 200,
-                    Data = pessoaColaborador
-
-                };
-                return Ok(retorno);
+                    Data = new PessoaColaborador
+                    {
+                        pessoa = novaPessoa,
+                        colaborador = novoColaborador,
+                        Telefones = lstTelefone
+                    }
+                });
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
 
-                return BadRequest(new Retorno()
-                {
+                return BadRequest(new Retorno() {
                     Codigo = 500,
                     Mensagem = ex.Message
                 });
@@ -47,29 +49,29 @@ namespace everis.SimpleProject.API.Controllers
 
         }
 
-        //[HttpGet("[action]/{colaboradorId}")]
-        //public IActionResult ListarDadosColaborador([FromServices]IGenericService<Pessoa> svc, string email)
-        //{
-        //    try
-        //    {
-        //        var retorno = new Retorno()
-        //        {
-        //            Codigo = 200,
-        //            Data = svc.ListarDadosColaborador(email)
-        //        };
-        //        return Ok(retorno);
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(new Retorno()
-        //        {
-        //            Codigo = 500,
-        //            Mensagem = ex.Message
-        //        });
-        //    }
-        //}
+        [HttpGet("[action]")]
+        public ActionResult ObterGestoresTecnicos([FromServices]IPessoaService pessoaSvc) {
 
+            try {
+
+                var gestores = pessoaSvc.ObterGestoresTecnicos();
+
+                var retorno = new Retorno() {
+                    Codigo = 200,
+                    Data = gestores
+
+                };
+                return Ok(retorno);
+            }
+            catch (Exception ex) {
+
+                return BadRequest(new Retorno() {
+                    Codigo = 500,
+                    Mensagem = ex.Message
+                });
+            }
+        }
 
         //[HttpGet("[action]")]
         //public ActionResult ObterPessoasColaboradores([FromServices] IGenericService<Colaborador> svcColaborador, [FromServices] IGenericService<Pessoa> svcPessoa)

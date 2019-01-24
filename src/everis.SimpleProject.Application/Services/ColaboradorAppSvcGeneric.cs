@@ -8,6 +8,7 @@ using System.Linq;
 
 namespace everis.SimpleProject.Application.Services
 {
+
     public class ColaboradorAppSvcGeneric : GenericService<Colaborador>, IColaboradorService
     {
         public ColaboradorAppSvcGeneric(AppDbContext context) : base(context)
@@ -52,31 +53,26 @@ namespace everis.SimpleProject.Application.Services
             return data;
         }
 
-        //public IEnumerable<Pessoa> ListarDadosColaborador(string email)
-        //{
-        //    var data = (
-        //            from col in ctx.Colaboradors
-        //            join pes in ctx.Pessoas on pes
-        //            where col.EmailCorporativo = email && pes.Ativo
-        //            sele
+        public IEnumerable<Sigla> ListarSiglasAssociadas(int colaboradorId) {
+            var data = (from ac in ctx.AcessoSiglas
+                        where ac.ColaboradorId == colaboradorId && ac.Ativo
+                        select new { fr = ac.Sigla }).Select(s => s.fr).ToList();
+            return data;
+        }
 
-        //            (
-        //                from pes in ctx.Pessoas
-        //                where col.EmailCorporativo == email && pes.Ativo
-        //                select new Pessoa { Id = col.Id, Nome = n })
-        //            on fr.Id equals af.Id into lj
-        //            from ljr in lj.DefaultIfEmpty()
-        //            where fr.Ativo
-        //            select new { Ferramenta = fr, ljr }
-        //            ).Where(w => w.ljr == null).Select(s => s.Ferramenta).ToList();
-        //    return data;
-
-
-        //    var data = (from ac in ctx.Pessoas
-        //                where ac.Colaborador.EmailCorporativo == email && ac.Ativo
-        //                select new Pessoa { Id = ac.Id, Nome = ac.Nome, Email = ac.Email, Funcional = ac.Funcional,
-        //                CPF = ac.CPF, Documento = ac.Documento, }).ToList();
-        //    return data;
-        //}
+        public IEnumerable<Sigla> ListarSiglasDisponiveis(int colaboradorId) {
+            var data = (
+                    from fr in ctx.Siglas
+                    join af in (
+                        from afr in ctx.AcessoSiglas
+                        where afr.ColaboradorId == colaboradorId && afr.Ativo
+                        select new Sigla { Id = afr.SiglaId })
+                    on fr.Id equals af.Id into lj
+                    from ljr in lj.DefaultIfEmpty()
+                    where fr.Ativo
+                    select new { Sigla = fr, ljr }
+                    ).Where(w => w.ljr == null).Select(s => s.Sigla).ToList();
+            return data;
+        }
     }
 }
