@@ -21,7 +21,6 @@ namespace everis.SimpleProject.Application.Services
         {
             try
             {
-             
                 return null;
             }
             catch (Exception ex)

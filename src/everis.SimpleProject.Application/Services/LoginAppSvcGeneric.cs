@@ -9,9 +9,11 @@ using everis.SimpleProject.Data.EF;
 namespace everis.SimpleProject.Application.Services {
     public class LoginAppSvcGeneric : GenericService<Colaborador>, ILoginService
     {
+        GenericRepository<Pessoa> repositoryPessoa;
         public LoginAppSvcGeneric(AppDbContext context) : base(context)
         {
             repository = new GenericRepository<Colaborador>(context);
+            repositoryPessoa = new GenericRepository<Pessoa>(context);
         }
 
         public override IEnumerable<Colaborador> BuscarPor(Colaborador filter)
@@ -26,11 +28,12 @@ namespace everis.SimpleProject.Application.Services {
             }
         }
 
-        public Colaborador Authenticate(Colaborador filter)
+        public Pessoa Authenticate(Colaborador filter)
         {
             var user = repository.BuscarPor(b => b.EmailCorporativo == filter.EmailCorporativo && b.Senha == filter.Senha).FirstOrDefault();
-            
-            return user;
+            var pessoa = repositoryPessoa.BuscarPor(b => b.ColaboradorId == user.Id).FirstOrDefault();
+            //pessoa.Colaborador = user;
+            return pessoa;
         }
     }
 }
