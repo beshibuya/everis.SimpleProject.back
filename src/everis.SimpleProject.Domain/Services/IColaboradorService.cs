@@ -7,5 +7,6 @@ namespace everis.SimpleProject.Domain.Services
     {
         IEnumerable<Ferramenta> ListarFerramentasDisponiveis(int colaboradorId);
         IEnumerable<Ferramenta> ListarFerramentasAssociadas(int colaboradorId);
+        //IEnumerable<Pessoa> ListarDadosColaborador(string email);
     }
 }

@@ -47,6 +47,29 @@ namespace everis.SimpleProject.API.Controllers
 
         }
 
+        //[HttpGet("[action]/{colaboradorId}")]
+        //public IActionResult ListarDadosColaborador([FromServices]IGenericService<Pessoa> svc, string email)
+        //{
+        //    try
+        //    {
+        //        var retorno = new Retorno()
+        //        {
+        //            Codigo = 200,
+        //            Data = svc.ListarDadosColaborador(email)
+        //        };
+        //        return Ok(retorno);
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(new Retorno()
+        //        {
+        //            Codigo = 500,
+        //            Mensagem = ex.Message
+        //        });
+        //    }
+        //}
+
 
         //[HttpGet("[action]")]
         //public ActionResult ObterPessoasColaboradores([FromServices] IGenericService<Colaborador> svcColaborador, [FromServices] IGenericService<Pessoa> svcPessoa)

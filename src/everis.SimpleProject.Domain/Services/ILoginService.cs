@@ -6,6 +6,6 @@ namespace everis.SimpleProject.Domain.Services
 {
     public interface ILoginService : IGenericService<Colaborador>
     {
-        Colaborador Authenticate(Colaborador filter);
+        Pessoa Authenticate(Colaborador filter);
     }
 }

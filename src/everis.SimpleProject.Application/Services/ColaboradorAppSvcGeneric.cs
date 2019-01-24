@@ -20,7 +20,6 @@ namespace everis.SimpleProject.Application.Services
         {
             try
             {
-             
                 return null;
             }
             catch (Exception ex)
@@ -52,5 +51,32 @@ namespace everis.SimpleProject.Application.Services
                     ).Where(w => w.ljr == null).Select(s => s.Ferramenta).ToList();
             return data;
         }
+
+        //public IEnumerable<Pessoa> ListarDadosColaborador(string email)
+        //{
+        //    var data = (
+        //            from col in ctx.Colaboradors
+        //            join pes in ctx.Pessoas on pes
+        //            where col.EmailCorporativo = email && pes.Ativo
+        //            sele
+
+        //            (
+        //                from pes in ctx.Pessoas
+        //                where col.EmailCorporativo == email && pes.Ativo
+        //                select new Pessoa { Id = col.Id, Nome = n })
+        //            on fr.Id equals af.Id into lj
+        //            from ljr in lj.DefaultIfEmpty()
+        //            where fr.Ativo
+        //            select new { Ferramenta = fr, ljr }
+        //            ).Where(w => w.ljr == null).Select(s => s.Ferramenta).ToList();
+        //    return data;
+
+
+        //    var data = (from ac in ctx.Pessoas
+        //                where ac.Colaborador.EmailCorporativo == email && ac.Ativo
+        //                select new Pessoa { Id = ac.Id, Nome = ac.Nome, Email = ac.Email, Funcional = ac.Funcional,
+        //                CPF = ac.CPF, Documento = ac.Documento, }).ToList();
+        //    return data;
+        //}
     }
 }

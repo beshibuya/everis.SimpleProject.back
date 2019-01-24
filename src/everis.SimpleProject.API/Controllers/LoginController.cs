@@ -40,7 +40,7 @@ namespace everis.SimpleProject.API.Controllers
                 if (retorno.Data != null)
                 {
                     string tokenString = BuildToken();
-                    response = Ok(new { token = tokenString });
+                    response = Ok(new { token = tokenString, nome = retorno.Data.Nome, id = retorno.Data.ColaboradorId });
                 }
 
                 return response;
