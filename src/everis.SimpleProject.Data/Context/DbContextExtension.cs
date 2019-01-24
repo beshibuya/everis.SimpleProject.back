@@ -304,7 +304,7 @@ namespace everis.SimpleProject.Data.EF.Context
                 {
                     Nome = "Maria das Dores",
                     EmpresaId = 1,
-                    TipoId = 3,
+                    TipoId = 1,
                     Email = "maria_das_dores@doeu.com",
                     Sexo = "Feminino",
                     DiretoriaId = 2
@@ -319,27 +319,16 @@ namespace everis.SimpleProject.Data.EF.Context
             {
                 context.Add(new Colaborador
                 {
-                    Disponivel = false,
                     EmailCorporativo = "ricardo@everis.com",
                     FuncaoId = 1,
                     AreaContratanteId = 2,
                     PoloAcessoId = 1,
                     TipoServicoId = 1,
                     Senha = "everis",
-                    PessoaId = 1
+                    PessoaId = 4
                 });
 
-                context.Add(new Colaborador
-                {
-                    Disponivel = true,
-                    EmailCorporativo = "nicholas@everis.com",
-                    FuncaoId = 2,
-                    AreaContratanteId = 1,
-                    PoloAcessoId = 2,
-                    TipoServicoId = 2,
-                    PessoaId = 1
-
-                });
+               
 
                 context.SaveChanges();
             }
