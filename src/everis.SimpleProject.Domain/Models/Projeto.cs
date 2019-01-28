@@ -76,7 +76,6 @@ namespace everis.SimpleProject.Domain.Models
             StatusProposta = ((Projeto)other).StatusProposta;
             SquadId = ((Projeto)other).SquadId;
             Duracao = ((Projeto)other).Duracao;
-            Esforco = ((Projeto)other).Esforco;
             StatusId = ((Projeto)other).StatusId;
         }
     }
