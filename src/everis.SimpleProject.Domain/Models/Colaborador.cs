@@ -22,7 +22,7 @@ namespace everis.SimpleProject.Domain.Models
         public string EmailCorporativo { get; set; }
         public DateTime DataNascimento { get; set; }
         public DateTime DataAdmissao { get; set; }
-        public DateTime DataDemissao { get; set; }
+        public DateTime? DataDemissao { get; set; }
         public string NomeMaquina { get; set; }
         public bool Scf { get; set; }
         public bool Clt { get; set; }

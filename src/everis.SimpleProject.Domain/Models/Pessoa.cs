@@ -25,6 +25,8 @@ namespace everis.SimpleProject.Domain.Models
         public int Funcional { get; set; }
         public bool GestorTecnico { get; set; }
 
+
+
         public override void MergeFrom(object other)
         {
             Nome = ((Pessoa)other).Nome;
