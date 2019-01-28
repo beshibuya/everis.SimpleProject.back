@@ -294,7 +294,9 @@ namespace everis.SimpleProject.Data.EF.Context
                     PoloAcessoId = 1,
                     TipoServicoId = 1,
                     Senha = "admin",
-                    PessoaId = 1
+                    PessoaId = 1,
+                    DataNascimento = new DateTime(),
+                    DataAdmissao = new DateTime()
                 });
 
                 context.SaveChanges();
@@ -471,6 +473,10 @@ namespace everis.SimpleProject.Data.EF.Context
                 context.Add(new ProjetoPessoaAtribuicao
                 {
                     Atribuicao = "Analista responsável Outsourcing"
+                });
+                context.Add(new ProjetoPessoaAtribuicao
+                {
+                    Atribuicao = "Gerente responsável"
                 });
             }
             #endregion

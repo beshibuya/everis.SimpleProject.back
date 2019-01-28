@@ -9,21 +9,17 @@ namespace everis.SimpleProject.Data.EF.Mapping
         public override void Configure(EntityTypeBuilder<Projeto> builder)
         {
             base.Configure(builder);
-            builder.Property(c => c.DataInicio).IsRequired();
-            builder.Property(c => c.EscopoProjeto).IsRequired();
+            builder.Property(c => c.CodigoProjeto).IsRequired();
+            builder.Property(c => c.Nome).IsRequired();
             builder.Property(c => c.EmpresaId).IsRequired();
             builder.Property(c => c.StatusId).IsRequired();
-            builder.Property(c => c.DataPrevista).IsRequired();
-            builder.Property(c => c.Ext).IsRequired();
             builder.Property(c => c.DataRecebida).IsRequired();
-            builder.Property(c => c.TecnologiaId).IsRequired();
-            builder.Property(c => c.SiglaId).IsRequired();
-            builder.Property(c => c.Tamanho).IsRequired();
-            builder.Property(c => c.TipoDemanda).IsRequired();
-            builder.Property(c => c.Tarifa).IsRequired();
-            builder.Property(c => c.SuperintendenciaId).IsRequired();
             builder.Property(c => c.DataProposta).IsRequired();
-            builder.Property(c => c.StatusProposta).IsRequired();
+            builder.Property(c => c.TipoDemanda).IsRequired();
+            builder.Property(c => c.Tamanho).IsRequired();
+            builder.Property(c => c.DiretoriaId).IsRequired();
+            builder.Property(c => c.TecnologiaId).IsRequired();
+            builder.Property(c => c.SuperintendenciaId).IsRequired();
             
 
 
