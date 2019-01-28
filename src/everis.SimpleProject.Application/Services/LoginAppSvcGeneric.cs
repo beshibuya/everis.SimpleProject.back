@@ -31,7 +31,7 @@ namespace everis.SimpleProject.Application.Services {
         public Pessoa Authenticate(Colaborador filter)
         {
             var user = repository.BuscarPor(b => b.EmailCorporativo == filter.EmailCorporativo && b.Senha == filter.Senha).FirstOrDefault();
-            //var pessoa = repositoryPessoa.BuscarPor(b => b.ColaboradorId == user.Id).FirstOrDefault();
+            var pessoa = repositoryPessoa.BuscarPor(b => b.Id == user.Id).FirstOrDefault();
             //pessoa.Colaborador = user;
             return null;
         }
