@@ -84,7 +84,9 @@ namespace everis.SimpleProject.Application.Services {
                 if (pessoa == null)
                     throw new Exception($"Pessoa com ID: {pessoaId}, não existe");
 
+
                 var colaborador = repColaborador.BuscarPor(c => c.PessoaId == pessoaId).FirstOrDefault();
+             
 
                 var telefones = repTelefones.BuscarPor(t => t.PessoaId == pessoaId && t.Ativo == true, i => i.Tipo).ToList();
 

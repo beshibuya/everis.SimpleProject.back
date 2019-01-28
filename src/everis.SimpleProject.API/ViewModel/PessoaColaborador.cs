@@ -7,6 +7,7 @@ namespace everis.SimpleProject.API.ViewModel
     {
         public Pessoa pessoa { get; set; }
         public Colaborador colaborador { get; set; }
+
         public List<Telefone> Telefones { get; set; }
         public List<Ferramenta> FerramentasAssociadas { get; set; }
         public List<Sigla> SiglasAssociadas { get; set; }
