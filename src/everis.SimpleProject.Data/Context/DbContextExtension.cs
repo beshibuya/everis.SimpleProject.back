@@ -472,6 +472,10 @@ namespace everis.SimpleProject.Data.EF.Context
                 {
                     Atribuicao = "Analista responsável Outsourcing"
                 });
+                context.Add(new ProjetoPessoaAtribuicao
+                {
+                    Atribuicao = "Gerente responsável"
+                });
             }
             #endregion
 

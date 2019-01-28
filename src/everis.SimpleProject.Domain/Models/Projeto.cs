@@ -19,7 +19,7 @@ namespace everis.SimpleProject.Domain.Models
         public Empresa Empresa { get; set; }
         public int? StatusId { get; set; }
         public Status Status { get; set; }
-        public DateTime DataPrevista { get; set; }
+        public DateTime DataFinal { get; set; }
         public DateTime DataProposta { get; set; }
         public string StatusProposta { get; set; }
         public string BeneficioEntregue { get; set; }
@@ -34,18 +34,16 @@ namespace everis.SimpleProject.Domain.Models
         public int TecnologiaId { get; set; }
         public Sigla Sigla { get; set; }
         public int SiglaId { get; set; }
-        public string RespOutsourcing { get; set; }
-        public string RespTI { get; set; }
-        public string RespGerente { get; set; }
         public int DiretoriaId { get; set; }
         public DiretoriaContratante Diretoria { get; set; }
         public char Tamanho { get; set; }
         public string TipoDemanda { get; set; }
-        public string Tarifa { get; set; }
+        public decimal Tarifa { get; set; }
         public int SuperintendenciaId { get; set; }
         public Superintendencia Superintendencia { get; set; }
         public int? SquadId { get; set; }
         public Squad Squad { get; set; }
+        public int Duracao { get; set; }
 
         public override void MergeFrom(object other)
         {
@@ -57,7 +55,7 @@ namespace everis.SimpleProject.Domain.Models
             EscopoProjeto = ((Projeto)other).EscopoProjeto;
             ForaEscopoProjeto = ((Projeto)other).ForaEscopoProjeto;
             Premissas = ((Projeto)other).Premissas;
-            DataPrevista = ((Projeto)other).DataPrevista;
+            DataFinal = ((Projeto)other).DataFinal;
             BeneficioEntregue = ((Projeto)other).BeneficioEntregue;
             BeneficioResidual = ((Projeto)other).BeneficioResidual;
             ProblemasExecucao = ((Projeto)other).ProblemasExecucao;
@@ -67,22 +65,18 @@ namespace everis.SimpleProject.Domain.Models
             ProjetosPessoas = ((Projeto)other).ProjetosPessoas;
             DataRecebida = ((Projeto)other).DataRecebida;
             CodigoProjeto = ((Projeto)other).CodigoProjeto;
-            Tecnologia = ((Projeto)other).Tecnologia;
-            Sigla = ((Projeto)other).Sigla;
-            RespOutsourcing = ((Projeto)other).RespOutsourcing;
-            RespTI = ((Projeto)other).RespTI;
-            RespGerente = ((Projeto)other).RespGerente;
-            Diretoria = ((Projeto)other).Diretoria;
+            TecnologiaId = ((Projeto)other).TecnologiaId;
+            SiglaId = ((Projeto)other).SiglaId;
+            DiretoriaId = ((Projeto)other).DiretoriaId;
             Tamanho = ((Projeto)other).Tamanho;
             TipoDemanda = ((Projeto)other).TipoDemanda;
             Tarifa = ((Projeto)other).Tarifa;
-            Superintendencia = ((Projeto)other).Superintendencia;
+            SuperintendenciaId = ((Projeto)other).SuperintendenciaId;
             DataProposta = ((Projeto)other).DataProposta;
             StatusProposta = ((Projeto)other).StatusProposta;
             SquadId = ((Projeto)other).SquadId;
-
-
-
+            Duracao = ((Projeto)other).Duracao;
+            Esforco = ((Projeto)other).Esforco;
             StatusId = ((Projeto)other).StatusId;
         }
     }
