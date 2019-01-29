@@ -18,7 +18,7 @@ namespace everis.SimpleProject.Application.Services
         {
             try
             {
-                return repository.BuscarPor(p => p.ProjetoId == filter.ProjetoId && p.Ativo == filter.Ativo, i => i.Pessoa);
+                return repository.BuscarPor(p => p.ProjetoId == filter.ProjetoId && p.Ativo == filter.Ativo, i => i.Pessoa, i => i.Atribuicao);
             }
             catch (Exception ex)
             {

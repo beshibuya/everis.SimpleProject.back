@@ -235,5 +235,24 @@ namespace everis.SimpleProject.Application.Services {
                 throw ex;
             }
         }
+
+        public IEnumerable<dynamic> FiltrarPessoaColaborador(Pessoa filter)
+        {
+            var nomeToFind = filter?.Nome;
+            var data = (
+                from p in ctx.Pessoas.Include(i=>i.Empresa).Include(i=>i.Tipo)
+                join c in ctx.Colaboradors on p.Id equals c.PessoaId into lj
+                from l in lj.DefaultIfEmpty()
+                where p.Nome.Contains(
+                    string.IsNullOrEmpty(nomeToFind) ? p.Nome : nomeToFind)
+                select new
+                {
+                    pessoa = p,
+                    colaborador = l
+                }
+            ).ToList();
+
+            return data;
+        }
     }
 }
