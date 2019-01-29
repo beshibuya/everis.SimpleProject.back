@@ -13,6 +13,7 @@ namespace everis.SimpleProject.Domain.Models
         public override void MergeFrom(object other)
         {
             Nome = ((Empresa)other).Nome;
+            Segmento = ((Empresa)other).Segmento;
         }
     }
 }
