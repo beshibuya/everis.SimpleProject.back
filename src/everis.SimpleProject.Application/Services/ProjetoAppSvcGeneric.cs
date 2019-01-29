@@ -21,12 +21,7 @@ namespace everis.SimpleProject.Application.Services
             repFase = new GenericRepository<Fase>(context);
         }
 
-        public override Projeto ObterPorId(int id)
-        {
-            var res = ctx.Projetos.Include(i => i.ProjetosPessoas).FirstOrDefault(f => f.Id == id);
-            return res;
-        }
-
+     
         public override IEnumerable<Projeto> ObterTodos()
         {
             return BuscarPor(new Projeto());
