@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using everis.SimpleProject.Data.EF;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190128151711_NullableDataDemissao")]
+    partial class NullableDataDemissao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -404,14 +406,13 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<string>("BeneficioResidual");
 
-                    b.Property<string>("CodigoProjeto")
-                        .IsRequired();
-
-                    b.Property<DateTime>("DataFinal");
+                    b.Property<string>("CodigoProjeto");
 
                     b.Property<DateTime?>("DataInativacao");
 
                     b.Property<DateTime>("DataInicio");
+
+                    b.Property<DateTime>("DataPrevista");
 
                     b.Property<DateTime>("DataProposta");
 
@@ -419,20 +420,19 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<int>("DiretoriaId");
 
-                    b.Property<int>("Duracao");
-
                     b.Property<int>("EmpresaId");
 
-                    b.Property<string>("EscopoProjeto");
+                    b.Property<string>("EscopoProjeto")
+                        .IsRequired();
 
-                    b.Property<string>("Ext");
+                    b.Property<string>("Ext")
+                        .IsRequired();
 
                     b.Property<string>("ForaEscopoProjeto");
 
                     b.Property<string>("LicoesAprendidas");
 
-                    b.Property<string>("Nome")
-                        .IsRequired();
+                    b.Property<string>("Nome");
 
                     b.Property<string>("Premissas");
 
@@ -444,6 +444,12 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<int>("QtdHorasServico3");
 
+                    b.Property<string>("RespGerente");
+
+                    b.Property<string>("RespOutsourcing");
+
+                    b.Property<string>("RespTI");
+
                     b.Property<string>("Riscos");
 
                     b.Property<int>("SiglaId");
@@ -453,7 +459,8 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.Property<int?>("StatusId")
                         .IsRequired();
 
-                    b.Property<string>("StatusProposta");
+                    b.Property<string>("StatusProposta")
+                        .IsRequired();
 
                     b.Property<int>("SuperintendenciaId");
 
@@ -461,7 +468,8 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .IsRequired()
                         .HasConversion(new ValueConverter<string, string>(v => default(string), v => default(string), new ConverterMappingHints(size: 1)));
 
-                    b.Property<decimal>("Tarifa");
+                    b.Property<string>("Tarifa")
+                        .IsRequired();
 
                     b.Property<int>("TecnologiaId");
 

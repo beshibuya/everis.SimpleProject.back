@@ -25,9 +25,12 @@ namespace everis.SimpleProject.Domain.Models
         public int Funcional { get; set; }
         public bool GestorTecnico { get; set; }
 
+
+
         public override void MergeFrom(object other)
         {
             Nome = ((Pessoa)other).Nome;
+            Email = ((Pessoa)other).Email;
             FotoPath = ((Pessoa)other).FotoPath;
             CPF = ((Pessoa)other).CPF;
             Tipo = ((Pessoa)other).Tipo;
@@ -40,6 +43,8 @@ namespace everis.SimpleProject.Domain.Models
             Sexo = ((Pessoa)other).Sexo;
             Tipo = ((Pessoa)other).Tipo;
             TipoId = ((Pessoa)other).TipoId;
+            Funcional = ((Pessoa)other).Funcional;
+            GestorTecnico = ((Pessoa)other).GestorTecnico;
         }
     }
 }
