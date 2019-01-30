@@ -15,7 +15,7 @@ namespace everis.SimpleProject.Application.Services
         public override IEnumerable<SquadPessoa> BuscarPor(SquadPessoa filter)
         {
             var idSquad = filter?.SquadId;
-            var result = repository.BuscarPor(f => f.SquadId == idSquad && f.Ativo == filter.Ativo);                
+            var result = repository.BuscarPor(f => f.SquadId == idSquad && f.Ativo == filter.Ativo, i => i.Pessoa);                
             return result;
         }
     }
