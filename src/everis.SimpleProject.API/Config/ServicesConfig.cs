@@ -57,6 +57,8 @@ namespace everis.SimpleProject.API.Config
             services.AddTransient<IGenericService<Squad>, SquadAppSvcGeneric>();
             services.AddTransient<IGenericService<SquadPessoa>, SquadPessoaAppSvcGeneric>();
             services.AddTransient<IGenericService<TipoFase>, TipoFaseAppSvcGeneric>();
+            services.AddTransient<IGenericService<ProjetoSquad>, ProjetoSquadAppSvcGeneric>();
+            services.AddTransient<IProjetoSquadService, ProjetoSquadAppSvcGeneric>();
 
 
 

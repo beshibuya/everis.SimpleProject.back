@@ -18,7 +18,7 @@ namespace everis.SimpleProject.API.Controllers
              [FromServices] IAcessoSiglaService siglaSvc, [FromBody] PessoaColaborador pcv)
         {
             try
-            {
+                {
                 var novoColaborador = new Colaborador();
                 if (pcv.pessoa.TipoId == 1)
                 {

@@ -31,6 +31,7 @@ namespace everis.SimpleProject.Application.Services {
             try {
 
                 var res = ctx.Pessoas.ToList();
+                res = res.OrderBy(o => o.Nome).ToList();
                 return res;
             }
             catch (Exception ex) {
@@ -74,6 +75,8 @@ namespace everis.SimpleProject.Application.Services {
                     gestores.Add(item);
                 }
             }
+
+            gestores = gestores.OrderBy(o => o.Nome).ToList();
 
             return gestores;
         }
@@ -240,7 +243,7 @@ namespace everis.SimpleProject.Application.Services {
         {
             var nomeToFind = filter?.Nome;
             var data = (
-                from p in ctx.Pessoas.Include(i=>i.Empresa).Include(i=>i.Tipo)
+                from p in ctx.Pessoas.Include(i=>i.Empresa).Include(i=>i.Tipo).OrderBy( o => o.Nome)
                 join c in ctx.Colaboradors on p.Id equals c.PessoaId into lj
                 from l in lj.DefaultIfEmpty()
                 where p.Nome.Contains(
