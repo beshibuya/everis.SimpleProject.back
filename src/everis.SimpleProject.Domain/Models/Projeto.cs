@@ -11,7 +11,7 @@ namespace everis.SimpleProject.Domain.Models
         public int QtdHorasServico1 { get; set; }
         public int QtdHorasServico2 { get; set; }
         public int QtdHorasServico3 { get; set; }
-        public DateTime DataInicio { get; set; }
+        public DateTime? DataInicio { get; set; }
         public string EscopoProjeto { get; set; }
         public string ForaEscopoProjeto { get; set; }
         public string Premissas { get; set; }
@@ -19,8 +19,8 @@ namespace everis.SimpleProject.Domain.Models
         public Empresa Empresa { get; set; }
         public int? StatusId { get; set; }
         public Status Status { get; set; }
-        public DateTime DataFinal { get; set; }
-        public DateTime DataProposta { get; set; }
+        public DateTime? DataFinal { get; set; }
+        public DateTime? DataProposta { get; set; }
         public string StatusProposta { get; set; }
         public string BeneficioEntregue { get; set; }
         public string BeneficioResidual { get; set; }
