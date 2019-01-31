@@ -9,7 +9,6 @@ namespace everis.SimpleProject.Data.EF
     public class AppDbContext : DbContext
     {
         #region DBSets
-        public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Anexo> Anexos { get; set; }
         public DbSet<SolicitacaoMudanca> Changes { get; set; }
         public DbSet<Colaborador> Colaboradors { get; set; }

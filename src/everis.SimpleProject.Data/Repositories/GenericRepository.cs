@@ -24,6 +24,8 @@ namespace everis.SimpleProject.Data.EF.Repositories
             return obj;
         }
 
+       
+
         public T Desativar(int Id)
         {
             var entity = _dbContext.Set<T>().Find(Id);
@@ -67,6 +69,13 @@ namespace everis.SimpleProject.Data.EF.Repositories
             foreach (var inc in includes)
                 query = query.Include(inc);
             return query.Where(predicate);
+        }
+
+        public int CountBuscarPor(Expression<Func<T, bool>> predicate)
+        {
+            var currentSet = _dbContext.Set<T>();
+            IQueryable<T> query = currentSet;
+            return query.Count(predicate);
         }
 
         public T ObterPorId(int id)
