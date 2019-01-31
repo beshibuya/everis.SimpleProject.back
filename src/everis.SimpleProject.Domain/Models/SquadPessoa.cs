@@ -9,7 +9,7 @@
 
         public override void MergeFrom(object other)
         {
-            return;
+            Ativo = ((ProjetoPessoa)other).Ativo;
         }
     }
 }

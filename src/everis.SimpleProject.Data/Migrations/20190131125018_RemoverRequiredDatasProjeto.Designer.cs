@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using everis.SimpleProject.Data.EF;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190131125018_RemoverRequiredDatasProjeto")]
+    partial class RemoverRequiredDatasProjeto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -534,29 +536,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.ToTable("ProjetoPessoaAtribuicoes");
                 });
 
-            modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoSquad", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Ativo");
-
-                    b.Property<DateTime?>("DataInativacao");
-
-                    b.Property<int>("ProjetoId");
-
-                    b.Property<int?>("SquadId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjetoId");
-
-                    b.HasIndex("SquadId");
-
-                    b.ToTable("ProjetoSquads");
-                });
-
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoTecnologia", b =>
                 {
                     b.Property<int>("Id")
@@ -1014,18 +993,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .WithMany()
                         .HasForeignKey("ProjetoId")
                         .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoSquad", b =>
-                {
-                    b.HasOne("everis.SimpleProject.Domain.Models.Projeto", "Projeto")
-                        .WithMany()
-                        .HasForeignKey("ProjetoId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("everis.SimpleProject.Domain.Models.Squad", "Squad")
-                        .WithMany()
-                        .HasForeignKey("SquadId");
                 });
 
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoTecnologia", b =>
