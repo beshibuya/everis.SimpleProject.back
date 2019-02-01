@@ -243,8 +243,8 @@ namespace everis.SimpleProject.Application.Services {
         {
             var nomeToFind = filter?.Nome;
             var data = (
-                from p in ctx.Pessoas.Include(i=>i.Empresa).Include(i=>i.Tipo).OrderBy( o => o.Nome)
-                join c in ctx.Colaboradors on p.Id equals c.PessoaId into lj
+                from p in ctx.Pessoas.Include(i=>i.Empresa).Include(i=>i.Tipo).Include(i => i.Diretoria).OrderBy( o => o.Nome)
+                join c in ctx.Colaboradors.Include(i => i.Funcao) on p.Id equals c.PessoaId into lj
                 from l in lj.DefaultIfEmpty()
                 where p.Nome.Contains(
                     string.IsNullOrEmpty(nomeToFind) ? p.Nome : nomeToFind)
