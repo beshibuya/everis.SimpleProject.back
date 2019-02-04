@@ -223,6 +223,11 @@ namespace everis.SimpleProject.Data.EF.Context
                     Nome = "Everis",
                     Segmento = TipoSegmento.Banking
                 });
+                context.Add(new Empresa
+                {
+                    Nome = "Itaú",
+                    Segmento = TipoSegmento.Banking
+                });
                 context.SaveChanges();
             }
             #endregion
