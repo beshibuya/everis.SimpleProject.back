@@ -10,7 +10,7 @@ namespace everis.SimpleProject.Data.EF.Context
         {
             var config = new ConfigurationBuilder().Build();
             var builder = new DbContextOptionsBuilder<AppDbContext>();
-            var connString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SimpleProjectDB;Integrated Security=True";
+            var connString = "Data Source=SAO-3J40BB2\\SQLEXPRESS;Initial Catalog=SimpleProjectDB;Integrated Security=False;User ID=SimpleProcess;Password=simplepwd123";
             builder.UseSqlServer(connString);
             return new AppDbContext(builder.Options);
         }

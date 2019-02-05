@@ -70,8 +70,8 @@ namespace everis.SimpleProject.API
                 if (!ss.ServiceProvider.GetService<AppDbContext>().AllMigrationsApplied())
                 {
                     ss.ServiceProvider.GetService<AppDbContext>().Database.Migrate();
-                    ss.ServiceProvider.GetService<AppDbContext>().InitialSeed();
                 }
+                ss.ServiceProvider.GetService<AppDbContext>().InitialSeed();
             }
 
         }
