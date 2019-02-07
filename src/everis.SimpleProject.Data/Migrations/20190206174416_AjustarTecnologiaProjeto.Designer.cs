@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using everis.SimpleProject.Data.EF;
 
 namespace everis.SimpleProject.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190206174416_AjustarTecnologiaProjeto")]
+    partial class AjustarTecnologiaProjeto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -230,25 +232,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.ToTable("Empresas");
                 });
 
-            modelBuilder.Entity("everis.SimpleProject.Domain.Models.Exts", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Ativo");
-
-                    b.Property<DateTime?>("DataInativacao");
-
-                    b.Property<string>("Descricao");
-
-                    b.Property<string>("Nome");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Exts");
-                });
-
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.Fase", b =>
                 {
                     b.Property<int>("Id")
@@ -444,7 +427,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.Property<string>("EscopoProjeto");
 
-                    b.Property<int?>("ExtId");
+                    b.Property<string>("Ext");
 
                     b.Property<string>("ForaEscopoProjeto");
 
@@ -464,6 +447,8 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.Property<int>("QtdHorasServico3");
 
                     b.Property<string>("Riscos");
+
+                    b.Property<int>("SiglaId");
 
                     b.Property<int?>("SquadId");
 
@@ -489,7 +474,7 @@ namespace everis.SimpleProject.Data.EF.Migrations
 
                     b.HasIndex("EmpresaId");
 
-                    b.HasIndex("ExtId");
+                    b.HasIndex("SiglaId");
 
                     b.HasIndex("SquadId");
 
@@ -547,29 +532,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.ToTable("ProjetoPessoaAtribuicoes");
                 });
 
-            modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoSigla", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Ativo");
-
-                    b.Property<DateTime?>("DataInativacao");
-
-                    b.Property<int>("ProjetoId");
-
-                    b.Property<int>("SiglaId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjetoId");
-
-                    b.HasIndex("SiglaId");
-
-                    b.ToTable("ProjetosSiglas");
-                });
-
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoSquad", b =>
                 {
                     b.Property<int>("Id")
@@ -614,29 +576,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.HasIndex("TecnologiaId");
 
                     b.ToTable("ProjetoTecnologia");
-                });
-
-            modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoTipoDemanda", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Ativo");
-
-                    b.Property<DateTime?>("DataInativacao");
-
-                    b.Property<int>("ProjetoId");
-
-                    b.Property<int>("TipoDemandaId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjetoId");
-
-                    b.HasIndex("TipoDemandaId");
-
-                    b.ToTable("ProjetosTipoDemanda");
                 });
 
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.Sigla", b =>
@@ -821,24 +760,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.ToTable("Telefones");
                 });
 
-            modelBuilder.Entity("everis.SimpleProject.Domain.Models.TipoDemanda", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Ativo");
-
-                    b.Property<DateTime?>("DataInativacao");
-
-                    b.Property<string>("Nome")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TipoDemandas");
-                });
-
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.TipoFase", b =>
                 {
                     b.Property<int>("Id")
@@ -1021,10 +942,10 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .HasForeignKey("EmpresaId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("everis.SimpleProject.Domain.Models.Exts", "Ext")
+                    b.HasOne("everis.SimpleProject.Domain.Models.Sigla", "Sigla")
                         .WithMany()
-                        .HasForeignKey("ExtId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("SiglaId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("everis.SimpleProject.Domain.Models.Squad", "Squad")
                         .WithMany()
@@ -1059,19 +980,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoSigla", b =>
-                {
-                    b.HasOne("everis.SimpleProject.Domain.Models.Projeto", "Projeto")
-                        .WithMany()
-                        .HasForeignKey("ProjetoId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("everis.SimpleProject.Domain.Models.Sigla", "Sigla")
-                        .WithMany()
-                        .HasForeignKey("SiglaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoSquad", b =>
                 {
                     b.HasOne("everis.SimpleProject.Domain.Models.Projeto", "Projeto")
@@ -1094,19 +1002,6 @@ namespace everis.SimpleProject.Data.EF.Migrations
                     b.HasOne("everis.SimpleProject.Domain.Models.Tecnologia", "Tecnologia")
                         .WithMany()
                         .HasForeignKey("TecnologiaId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("everis.SimpleProject.Domain.Models.ProjetoTipoDemanda", b =>
-                {
-                    b.HasOne("everis.SimpleProject.Domain.Models.Projeto", "Projeto")
-                        .WithMany()
-                        .HasForeignKey("ProjetoId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("everis.SimpleProject.Domain.Models.TipoDemanda", "TipoDemanda")
-                        .WithMany()
-                        .HasForeignKey("TipoDemandaId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

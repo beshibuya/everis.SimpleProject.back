@@ -2,6 +2,7 @@
 
 namespace everis.SimpleProject.API.Controllers
 {
-    public class TipoServicoController : BaseController<TipoServico> {
+    public class ExtsController : BaseController<Exts>
+    {
     }
 }

@@ -6,18 +6,18 @@ using System.Collections.Generic;
 
 namespace everis.SimpleProject.API.Controllers
 {
-    public class ProjetoTecnologiaController : BaseController<ProjetoTecnologia>
+    public class TipoDemandaController : BaseController<TipoDemanda>
     {
         [HttpGet("[action]/{projetoId}")]
-        public IActionResult TecnologiaProjeto([FromServices] IProjetoTecnologiaService svc, int projetoId,bool associadas=true)
-        
-{
+        public IActionResult TipoDemandaProjeto([FromServices] ITipoDemandaService svc, int projetoId, bool associadas = true)
+
+        {
             try
             {
                 var retorno = new Retorno()
                 {
                     Codigo = 200,
-                    Data = svc.TecnologiaProjeto(projetoId, associadas)
+                    Data = svc.TipoDemandaProjeto(projetoId, associadas)
                 };
                 return Ok(retorno);
 
@@ -33,14 +33,14 @@ namespace everis.SimpleProject.API.Controllers
         }
 
         [HttpPost("[action]/{projetoId}")]
-        public IActionResult AssociarTecnologiaProjeto([FromServices]IProjetoTecnologiaService svc, int projetoId,[FromBody] IEnumerable<Tecnologia> tecnologias)
+        public IActionResult AssociarTipoDemandaProjeto([FromServices]ITipoDemandaService svc, int projetoId, [FromBody] IEnumerable<TipoDemanda> TipoDemandas)
         {
             try
             {
                 var retorno = new Retorno()
                 {
                     Codigo = 200,
-                    Data = svc.AssociarTecnologiaProjeto(projetoId, tecnologias)
+                    Data = svc.AssociarTipoDemandaProjeto(projetoId, TipoDemandas)
                 };
                 return Ok(retorno);
 

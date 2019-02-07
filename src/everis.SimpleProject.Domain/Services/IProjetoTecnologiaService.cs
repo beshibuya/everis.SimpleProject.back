@@ -5,6 +5,7 @@ namespace everis.SimpleProject.Domain.Services
 {
     public interface IProjetoTecnologiaService
     {
-        IEnumerable<ProjetoTecnologia> TecnologiaProjeto(int projetoId);
+        IEnumerable<Tecnologia> TecnologiaProjeto(int projetoId, bool associadas=true);
+        IEnumerable<ProjetoTecnologia> AssociarTecnologiaProjeto(int projetoId, IEnumerable<Tecnologia> tecnologias);
     }
 }

@@ -40,6 +40,10 @@ namespace everis.SimpleProject.Data.EF
         public DbSet<TipoPessoa> TipoPessoas { get; set; }
         public DbSet<TipoTelefone> TipoTelefones { get; set; }
         public DbSet<ProjetoSquad> ProjetoSquads { get; set; }
+        public DbSet<TipoDemanda> TipoDemandas { get; set; }
+        public DbSet<ProjetoTipoDemanda> ProjetosTipoDemanda { get; set; }
+        public DbSet<Exts> Exts { get; set; }
+        public DbSet<ProjetoSigla> ProjetosSiglas { get; set; }
 
         #endregion
 

@@ -22,7 +22,7 @@ namespace everis.SimpleProject.API.Config
             services.AddTransient<IColaboradorService, ColaboradorAppSvcGeneric>();
             services.AddTransient<IGenericService<Empresa>, EmpresaAppSvcGeneric>();
             services.AddTransient<IGenericService<Fase>, FaseAppSvcGeneric>();
-            services.AddTransient<IFaseService, FaseAppSvcGeneric>(); 
+            services.AddTransient<IFaseService, FaseAppSvcGeneric>();
             services.AddTransient<IGenericService<Pessoa>, PessoaAppSvcGeneric>();
             services.AddTransient<IPessoaService, PessoaAppSvcGeneric>();
             services.AddTransient<IGenericService<Projeto>, ProjetoAppSvcGeneric>();
@@ -57,8 +57,11 @@ namespace everis.SimpleProject.API.Config
             services.AddTransient<IGenericService<TipoFase>, TipoFaseAppSvcGeneric>();
             services.AddTransient<IGenericService<ProjetoSquad>, ProjetoSquadAppSvcGeneric>();
             services.AddTransient<IProjetoSquadService, ProjetoSquadAppSvcGeneric>();
-
-
+            services.AddTransient<GenericService<TipoDemanda>, TipoDemandaService>();
+            services.AddTransient<ITipoDemandaService, TipoDemandaService>();
+            services.AddTransient<IGenericService<Exts>, ExtsService>();
+            services.AddTransient<IGenericService<ProjetoSigla>, ProjetoSiglaService>();
+            services.AddTransient<IProjetoSiglaService, ProjetoSiglaService>();
 
         }
     }

@@ -2,16 +2,16 @@
 
 namespace everis.SimpleProject.Domain.Models
 {
-    public class Tecnologia : Entity, IEquatable<Tecnologia>
+    public class TipoDemanda : Entity, IEquatable<TipoDemanda>
     {
         public string Nome { get; set; }
-        
-        public override void MergeFrom(object other)
+
+        public override void MergeFrom(object other )
         {
-            Nome = ((Tecnologia)other).Nome;
+            Nome = ((TipoDemanda)other).Nome;
         }
 
-        public bool Equals(Tecnologia other)
+        public bool Equals(TipoDemanda other)
         {
             if (other is null)
                 return false;
@@ -20,5 +20,5 @@ namespace everis.SimpleProject.Domain.Models
 
         public override bool Equals(object obj) => Equals(obj as Tecnologia);
         public override int GetHashCode() => (Nome, Id).GetHashCode();
-    }   
+    }
 }

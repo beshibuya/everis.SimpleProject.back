@@ -27,12 +27,12 @@ namespace everis.SimpleProject.Domain.Models
         public string ProblemasExecucao { get; set; }
         public string Riscos { get; set; }
         public string LicoesAprendidas { get; set; }
-        public string Ext { get; set; }
+        //public string Ext { get; set; }
+        public int? ExtId { get; set; }
+        public Exts Ext { get; set; }
         public DateTime DataRecebida { get; set; }
-        public Tecnologia Tecnologia { get; set; }    
-        public int TecnologiaId { get; set; }
-        public Sigla Sigla { get; set; }
-        public int SiglaId { get; set; }
+        //public Sigla Sigla { get; set; }
+        //public int SiglaId { get; set; }
         public int DiretoriaId { get; set; }
         public DiretoriaContratante Diretoria { get; set; }
         public char Tamanho { get; set; }
@@ -60,11 +60,9 @@ namespace everis.SimpleProject.Domain.Models
             ProblemasExecucao = ((Projeto)other).ProblemasExecucao;
             Riscos = ((Projeto)other).Riscos;
             LicoesAprendidas = ((Projeto)other).LicoesAprendidas;
-            Ext = ((Projeto)other).Ext;
+            ExtId = ((Projeto)other).ExtId;
             DataRecebida = ((Projeto)other).DataRecebida;
             CodigoProjeto = ((Projeto)other).CodigoProjeto;
-            TecnologiaId = ((Projeto)other).TecnologiaId;
-            SiglaId = ((Projeto)other).SiglaId;
             DiretoriaId = ((Projeto)other).DiretoriaId;
             Tamanho = ((Projeto)other).Tamanho;
             TipoDemanda = ((Projeto)other).TipoDemanda;
